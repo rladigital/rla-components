@@ -4,8 +4,8 @@ import { action } from "@storybook/addon-actions";
 import { Button } from "../../src/index";
 
 storiesOf("Button", module)
-    .add("Default", () => <Button>Default Button</Button>)
-    .add("Color Variants", () => (
+    .addWithInfo("Default", () => <Button>Default Button</Button>)
+    .addWithInfo("Color Variants", () => (
         <div>
             <Button color="primary">primary</Button>
             <Button color="success">success</Button>
@@ -18,9 +18,9 @@ storiesOf("Button", module)
             <Button color="black">black</Button>
         </div>
     ))
-    .add("Hollow", () => <Button hollow>hollow</Button>)
-    .add("Disabled", () => <Button disabled>disabled</Button>)
-    .add("Alignment", () => (
+    .addWithInfo("Hollow", () => <Button hollow>hollow</Button>)
+    .addWithInfo("Disabled", () => <Button disabled>disabled</Button>)
+    .addWithInfo("Alignment", () => (
         <div>
             <Button>left (default)</Button>
             <Button right>right</Button>

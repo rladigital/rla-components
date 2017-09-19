@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import { Panel, Row, Column } from "../../src/index";
 
 storiesOf("Grid", module)
-    .add("Default", () => (
+    .addWithInfo("Default", () => (
         <Row>
             <Column medium="6">
                 <Panel>
@@ -23,7 +23,7 @@ storiesOf("Grid", module)
             </Column>
         </Row>
     ))
-    .add("centered", () => (
+    .addWithInfo("centered", () => (
         <Row>
             <Column small="6" centered>
                 <Panel>

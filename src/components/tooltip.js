@@ -2,7 +2,7 @@ import React from "react";
 import styled, { withTheme } from "styled-components";
 import { ZoomIn, ZoomOut } from "animate-css-styled-components";
 
-class Modal extends React.Component {
+class Tooltip extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -80,4 +80,4 @@ class Modal extends React.Component {
     }
 }
 
-export default withTheme(Modal);
+export default withTheme(Tooltip);

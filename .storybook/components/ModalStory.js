@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Button, Column, Modal, Row } from "../../src/index";
 
-storiesOf("Modal", module).add("Default", () => (
+storiesOf("Modal", module).addWithInfo("Default", () => (
     <div>
         <Button size="large" onClick={() => this._toggleModal()} hollow>
             Click here for a modal

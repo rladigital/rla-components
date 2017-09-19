@@ -4,8 +4,8 @@ import { action } from "@storybook/addon-actions";
 import { Icon } from "../../src/index";
 
 storiesOf("Icons", module)
-    .add("Icon Library", () => <div>TODO: show all icons</div>)
-    .add("Sizng", () => (
+    .addWithInfo("Icon Library", () => <div>TODO: show all icons</div>)
+    .addWithInfo("Sizng", () => (
         <div>
             <h1>
                 <Icon name="bell" /> Inherit from H1
@@ -30,7 +30,7 @@ storiesOf("Icons", module)
             </p>
         </div>
     ))
-    .add("Colors", () => (
+    .addWithInfo("Colors", () => (
         <div>
             <h3>Inherited from parent</h3>
             <p>
