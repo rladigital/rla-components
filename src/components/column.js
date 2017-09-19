@@ -1,9 +1,11 @@
 import styled, { css } from "styled-components";
 import { clamp } from "./_functions";
+
 const sizes = {
-    small: 350,
-    medium: 700,
-    large: 1050
+    small: 0,
+    medium: 350,
+    large: 700,
+    xlarge: 1050
 };
 
 // Width to percentage
@@ -14,10 +16,10 @@ const widthPercentage = function(width) {
 // Iterate through the sizes and create a media template
 const media = Object.keys(sizes).reduce((acc, label) => {
     acc[label] = (...args) => css`
-		@media (min-width: ${sizes[label] / 12}em) {
-			${css(...args)}
-		}
-	`;
+        @media (min-width: ${sizes[label] / 12}em) {
+            ${css(...args)};
+        }
+    `;
 
     return acc;
 }, {});

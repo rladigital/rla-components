@@ -14,7 +14,9 @@ class Tooltip extends React.Component {
 
     // Update position of the tooltip
     _onMouseMove(e) {
-        const height = this.divElement ? this.divElement.clientHeight : 9999;
+        const height = this.tooltipElement
+            ? this.tooltipElement.clientHeight
+            : 9999;
 
         this.setState({
             x: e.pageX,
@@ -67,10 +69,10 @@ class Tooltip extends React.Component {
                     <TooltipText
                         style={coords}
                         onMouseMove={e => e.stopPropagation()}
+                        innerRef={tooltipElement =>
+                            (this.tooltipElement = tooltipElement)}
                     >
-                        <div ref={divElement => (this.divElement = divElement)}>
-                            {this.props.text}
-                        </div>
+                        {this.props.text}
                     </TooltipText>
                 )}
 

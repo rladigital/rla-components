@@ -23,9 +23,18 @@ storiesOf("Grid", module)
             </Column>
         </Row>
     ))
-    .addWithInfo("centered", () => (
+    .addWithInfo("Centered", () => (
         <Row>
             <Column small="6" centered>
+                <Panel>
+                    <p>centered</p>
+                </Panel>
+            </Column>
+        </Row>
+    ))
+    .addWithInfo("Square", () => (
+        <Row>
+            <Column small="6" square>
                 <Panel>
                     <p>centered</p>
                 </Panel>

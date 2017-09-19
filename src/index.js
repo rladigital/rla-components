@@ -5,4 +5,5 @@ export { default as Icon } from "./components/icon";
 export { default as Modal } from "./components/modal";
 export { default as Panel } from "./components/panel";
 export { default as Row } from "./components/row";
+export { default as Tile } from "./components/tile";
 export { default as Tooltip } from "./components/tooltip";
