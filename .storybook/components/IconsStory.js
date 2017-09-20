@@ -30,19 +30,23 @@ storiesOf("Icons", module)
             </p>
         </div>
     ))
-    .addWithInfo("Colors", () => (
-        <div>
-            <h3>Inherited from parent</h3>
-            <p>
-                <span style={{ color: "PaleVioletRed" }}>
-                    <Icon name="bell" /> PaleVioletRed{" "}
-                </span>
-            </p>
-            <h3>From attribute</h3>
-            <p>
-                <span style={{ color: "SpringGreen" }}>
-                    <Icon name="bell" color="DodgerBlue" /> color="DodgerBlue"{" "}
-                </span>
-            </p>
-        </div>
-    ));
+    .addWithInfo(
+        "Colors",
+        "The color of the icon will automatically be inherited from the parent element, unless a color from the palette is specified in the color attribute.",
+        () => (
+            <div>
+                <h3>Inherited from parent</h3>
+                <p>
+                    <span style={{ color: "PaleVioletRed" }}>
+                        <Icon name="bell" /> PaleVioletRed{" "}
+                    </span>
+                </p>
+                <h3>From attribute</h3>
+                <p>
+                    <span style={{ color: "SpringGreen" }}>
+                        <Icon name="bell" color="alert" /> color="alert"{" "}
+                    </span>
+                </p>
+            </div>
+        )
+    );

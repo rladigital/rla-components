@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 
 class Icon extends React.Component {
     icon(name) {
@@ -33,7 +33,7 @@ class Icon extends React.Component {
         }
     }
     render() {
-        const { name, size, color } = this.props;
+        const { name, size, color, theme } = this.props;
 
         const icon = this.icon(name);
 
@@ -52,7 +52,7 @@ class Icon extends React.Component {
         const Path = styled.path.attrs({
             d: icon.path
         })`
-            fill: ${color ? color : "currentColor"};
+            fill: ${color ? theme.colors[color] : "currentColor"};
         `;
 
         return (
@@ -63,4 +63,4 @@ class Icon extends React.Component {
     }
 }
 
-export default Icon;
+export default withTheme(Icon);
