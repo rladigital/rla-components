@@ -135,7 +135,22 @@ storiesOf("Tile", module)
             <Row>
                 {" "}
                 <Column small="4">
-                    <Tile responsiveScale={300}>
+                    <Tile responsiveScale={400}>
+                        <Row>
+                            <Column>
+                                <h2>
+                                    Content designed for a<br />
+                                    400px X 400px tile.<br />
+                                    Passed in as a prop to override<br />
+                                    the default tile size of<br />
+                                    300px X 300px
+                                </h2>
+                            </Column>
+                        </Row>
+                    </Tile>
+                </Column>
+                <Column small="4">
+                    <Tile responsiveScale>
                         <Row>
                             <Column>
                                 <h2>

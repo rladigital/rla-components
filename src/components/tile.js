@@ -4,8 +4,13 @@ import styled, { withTheme, css } from "styled-components";
 class Tile extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            tilesize: Number.isInteger(this.props.responsiveScale)
+                ? this.props.responsiveScale
+                : 300
+        };
     }
+
     componentDidMount() {
         window.addEventListener("resize", this.updateDimensions.bind(this));
 
@@ -17,11 +22,14 @@ class Tile extends React.Component {
     updateDimensions() {
         // Make square
         const height = Math.round(this.tileElement.clientWidth);
+        const tilesize = this.state.tilesize;
         this.setState({ height: height });
+
+        console.log(tilesize);
 
         // Scaling
         if (this.props.responsiveScale) {
-            const scale = height / this.props.responsiveScale;
+            const scale = height / this.state.tilesize;
             this.setState({ scale: scale });
         }
     }
@@ -43,8 +51,8 @@ class Tile extends React.Component {
         `;
 
         const ResponsiveScale = styled.div`
-            width: ${responsiveScale}px;
-            height: ${responsiveScale}px;
+            width: ${this.state.tilesize}px;
+            height: ${this.state.tilesize}px;
             padding: ${theme.padding}em ${theme.padding / 2}em 0;
             overflow: hidden;
             position: absolute;
