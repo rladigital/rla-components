@@ -3,7 +3,6 @@
     "version": "0.1.1",
     "description": "",
     "main": "dist/rla-components.js",
-    "module": "src/index.js",
     "scripts": {
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook -o docs",
