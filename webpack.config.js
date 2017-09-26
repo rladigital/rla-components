@@ -1,7 +1,18 @@
 const path = require("path");
 const webpack = require("webpack");
 var fs = require("fs");
-
+var reactExternal = {
+    root: "React",
+    commonjs2: "react",
+    commonjs: "react",
+    amd: "react"
+};
+var reactDOMExternal = {
+    root: "ReactDOM",
+    commonjs2: "react-dom",
+    commonjs: "react-dom",
+    amd: "react-dom"
+};
 module.exports = {
     entry: "./src/index.js",
     output: {
@@ -26,10 +37,10 @@ module.exports = {
         ]
     },
     externals: {
-        // "styled-components": "styledComponents",
-        // "animate-css-styled-components": "animate-css-styled-components",
-        // react: "React",
-        // "react-dom": "ReactDOM"
+        "styled-components": "styledComponents",
+        "animate-css-styled-components": "animate-css-styled-components",
+        react: reactExternal,
+        "react-dom": reactDOMExternal
     },
     resolve: {
         extensions: [".webpack.js", ".web.js", ".js", ".json", ".jsx"]
