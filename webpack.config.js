@@ -7,7 +7,7 @@ module.exports = {
     output: {
         filename: "rla-components.js",
         path: path.resolve(__dirname, "dist"),
-        library: "rlaComponents"
+        libraryTarget: "umd"
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -26,8 +26,8 @@ module.exports = {
         ]
     },
     externals: {
-        //"styled-components": "styled-components",
-        //"animate-css-styled-components": "animate-css-styled-components",
+        // "styled-components": "styledComponents",
+        // "animate-css-styled-components": "animate-css-styled-components",
         // react: "React",
         // "react-dom": "ReactDOM"
     },
