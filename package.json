@@ -13,12 +13,12 @@
     "author": "RLA",
     "license": "",
     "dependencies": {
-        "styled-components": "^2.1.2"
+        "styled-components": "^2.1.2",
+        "animate-css-styled-components": "^0.0.19"
     },
     "devDependencies": {
         "@storybook/addon-info": "^3.2.9",
         "@storybook/react": "^3.2.8",
-        "animate-css-styled-components": "^0.0.19",
         "babel-cli": "^6.26.0",
         "babel-core": "^6.26.0",
         "babel-loader": "^7.1.2",
