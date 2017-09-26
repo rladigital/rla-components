@@ -847,7 +847,7 @@ var Tile = function (_React$Component) {
             var tilesize = this.state.tilesize;
             this.setState({ height: height });
 
-            console.log(tilesize);
+            //console.log(tilesize);
 
             // Scaling
             if (this.props.responsiveScale) {
