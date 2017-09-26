@@ -25,12 +25,12 @@ module.exports = {
             }
         ]
     },
-    externals: [
-        "styled-components",
-        "animate-css-styled-components",
-        "react",
-        "react-dom"
-    ],
+    externals: {
+        //"styled-components": "styled-components",
+        //"animate-css-styled-components": "animate-css-styled-components",
+        react: "React",
+        "react-dom": "ReactDOM"
+    },
     resolve: {
         extensions: [".webpack.js", ".web.js", ".js", ".json", ".jsx"]
     }
