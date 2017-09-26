@@ -37,7 +37,7 @@ module.exports = {
         ]
     },
     externals: {
-        "styled-components": "styledComponents",
+        "styled-components": "styled-components",
         "animate-css-styled-components": "animate-css-styled-components",
         react: reactExternal,
         "react-dom": reactDOMExternal

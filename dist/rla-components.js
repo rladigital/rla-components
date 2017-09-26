@@ -1,10 +1,10 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("styledComponents"), require("react"), require("animate-css-styled-components"));
+		module.exports = factory(require("styled-components"), require("react"), require("animate-css-styled-components"));
 	else if(typeof define === 'function' && define.amd)
-		define(["styledComponents", "react", "animate-css-styled-components"], factory);
+		define(["styled-components", "react", "animate-css-styled-components"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("styledComponents"), require("react"), require("animate-css-styled-components")) : factory(root["styledComponents"], root["React"], root["animate-css-styled-components"]);
+		var a = typeof exports === 'object' ? factory(require("styled-components"), require("react"), require("animate-css-styled-components")) : factory(root["styled-components"], root["React"], root["animate-css-styled-components"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
 })(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_3__) {
