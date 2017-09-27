@@ -75,4 +75,6 @@ class Dropdown extends React.Component {
     }
 }
 
+Dropdown.displayName = "Dropdown";
+
 export default withTheme(Dropdown);

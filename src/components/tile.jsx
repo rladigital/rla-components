@@ -84,4 +84,6 @@ class Tile extends React.Component {
     }
 }
 
+Tile.displayName = "Tile";
+
 export default withTheme(Tile);

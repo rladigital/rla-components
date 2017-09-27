@@ -1,10 +1,15 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { withInfo } from "@storybook/addon-info";
+
 import { Button } from "../../src/index";
 
 storiesOf("Button", module)
-    .addWithInfo("Default", () => <Button>Default Button</Button>)
+    .add(
+        "Default",
+        withInfo("About Button")(() => <Button>Default Button</Button>)
+    )
     .addWithInfo("Color Variants", () => (
         <div>
             <Button color="primary">primary</Button>

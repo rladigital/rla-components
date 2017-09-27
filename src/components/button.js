@@ -27,26 +27,35 @@ const Button = styled.button`
     border-radius: ${props => props.theme.radius}em;
     float: ${props => (props.right ? "right" : "none")};
     font-size: 1em;
-    transition: color .25s, background .25s, border .25s;
+    transition: color 0.25s, background 0.25s, border 0.25s;
 
     /* disabled button styling */
     ${props =>
         !props.disabled
             ? css`
-    &:hover {
-        background: ${props => !props.hollow && shade(background(props), -40)};
-        color: ${props => props.hollow && shade(background(props), -40)};
-        border-color: ${props => shade(background(props), -40)};
-        cursor: pointer;
-    }   
-            `
+                  &:hover {
+                      background: ${props =>
+                          !props.hollow && shade(background(props), -40)};
+                      color: ${props =>
+                          props.hollow && shade(background(props), -40)};
+                      border-color: ${props => shade(background(props), -40)};
+                      cursor: pointer;
+                  }
+              `
             : css`
-        opacity: 0.5;    
-        cursor: not-allowed;
-            `};
+                  opacity: 0.5;
+                  cursor: not-allowed;
+              `};
 
     /*centered button styling*/
-    ${props => props.centered && css`display: block; margin: auto`};
+    ${props =>
+        props.centered &&
+        css`
+            display: block;
+            margin: auto;
+        `};
 `;
+
+Button.displayName = "Button";
 
 export default Button;

@@ -8,4 +8,6 @@ const Row = styled.div`
     overflow: hidden;
 `;
 
+Row.displayName = "Row";
+
 export default Row;

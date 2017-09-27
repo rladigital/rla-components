@@ -82,4 +82,6 @@ class Tooltip extends React.Component {
     }
 }
 
+Tooltip.displayName = "Tooltip";
+
 export default withTheme(Tooltip);
