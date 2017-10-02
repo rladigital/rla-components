@@ -10,7 +10,6 @@
         "start": "webpack-dev-server",
         "prepublishOnly": "npm run build"
     },
-    "pre-commit": ["build", "build-storybook"],
     "keywords": [],
     "author": "RLA",
     "license": "",
@@ -29,9 +28,9 @@
         "babel-preset-es2015": "^6.24.1",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-1": "^6.24.1",
-        "pre-commit": "^1.2.2",
         "react": "^15.6.1",
         "react-dom": "^15.6.1",
+        "shared-git-hooks": "^1.2.1",
         "webpack": "^3.6.0",
         "webpack-dev-server": "^2.8.2"
     }
