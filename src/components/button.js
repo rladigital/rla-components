@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "./_functions";
 
@@ -57,5 +58,9 @@ const Button = styled.button`
 `;
 
 Button.displayName = "Button";
+
+Button.propTypes = {
+    expanded: PropTypes.bool
+};
 
 export default Button;
