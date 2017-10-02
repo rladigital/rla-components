@@ -19,7 +19,7 @@ const Button = styled.button`
     border-radius: ${props => props.theme.radius}em;
     border-style: solid;
     border-width: 0.1em;
-    font-size: 1em;
+    font-size: 1.2em;
 
     /* disabled button styling */
     ${props =>
