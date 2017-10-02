@@ -10,7 +10,7 @@
         "start": "webpack-dev-server",
         "prepublishOnly": "npm run build"
     },
-    "pre-commit": ["build"],
+    "pre-commit": ["build", "build-storybook"],
     "keywords": [],
     "author": "RLA",
     "license": "",
