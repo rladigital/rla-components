@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { clamp } from "./_functions";
 
@@ -43,5 +44,17 @@ const Column = styled.div`
 `;
 
 Column.displayName = "Column";
+
+Column.propTypes = {
+    small: PropTypes.number,
+    medium: PropTypes.number,
+    large: PropTypes.number,
+    xlarge: PropTypes.number,
+    centered: PropTypes.bool
+};
+
+Column.defaultProps = {
+    centered: false
+};
 
 export default Column;

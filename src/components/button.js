@@ -2,33 +2,24 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "./_functions";
 
-const background = props =>
-    props.color ? props.theme.colors[props.color] : props.theme.colors.accent;
-
-const sizes = {
-    small: "1",
-    regular: props => props.theme.inputHeight,
-    large: "3"
-};
-
-const spacing = "0.4em";
+const background = props => props.theme.colors[props.color];
 
 const Button = styled.button`
     width: ${props => (props.expanded ? "100%" : "auto")};
-    min-height: ${props => (props.size ? sizes[props.size] : sizes.regular)}em;
+    min-height: ${props => props.theme.sizes[props.size]}em;
     background: ${props => (props.hollow ? "transparent" : background)};
-    color: ${props => (props.hollow ? background : "white")};
-    margin: 0 ${props => (props.expanded || props.right ? 0 : spacing)}
+    color: ${props => (props.hollow ? background : "#FFF")};
+    margin: 0
+        ${props => (props.expanded || props.align == "right" ? 0 : "0.4em")}
         ${props => props.theme.margin}em
-        ${props => (props.right ? spacing : 0)}em;
-    padding: 0 1em;
-    border-style: solid;
-    border-width: 0.1em;
+        ${props => (props.align == "right" ? "0.4em" : 0)}em;
+    padding: 0 ${props => props.theme.sizes[props.size] / 2}em;
+    transition: color 0.25s, background 0.25s, border 0.25s;
     border-color: ${background};
     border-radius: ${props => props.theme.radius}em;
-    float: ${props => (props.right ? "right" : "none")};
+    border-style: solid;
+    border-width: 0.1em;
     font-size: 1em;
-    transition: color 0.25s, background 0.25s, border 0.25s;
 
     /* disabled button styling */
     ${props =>
@@ -48,19 +39,36 @@ const Button = styled.button`
                   cursor: not-allowed;
               `};
 
-    /*centered button styling*/
+    /*center align button styling*/
     ${props =>
-        props.centered &&
+        props.align == "center" &&
         css`
             display: block;
             margin: auto;
         `};
+
+    /*right align button styling*/
+    ${props => props.align == "right" && css`float: right;`};
 `;
 
 Button.displayName = "Button";
 
 Button.propTypes = {
-    expanded: PropTypes.bool
+    expanded: PropTypes.bool,
+    color: PropTypes.string,
+    size: PropTypes.string,
+    hollow: PropTypes.bool,
+    disabled: PropTypes.bool,
+    alignment: PropTypes.string
+};
+
+Button.defaultProps = {
+    expanded: false,
+    color: "accent",
+    size: "default",
+    hollow: false,
+    disabled: false,
+    alignment: "left"
 };
 
 export default Button;

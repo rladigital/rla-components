@@ -19,11 +19,18 @@ const theme = {
         success: "#4caf50",
         info: "#00bcd4"
     },
+    sizes: {
+        small: "1",
+        default: "2",
+        large: "3"
+    },
     radius: "0.1",
     padding: "1.2",
     margin: "1.2",
-    inputHeight: "2",
-    headings: "'Montserrat', sans-serif"
+    headings: "'Montserrat', sans-serif",
+    button: {
+        background: "accent"
+    }
 };
 
 export default theme;

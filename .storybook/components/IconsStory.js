@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import { Icon } from "../../src/index";
 
 storiesOf("Icons", module)
-    .addWithInfo("Icon Library", () => <div>TODO: show all icons</div>)
+    .addWithInfo("Icon Library", () => <div />)
     .addWithInfo("Sizng", () => (
         <div>
             <h1>

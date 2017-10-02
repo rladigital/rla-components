@@ -12,6 +12,7 @@ storiesOf("Button", module)
     )
     .addWithInfo("Color Variants", () => (
         <div>
+            <Button>default</Button>
             <Button color="primary">primary</Button>
             <Button color="success">success</Button>
             <Button color="alert">alert</Button>
@@ -23,12 +24,19 @@ storiesOf("Button", module)
             <Button color="black">black</Button>
         </div>
     ))
+    .addWithInfo("Sizes", () => (
+        <div>
+            <Button size="small">small</Button>
+            <Button>default</Button>
+            <Button size="large">large</Button>
+        </div>
+    ))
     .addWithInfo("Hollow", () => <Button hollow>hollow</Button>)
     .addWithInfo("Disabled", () => <Button disabled>disabled</Button>)
     .addWithInfo("Alignment", () => (
         <div>
             <Button>left (default)</Button>
-            <Button right>right</Button>
-            <Button centered>centered</Button>
+            <Button align="right">right</Button>
+            <Button align="center">center</Button>
         </div>
     ));
