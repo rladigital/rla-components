@@ -25,7 +25,7 @@ class Tile extends React.Component {
         const tilesize = this.state.tilesize;
         this.setState({ height: height });
 
-        console.log(tilesize);
+        //console.log(tilesize);
 
         // Scaling
         if (this.props.responsiveScale) {
@@ -83,5 +83,7 @@ class Tile extends React.Component {
         );
     }
 }
+
+Tile.displayName = "Tile";
 
 export default withTheme(Tile);

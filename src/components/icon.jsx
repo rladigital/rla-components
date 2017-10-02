@@ -63,4 +63,6 @@ class Icon extends React.Component {
     }
 }
 
+Icon.displayName = "Icon";
+
 export default withTheme(Icon);

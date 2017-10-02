@@ -9,4 +9,6 @@ const Panel = styled.div`
     margin-bottom: ${props => props.theme.margin}em;
 `;
 
+Panel.displayName = "Panel";
+
 export default Panel;

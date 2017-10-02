@@ -42,4 +42,6 @@ const Column = styled.div`
     ${props => (props.centered ? css`margin: auto;` : css`float: left;`)};
 `;
 
+Column.displayName = "Column";
+
 export default Column;
