@@ -1,3 +1,4 @@
+export { default as Theme } from "./theme";
 export { default as Button } from "./components/button";
 export { default as Column } from "./components/column";
 export { default as Dropdown } from "./components/dropdown";
