@@ -44,15 +44,13 @@ Input.displayName = "Input";
 Input.propTypes = {
     size: PropTypes.string,
     expanded: PropTypes.bool,
-    type: PropTypes.string,
-    color: PropTypes.string
+    type: PropTypes.string
 };
 
 Input.defaultProps = {
     size: "default",
     expanded: false,
-    type: "text",
-    color: "accent"
+    type: "text"
 };
 
 export default Input;
