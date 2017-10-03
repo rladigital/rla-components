@@ -24,7 +24,7 @@ const theme = {
         default: "2",
         large: "3"
     },
-    radius: "0.1",
+    radius: "0.2",
     padding: "1.2",
     margin: "1.2",
     headings: "'Montserrat', sans-serif",
