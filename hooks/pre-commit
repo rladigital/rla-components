@@ -1,1 +1,5 @@
-/Users/chris.rodgers/projects/rlacomponents/node_modules/shared-git-hooks/hook.sh
+#!/bin/bash
+npm run build-storybook
+
+echo 'Adding docs'
+exec git add 'docs/*'
