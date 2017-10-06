@@ -8,4 +8,5 @@ export { default as Modal } from "./components/modal";
 export { default as Panel } from "./components/panel";
 export { default as Row } from "./components/row";
 export { default as Tile } from "./components/tile";
+export { default as TileRow } from "./components/tileRow";
 export { default as Tooltip } from "./components/tooltip";
