@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled, { withTheme } from "styled-components";
 import Icon from "./icon";
 import {
@@ -8,6 +9,7 @@ import {
     FadeOut
 } from "animate-css-styled-components";
 
+/** Modal  */
 class Modal extends React.Component {
     // Modal must start closed
     constructor(props) {
@@ -96,7 +98,19 @@ class Modal extends React.Component {
         ) : null;
     }
 }
+Modal = withTheme(Modal);
 
 Modal.displayName = "Modal";
 
-export default withTheme(Modal);
+Modal.propTypes = {
+    /** Boolean indicating whether the modal should show */
+    visible: PropTypes.bool,
+    /** The function to call when the modal is closed */
+    onClose: PropTypes.func
+};
+
+Modal.defaultProps = {
+    visible: false
+};
+
+export default Modal;
