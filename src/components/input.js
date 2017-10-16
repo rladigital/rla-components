@@ -71,7 +71,7 @@ Input.propTypes = {
     name: PropTypes.string.isRequired,
     size: PropTypes.string,
     expanded: PropTypes.bool,
-    inlineLabel: PropTypes.bool,
+    block: PropTypes.bool,
     input: PropTypes.object,
     type: PropTypes.string,
     label: PropTypes.string,
@@ -84,7 +84,7 @@ Input.propTypes = {
 Input.defaultProps = {
     size: "default",
     expanded: false,
-    inlineLabel: true,
+    block: true,
     type: "text",
     readOnly: false,
     meta: {}
