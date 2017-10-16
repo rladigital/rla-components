@@ -4,7 +4,7 @@ import { Column } from "../index";
 
 class Tile extends React.Component {
     render() {
-        const { square, theme, size, baseSize } = this.props;
+        const { square, theme, size, baseSize, maxSize } = this.props;
 
         const TileColumn = styled.div`
             padding: 0 ${theme.padding / 2}em ${theme.padding}em;
@@ -22,7 +22,8 @@ class Tile extends React.Component {
             <TileColumn
                 style={{
                     height: baseSize,
-                    width: baseSize * theme.tile.tileSizes[size]
+                    width:
+                        baseSize * Math.min(theme.tile.tileSizes[size], maxSize)
                 }}
             >
                 <Tile>{this.props.children}</Tile>

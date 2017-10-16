@@ -57,17 +57,17 @@ class TileRow extends React.Component {
     renderChildren(props) {
         const { rowWidth, rowHeight, breakpoints } = this.state;
 
+        const { theme } = props;
+
+        const baseSize =
+            theme.tile.baseSizes[
+                this.getBreakpoint(breakpoints, theme.tile.baseSizes)
+            ];
+
         return React.Children.map(props.children, child => {
             return React.cloneElement(child, {
-                baseSize:
-                    rowWidth /
-                    props.theme.columns *
-                    props.theme.tile.baseSizes[
-                        this.getBreakpoint(
-                            breakpoints,
-                            props.theme.tile.baseSizes
-                        )
-                    ]
+                baseSize: rowWidth / theme.columns * baseSize,
+                maxSize: theme.columns / baseSize
             });
         });
     }
