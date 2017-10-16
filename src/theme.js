@@ -30,6 +30,19 @@ const theme = {
     headings: "'Montserrat', sans-serif",
     button: {
         background: "accent"
+    },
+    tile: {
+        baseSizes: {
+            // breakpoints - how many columns 1 tile space is sized
+            small: 6,
+            medium: 3
+        },
+        tileSizes: {
+            // names of tiles - how many tile spaces a tile uses
+            small: 1,
+            medium: 2,
+            large: 4
+        }
     }
 };
 
