@@ -10,6 +10,7 @@ import {
     Button,
     Radio,
     Select,
+    Checkbox,
     DatePicker,
     TimePicker
 } from "../../src/index";
@@ -88,6 +89,30 @@ storiesOf("Input", module)
                         label="With Label"
                         emptyOption="--Pick an Option--"
                         options={options}
+                    />
+                </div>
+            );
+        })
+    )
+    .add(
+        "Checkboxes",
+        withInfo("This is for checkboxes.")(() => {
+            const options = [
+                { value: "1", text: "first" },
+                { value: "2", text: "second" },
+                { value: "3", text: "third" },
+                { value: "4", text: "forth" }
+            ];
+            return (
+                <div>
+                    <Checkbox
+                        name="test-checkboxes"
+                        defaultValue="default"
+                        label="Checkboxes"
+                        options={options}
+                        onChange={selection => {
+                            console.log(selection);
+                        }}
                     />
                 </div>
             );
