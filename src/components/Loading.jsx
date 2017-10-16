@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Loading from "react-loading";
+import LoadingIcon from "react-loading";
 import styled from "styled-components";
 
-const LoadingIcon = props => {
+const Loading = props => {
     const LoadingOuter = styled.div`
         position: relative;
         width: ${props.width};
@@ -19,7 +19,7 @@ const LoadingIcon = props => {
     return (
         <LoadingOuter>
             <LoadingInner>
-                <Loading
+                <LoadingIcon
                     type={props.type}
                     color={props.color}
                     width="100%"
@@ -29,9 +29,9 @@ const LoadingIcon = props => {
         </LoadingOuter>
     );
 };
-LoadingIcon.displayName = "LoadingIcon";
+Loading.displayName = "Loading";
 
-LoadingIcon.propTypes = {
+Loading.propTypes = {
     /** A css color (using rgba will allow transparency) */
     color: PropTypes.string,
     /** One of the types provided by react-loading, e.g. currently ["blank",
@@ -60,10 +60,10 @@ LoadingIcon.propTypes = {
     height: PropTypes.string
 };
 
-LoadingIcon.defaultProps = {
+Loading.defaultProps = {
     color: "rgba(235,235,235,0.2)",
     type: "spinningBubbles",
     width: "200px",
     height: "200px"
 };
-export default LoadingIcon;
+export default Loading;

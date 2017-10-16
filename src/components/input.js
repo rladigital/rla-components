@@ -1,27 +1,27 @@
+import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "./_functions";
+import Label from "./label";
 
-const types = {
-    text: [
-        "date",
-        "datetime-local",
-        "email",
-        "hidden",
-        "month",
-        "number",
-        "password",
-        "search",
-        "tel",
-        "text",
-        "time",
-        "week"
-    ]
-};
+const types = [
+    "date",
+    "datetime-local",
+    "email",
+    "hidden",
+    "month",
+    "number",
+    "password",
+    "search",
+    "tel",
+    "text",
+    "time",
+    "week"
+];
 
-const Input = styled.input`
+const StyledInput = styled.input`
     ${props =>
-        types.text.includes(props.type) &&
+        types.indexOf(props.type) !== -1 &&
         css`
             width: 100%;
             max-width: ${props => (props.expanded ? "100%" : "10em")};
@@ -39,18 +39,54 @@ const Input = styled.input`
     margin-bottom: ${props => props.theme.margin}em;
 `;
 
+const Input = ({ input, type, name, label, readOnly, meta, ...rest }) => {
+    let fieldOptions = {};
+
+    if (readOnly) {
+        fieldOptions["readOnly"] = "readOnly";
+    }
+
+    return (
+        <div>
+            {label && (
+                <Label for={name} {...rest}>
+                    {label}
+                </Label>
+            )}
+            <StyledInput
+                {...input}
+                type={type}
+                name={name}
+                {...fieldOptions}
+                {...rest}
+            />
+            {meta.touched && meta.error && <span>{meta.error}</span>}
+        </div>
+    );
+};
+
 Input.displayName = "Input";
 
 Input.propTypes = {
+    name: PropTypes.string.isRequired,
     size: PropTypes.string,
     expanded: PropTypes.bool,
-    type: PropTypes.string
+    inlineLabel: PropTypes.bool,
+    input: PropTypes.object,
+    type: PropTypes.string,
+    label: PropTypes.string,
+    readOnly: PropTypes.bool,
+    meta: PropTypes.shape({
+        touched: PropTypes.bool,
+        error: PropTypes.string
+    })
 };
-
 Input.defaultProps = {
     size: "default",
     expanded: false,
-    type: "text"
+    inlineLabel: true,
+    type: "text",
+    readOnly: false,
+    meta: {}
 };
-
 export default Input;
