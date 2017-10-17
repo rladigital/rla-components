@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "./_functions";
-import Label from "./label";
+import FormLabel from "./label";
 
 const types = [
     "date",
@@ -49,9 +49,9 @@ const InputField = ({ input, type, name, label, readOnly, meta, ...rest }) => {
     return (
         <div>
             {label && (
-                <Label name={name} label={label} {...rest}>
+                <FormLabel name={name} label={label} {...rest}>
                     {label}
-                </Label>
+                </FormLabel>
             )}
             <StyledInput
                 {...input}

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "./_functions";
-import Label from "./label";
+import FormLabel from "./label";
 
 const StyledInput = styled.input`
     margin-bottom: ${props => props.theme.margin}em;
@@ -21,9 +21,9 @@ const RadioField = ({
     return (
         <div>
             {label && (
-                <Label name={name} label={label} {...rest}>
+                <FormLabel name={name} label={label} {...rest}>
                     {label}
-                </Label>
+                </FormLabel>
             )}
             {options &&
                 options.map((radio, index) => (

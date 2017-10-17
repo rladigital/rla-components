@@ -4,7 +4,7 @@ import isUndefined from "lodash/isUndefined";
 import isArray from "lodash/isArray";
 import styled, { css } from "styled-components";
 import { shade } from "./_functions";
-import Label from "./label";
+import FormLabel from "./label";
 
 class MultiCheckbox extends Component {
     constructor(props) {
@@ -57,7 +57,7 @@ class MultiCheckbox extends Component {
         return (
             <div>
                 {this.props.label && (
-                    <Label {...rest}>{this.props.label}</Label>
+                    <FormLabel {...rest}>{this.props.label}</FormLabel>
                 )}
                 {checkboxes}
             </div>

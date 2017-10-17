@@ -4,7 +4,7 @@ import ReactDatePicker from "react-datepicker";
 import moment from "moment";
 import styled, { css } from "styled-components";
 import { shade } from "./_functions";
-import Label from "./label";
+import FormLabel from "./label";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -39,7 +39,7 @@ class DatePicker extends Component {
         return (
             <div>
                 {this.props.label && (
-                    <Label {...field}>{this.props.label}</Label>
+                    <FormLabel {...field}>{this.props.label}</FormLabel>
                 )}
                 {this.props.easyRead && <b>{this.props.easyRead}</b>}
                 <ReactDatePicker
