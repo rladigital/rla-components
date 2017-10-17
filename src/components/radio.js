@@ -8,7 +8,7 @@ const StyledInput = styled.input`
     margin-bottom: ${props => props.theme.margin}em;
 `;
 
-const Radio = ({
+const RadioField = ({
     options,
     input,
     type,
@@ -41,9 +41,9 @@ const Radio = ({
     );
 };
 
-Radio.displayName = "Radio";
+RadioField.displayName = "RadioField";
 
-Radio.propTypes = {
+RadioField.propTypes = {
     options: PropTypes.arrayOf(
         PropTypes.shape({
             value: PropTypes.any,
@@ -63,7 +63,7 @@ Radio.propTypes = {
         error: PropTypes.string
     })
 };
-Radio.defaultProps = {
+RadioField.defaultProps = {
     size: "default",
     expanded: false,
     inlineLabel: true,
@@ -71,4 +71,4 @@ Radio.defaultProps = {
     readOnly: false,
     meta: {}
 };
-export default Radio;
+export default RadioField;

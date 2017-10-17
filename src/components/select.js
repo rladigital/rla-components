@@ -8,7 +8,7 @@ const StyledInput = styled.input`
     margin-bottom: ${props => props.theme.margin}em;
 `;
 
-const Select = ({
+const SelectField = ({
     options,
     input,
     type,
@@ -41,9 +41,9 @@ const Select = ({
     );
 };
 
-Select.displayName = "Select";
+SelectField.displayName = "SelectField";
 
-Select.propTypes = {
+SelectField.propTypes = {
     options: PropTypes.arrayOf(
         PropTypes.shape({
             value: PropTypes.any,
@@ -61,11 +61,11 @@ Select.propTypes = {
         error: PropTypes.string
     })
 };
-Select.defaultProps = {
+SelectField.defaultProps = {
     size: "default",
     expanded: false,
     inlineLabel: true,
     emptyOption: "--Select One--",
     meta: {}
 };
-export default Select;
+export default SelectField;

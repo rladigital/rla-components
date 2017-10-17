@@ -4,7 +4,7 @@ import RCTimePicker from "rc-time-picker";
 import moment from "moment";
 import styled, { css } from "styled-components";
 import { shade } from "./_functions";
-import Label from "./label";
+import FormLabel from "./label";
 
 import "rc-time-picker/assets/index.css";
 
@@ -31,9 +31,9 @@ class TimePicker extends Component {
         return (
             <div>
                 {label && (
-                    <Label name={name} label={label} {...this.props}>
+                    <FormLabel name={name} label={label} {...this.props}>
                         {label}
-                    </Label>
+                    </FormLabel>
                 )}
                 {this.props.easyRead && <b>{this.props.easyRead}</b>}
                 <RCTimePicker

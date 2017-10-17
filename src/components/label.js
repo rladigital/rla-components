@@ -6,7 +6,7 @@ const StyledLabel = styled.label`
     display: ${props => (props.inlineLabel ? "inline-block" : "block")};
 `;
 
-const Label = props => {
+const FormLabel = props => {
     return (
         <StyledLabel for={props.name} {...props}>
             {props.children}
@@ -14,16 +14,16 @@ const Label = props => {
     );
 };
 
-Label.displayName = "Label";
+FormLabel.displayName = "FormLabel";
 
-Label.propTypes = {
+FormLabel.propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     inlineLabel: PropTypes.bool
 };
-Label.defaultProps = {
+FormLabel.defaultProps = {
     size: "default",
     expanded: false,
     inlineLabel: true
 };
-export default Label;
+export default FormLabel;

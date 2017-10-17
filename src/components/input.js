@@ -39,7 +39,7 @@ const StyledInput = styled.input`
     margin-bottom: ${props => props.theme.margin}em;
 `;
 
-const Input = ({ input, type, name, label, readOnly, meta, ...rest }) => {
+const InputField = ({ input, type, name, label, readOnly, meta, ...rest }) => {
     let fieldOptions = {};
 
     if (readOnly) {
@@ -65,9 +65,9 @@ const Input = ({ input, type, name, label, readOnly, meta, ...rest }) => {
     );
 };
 
-Input.displayName = "Input";
+InputField.displayName = "InputField";
 
-Input.propTypes = {
+InputField.propTypes = {
     name: PropTypes.string.isRequired,
     size: PropTypes.string,
     expanded: PropTypes.bool,
@@ -81,7 +81,7 @@ Input.propTypes = {
         error: PropTypes.string
     })
 };
-Input.defaultProps = {
+InputField.defaultProps = {
     size: "default",
     expanded: false,
     block: true,
@@ -89,4 +89,4 @@ Input.defaultProps = {
     readOnly: false,
     meta: {}
 };
-export default Input;
+export default InputField;

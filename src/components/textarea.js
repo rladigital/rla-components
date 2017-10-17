@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "./_functions";
-import Label from "./label";
+import FormLabel from "./label";
 
 const StyledTextarea = styled.textarea`
     width: 100%;
@@ -17,7 +17,7 @@ const StyledTextarea = styled.textarea`
     margin-bottom: ${props => props.theme.margin}em;
 `;
 
-const Textarea = ({
+const TextareaField = ({
     input,
     type,
     name,
@@ -37,9 +37,9 @@ const Textarea = ({
     return (
         <div>
             {label && (
-                <Label name={name} label={label} {...rest}>
+                <FormLabel name={name} label={label} {...rest}>
                     {label}
-                </Label>
+                </FormLabel>
             )}
             <StyledTextarea
                 {...input}
@@ -54,9 +54,9 @@ const Textarea = ({
     );
 };
 
-Textarea.displayName = "Input";
+TextareaField.displayName = "TextareaField";
 
-Textarea.propTypes = {
+TextareaField.propTypes = {
     name: PropTypes.string.isRequired,
     size: PropTypes.string,
     expanded: PropTypes.bool,
@@ -71,7 +71,7 @@ Textarea.propTypes = {
         error: PropTypes.string
     })
 };
-Textarea.defaultProps = {
+TextareaField.defaultProps = {
     size: "default",
     expanded: false,
     inlineLabel: true,
@@ -81,4 +81,4 @@ Textarea.defaultProps = {
     readOnly: false,
     meta: {}
 };
-export default Textarea;
+export default TextareaField;

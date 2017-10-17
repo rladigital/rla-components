@@ -64,7 +64,7 @@ class MultiCheckbox extends Component {
         );
     }
 }
-
+MultiCheckbox.displayName = "MultiCheckbox";
 MultiCheckbox.propTypes = {
     options: PropTypes.arrayOf(
         PropTypes.shape({

@@ -5,12 +5,12 @@ import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
 
 import {
-    Input,
-    Textarea,
+    InputField,
+    TextareaField,
     Button,
-    Radio,
-    Select,
-    Checkbox,
+    RadioField,
+    SelectField,
+    MultiCheckbox,
     DatePicker,
     TimePicker
 } from "../../src/index";
@@ -19,21 +19,29 @@ storiesOf("Form Inputs", module)
     .add(
         "Text Inputs",
         withInfo(
-            "This is the default input. It is automatically set to type='text'. The input accepts all of the standard HTML5 attributes such as placeholder, value etc. Styles are applied based on type."
+            "This is the default input. It is automatically set to type='text'. The inputField accepts all of the standard HTML5 attributes such as placeholder, value etc. Styles are applied based on type."
         )(() => (
             <div>
-                <Input name="test" defaultValue="default" label="With Label" />
-                <Input
+                <InputField
+                    name="test"
+                    defaultValue="default"
+                    label="With Label"
+                />
+                <InputField
                     name="test"
                     defaultValue="default"
                     label="With Label Block"
                     inlineLabel={false}
                 />
-                <Input name="test" placeholder="with placeholder" />
-                <Input name="test" defaultValue="password" type="password" />
-                <Input name="test" defaultValue="small" size="small" />
-                <Input name="test" defaultValue="default" />
-                <Input name="test" defaultValue="large" size="large" />
+                <InputField name="test" placeholder="with placeholder" />
+                <InputField
+                    name="test"
+                    defaultValue="password"
+                    type="password"
+                />
+                <InputField name="test" defaultValue="small" size="small" />
+                <InputField name="test" defaultValue="default" />
+                <InputField name="test" defaultValue="large" size="large" />
             </div>
         ))
     )
@@ -42,7 +50,7 @@ storiesOf("Form Inputs", module)
         withInfo("This is an example textarea.")(() => {
             return (
                 <div>
-                    <Textarea
+                    <TextareaField
                         name="test"
                         placeholder="placeholder text"
                         label="With Label"
@@ -62,7 +70,7 @@ storiesOf("Form Inputs", module)
             ];
             return (
                 <div>
-                    <Radio
+                    <RadioField
                         name="test"
                         defaultValue="default"
                         label="With Label"
@@ -83,7 +91,7 @@ storiesOf("Form Inputs", module)
             ];
             return (
                 <div>
-                    <Select
+                    <SelectField
                         name="test-select"
                         defaultValue="default"
                         label="With Label"
@@ -105,7 +113,7 @@ storiesOf("Form Inputs", module)
             ];
             return (
                 <div>
-                    <Checkbox
+                    <MultiCheckbox
                         name="test-checkboxes"
                         defaultValue="default"
                         label="Checkboxes"
