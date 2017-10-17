@@ -20158,19 +20158,25 @@ var StyledInput = _styledComponents2.default.input(_templateObject, function (pr
 });
 
 var InputField = function InputField(_ref) {
-    var input = _ref.input,
-        type = _ref.type,
+    var type = _ref.type,
         name = _ref.name,
         label = _ref.label,
         readOnly = _ref.readOnly,
         meta = _ref.meta,
-        rest = _objectWithoutProperties(_ref, ["input", "type", "name", "label", "readOnly", "meta"]);
+        onChange = _ref.onChange,
+        rest = _objectWithoutProperties(_ref, ["type", "name", "label", "readOnly", "meta", "onChange"]);
 
     var fieldOptions = {};
 
     if (readOnly) {
         fieldOptions["readOnly"] = "readOnly";
     }
+    var handleChange = function handleChange(event) {
+        onChange({
+            name: name,
+            value: event.target.value
+        });
+    };
 
     return _react2.default.createElement(
         "div",
@@ -20180,10 +20186,12 @@ var InputField = function InputField(_ref) {
             _extends({ name: name, label: label }, rest),
             label
         ),
-        _react2.default.createElement(StyledInput, _extends({}, input, {
+        _react2.default.createElement(StyledInput, _extends({
             type: type,
             name: name
-        }, fieldOptions, rest)),
+        }, fieldOptions, {
+            onChange: handleChange
+        }, rest)),
         meta.touched && meta.error && _react2.default.createElement(
             "span",
             null,
@@ -20196,6 +20204,7 @@ InputField.displayName = "InputField";
 
 InputField.propTypes = {
     name: _propTypes2.default.string.isRequired,
+    onChange: _propTypes2.default.func.isRequired,
     size: _propTypes2.default.string,
     expanded: _propTypes2.default.bool,
     block: _propTypes2.default.bool,
@@ -20272,21 +20281,26 @@ var StyledTextarea = _styledComponents2.default.textarea(_templateObject, functi
 });
 
 var TextareaField = function TextareaField(_ref) {
-    var input = _ref.input,
-        type = _ref.type,
-        name = _ref.name,
+    var name = _ref.name,
+        onChange = _ref.onChange,
         label = _ref.label,
         readOnly = _ref.readOnly,
         rows = _ref.rows,
         columns = _ref.columns,
         meta = _ref.meta,
-        rest = _objectWithoutProperties(_ref, ["input", "type", "name", "label", "readOnly", "rows", "columns", "meta"]);
+        rest = _objectWithoutProperties(_ref, ["name", "onChange", "label", "readOnly", "rows", "columns", "meta"]);
 
     var fieldOptions = {};
 
     if (readOnly) {
         fieldOptions["readOnly"] = "readOnly";
     }
+    var handleChange = function handleChange(event) {
+        onChange({
+            name: name,
+            value: event.target.value
+        });
+    };
 
     return _react2.default.createElement(
         "div",
@@ -20296,12 +20310,11 @@ var TextareaField = function TextareaField(_ref) {
             _extends({ name: name, label: label }, rest),
             label
         ),
-        _react2.default.createElement(StyledTextarea, _extends({}, input, {
-            type: type
-        }, fieldOptions, {
+        _react2.default.createElement(StyledTextarea, _extends({
             rows: rows,
-            cols: columns
-        }, rest)),
+            cols: columns,
+            onChange: handleChange
+        }, fieldOptions, rest)),
         meta.touched && meta.error && _react2.default.createElement(
             "span",
             null,
@@ -20314,6 +20327,7 @@ TextareaField.displayName = "TextareaField";
 
 TextareaField.propTypes = {
     name: _propTypes2.default.string.isRequired,
+    onChange: _propTypes2.default.func.isRequired,
     size: _propTypes2.default.string,
     expanded: _propTypes2.default.bool,
     inlineLabel: _propTypes2.default.bool,
@@ -20387,11 +20401,18 @@ var RadioField = function RadioField(_ref) {
         input = _ref.input,
         type = _ref.type,
         name = _ref.name,
+        onChange = _ref.onChange,
         label = _ref.label,
         readOnly = _ref.readOnly,
         meta = _ref.meta,
-        rest = _objectWithoutProperties(_ref, ["options", "input", "type", "name", "label", "readOnly", "meta"]);
+        rest = _objectWithoutProperties(_ref, ["options", "input", "type", "name", "onChange", "label", "readOnly", "meta"]);
 
+    var handleChange = function handleChange(event) {
+        onChange({
+            name: name,
+            value: event.target.value
+        });
+    };
     return _react2.default.createElement(
         "div",
         null,
@@ -20407,7 +20428,8 @@ var RadioField = function RadioField(_ref) {
                 _react2.default.createElement(StyledInput, _extends({
                     type: "radio"
                 }, input, {
-                    value: radio.value
+                    value: radio.value,
+                    onChange: handleChange
                 })),
                 radio.text
             );
@@ -20423,11 +20445,12 @@ var RadioField = function RadioField(_ref) {
 RadioField.displayName = "RadioField";
 
 RadioField.propTypes = {
+    name: _propTypes2.default.string.isRequired,
+    onChange: _propTypes2.default.func.isRequired,
     options: _propTypes2.default.arrayOf(_propTypes2.default.shape({
         value: _propTypes2.default.any,
         text: _propTypes2.default.string.isRequired
     })),
-    name: _propTypes2.default.string.isRequired,
     size: _propTypes2.default.string,
     expanded: _propTypes2.default.bool,
     inlineLabel: _propTypes2.default.bool,
@@ -20529,7 +20552,7 @@ var MultiCheckbox = function (_Component) {
             this.setState({
                 values: newValues
             });
-            return onChange(newValues);
+            return onChange({ name: this.props.name, value: newValues });
         }
     }, {
         key: "render",
@@ -20583,12 +20606,14 @@ var MultiCheckbox = function (_Component) {
 }(_react.Component);
 
 MultiCheckbox.displayName = "MultiCheckbox";
+
 MultiCheckbox.propTypes = {
+    name: _propTypes2.default.string.isRequired,
+    onChange: _propTypes2.default.func.isRequired,
     options: _propTypes2.default.arrayOf(_propTypes2.default.shape({
         value: _propTypes2.default.any.isRequired,
         text: _propTypes2.default.string.isRequired
-    })).isRequired,
-    onChange: _propTypes2.default.func.isRequired
+    })).isRequired
 };
 
 exports.default = MultiCheckbox;
@@ -20698,15 +20723,23 @@ var StyledInput = _styledComponents2.default.input(_templateObject, function (pr
 
 var SelectField = function SelectField(_ref) {
     var options = _ref.options,
-        input = _ref.input,
         type = _ref.type,
         name = _ref.name,
+        onChange = _ref.onChange,
         label = _ref.label,
+        inlineLabel = _ref.inlineLabel,
         emptyOption = _ref.emptyOption,
+        expanded = _ref.expanded,
         readOnly = _ref.readOnly,
         meta = _ref.meta,
-        rest = _objectWithoutProperties(_ref, ["options", "input", "type", "name", "label", "emptyOption", "readOnly", "meta"]);
+        rest = _objectWithoutProperties(_ref, ["options", "type", "name", "onChange", "label", "inlineLabel", "emptyOption", "expanded", "readOnly", "meta"]);
 
+    var handleChange = function handleChange(event) {
+        onChange({
+            name: name,
+            value: event.target.value
+        });
+    };
     return _react2.default.createElement(
         "div",
         null,
@@ -20717,7 +20750,7 @@ var SelectField = function SelectField(_ref) {
         ),
         _react2.default.createElement(
             "select",
-            input,
+            _extends({ onChange: handleChange }, rest),
             _react2.default.createElement(
                 "option",
                 { value: "" },
@@ -20742,6 +20775,8 @@ var SelectField = function SelectField(_ref) {
 SelectField.displayName = "SelectField";
 
 SelectField.propTypes = {
+    name: _propTypes2.default.string.isRequired,
+    onChange: _propTypes2.default.func.isRequired,
     options: _propTypes2.default.arrayOf(_propTypes2.default.shape({
         value: _propTypes2.default.any,
         text: _propTypes2.default.string.isRequired
@@ -20850,7 +20885,7 @@ var DatePicker = function (_Component) {
                 selectedDate: date
             });
             var newDate = date === null ? "" : date.format(DATE_FORMAT);
-            this.props.onChange(newDate);
+            return this.props.onChange({ name: this.props.name, value: newDate });
         }
     }, {
         key: "render",
@@ -20888,8 +20923,8 @@ var DatePicker = function (_Component) {
 }(_react.Component);
 
 DatePicker.propTypes = {
-    onChange: _propTypes2.default.func.isRequired,
     name: _propTypes2.default.string.isRequired,
+    onChange: _propTypes2.default.func.isRequired,
     value: _propTypes2.default.any.isRequired,
     initialValue: _propTypes2.default.any,
     size: _propTypes2.default.string,
@@ -21757,7 +21792,10 @@ var TimePicker = function (_Component) {
             this.setState({
                 selectedTime: time
             });
-            this.props.onTimeChange(time.format(TIME_FORMAT));
+            return this.props.onChange({
+                name: this.props.name,
+                value: time.format(TIME_FORMAT)
+            });
         }
     }, {
         key: "render",
@@ -21766,7 +21804,8 @@ var TimePicker = function (_Component) {
                 label = _props.label,
                 name = _props.name,
                 value = _props.value,
-                rest = _objectWithoutProperties(_props, ["label", "name", "value"]);
+                onChange = _props.onChange,
+                rest = _objectWithoutProperties(_props, ["label", "name", "value", "onChange"]);
 
             return _react2.default.createElement(
                 "div",
@@ -21795,7 +21834,7 @@ var TimePicker = function (_Component) {
 }(_react.Component);
 
 TimePicker.propTypes = {
-    onTimeChange: _propTypes2.default.func.isRequired,
+    onChange: _propTypes2.default.func.isRequired,
     value: _propTypes2.default.any.isRequired,
     showSecond: _propTypes2.default.bool,
     use12Hours: _propTypes2.default.bool
