@@ -4836,7 +4836,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var StyledLabel = _styledComponents2.default.label(_templateObject, function (props) {
-    return props.inlineLabel ? "block" : "inline-block";
+    return props.inlineLabel ? "inline-block" : "block";
 });
 
 var Label = function Label(props) {
