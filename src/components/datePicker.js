@@ -39,9 +39,7 @@ class DatePicker extends Component {
         return (
             <div>
                 {this.props.label && (
-                    <Label for={name} {...field}>
-                        {this.props.label}
-                    </Label>
+                    <Label {...field}>{this.props.label}</Label>
                 )}
                 {this.props.easyRead && <b>{this.props.easyRead}</b>}
                 <ReactDatePicker
@@ -65,11 +63,9 @@ class DatePicker extends Component {
 
 DatePicker.propTypes = {
     onChange: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
     value: PropTypes.any.isRequired,
-    initialValue: PropTypes.any
-};
-
-DatePicker.propTypes = {
+    initialValue: PropTypes.any,
     size: PropTypes.string,
     expanded: PropTypes.bool,
     inlineLabel: PropTypes.bool,

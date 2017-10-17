@@ -57,9 +57,7 @@ class MultiCheckbox extends Component {
         return (
             <div>
                 {this.props.label && (
-                    <Label for={name} {...rest}>
-                        {this.props.label}
-                    </Label>
+                    <Label {...rest}>{this.props.label}</Label>
                 )}
                 {checkboxes}
             </div>

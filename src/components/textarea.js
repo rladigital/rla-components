@@ -37,7 +37,7 @@ const Textarea = ({
     return (
         <div>
             {label && (
-                <Label for={name} {...rest}>
+                <Label name={name} label={label} {...rest}>
                     {label}
                 </Label>
             )}

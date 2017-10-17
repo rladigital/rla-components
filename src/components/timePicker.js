@@ -27,15 +27,11 @@ class TimePicker extends Component {
 
     render() {
         const { label, name, value, ...rest } = this.props;
-        // const timeValue =
-        //     this.state.selectedTime === ""
-        //         ? moment()
-        //         : moment(this.state.selectedTime, TIME_FORMAT);
-        console.log(rest);
+
         return (
             <div>
                 {label && (
-                    <Label for={name} {...this.props}>
+                    <Label name={name} label={label} {...this.props}>
                         {label}
                     </Label>
                 )}

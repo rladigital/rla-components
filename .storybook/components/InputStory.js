@@ -55,10 +55,10 @@ storiesOf("Input", module)
         "Radio Buttons",
         withInfo("This is for radio buttons.")(() => {
             const options = [
-                { id: 1, name: "first" },
-                { id: 2, name: "second" },
-                { id: 3, name: "third" },
-                { id: 4, name: "forth" }
+                { value: "1", text: "first" },
+                { value: "2", text: "second" },
+                { value: "3", text: "third" },
+                { value: "4", text: "forth" }
             ];
             return (
                 <div>
@@ -76,10 +76,10 @@ storiesOf("Input", module)
         "Select",
         withInfo("This is for select menus.")(() => {
             const options = [
-                { id: 1, name: "first" },
-                { id: 2, name: "second" },
-                { id: 3, name: "third" },
-                { id: 4, name: "forth" }
+                { value: "1", text: "first" },
+                { value: "2", text: "second" },
+                { value: "3", text: "third" },
+                { value: "4", text: "forth" }
             ];
             return (
                 <div>
@@ -146,6 +146,7 @@ storiesOf("Input", module)
                     <TimePicker
                         name="deadline"
                         label="Deadline"
+                        value={moment()}
                         onTimeChange={newTime => {
                             console.log(newTime);
                         }}

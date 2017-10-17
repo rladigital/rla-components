@@ -22,7 +22,7 @@ const Select = ({
     return (
         <div>
             {label && (
-                <Label for={name} {...rest}>
+                <Label name={name} label={label} {...rest}>
                     {label}
                 </Label>
             )}
@@ -30,9 +30,9 @@ const Select = ({
             <select {...input}>
                 <option value="">{emptyOption}</option>
                 {options &&
-                    options.map(e => (
-                        <option value={e.id} key={e.id}>
-                            {e.name}
+                    options.map((opt, index) => (
+                        <option value={opt.value} key={index}>
+                            {opt.text}
                         </option>
                     ))}
             </select>
@@ -44,10 +44,12 @@ const Select = ({
 Select.displayName = "Select";
 
 Select.propTypes = {
-    options: PropTypes.arrayOf({
-        id: PropTypes.any,
-        name: PropTypes.string.isRequired
-    }),
+    options: PropTypes.arrayOf(
+        PropTypes.shape({
+            value: PropTypes.any,
+            text: PropTypes.string.isRequired
+        })
+    ),
     size: PropTypes.string,
     expanded: PropTypes.bool,
     inlineLabel: PropTypes.bool,

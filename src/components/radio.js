@@ -21,15 +21,19 @@ const Radio = ({
     return (
         <div>
             {label && (
-                <Label for={name} {...rest}>
+                <Label name={name} label={label} {...rest}>
                     {label}
                 </Label>
             )}
             {options &&
-                options.map(e => (
-                    <div key={e.id} style={{ float: "left" }}>
-                        <StyledInput type="radio" {...input} value={e.id} />
-                        {e.name}
+                options.map((radio, index) => (
+                    <div key={index}>
+                        <StyledInput
+                            type="radio"
+                            {...input}
+                            value={radio.value}
+                        />
+                        {radio.text}
                     </div>
                 ))}
             {meta.touched && meta.error && <span>{meta.error}</span>}
@@ -40,10 +44,13 @@ const Radio = ({
 Radio.displayName = "Radio";
 
 Radio.propTypes = {
-    options: PropTypes.arrayOf({
-        id: PropTypes.any,
-        name: PropTypes.string.isRequired
-    }),
+    options: PropTypes.arrayOf(
+        PropTypes.shape({
+            value: PropTypes.any,
+            text: PropTypes.string.isRequired
+        })
+    ),
+    name: PropTypes.string.isRequired,
     size: PropTypes.string,
     expanded: PropTypes.bool,
     inlineLabel: PropTypes.bool,
