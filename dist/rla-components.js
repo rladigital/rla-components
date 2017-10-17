@@ -20168,7 +20168,7 @@ var Input = function Input(_ref) {
         null,
         label && _react2.default.createElement(
             _label2.default,
-            _extends({ "for": name }, rest),
+            _extends({ name: name, label: label }, rest),
             label
         ),
         _react2.default.createElement(StyledInput, _extends({}, input, {
@@ -20284,7 +20284,7 @@ var Textarea = function Textarea(_ref) {
         null,
         label && _react2.default.createElement(
             _label2.default,
-            _extends({ "for": name }, rest),
+            _extends({ name: name, label: label }, rest),
             label
         ),
         _react2.default.createElement(StyledTextarea, _extends({}, input, {
@@ -20388,15 +20388,19 @@ var Radio = function Radio(_ref) {
         null,
         label && _react2.default.createElement(
             _label2.default,
-            _extends({ "for": name }, rest),
+            _extends({ name: name, label: label }, rest),
             label
         ),
-        options && options.map(function (e) {
+        options && options.map(function (radio, index) {
             return _react2.default.createElement(
                 "div",
-                { key: e.id, style: { float: "left" } },
-                _react2.default.createElement(StyledInput, _extends({ type: "radio" }, input, { value: e.id })),
-                e.name
+                { key: index },
+                _react2.default.createElement(StyledInput, _extends({
+                    type: "radio"
+                }, input, {
+                    value: radio.value
+                })),
+                radio.text
             );
         }),
         meta.touched && meta.error && _react2.default.createElement(
@@ -20410,10 +20414,11 @@ var Radio = function Radio(_ref) {
 Radio.displayName = "Radio";
 
 Radio.propTypes = {
-    options: _propTypes2.default.arrayOf({
-        id: _propTypes2.default.any,
-        name: _propTypes2.default.string.isRequired
-    }),
+    options: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+        value: _propTypes2.default.any,
+        text: _propTypes2.default.string.isRequired
+    })),
+    name: _propTypes2.default.string.isRequired,
     size: _propTypes2.default.string,
     expanded: _propTypes2.default.bool,
     inlineLabel: _propTypes2.default.bool,
@@ -20446,8 +20451,6 @@ exports.default = Radio;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20559,7 +20562,7 @@ var MultiCheckbox = function (_Component) {
                 null,
                 this.props.label && _react2.default.createElement(
                     _label2.default,
-                    _extends({ "for": name }, rest),
+                    rest,
                     this.props.label
                 ),
                 checkboxes
@@ -20735,7 +20738,7 @@ var DatePicker = function (_Component) {
                 null,
                 this.props.label && _react2.default.createElement(
                     _label2.default,
-                    _extends({ "for": name }, field),
+                    field,
                     this.props.label
                 ),
                 this.props.easyRead && _react2.default.createElement(
@@ -20763,11 +20766,9 @@ var DatePicker = function (_Component) {
 
 DatePicker.propTypes = {
     onChange: _propTypes2.default.func.isRequired,
+    name: _propTypes2.default.string.isRequired,
     value: _propTypes2.default.any.isRequired,
-    initialValue: _propTypes2.default.any
-};
-
-DatePicker.propTypes = {
+    initialValue: _propTypes2.default.any,
     size: _propTypes2.default.string,
     expanded: _propTypes2.default.bool,
     inlineLabel: _propTypes2.default.bool,
@@ -21643,19 +21644,13 @@ var TimePicker = function (_Component) {
                 name = _props.name,
                 value = _props.value,
                 rest = _objectWithoutProperties(_props, ["label", "name", "value"]);
-            // const timeValue =
-            //     this.state.selectedTime === ""
-            //         ? moment()
-            //         : moment(this.state.selectedTime, TIME_FORMAT);
 
-
-            console.log(rest);
             return _react2.default.createElement(
                 "div",
                 null,
                 label && _react2.default.createElement(
                     _label2.default,
-                    _extends({ "for": name }, this.props),
+                    _extends({ name: name, label: label }, this.props),
                     label
                 ),
                 this.props.easyRead && _react2.default.createElement(
@@ -29553,7 +29548,7 @@ var Select = function Select(_ref) {
         null,
         label && _react2.default.createElement(
             _label2.default,
-            _extends({ "for": name }, rest),
+            _extends({ name: name, label: label }, rest),
             label
         ),
         _react2.default.createElement(
@@ -29564,11 +29559,11 @@ var Select = function Select(_ref) {
                 { value: "" },
                 emptyOption
             ),
-            options && options.map(function (e) {
+            options && options.map(function (opt, index) {
                 return _react2.default.createElement(
                     "option",
-                    { value: e.id, key: e.id },
-                    e.name
+                    { value: opt.value, key: index },
+                    opt.text
                 );
             })
         ),
@@ -29583,10 +29578,10 @@ var Select = function Select(_ref) {
 Select.displayName = "Select";
 
 Select.propTypes = {
-    options: _propTypes2.default.arrayOf({
-        id: _propTypes2.default.any,
-        name: _propTypes2.default.string.isRequired
-    }),
+    options: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+        value: _propTypes2.default.any,
+        text: _propTypes2.default.string.isRequired
+    })),
     size: _propTypes2.default.string,
     expanded: _propTypes2.default.bool,
     inlineLabel: _propTypes2.default.bool,

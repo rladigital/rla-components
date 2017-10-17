@@ -15,7 +15,7 @@ import {
     TimePicker
 } from "../../src/index";
 
-storiesOf("Input", module)
+storiesOf("Form Inputs", module)
     .add(
         "Text Inputs",
         withInfo(
