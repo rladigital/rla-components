@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { shade } from "./_functions";
+import { shade } from "../_functions";
 import FormLabel from "./label";
 
 const StyledTextarea = styled.textarea`
@@ -18,9 +18,8 @@ const StyledTextarea = styled.textarea`
 `;
 
 const TextareaField = ({
-    input,
-    type,
     name,
+    onChange,
     label,
     readOnly,
     rows,
@@ -33,6 +32,12 @@ const TextareaField = ({
     if (readOnly) {
         fieldOptions["readOnly"] = "readOnly";
     }
+    const handleChange = event => {
+        onChange({
+            name: name,
+            value: event.target.value
+        });
+    };
 
     return (
         <div>
@@ -42,11 +47,10 @@ const TextareaField = ({
                 </FormLabel>
             )}
             <StyledTextarea
-                {...input}
-                type={type}
-                {...fieldOptions}
                 rows={rows}
                 cols={columns}
+                onChange={handleChange}
+                {...fieldOptions}
                 {...rest}
             />
             {meta.touched && meta.error && <span>{meta.error}</span>}
@@ -58,6 +62,7 @@ TextareaField.displayName = "TextareaField";
 
 TextareaField.propTypes = {
     name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     size: PropTypes.string,
     expanded: PropTypes.bool,
     inlineLabel: PropTypes.bool,

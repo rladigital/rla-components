@@ -26,22 +26,57 @@ storiesOf("Form Inputs", module)
                     name="test"
                     defaultValue="default"
                     label="With Label"
+                    onChange={value => {
+                        console.log(value);
+                    }}
                 />
                 <InputField
                     name="test"
                     defaultValue="default"
                     label="With Label Block"
                     inlineLabel={false}
+                    onChange={value => {
+                        console.log(value);
+                    }}
                 />
-                <InputField name="test" placeholder="with placeholder" />
+                <InputField
+                    name="test"
+                    placeholder="with placeholder"
+                    onChange={value => {
+                        console.log(value);
+                    }}
+                />
                 <InputField
                     name="test"
                     defaultValue="password"
                     type="password"
+                    onChange={value => {
+                        console.log(value);
+                    }}
                 />
-                <InputField name="test" defaultValue="small" size="small" />
-                <InputField name="test" defaultValue="default" />
-                <InputField name="test" defaultValue="large" size="large" />
+                <InputField
+                    name="test"
+                    defaultValue="small"
+                    size="small"
+                    onChange={value => {
+                        console.log(value);
+                    }}
+                />
+                <InputField
+                    name="test"
+                    defaultValue="default"
+                    onChange={value => {
+                        console.log(value);
+                    }}
+                />
+                <InputField
+                    name="test"
+                    defaultValue="large"
+                    size="large"
+                    onChange={value => {
+                        console.log(value);
+                    }}
+                />
             </div>
         ))
     )
@@ -54,6 +89,9 @@ storiesOf("Form Inputs", module)
                         name="test"
                         placeholder="placeholder text"
                         label="With Label"
+                        onChange={value => {
+                            console.log(value);
+                        }}
                     />
                 </div>
             );
@@ -75,6 +113,9 @@ storiesOf("Form Inputs", module)
                         defaultValue="default"
                         label="With Label"
                         options={options}
+                        onChange={value => {
+                            console.log(value);
+                        }}
                     />
                 </div>
             );
@@ -97,6 +138,9 @@ storiesOf("Form Inputs", module)
                         label="With Label"
                         emptyOption="--Pick an Option--"
                         options={options}
+                        onChange={selection => {
+                            console.log(selection);
+                        }}
                     />
                 </div>
             );
@@ -155,7 +199,7 @@ storiesOf("Form Inputs", module)
                         name="deadline"
                         label="Deadline"
                         value={moment()}
-                        onTimeChange={newTime => {
+                        onChange={newTime => {
                             console.log(newTime);
                         }}
                     />

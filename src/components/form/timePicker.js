@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import RCTimePicker from "rc-time-picker";
 import moment from "moment";
 import styled, { css } from "styled-components";
-import { shade } from "./_functions";
+import { shade } from "../_functions";
 import FormLabel from "./label";
 
 import "rc-time-picker/assets/index.css";
@@ -22,11 +22,14 @@ class TimePicker extends Component {
         this.setState({
             selectedTime: time
         });
-        this.props.onTimeChange(time.format(TIME_FORMAT));
+        return this.props.onChange({
+            name: this.props.name,
+            value: time.format(TIME_FORMAT)
+        });
     }
 
     render() {
-        const { label, name, value, ...rest } = this.props;
+        const { label, name, value, onChange, ...rest } = this.props;
 
         return (
             <div>
@@ -49,7 +52,7 @@ class TimePicker extends Component {
 }
 
 TimePicker.propTypes = {
-    onTimeChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     value: PropTypes.any.isRequired,
     showSecond: PropTypes.bool,
     use12Hours: PropTypes.bool

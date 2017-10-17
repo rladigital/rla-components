@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ReactDatePicker from "react-datepicker";
 import moment from "moment";
 import styled, { css } from "styled-components";
-import { shade } from "./_functions";
+import { shade } from "../_functions";
 import FormLabel from "./label";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -31,7 +31,7 @@ class DatePicker extends Component {
             selectedDate: date
         });
         const newDate = date === null ? "" : date.format(DATE_FORMAT);
-        this.props.onChange(newDate);
+        return this.props.onChange({ name: this.props.name, value: newDate });
     }
 
     render() {
@@ -62,8 +62,8 @@ class DatePicker extends Component {
 }
 
 DatePicker.propTypes = {
-    onChange: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     value: PropTypes.any.isRequired,
     initialValue: PropTypes.any,
     size: PropTypes.string,

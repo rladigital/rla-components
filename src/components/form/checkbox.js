@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import isUndefined from "lodash/isUndefined";
 import isArray from "lodash/isArray";
 import styled, { css } from "styled-components";
-import { shade } from "./_functions";
+import { shade } from "../_functions";
 import FormLabel from "./label";
 
 class MultiCheckbox extends Component {
@@ -28,7 +28,7 @@ class MultiCheckbox extends Component {
         this.setState({
             values: newValues
         });
-        return onChange(newValues);
+        return onChange({ name: this.props.name, value: newValues });
     }
 
     render() {
@@ -65,14 +65,16 @@ class MultiCheckbox extends Component {
     }
 }
 MultiCheckbox.displayName = "MultiCheckbox";
+
 MultiCheckbox.propTypes = {
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(
         PropTypes.shape({
             value: PropTypes.any.isRequired,
             text: PropTypes.string.isRequired
         })
-    ).isRequired,
-    onChange: PropTypes.func.isRequired
+    ).isRequired
 };
 
 export default MultiCheckbox;

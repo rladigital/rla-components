@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { shade } from "./_functions";
+import { shade } from "../_functions";
 import FormLabel from "./label";
 
 const types = [
@@ -39,12 +39,26 @@ const StyledInput = styled.input`
     margin-bottom: ${props => props.theme.margin}em;
 `;
 
-const InputField = ({ input, type, name, label, readOnly, meta, ...rest }) => {
+const InputField = ({
+    type,
+    name,
+    label,
+    readOnly,
+    meta,
+    onChange,
+    ...rest
+}) => {
     let fieldOptions = {};
 
     if (readOnly) {
         fieldOptions["readOnly"] = "readOnly";
     }
+    const handleChange = event => {
+        onChange({
+            name: name,
+            value: event.target.value
+        });
+    };
 
     return (
         <div>
@@ -54,10 +68,10 @@ const InputField = ({ input, type, name, label, readOnly, meta, ...rest }) => {
                 </FormLabel>
             )}
             <StyledInput
-                {...input}
                 type={type}
                 name={name}
                 {...fieldOptions}
+                onChange={handleChange}
                 {...rest}
             />
             {meta.touched && meta.error && <span>{meta.error}</span>}
@@ -69,6 +83,7 @@ InputField.displayName = "InputField";
 
 InputField.propTypes = {
     name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     size: PropTypes.string,
     expanded: PropTypes.bool,
     block: PropTypes.bool,

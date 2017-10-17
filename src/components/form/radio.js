@@ -1,24 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { shade } from "./_functions";
+import { shade } from "../_functions";
 import FormLabel from "./label";
 
 const StyledInput = styled.input`
     margin-bottom: ${props => props.theme.margin}em;
 `;
 
-const SelectField = ({
+const RadioField = ({
     options,
     input,
     type,
     name,
+    onChange,
     label,
-    emptyOption,
     readOnly,
     meta,
     ...rest
 }) => {
+    const handleChange = event => {
+        onChange({
+            name: name,
+            value: event.target.value
+        });
+    };
     return (
         <div>
             {label && (
@@ -26,24 +32,28 @@ const SelectField = ({
                     {label}
                 </FormLabel>
             )}
-
-            <select {...input}>
-                <option value="">{emptyOption}</option>
-                {options &&
-                    options.map((opt, index) => (
-                        <option value={opt.value} key={index}>
-                            {opt.text}
-                        </option>
-                    ))}
-            </select>
+            {options &&
+                options.map((radio, index) => (
+                    <div key={index}>
+                        <StyledInput
+                            type="radio"
+                            {...input}
+                            value={radio.value}
+                            onChange={handleChange}
+                        />
+                        {radio.text}
+                    </div>
+                ))}
             {meta.touched && meta.error && <span>{meta.error}</span>}
         </div>
     );
 };
 
-SelectField.displayName = "SelectField";
+RadioField.displayName = "RadioField";
 
-SelectField.propTypes = {
+RadioField.propTypes = {
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(
         PropTypes.shape({
             value: PropTypes.any,
@@ -54,18 +64,20 @@ SelectField.propTypes = {
     expanded: PropTypes.bool,
     inlineLabel: PropTypes.bool,
     input: PropTypes.object,
+    type: PropTypes.string,
     label: PropTypes.string,
-    emptyOption: PropTypes.string,
+    readOnly: PropTypes.bool,
     meta: PropTypes.shape({
         touched: PropTypes.bool,
         error: PropTypes.string
     })
 };
-SelectField.defaultProps = {
+RadioField.defaultProps = {
     size: "default",
     expanded: false,
     inlineLabel: true,
-    emptyOption: "--Select One--",
+    type: "text",
+    readOnly: false,
     meta: {}
 };
-export default SelectField;
+export default RadioField;
