@@ -37,7 +37,8 @@ const RadioField = ({
                     <div key={index}>
                         <StyledInput
                             type="radio"
-                            {...input}
+                            name={name}
+                            {...rest}
                             value={radio.value}
                             onChange={handleChange}
                         />
