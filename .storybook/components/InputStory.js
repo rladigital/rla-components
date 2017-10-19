@@ -198,7 +198,6 @@ storiesOf("Form Inputs", module)
                     <TimePicker
                         name="deadline"
                         label="Deadline"
-                        value={moment()}
                         onChange={newTime => {
                             console.log(newTime);
                         }}
