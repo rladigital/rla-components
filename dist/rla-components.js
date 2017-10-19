@@ -19355,9 +19355,11 @@ var Icon = function (_React$Component) {
     return Icon;
 }(_react2.default.Component);
 
+Icon = (0, _styledComponents.withTheme)(Icon);
+
 Icon.displayName = "Icon";
 
-exports.default = (0, _styledComponents.withTheme)(Icon);
+exports.default = Icon;
 
 /***/ }),
 /* 201 */
@@ -20426,8 +20428,9 @@ var RadioField = function RadioField(_ref) {
                 "div",
                 { key: index },
                 _react2.default.createElement(StyledInput, _extends({
-                    type: "radio"
-                }, input, {
+                    type: "radio",
+                    name: name
+                }, rest, {
                     value: radio.value,
                     onChange: handleChange
                 })),
