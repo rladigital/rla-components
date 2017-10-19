@@ -55,7 +55,7 @@ class Modal extends React.Component {
             height: 100%;
             overflow: auto;
             position: fixed;
-            padding: 0 ${theme.padding}rem;
+            padding: 0 ${theme.modal.padding}rem;
             background: rgba(0, 0, 0, 0.6);
             z-index: 999;
         `;
@@ -64,9 +64,9 @@ class Modal extends React.Component {
             margin: 6em auto;
             overflow: hidden;
             position: relative;
-            border-radius: ${theme.radius}em;
-            background: ${theme.colors.white};
-            padding: ${theme.padding}em ${theme.padding / 2}rem 0;
+            border-radius: ${theme.modal.radius}em;
+            background: ${theme.modal.background};
+            padding: ${theme.modal.padding}em ${theme.modal.padding / 2}rem 0;
         `;
         const ModalCloseButton = styled.div.attrs({
             role: "button"
@@ -77,8 +77,8 @@ class Modal extends React.Component {
             opacity: 0.5;
             cursor: pointer;
             position: absolute;
-            margin: ${theme.margin}rem;
-            color: ${theme.colors.black};
+            margin: ${theme.modal.margin}rem;
+            color: ${theme.modal.closeButtonColor};
         `;
 
         return visible ? (

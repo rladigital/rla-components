@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { clamp } from "./_functions";
 
 const sizes = {
     small: 0,
@@ -11,7 +10,7 @@ const sizes = {
 
 // Width to percentage
 const widthPercentage = function(width) {
-    return clamp(Math.floor(width), 12) / 12 * 100;
+    return Math.min(Math.floor(width), 12) / 12 * 100;
 };
 
 // Iterate through the sizes and create a media template
@@ -28,7 +27,8 @@ const media = Object.keys(sizes).reduce((acc, label) => {
 // The Column - loop through all breakpoints and insert into media query
 const Column = styled.div`
     width: 100%;
-    padding: 0 ${props => (props.collapse ? 0 : props.theme.padding / 2)}em;
+    padding: 0
+        ${props => (props.collapse ? 0 : props.theme.column.padding / 2)}em;
 
     /*responsive*/
     ${props =>

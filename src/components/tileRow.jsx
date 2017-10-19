@@ -13,7 +13,9 @@ class TileRow extends React.Component {
 
         this._onResize();
         this.setState({
-            breakpoints: this.sortBreakpoints(this.props.theme.breakpoints)
+            breakpoints: this.sortBreakpoints(
+                this.props.theme.column.breakpoints
+            )
         });
     }
     componentWillUnmount() {
@@ -66,8 +68,8 @@ class TileRow extends React.Component {
 
         return React.Children.map(props.children, child => {
             return React.cloneElement(child, {
-                baseSize: rowWidth / theme.columns * baseSize,
-                maxSize: theme.columns / baseSize
+                baseSize: rowWidth / theme.column.columns * baseSize,
+                maxSize: theme.column.columns / baseSize
             });
         });
     }

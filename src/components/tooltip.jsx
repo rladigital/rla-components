@@ -35,10 +35,10 @@ class Tooltip extends React.Component {
         const { theme } = this.props;
 
         const TooltipText = styled.div`
-            color: ${theme.colors.white};
-            background: ${theme.colors.primary};
-            padding: ${theme.padding / 2}em ${theme.padding}em;
-            border-radius: ${theme.radius}em;
+            color: ${theme.tooltip.color};
+            background: ${theme.tooltip.background};
+            padding: ${theme.tooltip.padding / 2}em ${theme.tooltip.padding}em;
+            border-radius: ${theme.tooltip.radius}em;
             transform: translateX(-50%);
             position: absolute;
             opacity: 0.9;
@@ -46,7 +46,7 @@ class Tooltip extends React.Component {
                 content: " ";
                 position: absolute;
                 bottom: -9px;
-                border-top: 10px ${theme.colors.primary} solid;
+                border-top: 10px ${theme.tooltip.background} solid;
                 border-left: 10px solid transparent;
                 border-right: 10px solid transparent;
                 left: 50%;

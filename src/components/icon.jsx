@@ -52,7 +52,7 @@ class Icon extends React.Component {
         const Path = styled.path.attrs({
             d: icon.path
         })`
-            fill: ${color ? theme.colors[color] : "currentColor"};
+            fill: ${color ? theme.icon.colors[color] : "currentColor"};
         `;
 
         return (

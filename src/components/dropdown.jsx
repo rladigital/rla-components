@@ -43,18 +43,18 @@ class Dropdown extends React.Component {
 
         const DropdownMenu = styled.div`
             position: absolute;
-            background: ${theme.colors.white};
+            background: ${theme.global.colors.white};
             ${this.props.right ? css`right: 0;` : css`left: 0;`};
         `;
 
         const DropdownItem = styled.div`
             min-width: 200px;
-            background: ${theme.colors.lightGray};
-            border-bottom: 1px solid ${theme.colors.white};
-            padding: ${theme.padding / 2}em ${theme.padding}em;
+            background: ${theme.global.colors.lightGray};
+            border-bottom: 1px solid ${theme.global.colors.white};
+            padding: ${theme.global.padding / 2}em ${theme.global.padding}em;
             cursor: pointer;
             &:hover {
-                background: ${shade(theme.colors.lightGray, -20)};
+                background: ${shade(theme.global.colors.lightGray, -20)};
             }
         `;
 

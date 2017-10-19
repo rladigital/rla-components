@@ -6,10 +6,10 @@ import FormLabel from "./label";
 
 const StyledTextarea = styled.textarea`
     width: 100%;
-    border-radius: ${props => props.theme.radius}em;
-    border: 1px solid ${props => props.theme.colors.mediumGray};
+    border-radius: ${props => props.theme.input.radius}em;
+    border: 1px solid ${props => props.theme.input.borderColor};
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    padding: 0 ${props => props.theme.sizes[props.size] / 4}em;
+    padding: 0 ${props => props.theme.input.sizes[props.size] / 4}em;
     margin: 0
         ${props => (props.expanded || props.align == "right" ? 0 : "0.4em")}
         auto ${props => (props.align == "right" ? "0.4em" : 0)}em;

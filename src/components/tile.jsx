@@ -7,7 +7,7 @@ class Tile extends React.Component {
         const { square, theme, size, baseSize, maxSize } = this.props;
 
         const TileColumn = styled.div`
-            padding: 0 ${theme.padding / 2}em ${theme.padding}em;
+            padding: 0 ${theme.tile.padding / 2}em ${theme.tile.padding}em;
             float: left;
         `;
 
@@ -15,7 +15,7 @@ class Tile extends React.Component {
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: ${theme.colors.lightGray};
+            background: ${theme.tile.background};
         `;
 
         return (
