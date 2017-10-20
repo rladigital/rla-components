@@ -37058,7 +37058,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var StyledLink = (0, _styledComponents2.default)(_reactRouterDom.Link)(_templateObject, function (props) {
+var ReactRouterLink = (0, _styledComponents2.default)(_reactRouterDom.Link)(_templateObject, function (props) {
     return props.color ? props.theme.link.colors[props.color] : "inherit";
 }, function (props) {
     return props.theme.link.textDecoration;
@@ -37066,9 +37066,9 @@ var StyledLink = (0, _styledComponents2.default)(_reactRouterDom.Link)(_template
     return props.theme.link.fontWeight;
 });
 
-var ComponentParams = function ComponentParams(props) {
+var StyledLink = function StyledLink(props) {
     return _react2.default.createElement(
-        StyledLink,
+        ReactRouterLink,
         props,
         props.children
     );
@@ -37080,7 +37080,7 @@ StyledLink.propTypes = {
     color: _propTypes2.default.string
 };
 
-exports.default = ComponentParams;
+exports.default = StyledLink;
 
 /***/ }),
 /* 337 */
