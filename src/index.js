@@ -18,3 +18,4 @@ export { default as Tile } from "./components/tile";
 export { default as TileRow } from "./components/tileRow";
 export { default as Tooltip } from "./components/tooltip";
 export { default as Loading } from "./components/Loading";
+export { default as StyledLink } from "./components/styledLink";

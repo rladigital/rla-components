@@ -1,6 +1,6 @@
 {
     "name": "rla-components",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "",
     "main": "dist/rla-components.js",
     "scripts": {
@@ -19,6 +19,8 @@
         "rc-time-picker": "^2.4.1",
         "react-datepicker": "^0.55.0",
         "react-loading": "^0.1.4",
+        "react-router-dom": "^4.2.2",
+        "storybook-router": "^0.3.1",
         "styled-components": "^2.1.2"
     },
     "devDependencies": {

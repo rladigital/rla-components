@@ -87,6 +87,12 @@ const theme = {
         padding: spacing.padding,
         margin: spacing.margin,
         radius: spacing.radius
+    },
+    link: {
+        color: colors.black,
+        colors: colors,
+        fontWeight: "bold",
+        textDecoration: "none"
     }
 };
 
