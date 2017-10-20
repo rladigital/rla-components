@@ -1,10 +1,25 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { Icon } from "../../src/index";
+import { Icon, Row, Column, Panel } from "../../src/index";
+import icons from "../../src/components/icons.js";
 
 storiesOf("Icons", module)
-    .addWithInfo("Icon Library", () => <div />)
+    .addWithInfo("Icon Library", () => (
+        <Row>
+            {Object.keys(icons).map(function(key) {
+                return (
+                    <Column medium="3" small="6">
+                        <Panel>
+                            <p>
+                                <Icon name={key} size="2" /> name="{key}"
+                            </p>
+                        </Panel>
+                    </Column>
+                );
+            })}
+        </Row>
+    ))
     .addWithInfo("Sizng", () => (
         <div>
             <h1>

@@ -5985,7 +5985,7 @@ Object.defineProperty(exports, "Icon", {
   }
 });
 
-var _modal = __webpack_require__(309);
+var _modal = __webpack_require__(310);
 
 Object.defineProperty(exports, "Modal", {
   enumerable: true,
@@ -5994,7 +5994,7 @@ Object.defineProperty(exports, "Modal", {
   }
 });
 
-var _panel = __webpack_require__(310);
+var _panel = __webpack_require__(311);
 
 Object.defineProperty(exports, "Panel", {
   enumerable: true,
@@ -6003,7 +6003,7 @@ Object.defineProperty(exports, "Panel", {
   }
 });
 
-var _row = __webpack_require__(311);
+var _row = __webpack_require__(312);
 
 Object.defineProperty(exports, "Row", {
   enumerable: true,
@@ -6012,7 +6012,7 @@ Object.defineProperty(exports, "Row", {
   }
 });
 
-var _tile = __webpack_require__(312);
+var _tile = __webpack_require__(313);
 
 Object.defineProperty(exports, "Tile", {
   enumerable: true,
@@ -6021,7 +6021,7 @@ Object.defineProperty(exports, "Tile", {
   }
 });
 
-var _tileRow = __webpack_require__(313);
+var _tileRow = __webpack_require__(314);
 
 Object.defineProperty(exports, "TileRow", {
   enumerable: true,
@@ -6030,7 +6030,7 @@ Object.defineProperty(exports, "TileRow", {
   }
 });
 
-var _tooltip = __webpack_require__(314);
+var _tooltip = __webpack_require__(315);
 
 Object.defineProperty(exports, "Tooltip", {
   enumerable: true,
@@ -6039,7 +6039,7 @@ Object.defineProperty(exports, "Tooltip", {
   }
 });
 
-var _Loading = __webpack_require__(315);
+var _Loading = __webpack_require__(316);
 
 Object.defineProperty(exports, "Loading", {
   enumerable: true,
@@ -19274,6 +19274,10 @@ var _styledComponents = __webpack_require__(3);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
+var _icons = __webpack_require__(309);
+
+var _icons2 = _interopRequireDefault(_icons);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
@@ -19294,34 +19298,6 @@ var Icon = function (_React$Component) {
     }
 
     _createClass(Icon, [{
-        key: "icon",
-        value: function icon(name) {
-            switch (name) {
-                default:
-                    break;
-                case "bell":
-                    return {
-                        viewBox: "0 0 80 88.5",
-                        path: "M63.3,36.8C51.9,12.3,45.9,3,27.3,3.4c-6.6,0.1-5-4.8-10.1-2.9c-5.1,1.9-0.7,4.6-5.9,8.9 C-3.2,21.2-1.9,32.2,4.9,58.5c2.8,11.1-6.8,11.6-3,22.3c2.8,7.8,23.4,11.1,45.1,3C68.7,75.8,82.4,59.8,79.6,52 C75.8,41.2,68.1,47.2,63.3,36.8z M44.6,77.2c-19.4,7.2-35.4,3-36,1.1C7.4,75.1,14.9,64.2,37,56c22.2-8.2,34.6-5.2,35.9-1.6 C73.7,56.6,64,70,44.6,77.2z M38.4,59.8c-10.1,3.8-17.2,8.1-21.8,12c3.2,2.9,9.2,3.6,15.2,1.4c7.6-2.8,12.3-9.3,10.5-14.5 c0-0.1-0.1-0.1-0.1-0.2C41,58.8,39.7,59.3,38.4,59.8z"
-                    };
-                case "gear":
-                    return {
-                        viewBox: "0 0 21.589 21.589",
-                        path: "M18.622,8.371l-0.545-1.295c0,0,1.268-2.861,1.156-2.971l-1.679-1.639c-0.116-0.113-2.978,1.193-2.978,1.193l-1.32-0.533 c0,0-1.166-2.9-1.326-2.9H9.561c-0.165,0-1.244,2.906-1.244,2.906L6.999,3.667c0,0-2.922-1.242-3.034-1.131L2.289,4.177 C2.173,4.29,3.507,7.093,3.507,7.093L2.962,8.386c0,0-2.962,1.141-2.962,1.295v2.322c0,0.162,2.969,1.219,2.969,1.219l0.545,1.291 c0,0-1.268,2.859-1.157,2.969l1.678,1.643c0.114,0.111,2.977-1.195,2.977-1.195l1.321,0.535c0,0,1.166,2.898,1.327,2.898h2.369 c0.164,0,1.244-2.906,1.244-2.906l1.322-0.535c0,0,2.916,1.242,3.029,1.133l1.678-1.641c0.117-0.115-1.22-2.916-1.22-2.916 l0.544-1.293c0,0,2.963-1.143,2.963-1.299v-2.32C21.59,9.425,18.622,8.371,18.622,8.371z M14.256,10.794 c0,1.867-1.553,3.387-3.461,3.387c-1.906,0-3.461-1.52-3.461-3.387s1.555-3.385,3.461-3.385 C12.704,7.41,14.256,8.927,14.256,10.794z"
-                    };
-                case "menu":
-                    return {
-                        viewBox: "0 0 18 24",
-                        path: "M16 17H2c-1.1 0-2 .9-2 2s.9 2 2 2h14c1.1 0 2-.9 2-2S17.1 17 16 17zM16 10H2c-1.1 0-2 .9-2 2s.9 2 2 2h14c1.1 0 2-.9 2-2S17.1 10 16 10zM16 3H2C.9 3 0 3.9 0 5s.9 2 2 2h14c1.1 0 2-.9 2-2S17.1 3 16 3z"
-                    };
-                case "close":
-                    return {
-                        viewBox: "0 0 1792 1792",
-                        path: "M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"
-                    };
-            }
-        }
-    }, {
         key: "render",
         value: function render() {
             var _props = this.props,
@@ -19331,23 +19307,25 @@ var Icon = function (_React$Component) {
                 theme = _props.theme;
 
 
-            var icon = this.icon(name);
+            var icon = _icons2.default[name];
+
+            console.log(icon);
 
             var SVG = _styledComponents2.default.svg.attrs({
                 x: "0px",
                 y: "0px",
                 xmlns: "http://www.w3.org/2000/svg",
-                viewBox: icon.viewBox
+                viewBox: icon.viewbox
             })(_templateObject, size ? size : 1, size ? size : 1);
 
-            var Path = _styledComponents2.default.path.attrs({
-                d: icon.path
-            })(_templateObject2, color ? theme.icon.colors[color] : "currentColor");
+            var Path = _styledComponents2.default.path(_templateObject2, color ? theme.icon.colors[color] : "currentColor");
 
             return _react2.default.createElement(
                 SVG,
                 null,
-                _react2.default.createElement(Path, null)
+                icon.paths.map(function (path, index) {
+                    return _react2.default.createElement(Path, { key: index, d: path });
+                })
             );
         }
     }]);
@@ -29910,6 +29888,37 @@ exports.default = (0, _styledComponents.withTheme)(Dropdown);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+var icons = {
+    bell: {
+        viewbox: "0 0 80 88.5",
+        paths: ["M63.3,36.8C51.9,12.3,45.9,3,27.3,3.4c-6.6,0.1-5-4.8-10.1-2.9c-5.1,1.9-0.7,4.6-5.9,8.9 C-3.2,21.2-1.9,32.2,4.9,58.5c2.8,11.1-6.8,11.6-3,22.3c2.8,7.8,23.4,11.1,45.1,3C68.7,75.8,82.4,59.8,79.6,52 C75.8,41.2,68.1,47.2,63.3,36.8z M44.6,77.2c-19.4,7.2-35.4,3-36,1.1C7.4,75.1,14.9,64.2,37,56c22.2-8.2,34.6-5.2,35.9-1.6 C73.7,56.6,64,70,44.6,77.2z M38.4,59.8c-10.1,3.8-17.2,8.1-21.8,12c3.2,2.9,9.2,3.6,15.2,1.4c7.6-2.8,12.3-9.3,10.5-14.5 c0-0.1-0.1-0.1-0.1-0.2C41,58.8,39.7,59.3,38.4,59.8z"]
+    },
+    gear: {
+        viewbox: "0 0 21.589 21.589",
+        paths: ["M18.622,8.371l-0.545-1.295c0,0,1.268-2.861,1.156-2.971l-1.679-1.639c-0.116-0.113-2.978,1.193-2.978,1.193l-1.32-0.533 c0,0-1.166-2.9-1.326-2.9H9.561c-0.165,0-1.244,2.906-1.244,2.906L6.999,3.667c0,0-2.922-1.242-3.034-1.131L2.289,4.177 C2.173,4.29,3.507,7.093,3.507,7.093L2.962,8.386c0,0-2.962,1.141-2.962,1.295v2.322c0,0.162,2.969,1.219,2.969,1.219l0.545,1.291 c0,0-1.268,2.859-1.157,2.969l1.678,1.643c0.114,0.111,2.977-1.195,2.977-1.195l1.321,0.535c0,0,1.166,2.898,1.327,2.898h2.369 c0.164,0,1.244-2.906,1.244-2.906l1.322-0.535c0,0,2.916,1.242,3.029,1.133l1.678-1.641c0.117-0.115-1.22-2.916-1.22-2.916 l0.544-1.293c0,0,2.963-1.143,2.963-1.299v-2.32C21.59,9.425,18.622,8.371,18.622,8.371z M14.256,10.794 c0,1.867-1.553,3.387-3.461,3.387c-1.906,0-3.461-1.52-3.461-3.387s1.555-3.385,3.461-3.385 C12.704,7.41,14.256,8.927,14.256,10.794z"]
+    },
+    menu: {
+        viewbox: "0 0 18 24",
+        paths: ["M16 17H2c-1.1 0-2 .9-2 2s.9 2 2 2h14c1.1 0 2-.9 2-2S17.1 17 16 17zM16 10H2c-1.1 0-2 .9-2 2s.9 2 2 2h14c1.1 0 2-.9 2-2S17.1 10 16 10zM16 3H2C.9 3 0 3.9 0 5s.9 2 2 2h14c1.1 0 2-.9 2-2S17.1 3 16 3z"]
+    },
+    close: {
+        viewbox: "0 0 1792 1792",
+        paths: ["M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"]
+    }
+};
+
+exports.default = icons;
+
+/***/ }),
+/* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -30053,7 +30062,7 @@ Modal.defaultProps = {
 exports.default = Modal;
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30092,7 +30101,7 @@ Panel.displayName = "Panel";
 exports.default = Panel;
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30136,7 +30145,7 @@ Row.defaultProps = {
 exports.default = Row;
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30220,7 +30229,7 @@ Tile.displayName = "Tile";
 exports.default = (0, _styledComponents.withTheme)(Tile);
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30353,7 +30362,7 @@ TileRow.displayName = "TileRow";
 exports.default = (0, _styledComponents.withTheme)(TileRow);
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30477,7 +30486,7 @@ Tooltip.displayName = "Tooltip";
 exports.default = (0, _styledComponents.withTheme)(Tooltip);
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30498,7 +30507,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactLoading = __webpack_require__(316);
+var _reactLoading = __webpack_require__(317);
 
 var _reactLoading2 = _interopRequireDefault(_reactLoading);
 
@@ -30559,7 +30568,7 @@ Loading.defaultProps = {
 exports.default = Loading;
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
