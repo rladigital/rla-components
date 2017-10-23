@@ -8,7 +8,7 @@ class Icon extends React.Component {
 
         const icon = icons[name];
 
-        console.log(icon);
+        //console.log(icon);
 
         const SVG = styled.svg.attrs({
             x: "0px",
