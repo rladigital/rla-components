@@ -79,6 +79,24 @@ const theme = {
         colors: colors,
         fontWeight: "bold",
         textDecoration: "none"
+    },
+    dashboard: {
+        panel: {
+            bar: {
+                height: "2",
+                iconSize: "1.2",
+                padding: "0.5",
+                color: colors.black,
+                background: colors.lightGray
+            },
+            content: {
+                background: colors.lightGray
+            },
+            wrapper: {
+                radius: spacing.radius
+            },
+            resize: {}
+        }
     }
 };
 
