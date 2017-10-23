@@ -11,23 +11,8 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 class Dashboard extends Component {
     render() {
-        const {
-            layouts,
-            items,
-            cols,
-            updateLayout,
-            draggableHandle
-        } = this.props;
         return (
-            <ResponsiveReactGridLayout
-                className="layout"
-                layouts={layouts}
-                cols={cols}
-                rowHeight={30}
-                width={1200}
-                onLayoutChange={updateLayout}
-                draggableHandle={draggableHandle}
-            >
+            <ResponsiveReactGridLayout {...this.props}>
                 {this.props.children}
             </ResponsiveReactGridLayout>
         );
