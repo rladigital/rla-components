@@ -20,8 +20,7 @@ const Button = styled.button`
     border-style: solid;
     border-width: 0.1em;
     font-size: 1em;
-
-    /* disabled button styling */
+    font-Weight: ${props => props.theme.button.fontWeight};
     ${props =>
         !props.disabled
             ? css`

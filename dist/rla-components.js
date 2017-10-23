@@ -20782,6 +20782,7 @@ var theme = {
         colors: colors,
         sizes: sizes,
         textColor: colors.white,
+        fontWeight: "normal",
         radius: spacing.radius,
         padding: spacing.padding,
         margin: spacing.margin
@@ -20862,7 +20863,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(["\n    width: ", ";\n    min-height: ", "em;\n    background: ", ";\n    color: ", ";\n    margin: 0\n        ", "\n        ", "em\n        ", "em;\n    padding: 0 ", "em;\n    transition: color 0.25s, background 0.25s, border 0.25s;\n    border-color: ", ";\n    border-radius: ", "em;\n    border-style: solid;\n    border-width: 0.1em;\n    font-size: 1em;\n\n    /* disabled button styling */\n    ", ";\n\n    /*center align button styling*/\n    ", ";\n\n    /*right align button styling*/\n    ", ";\n"], ["\n    width: ", ";\n    min-height: ", "em;\n    background: ", ";\n    color: ", ";\n    margin: 0\n        ", "\n        ", "em\n        ", "em;\n    padding: 0 ", "em;\n    transition: color 0.25s, background 0.25s, border 0.25s;\n    border-color: ", ";\n    border-radius: ", "em;\n    border-style: solid;\n    border-width: 0.1em;\n    font-size: 1em;\n\n    /* disabled button styling */\n    ", ";\n\n    /*center align button styling*/\n    ", ";\n\n    /*right align button styling*/\n    ", ";\n"]),
+var _templateObject = _taggedTemplateLiteral(["\n    width: ", ";\n    min-height: ", "em;\n    background: ", ";\n    color: ", ";\n    margin: 0\n        ", "\n        ", "em\n        ", "em;\n    padding: 0 ", "em;\n    transition: color 0.25s, background 0.25s, border 0.25s;\n    border-color: ", ";\n    border-radius: ", "em;\n    border-style: solid;\n    border-width: 0.1em;\n    font-size: 1em;\n    font-Weight: ", ";\n    ", ";\n\n    /*center align button styling*/\n    ", ";\n\n    /*right align button styling*/\n    ", ";\n"], ["\n    width: ", ";\n    min-height: ", "em;\n    background: ", ";\n    color: ", ";\n    margin: 0\n        ", "\n        ", "em\n        ", "em;\n    padding: 0 ", "em;\n    transition: color 0.25s, background 0.25s, border 0.25s;\n    border-color: ", ";\n    border-radius: ", "em;\n    border-style: solid;\n    border-width: 0.1em;\n    font-size: 1em;\n    font-Weight: ", ";\n    ", ";\n\n    /*center align button styling*/\n    ", ";\n\n    /*right align button styling*/\n    ", ";\n"]),
     _templateObject2 = _taggedTemplateLiteral(["\n                  &:hover {\n                      background: ", ";\n                      color: ", ";\n                      border-color: ", ";\n                      cursor: pointer;\n                  }\n              "], ["\n                  &:hover {\n                      background: ", ";\n                      color: ", ";\n                      border-color: ", ";\n                      cursor: pointer;\n                  }\n              "]),
     _templateObject3 = _taggedTemplateLiteral(["\n                  opacity: 0.5;\n                  cursor: not-allowed;\n              "], ["\n                  opacity: 0.5;\n                  cursor: not-allowed;\n              "]),
     _templateObject4 = _taggedTemplateLiteral(["\n            display: block;\n            margin: auto;\n        "], ["\n            display: block;\n            margin: auto;\n        "]),
@@ -20904,6 +20905,8 @@ var Button = _styledComponents2.default.button(_templateObject, function (props)
     return props.theme.button.sizes[props.size] / 2;
 }, background, function (props) {
     return props.theme.button.radius;
+}, function (props) {
+    return props.theme.button.fontWeight;
 }, function (props) {
     return !props.disabled ? (0, _styledComponents.css)(_templateObject2, function (props) {
         return !props.hollow && (0, _functions.shade)(background(props), -40);
@@ -37108,10 +37111,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _templateObject = _taggedTemplateLiteral(["\n    color: ", ";\n    text-decoration: ", ";\n    font-weight: ", ";\n"], ["\n    color: ", ";\n    text-decoration: ", ";\n    font-weight: ", ";\n"]);
 
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
 var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -37126,21 +37125,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var ReactRouterLink = (0, _styledComponents2.default)(_reactRouterDom.Link)(_templateObject, function (props) {
+var StyledLink = (0, _styledComponents2.default)(_reactRouterDom.Link)(_templateObject, function (props) {
     return props.color ? props.theme.link.colors[props.color] : "inherit";
 }, function (props) {
     return props.theme.link.textDecoration;
 }, function (props) {
     return props.theme.link.fontWeight;
 });
-
-var StyledLink = function StyledLink(props) {
-    return _react2.default.createElement(
-        ReactRouterLink,
-        props,
-        props.children
-    );
-};
 
 StyledLink.displayName = "StyledLink";
 
@@ -40192,9 +40183,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
+var _templateObject = _taggedTemplateLiteral(["\n    text-align: center;\n    display: inline-block;\n    text-decoration: inherit;\n    line-height: ", "em;\n"], ["\n    text-align: center;\n    display: inline-block;\n    text-decoration: inherit;\n    line-height: ", "em;\n"]);
 
 var _propTypes = __webpack_require__(2);
 
@@ -40210,17 +40199,11 @@ var _index = __webpack_require__(29);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ButtonLink = function ButtonLink(props) {
-    return _react2.default.createElement(
-        _reactRouterDom.Link,
-        props.linkProps,
-        _react2.default.createElement(
-            _index.Button,
-            props,
-            props.children
-        )
-    );
-};
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var ButtonLink = _index.Button.withComponent(_reactRouterDom.Link).extend(_templateObject, function (props) {
+    return props.theme.button.sizes[props.size];
+});
 
 ButtonLink.displayName = "ButtonLink";
 

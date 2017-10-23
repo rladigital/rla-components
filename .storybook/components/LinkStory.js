@@ -35,12 +35,10 @@ storiesOf("Links", module)
         withInfo("It's a React Router Link that looks like a Button")(() => (
             <div>
                 <div>
-                    <ButtonLink linkProps={{ to: "test" }} to="test">
-                        Default ButtonLink
-                    </ButtonLink>
+                    <ButtonLink to="test">Default ButtonLink</ButtonLink>
                 </div>
                 <div>
-                    <ButtonLink linkProps={{ to: "test" }} color="alert">
+                    <ButtonLink to="test" color="alert">
                         Colored ButtonLink
                     </ButtonLink>
                 </div>

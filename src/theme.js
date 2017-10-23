@@ -29,6 +29,7 @@ const theme = {
         colors: colors,
         sizes: sizes,
         textColor: colors.white,
+        fontWeight: "normal",
         radius: spacing.radius,
         padding: spacing.padding,
         margin: spacing.margin
