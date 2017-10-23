@@ -172,6 +172,7 @@ storiesOf("Dashboard", module)
                                 panelkey={panel.key}
                                 panelProps={panel.props}
                                 component={panel.component}
+                                configurable={panel.configurable}
                                 panels={panels}
                                 configurePanel={() => {
                                     alert(
@@ -180,7 +181,7 @@ storiesOf("Dashboard", module)
                                 }}
                                 deletePanelConfirmation={() => {
                                     alert(
-                                        "Configuring Panel Dialog would show here"
+                                        "Deleting Panel Dialog would show here"
                                     );
                                 }}
                             />
@@ -193,18 +194,14 @@ storiesOf("Dashboard", module)
     .addWithInfo("Full panel drag, with no header bar", () => (
         <Row>
             <Column medium={12}>
-                <ResponsiveReactGridLayout
-                    className="layout"
-                    layouts={layouts}
-                    cols={cols}
-                    rowHeight={30}
-                    width={1200}
-                    onLayoutChange={updateLayout}
-                >
+                <Dashboard layouts={layouts} onLayoutChange={updateLayout}>
                     {items.map(panel => (
                         <div key={panel.key}>
                             <DashboardPanel
-                                panel={panel}
+                                panelkey={panel.key}
+                                panelProps={panel.props}
+                                component={panel.component}
+                                configurable={panel.configurable}
                                 panels={panels}
                                 configurePanel={() => {
                                     alert(
@@ -213,14 +210,14 @@ storiesOf("Dashboard", module)
                                 }}
                                 deletePanelConfirmation={() => {
                                     alert(
-                                        "Configuring Panel Dialog would show here"
+                                        "Deleting Panel Dialog would show here"
                                     );
                                 }}
                                 showHeader={false}
                             />
                         </div>
                     ))}
-                </ResponsiveReactGridLayout>
+                </Dashboard>
             </Column>
         </Row>
     ));
