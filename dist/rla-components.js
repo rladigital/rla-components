@@ -45823,6 +45823,7 @@ var DashboardPanel = function (_Component) {
             var _props = this.props,
                 panelKey = _props.panelKey,
                 panelProps = _props.panelProps,
+                panelTitle = _props.panelTitle,
                 component = _props.component,
                 panels = _props.panels,
                 configurable = _props.configurable,
@@ -45833,6 +45834,7 @@ var DashboardPanel = function (_Component) {
             var panel = {
                 key: panelKey,
                 props: panelProps,
+                title: panelTitle,
                 component: component,
                 configurable: configurable
             };
@@ -45881,8 +45883,8 @@ DashboardPanel.propTypes = {
     panelkey: _propTypes2.default.string.isRequired,
     /** The props to be passed on to the component being rendered into the panel (e.g. configuration options) */
     panelProps: _propTypes2.default.object,
-    // /** A string matching one of the keys in the panels object, this is used to render the correct component in the panel */
-    // component: PropTypes.string,
+    /** A string to be used in the title of the panel */
+    panelTitle: _propTypes2.default.string,
 
     /** A string matching one of the keys in the panels object, this is used to render the correct component in the panel */
     component: function component(props, propName, componentName, location, propFullName) {

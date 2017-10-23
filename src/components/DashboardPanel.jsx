@@ -43,6 +43,7 @@ class DashboardPanel extends Component {
         const {
             panelKey,
             panelProps,
+            panelTitle,
             component,
             panels,
             configurable,
@@ -53,6 +54,7 @@ class DashboardPanel extends Component {
         const panel = {
             key: panelKey,
             props: panelProps,
+            title: panelTitle,
             component,
             configurable
         };
@@ -98,8 +100,8 @@ DashboardPanel.propTypes = {
     panelkey: PropTypes.string.isRequired,
     /** The props to be passed on to the component being rendered into the panel (e.g. configuration options) */
     panelProps: PropTypes.object,
-    // /** A string matching one of the keys in the panels object, this is used to render the correct component in the panel */
-    // component: PropTypes.string,
+    /** A string to be used in the title of the panel */
+    panelTitle: PropTypes.string,
 
     /** A string matching one of the keys in the panels object, this is used to render the correct component in the panel */
     component(props, propName, componentName, location, propFullName) {
