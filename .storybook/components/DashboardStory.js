@@ -29,6 +29,7 @@ const items = [
             timeframe: "-3"
         },
         component: "SamplePanel",
+        title: "Test Title",
         configurable: true
     },
     {
@@ -171,10 +172,15 @@ storiesOf("Dashboard", module)
                             <DashboardPanel
                                 panelkey={panel.key}
                                 panelProps={panel.props}
+                                panelTitle={
+                                    panel.props && panel.props.title
+                                        ? panel.props.title
+                                        : panel.title
+                                }
                                 component={panel.component}
                                 configurable={panel.configurable}
                                 panels={panels}
-                                configurePanel={() => {
+                                configurePanel={panel => {
                                     alert(
                                         "Configuring Panel Dialog would show here"
                                     );
@@ -200,10 +206,15 @@ storiesOf("Dashboard", module)
                             <DashboardPanel
                                 panelkey={panel.key}
                                 panelProps={panel.props}
+                                panelTitle={
+                                    panel.props && panel.props.title
+                                        ? panel.props.title
+                                        : panel.title
+                                }
                                 component={panel.component}
                                 configurable={panel.configurable}
                                 panels={panels}
-                                configurePanel={() => {
+                                configurePanel={panel => {
                                     alert(
                                         "Configuring Panel Dialog would show here"
                                     );
