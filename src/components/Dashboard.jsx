@@ -48,7 +48,12 @@ Dashboard.propTypes = {
     onLayoutChange: PropTypes.func,
 
     /** Calls back with (containerWidth, margin, cols, containerPadding)*/
-    onWidthChange: PropTypes.func
+    onWidthChange: PropTypes.func,
+
+    /** A css class selector of the class to be used as a drag handle in each panel, 
+     * if using the DashboardPanel component this should be set to ".dragHandle"
+     * NOTE: This is not defaulted as if missing the whole panel is treated as the drag handle */
+    draggableHandle: PropTypes.string
 };
 
 Dashboard.defaultProps = {
