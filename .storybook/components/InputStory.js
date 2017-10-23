@@ -110,7 +110,6 @@ storiesOf("Form Inputs", module)
                 <div>
                     <RadioField
                         name="test"
-                        defaultValue="default"
                         label="With Label"
                         options={options}
                         onChange={value => {
