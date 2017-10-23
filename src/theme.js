@@ -29,6 +29,7 @@ const theme = {
         colors: colors,
         sizes: sizes,
         textColor: colors.white,
+        fontWeight: "normal",
         radius: spacing.radius,
         padding: spacing.padding,
         margin: spacing.margin
@@ -87,6 +88,12 @@ const theme = {
         padding: spacing.padding,
         margin: spacing.margin,
         radius: spacing.radius
+    },
+    link: {
+        color: colors.black,
+        colors: colors,
+        fontWeight: "bold",
+        textDecoration: "none"
     }
 };
 
