@@ -67,21 +67,6 @@ const theme = {
         background: colors.white,
         closeButtonColor: colors.black
     },
-    tile: {
-        baseSizes: {
-            // breakpoints - how many columns 1 tile space is sized
-            small: 6,
-            medium: 3
-        },
-        tileSizes: {
-            // names of tiles - how many tile spaces a tile uses
-            small: 1,
-            medium: 2,
-            large: 4
-        },
-        padding: spacing.padding,
-        background: colors.lightGray
-    },
     tooltip: {
         color: colors.white,
         background: colors.primary,
@@ -94,6 +79,24 @@ const theme = {
         colors: colors,
         fontWeight: "bold",
         textDecoration: "none"
+    },
+    dashboard: {
+        panel: {
+            bar: {
+                height: "2",
+                iconSize: "1.2",
+                padding: "0.5",
+                color: colors.black,
+                background: colors.lightGray
+            },
+            content: {
+                background: colors.lightGray
+            },
+            wrapper: {
+                radius: spacing.radius
+            },
+            resize: {}
+        }
     }
 };
 

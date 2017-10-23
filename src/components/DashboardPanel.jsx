@@ -1,26 +1,41 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, Icon } from "../index";
-import styled from "styled-components";
+import styled, { withTheme, css } from "styled-components";
 
 const PanelWrapper = styled.div`
     width: 100%;
     height: 100%;
-    position: absolute;
+    overflow: hidden;
+    border-radius: ${props => props.theme.dashboard.panel.wrapper.radius}em;
 `;
-const PanelHeaderBar = styled.div`
-    position: absolute;
+const PanelHeader = styled.div`
     width: 100%;
-    height: 30px;
-    background: rgba(12, 12, 12, 0.5);
     cursor: move;
+    padding: 0 ${props => props.theme.dashboard.panel.bar.padding}em;
+    background: ${props => props.theme.dashboard.panel.bar.background};
+    overflow: hidden;
+`;
+const PanelHeaderRight = styled.div`float: right;`;
+const PanelHeaderButton = styled.button`
+    margin: 0;
+    padding: 0 ${props => props.theme.dashboard.panel.bar.padding / 2}em;
+    border: none;
+    background: transparent;
+    display: inline-block;
+    font-size: ${props => props.theme.dashboard.panel.bar.iconSize}em;
+    height: ${props => props.theme.dashboard.panel.bar.height}em;
+    color: ${props => props.theme.dashboard.panel.bar.color};
 `;
 const PanelContent = styled.div`
-    background: rgba(12, 123, 12, 0.5);
     width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: scroll;
+    height: ${props =>
+        props.configurable
+            ? "calc(100% - ${props => props.theme.dashboard.panel.bar.height}em)"
+            : "100%"};
+
+    background: ${props => props.theme.dashboard.panel.content.background};
+    overflow-y: scroll;
 `;
 
 class DashboardPanel extends Component {
@@ -45,35 +60,36 @@ class DashboardPanel extends Component {
         };
         return (
             <PanelWrapper key={panel.key}>
-                <PanelContent>
-                    &nbsp;
-                    {React.createElement(panels[panel.component], panel.props)}
-                </PanelContent>
                 {showHeader && (
-                    <PanelHeaderBar className="dragHandle">
-                        {panel.title}
-                        {panel.configurable && (
-                            <Button
+                    <PanelHeader className="dragHandle">
+                        <PanelHeaderRight>
+                            {panel.configurable && (
+                                <PanelHeaderButton
+                                    size="small"
+                                    onClick={this.props.configurePanel.bind(
+                                        this,
+                                        panel
+                                    )}
+                                >
+                                    <Icon name="gear" />
+                                </PanelHeaderButton>
+                            )}
+                            <PanelHeaderButton
                                 size="small"
-                                onClick={this.props.configurePanel.bind(
+                                onClick={this.props.deletePanelConfirmation.bind(
                                     this,
                                     panel
                                 )}
                             >
-                                <Icon name="gear" />
-                            </Button>
-                        )}
-                        <Button
-                            size="small"
-                            onClick={this.props.deletePanelConfirmation.bind(
-                                this,
-                                panel
-                            )}
-                        >
-                            <Icon name="close" />
-                        </Button>
-                    </PanelHeaderBar>
+                                <Icon name="close" />
+                            </PanelHeaderButton>
+                        </PanelHeaderRight>
+                    </PanelHeader>
                 )}
+                <PanelContent>
+                    &nbsp;
+                    {React.createElement(panels[panel.component], panel.props)}
+                </PanelContent>
             </PanelWrapper>
         );
     }
@@ -118,4 +134,4 @@ DashboardPanel.defaultProps = {
     showHeader: true
 };
 
-export default DashboardPanel;
+export default withTheme(DashboardPanel);
