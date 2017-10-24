@@ -27254,7 +27254,6 @@ var theme = {
     dashboard: {
         panel: {
             bar: {
-                height: "2",
                 iconSize: "1.2",
                 padding: "0.5",
                 color: colors.black,
@@ -45754,11 +45753,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n"], ["\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n    width: 100%;\n    cursor: move;\n    padding: 0 ", "em;\n    background: ", ";\n    overflow: hidden;\n"], ["\n    width: 100%;\n    cursor: move;\n    padding: 0 ", "em;\n    background: ", ";\n    overflow: hidden;\n"]),
+var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    padding-top: 40px;\n"], ["\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    padding-top: 40px;\n"]),
+    _templateObject2 = _taggedTemplateLiteral(["\n    width: 100%;\n    cursor: move;\n    padding: 0 ", "em;\n    background: ", ";\n    position: absolute;\n    top: 0;\n    overflow: hidden;\n"], ["\n    width: 100%;\n    cursor: move;\n    padding: 0 ", "em;\n    background: ", ";\n    position: absolute;\n    top: 0;\n    overflow: hidden;\n"]),
     _templateObject3 = _taggedTemplateLiteral(["float: right;"], ["float: right;"]),
-    _templateObject4 = _taggedTemplateLiteral(["\n    margin: 0;\n    padding: 0 ", "em;\n    border: none;\n    background: transparent;\n    display: inline-block;\n    font-size: ", "em;\n    height: ", "em;\n    color: ", ";\n"], ["\n    margin: 0;\n    padding: 0 ", "em;\n    border: none;\n    background: transparent;\n    display: inline-block;\n    font-size: ", "em;\n    height: ", "em;\n    color: ", ";\n"]),
-    _templateObject5 = _taggedTemplateLiteral(["\n    width: 100%;\n    height: ", ";\n\n    background: ", ";\n    overflow-y: scroll;\n"], ["\n    width: 100%;\n    height: ", ";\n\n    background: ", ";\n    overflow-y: scroll;\n"]);
+    _templateObject4 = _taggedTemplateLiteral(["\n    margin: 0;\n    padding: 0 ", "em;\n    border: none;\n    background: transparent;\n    display: inline-block;\n    font-size: ", "em;\n    height: 40px;\n    color: ", ";\n"], ["\n    margin: 0;\n    padding: 0 ", "em;\n    border: none;\n    background: transparent;\n    display: inline-block;\n    font-size: ", "em;\n    height: 40px;\n    color: ", ";\n"]),
+    _templateObject5 = _taggedTemplateLiteral(["\n    width: 100%;\n    height: ", ";\n    background: ", ";\n    overflow-y: auto;\n"], ["\n    width: 100%;\n    height: ", ";\n    background: ", ";\n    overflow-y: auto;\n"]);
 
 var _react = __webpack_require__(1);
 
@@ -45798,12 +45797,10 @@ var PanelHeaderButton = _styledComponents2.default.button(_templateObject4, func
 }, function (props) {
     return props.theme.dashboard.panel.bar.iconSize;
 }, function (props) {
-    return props.theme.dashboard.panel.bar.height;
-}, function (props) {
     return props.theme.dashboard.panel.bar.color;
 });
 var PanelContent = _styledComponents2.default.div(_templateObject5, function (props) {
-    return props.configurable ? "calc(100% - ${props => props.theme.dashboard.panel.bar.height}em)" : "100%";
+    return props.configurable ? "calc(100% - 40px)" : "100%";
 }, function (props) {
     return props.theme.dashboard.panel.content.background;
 });
