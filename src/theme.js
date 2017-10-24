@@ -83,7 +83,6 @@ const theme = {
     dashboard: {
         panel: {
             bar: {
-                height: "2",
                 iconSize: "1.2",
                 padding: "0.5",
                 color: colors.black,

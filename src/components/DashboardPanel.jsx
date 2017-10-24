@@ -8,12 +8,15 @@ const PanelWrapper = styled.div`
     height: 100%;
     overflow: hidden;
     border-radius: ${props => props.theme.dashboard.panel.wrapper.radius}em;
+    padding-top: 40px;
 `;
 const PanelHeader = styled.div`
     width: 100%;
     cursor: move;
     padding: 0 ${props => props.theme.dashboard.panel.bar.padding}em;
     background: ${props => props.theme.dashboard.panel.bar.background};
+    position: absolute;
+    top: 0;
     overflow: hidden;
 `;
 const PanelHeaderRight = styled.div`float: right;`;
@@ -24,18 +27,14 @@ const PanelHeaderButton = styled.button`
     background: transparent;
     display: inline-block;
     font-size: ${props => props.theme.dashboard.panel.bar.iconSize}em;
-    height: ${props => props.theme.dashboard.panel.bar.height}em;
+    height: 40px;
     color: ${props => props.theme.dashboard.panel.bar.color};
 `;
 const PanelContent = styled.div`
     width: 100%;
-    height: ${props =>
-        props.configurable
-            ? "calc(100% - ${props => props.theme.dashboard.panel.bar.height}em)"
-            : "100%"};
-
+    height: ${props => (props.configurable ? "calc(100% - 40px)" : "100%")};
     background: ${props => props.theme.dashboard.panel.content.background};
-    overflow-y: scroll;
+    overflow-y: auto;
 `;
 
 class DashboardPanel extends Component {
