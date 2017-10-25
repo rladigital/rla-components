@@ -27255,11 +27255,12 @@ var theme = {
         panel: {
             bar: {
                 iconSize: "1.2",
+                iconColor: colors.black,
                 padding: "0.5",
-                color: colors.black,
                 background: colors.lightGray,
                 fontWeight: "bold",
-                fontSize: "0.9"
+                fontSize: "0.9",
+                titleColor: colors.white
             },
             content: {
                 background: colors.lightGray
@@ -45812,10 +45813,10 @@ var HeaderButton = _styledComponents2.default.button(_templateObject5, function 
 }, function (props) {
     return props.theme.dashboard.panel.bar.iconSize;
 }, function (props) {
-    return props.theme.dashboard.panel.bar.color;
+    return props.theme.dashboard.panel.bar.iconColor;
 });
 var Title = _styledComponents2.default.div(_templateObject6, function (props) {
-    return props.theme.dashboard.panel.bar.color;
+    return props.theme.dashboard.panel.bar.titleColor;
 }, function (props) {
     return props.theme.dashboard.panel.bar.padding / 2;
 }, function (props) {

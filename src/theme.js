@@ -84,11 +84,12 @@ const theme = {
         panel: {
             bar: {
                 iconSize: "1.2",
+                iconColor: colors.black,
                 padding: "0.5",
-                color: colors.black,
                 background: colors.lightGray,
                 fontWeight: "bold",
-                fontSize: "0.9"
+                fontSize: "0.9",
+                titleColor: colors.white
             },
             content: {
                 background: colors.lightGray

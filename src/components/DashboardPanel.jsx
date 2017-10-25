@@ -31,10 +31,10 @@ const HeaderButton = styled.button`
     display: inline-block;
     font-size: ${props => props.theme.dashboard.panel.bar.iconSize}em;
     height: 40px;
-    color: ${props => props.theme.dashboard.panel.bar.color};
+    color: ${props => props.theme.dashboard.panel.bar.iconColor};
 `;
 const Title = styled.div`
-    color: ${props => props.theme.dashboard.panel.bar.color};
+    color: ${props => props.theme.dashboard.panel.bar.titleColor};
     padding: 0 ${props => props.theme.dashboard.panel.bar.padding / 2}em;
     font-weight: ${props => props.theme.dashboard.panel.bar.fontWeight};
     font-size: ${props => props.theme.dashboard.panel.bar.fontSize}em;
