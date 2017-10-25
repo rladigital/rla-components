@@ -8,7 +8,8 @@ const PanelWrapper = styled.div`
     height: 100%;
     overflow: hidden;
     border-radius: ${props => props.theme.dashboard.panel.wrapper.radius}em;
-    padding-top: 40px;
+    background: ${props => props.theme.dashboard.panel.content.background};
+    padding-top: ${props => (props.showHeader ? "40px" : "0")};
 `;
 const PanelHeader = styled.div`
     width: 100%;
@@ -32,8 +33,7 @@ const PanelHeaderButton = styled.button`
 `;
 const PanelContent = styled.div`
     width: 100%;
-    height: ${props => (props.configurable ? "calc(100% - 40px)" : "100%")};
-    background: ${props => props.theme.dashboard.panel.content.background};
+    height: 100%;
     overflow-y: auto;
 `;
 
@@ -58,7 +58,7 @@ class DashboardPanel extends Component {
             configurable
         };
         return (
-            <PanelWrapper key={panel.key}>
+            <PanelWrapper key={panel.key} showHeader={showHeader}>
                 {showHeader && (
                     <PanelHeader className="dragHandle">
                         <PanelHeaderRight>
