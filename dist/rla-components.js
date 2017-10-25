@@ -38082,8 +38082,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(["\n        position: relative;\n        width: ", ";\n        height: ", ";\n        margin-top: 15%;\n    "], ["\n        position: relative;\n        width: ", ";\n        height: ", ";\n        margin-top: 15%;\n    "]),
-    _templateObject2 = _taggedTemplateLiteral(["\n        margin: auto;\n        width: 50%;\n        height: 50%;\n    "], ["\n        margin: auto;\n        width: 50%;\n        height: 50%;\n    "]);
+var _templateObject = _taggedTemplateLiteral(["\n        position: relative;\n        width: ", ";\n        height: ", ";\n        ", " ", ";\n    "], ["\n        position: relative;\n        width: ", ";\n        height: ", ";\n        ", " ", ";\n    "]),
+    _templateObject2 = _taggedTemplateLiteral(["margin: auto;"], ["margin: auto;"]),
+    _templateObject3 = _taggedTemplateLiteral(["float: right;"], ["float: right;"]),
+    _templateObject4 = _taggedTemplateLiteral(["\n        margin: auto;\n        width: 50%;\n        height: 50%;\n    "], ["\n        margin: auto;\n        width: 50%;\n        height: 50%;\n    "]);
 
 var _react = __webpack_require__(1);
 
@@ -38106,9 +38108,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var Loading = function Loading(props) {
-    var LoadingOuter = _styledComponents2.default.div(_templateObject, props.width, props.height);
+    var LoadingOuter = _styledComponents2.default.div(_templateObject, props.width, props.height, props.align == "center" && (0, _styledComponents.css)(_templateObject2), props.align == "right" && (0, _styledComponents.css)(_templateObject3));
 
-    var LoadingInner = _styledComponents2.default.div(_templateObject2);
+    var LoadingInner = _styledComponents2.default.div(_templateObject4);
     return _react2.default.createElement(
         LoadingOuter,
         null,
@@ -38142,14 +38144,17 @@ Loading.propTypes = {
     /** A css width */
     width: _propTypes2.default.string,
     /** A css height */
-    height: _propTypes2.default.string
+    height: _propTypes2.default.string,
+    /** left, right or center */
+    align: _propTypes2.default.string
 };
 
 Loading.defaultProps = {
-    color: "rgba(235,235,235,0.2)",
+    color: "rgba(0,0,0,0.3)",
     type: "spinningBubbles",
     width: "200px",
-    height: "200px"
+    height: "200px",
+    align: "left"
 };
 exports.default = Loading;
 

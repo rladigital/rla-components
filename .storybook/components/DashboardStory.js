@@ -173,9 +173,11 @@ storiesOf("Dashboard", module)
                                 panelkey={panel.key}
                                 panelProps={panel.props}
                                 panelTitle={
-                                    panel.props && panel.props.title
-                                        ? panel.props.title
-                                        : panel.title
+                                    panel.props && panel.props.title ? (
+                                        panel.props.title
+                                    ) : (
+                                        panel.title
+                                    )
                                 }
                                 component={panel.component}
                                 configurable={panel.configurable}
@@ -207,9 +209,11 @@ storiesOf("Dashboard", module)
                                 panelkey={panel.key}
                                 panelProps={panel.props}
                                 panelTitle={
-                                    panel.props && panel.props.title
-                                        ? panel.props.title
-                                        : panel.title
+                                    panel.props && panel.props.title ? (
+                                        panel.props.title
+                                    ) : (
+                                        panel.title
+                                    )
                                 }
                                 component={panel.component}
                                 configurable={panel.configurable}

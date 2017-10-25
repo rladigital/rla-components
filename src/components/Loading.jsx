@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import LoadingIcon from "react-loading";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Loading = props => {
     const LoadingOuter = styled.div`
         position: relative;
         width: ${props.width};
         height: ${props.height};
-        margin-top: 15%;
+        ${props.align == "center" && css`margin: auto;`} ${props.align ==
+                "right" && css`float: right;`};
     `;
 
     const LoadingInner = styled.div`
@@ -57,13 +58,16 @@ Loading.propTypes = {
     /** A css width */
     width: PropTypes.string,
     /** A css height */
-    height: PropTypes.string
+    height: PropTypes.string,
+    /** left, right or center */
+    align: PropTypes.string
 };
 
 Loading.defaultProps = {
-    color: "rgba(235,235,235,0.2)",
+    color: "rgba(0,0,0,0.3)",
     type: "spinningBubbles",
     width: "200px",
-    height: "200px"
+    height: "200px",
+    align: "left"
 };
 export default Loading;

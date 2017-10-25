@@ -21,31 +21,38 @@ storiesOf("Loading", module)
     .addWithInfo("Types", () => (
         <div>
             <div style={{ float: "left" }}>
-                <Loading color="rgba(0,0,0,0.3)" type="blank" />
+                <Loading type="blank" />
             </div>
             <div style={{ float: "left" }}>
-                <Loading color="rgba(0,0,0,0.3)" type="balls" />
+                <Loading type="balls" />
             </div>
             <div style={{ float: "left" }}>
-                <Loading color="rgba(0,0,0,0.3)" type="bars" />
+                <Loading type="bars" />
             </div>
             <div style={{ float: "left" }}>
-                <Loading color="rgba(0,0,0,0.3)" type="bubbles" />
+                <Loading type="bubbles" />
             </div>
             <div style={{ float: "left" }}>
-                <Loading color="rgba(0,0,0,0.3)" type="cubes" />
+                <Loading type="cubes" />
             </div>
             <div style={{ float: "left" }}>
-                <Loading color="rgba(0,0,0,0.3)" type="cylon" />
+                <Loading type="cylon" />
             </div>
             <div style={{ float: "left" }}>
-                <Loading color="rgba(0,0,0,0.3)" type="spin" />
+                <Loading type="spin" />
             </div>
             <div style={{ float: "left" }}>
-                <Loading color="rgba(0,0,0,0.3)" type="spinningBubbles" />
+                <Loading type="spinningBubbles" />
             </div>
             <div style={{ float: "left" }}>
-                <Loading color="rgba(0,0,0,0.3)" type="spokes" />
+                <Loading type="spokes" />
             </div>
+        </div>
+    ))
+    .addWithInfo("Alignment", () => (
+        <div>
+            <Loading />
+            <Loading align="center" />
+            <Loading align="right" />
         </div>
     ));
