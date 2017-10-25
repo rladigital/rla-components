@@ -86,7 +86,9 @@ const theme = {
                 iconSize: "1.2",
                 padding: "0.5",
                 color: colors.black,
-                background: colors.lightGray
+                background: colors.lightGray,
+                fontWeight: "bold",
+                fontSize: "0.9"
             },
             content: {
                 background: colors.lightGray

@@ -27257,7 +27257,9 @@ var theme = {
                 iconSize: "1.2",
                 padding: "0.5",
                 color: colors.black,
-                background: colors.lightGray
+                background: colors.lightGray,
+                fontWeight: "bold",
+                fontSize: "0.9"
             },
             content: {
                 background: colors.lightGray
@@ -45758,11 +45760,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    padding-top: 40px;\n"], ["\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    padding-top: 40px;\n"]),
+var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    background: ", ";\n    padding-top: ", ";\n"], ["\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    background: ", ";\n    padding-top: ", ";\n"]),
     _templateObject2 = _taggedTemplateLiteral(["\n    width: 100%;\n    cursor: move;\n    padding: 0 ", "em;\n    background: ", ";\n    position: absolute;\n    top: 0;\n    overflow: hidden;\n"], ["\n    width: 100%;\n    cursor: move;\n    padding: 0 ", "em;\n    background: ", ";\n    position: absolute;\n    top: 0;\n    overflow: hidden;\n"]),
-    _templateObject3 = _taggedTemplateLiteral(["float: right;"], ["float: right;"]),
-    _templateObject4 = _taggedTemplateLiteral(["\n    margin: 0;\n    padding: 0 ", "em;\n    border: none;\n    background: transparent;\n    display: inline-block;\n    font-size: ", "em;\n    height: 40px;\n    color: ", ";\n"], ["\n    margin: 0;\n    padding: 0 ", "em;\n    border: none;\n    background: transparent;\n    display: inline-block;\n    font-size: ", "em;\n    height: 40px;\n    color: ", ";\n"]),
-    _templateObject5 = _taggedTemplateLiteral(["\n    width: 100%;\n    height: ", ";\n    background: ", ";\n    overflow-y: auto;\n"], ["\n    width: 100%;\n    height: ", ";\n    background: ", ";\n    overflow-y: auto;\n"]);
+    _templateObject3 = _taggedTemplateLiteral(["float: left;"], ["float: left;"]),
+    _templateObject4 = _taggedTemplateLiteral(["float: right;"], ["float: right;"]),
+    _templateObject5 = _taggedTemplateLiteral(["\n    margin: 0;\n    padding: 0 ", "em;\n    border: none;\n    background: transparent;\n    display: inline-block;\n    font-size: ", "em;\n    height: 40px;\n    color: ", ";\n"], ["\n    margin: 0;\n    padding: 0 ", "em;\n    border: none;\n    background: transparent;\n    display: inline-block;\n    font-size: ", "em;\n    height: 40px;\n    color: ", ";\n"]),
+    _templateObject6 = _taggedTemplateLiteral(["\n    color: ", ";\n    padding: 0 ", "em;\n    font-weight: ", ";\n    font-size: ", "em;\n    line-height: 40px;\n"], ["\n    color: ", ";\n    padding: 0 ", "em;\n    font-weight: ", ";\n    font-size: ", "em;\n    line-height: 40px;\n"]),
+    _templateObject7 = _taggedTemplateLiteral(["\n    width: 100%;\n    height: 100%;\n    overflow-y: auto;\n"], ["\n    width: 100%;\n    height: 100%;\n    overflow-y: auto;\n"]);
 
 var _react = __webpack_require__(1);
 
@@ -45788,27 +45792,38 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var PanelWrapper = _styledComponents2.default.div(_templateObject, function (props) {
+var Wrapper = _styledComponents2.default.div(_templateObject, function (props) {
     return props.theme.dashboard.panel.wrapper.radius;
+}, function (props) {
+    return props.theme.dashboard.panel.content.background;
+}, function (props) {
+    return props.showHeader ? "40px" : "0";
 });
-var PanelHeader = _styledComponents2.default.div(_templateObject2, function (props) {
+var Header = _styledComponents2.default.div(_templateObject2, function (props) {
     return props.theme.dashboard.panel.bar.padding;
 }, function (props) {
     return props.theme.dashboard.panel.bar.background;
 });
-var PanelHeaderRight = _styledComponents2.default.div(_templateObject3);
-var PanelHeaderButton = _styledComponents2.default.button(_templateObject4, function (props) {
+var HeaderLeft = _styledComponents2.default.div(_templateObject3);
+var HeaderRight = _styledComponents2.default.div(_templateObject4);
+
+var HeaderButton = _styledComponents2.default.button(_templateObject5, function (props) {
     return props.theme.dashboard.panel.bar.padding / 2;
 }, function (props) {
     return props.theme.dashboard.panel.bar.iconSize;
 }, function (props) {
     return props.theme.dashboard.panel.bar.color;
 });
-var PanelContent = _styledComponents2.default.div(_templateObject5, function (props) {
-    return props.configurable ? "calc(100% - 40px)" : "100%";
+var Title = _styledComponents2.default.div(_templateObject6, function (props) {
+    return props.theme.dashboard.panel.bar.color;
 }, function (props) {
-    return props.theme.dashboard.panel.content.background;
+    return props.theme.dashboard.panel.bar.padding / 2;
+}, function (props) {
+    return props.theme.dashboard.panel.bar.fontWeight;
+}, function (props) {
+    return props.theme.dashboard.panel.bar.fontSize;
 });
+var Content = _styledComponents2.default.div(_templateObject7);
 
 var DashboardPanel = function (_Component) {
     _inherits(DashboardPanel, _Component);
@@ -45841,16 +45856,25 @@ var DashboardPanel = function (_Component) {
                 configurable: configurable
             };
             return _react2.default.createElement(
-                PanelWrapper,
-                { key: panel.key },
+                Wrapper,
+                { key: panel.key, showHeader: showHeader },
                 showHeader && _react2.default.createElement(
-                    PanelHeader,
+                    Header,
                     { className: "dragHandle" },
                     _react2.default.createElement(
-                        PanelHeaderRight,
+                        HeaderLeft,
+                        null,
+                        panelTitle && _react2.default.createElement(
+                            Title,
+                            null,
+                            panelTitle
+                        )
+                    ),
+                    _react2.default.createElement(
+                        HeaderRight,
                         null,
                         panel.configurable && _react2.default.createElement(
-                            PanelHeaderButton,
+                            HeaderButton,
                             {
                                 size: "small",
                                 onClick: this.props.configurePanel.bind(this, panel)
@@ -45858,7 +45882,7 @@ var DashboardPanel = function (_Component) {
                             _react2.default.createElement(_index.Icon, { name: "gear" })
                         ),
                         _react2.default.createElement(
-                            PanelHeaderButton,
+                            HeaderButton,
                             {
                                 size: "small",
                                 onClick: this.props.deletePanelConfirmation.bind(this, panel)
@@ -45868,7 +45892,7 @@ var DashboardPanel = function (_Component) {
                     )
                 ),
                 _react2.default.createElement(
-                    PanelContent,
+                    Content,
                     null,
                     "\xA0",
                     _react2.default.createElement(panels[panel.component], panel.props)

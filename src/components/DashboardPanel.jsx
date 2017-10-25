@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Icon } from "../index";
 import styled, { withTheme, css } from "styled-components";
 
-const PanelWrapper = styled.div`
+const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -11,7 +11,7 @@ const PanelWrapper = styled.div`
     background: ${props => props.theme.dashboard.panel.content.background};
     padding-top: ${props => (props.showHeader ? "40px" : "0")};
 `;
-const PanelHeader = styled.div`
+const Header = styled.div`
     width: 100%;
     cursor: move;
     padding: 0 ${props => props.theme.dashboard.panel.bar.padding}em;
@@ -20,8 +20,10 @@ const PanelHeader = styled.div`
     top: 0;
     overflow: hidden;
 `;
-const PanelHeaderRight = styled.div`float: right;`;
-const PanelHeaderButton = styled.button`
+const HeaderLeft = styled.div`float: left;`;
+const HeaderRight = styled.div`float: right;`;
+
+const HeaderButton = styled.button`
     margin: 0;
     padding: 0 ${props => props.theme.dashboard.panel.bar.padding / 2}em;
     border: none;
@@ -31,7 +33,14 @@ const PanelHeaderButton = styled.button`
     height: 40px;
     color: ${props => props.theme.dashboard.panel.bar.color};
 `;
-const PanelContent = styled.div`
+const Title = styled.div`
+    color: ${props => props.theme.dashboard.panel.bar.color};
+    padding: 0 ${props => props.theme.dashboard.panel.bar.padding / 2}em;
+    font-weight: ${props => props.theme.dashboard.panel.bar.fontWeight};
+    font-size: ${props => props.theme.dashboard.panel.bar.fontSize}em;
+    line-height: 40px;
+`;
+const Content = styled.div`
     width: 100%;
     height: 100%;
     overflow-y: auto;
@@ -58,12 +67,15 @@ class DashboardPanel extends Component {
             configurable
         };
         return (
-            <PanelWrapper key={panel.key} showHeader={showHeader}>
+            <Wrapper key={panel.key} showHeader={showHeader}>
                 {showHeader && (
-                    <PanelHeader className="dragHandle">
-                        <PanelHeaderRight>
+                    <Header className="dragHandle">
+                        <HeaderLeft>
+                            {panelTitle && <Title>{panelTitle}</Title>}
+                        </HeaderLeft>
+                        <HeaderRight>
                             {panel.configurable && (
-                                <PanelHeaderButton
+                                <HeaderButton
                                     size="small"
                                     onClick={this.props.configurePanel.bind(
                                         this,
@@ -71,9 +83,9 @@ class DashboardPanel extends Component {
                                     )}
                                 >
                                     <Icon name="gear" />
-                                </PanelHeaderButton>
+                                </HeaderButton>
                             )}
-                            <PanelHeaderButton
+                            <HeaderButton
                                 size="small"
                                 onClick={this.props.deletePanelConfirmation.bind(
                                     this,
@@ -81,15 +93,15 @@ class DashboardPanel extends Component {
                                 )}
                             >
                                 <Icon name="close" />
-                            </PanelHeaderButton>
-                        </PanelHeaderRight>
-                    </PanelHeader>
+                            </HeaderButton>
+                        </HeaderRight>
+                    </Header>
                 )}
-                <PanelContent>
+                <Content>
                     &nbsp;
                     {React.createElement(panels[panel.component], panel.props)}
-                </PanelContent>
-            </PanelWrapper>
+                </Content>
+            </Wrapper>
         );
     }
 }
