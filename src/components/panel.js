@@ -7,6 +7,7 @@ const panel = props => props.theme.panel.types[type(props)];
 const Panel = styled.div`
     height: 100%;
     padding: ${props => panel(props).padding}em;
+    padding-bottom: 0;
     background-color ${props => panel(props).background};
     overflow: hidden;
     margin-bottom: ${props => panel(props).margin}em;

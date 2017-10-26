@@ -37902,7 +37902,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(["\n    height: 100%;\n    padding: ", "em;\n    background-color ", ";\n    overflow: hidden;\n    margin-bottom: ", "em;\n    color: ", ";\n"], ["\n    height: 100%;\n    padding: ", "em;\n    background-color ", ";\n    overflow: hidden;\n    margin-bottom: ", "em;\n    color: ", ";\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n    height: 100%;\n    padding: ", "em;\n    padding-bottom: 0;\n    background-color ", ";\n    overflow: hidden;\n    margin-bottom: ", "em;\n    color: ", ";\n"], ["\n    height: 100%;\n    padding: ", "em;\n    padding-bottom: 0;\n    background-color ", ";\n    overflow: hidden;\n    margin-bottom: ", "em;\n    color: ", ";\n"]);
 
 var _propTypes = __webpack_require__(2);
 
