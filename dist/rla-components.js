@@ -27246,7 +27246,10 @@ var theme = {
         borderColor: colors.lightGray,
         padding: spacing.padding,
         margin: spacing.margin,
-        radius: spacing.radius
+        radius: spacing.radius,
+        error: {
+            borderColor: colors.alert
+        }
     },
     modal: {
         padding: spacing.padding,
@@ -28020,7 +28023,7 @@ var StyledInput = _styledComponents2.default.input(_templateObject, function (pr
     }, function (props) {
         return props.theme.input.radius;
     }, function (props) {
-        return props.theme.input.borderColor;
+        return props.error ? props.theme.input.error.borderColor : props.theme.input.borderColor;
     }, function (props) {
         return props.theme.input.sizes[props.size] / 4;
     }, function (props) {
@@ -28031,7 +28034,6 @@ var StyledInput = _styledComponents2.default.input(_templateObject, function (pr
 }, function (props) {
     return props.theme.input.margin;
 });
-
 var InputField = function InputField(_ref) {
     var type = _ref.type,
         name = _ref.name,
@@ -28039,13 +28041,19 @@ var InputField = function InputField(_ref) {
         readOnly = _ref.readOnly,
         meta = _ref.meta,
         onChange = _ref.onChange,
-        rest = _objectWithoutProperties(_ref, ["type", "name", "label", "readOnly", "meta", "onChange"]);
+        error = _ref.error,
+        rest = _objectWithoutProperties(_ref, ["type", "name", "label", "readOnly", "meta", "onChange", "error"]);
 
     var fieldOptions = {};
 
     if (readOnly) {
         fieldOptions["readOnly"] = "readOnly";
     }
+
+    if (error) {
+        fieldOptions["error"] = "error";
+    }
+
     var handleChange = function handleChange(event) {
         onChange({
             name: name,
@@ -28067,10 +28075,10 @@ var InputField = function InputField(_ref) {
         }, fieldOptions, {
             onChange: handleChange
         }, rest)),
-        meta.touched && meta.error && _react2.default.createElement(
+        error && _react2.default.createElement(
             "span",
             null,
-            meta.error
+            error
         )
     );
 };
@@ -28087,19 +28095,18 @@ InputField.propTypes = {
     type: _propTypes2.default.string,
     label: _propTypes2.default.string,
     readOnly: _propTypes2.default.bool,
-    meta: _propTypes2.default.shape({
-        touched: _propTypes2.default.bool,
-        error: _propTypes2.default.string
-    })
+    error: _propTypes2.default.string
 };
+
 InputField.defaultProps = {
     size: "default",
     expanded: false,
     block: true,
     type: "text",
     readOnly: false,
-    meta: {}
+    error: ""
 };
+
 exports.default = InputField;
 
 /***/ }),
