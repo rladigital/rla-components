@@ -27216,10 +27216,27 @@ var theme = {
         }
     },
     panel: {
-        color: colors.black,
-        background: colors.lightGray,
-        padding: spacing.padding,
-        margin: spacing.margin
+        default: "light",
+        types: {
+            light: {
+                color: colors.black,
+                background: colors.lightGray,
+                padding: spacing.padding,
+                margin: spacing.margin
+            },
+            dark: {
+                color: colors.white,
+                background: colors.primary,
+                padding: spacing.padding,
+                margin: spacing.margin
+            },
+            accent: {
+                color: colors.white,
+                background: colors.accent,
+                padding: spacing.padding,
+                margin: spacing.margin
+            }
+        }
     },
     icon: {
         colors: colors
@@ -37878,7 +37895,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(["\n    height: 100%;\n    padding: ", "em ", "em 0 ", "em;\n    background-color ", ";\n    overflow: hidden;\n    margin-bottom: ", "em;\n    color: ", ";\n"], ["\n    height: 100%;\n    padding: ", "em ", "em 0 ", "em;\n    background-color ", ";\n    overflow: hidden;\n    margin-bottom: ", "em;\n    color: ", ";\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n    height: 100%;\n    padding: ", "em;\n    background-color ", ";\n    overflow: hidden;\n    margin-bottom: ", "em;\n    color: ", ";\n"], ["\n    height: 100%;\n    padding: ", "em;\n    background-color ", ";\n    overflow: hidden;\n    margin-bottom: ", "em;\n    color: ", ";\n"]);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _styledComponents = __webpack_require__(3);
 
@@ -37888,21 +37909,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+var type = function type(props) {
+    return props.type ? props.type : props.theme.panel.default;
+};
+var panel = function panel(props) {
+    return props.theme.panel.types[type(props)];
+};
+
 var Panel = _styledComponents2.default.div(_templateObject, function (props) {
-    return props.theme.panel.padding;
+    return panel(props).padding;
 }, function (props) {
-    return props.theme.panel.padding;
+    return panel(props).background;
 }, function (props) {
-    return props.theme.panel.padding;
+    return panel(props).margin;
 }, function (props) {
-    return props.theme.panel.background;
-}, function (props) {
-    return props.theme.panel.margin;
-}, function (props) {
-    return props.theme.panel.color;
+    return panel(props).color;
 });
 
 Panel.displayName = "Panel";
+
+Panel.propTypes = {
+    type: _propTypes2.default.string
+};
 
 exports.default = Panel;
 
@@ -45696,7 +45724,7 @@ exports = module.exports = __webpack_require__(31)(undefined);
 
 
 // module
-exports.push([module.i, ".react-grid-layout {\n    position: relative;\n    transition: height 200ms ease;\n}\n.react-grid-item {\n    transition: all 200ms ease;\n    transition-property: left, top;\n}\n.react-grid-item.cssTransforms {\n    transition-property: transform;\n}\n.react-grid-item.resizing {\n    z-index: 1;\n    will-change: width, height;\n}\n\n.react-grid-item.react-draggable-dragging {\n    transition: none;\n    z-index: 3;\n    will-change: transform;\n}\n\n.react-grid-item.react-grid-placeholder {\n    background: red;\n    opacity: 0.2;\n    transition-duration: 100ms;\n    z-index: 2;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    -o-user-select: none;\n    user-select: none;\n}\n\n.react-grid-item > .react-resizable-handle {\n    position: absolute;\n    width: 20px;\n    height: 20px;\n    bottom: 0;\n    right: 0;\n    background: url(\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg08IS0tIEdlbmVyYXRvcjogQWRvYmUgRmlyZXdvcmtzIENTNiwgRXhwb3J0IFNWRyBFeHRlbnNpb24gYnkgQWFyb24gQmVhbGwgKGh0dHA6Ly9maXJld29ya3MuYWJlYWxsLmNvbSkgLiBWZXJzaW9uOiAwLjYuMSAgLS0+DTwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DTxzdmcgaWQ9IlVudGl0bGVkLVBhZ2UlMjAxIiB2aWV3Qm94PSIwIDAgNiA2IiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmMDAiIHZlcnNpb249IjEuMSINCXhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiDQl4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjZweCIgaGVpZ2h0PSI2cHgiDT4NCTxnIG9wYWNpdHk9IjAuMzAyIj4NCQk8cGF0aCBkPSJNIDYgNiBMIDAgNiBMIDAgNC4yIEwgNCA0LjIgTCA0LjIgNC4yIEwgNC4yIDAgTCA2IDAgTCA2IDYgTCA2IDYgWiIgZmlsbD0iIzAwMDAwMCIvPg0JPC9nPg08L3N2Zz4=\");\n    background-position: bottom right;\n    padding: 0 3px 3px 0;\n    background-repeat: no-repeat;\n    background-origin: content-box;\n    box-sizing: border-box;\n    cursor: se-resize;\n}\n", ""]);
+exports.push([module.i, ".react-grid-layout {\n  position: relative;\n  transition: height 200ms ease;\n}\n.react-grid-item {\n  transition: all 200ms ease;\n  transition-property: left, top;\n}\n.react-grid-item.cssTransforms {\n  transition-property: transform;\n}\n.react-grid-item.resizing {\n  z-index: 1;\n  will-change: width, height;\n}\n\n.react-grid-item.react-draggable-dragging {\n  transition: none;\n  z-index: 3;\n  will-change: transform;\n}\n\n.react-grid-item.react-grid-placeholder {\n  background: red;\n  opacity: 0.2;\n  transition-duration: 100ms;\n  z-index: 2;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  -o-user-select: none;\n  user-select: none;\n}\n\n.react-grid-item > .react-resizable-handle {\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  bottom: 0;\n  right: 0;\n  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg08IS0tIEdlbmVyYXRvcjogQWRvYmUgRmlyZXdvcmtzIENTNiwgRXhwb3J0IFNWRyBFeHRlbnNpb24gYnkgQWFyb24gQmVhbGwgKGh0dHA6Ly9maXJld29ya3MuYWJlYWxsLmNvbSkgLiBWZXJzaW9uOiAwLjYuMSAgLS0+DTwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DTxzdmcgaWQ9IlVudGl0bGVkLVBhZ2UlMjAxIiB2aWV3Qm94PSIwIDAgNiA2IiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmMDAiIHZlcnNpb249IjEuMSINCXhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiDQl4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjZweCIgaGVpZ2h0PSI2cHgiDT4NCTxnIG9wYWNpdHk9IjAuMzAyIj4NCQk8cGF0aCBkPSJNIDYgNiBMIDAgNiBMIDAgNC4yIEwgNCA0LjIgTCA0LjIgNC4yIEwgNC4yIDAgTCA2IDAgTCA2IDYgTCA2IDYgWiIgZmlsbD0iIzAwMDAwMCIvPg0JPC9nPg08L3N2Zz4=');\n  background-position: bottom right;\n  padding: 0 3px 3px 0;\n  background-repeat: no-repeat;\n  background-origin: content-box;\n  box-sizing: border-box;\n  cursor: se-resize;\n}\n", ""]);
 
 // exports
 

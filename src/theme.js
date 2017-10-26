@@ -45,10 +45,27 @@ const theme = {
         }
     },
     panel: {
-        color: colors.black,
-        background: colors.lightGray,
-        padding: spacing.padding,
-        margin: spacing.margin
+        default: "light",
+        types: {
+            light: {
+                color: colors.black,
+                background: colors.lightGray,
+                padding: spacing.padding,
+                margin: spacing.margin
+            },
+            dark: {
+                color: colors.white,
+                background: colors.primary,
+                padding: spacing.padding,
+                margin: spacing.margin
+            },
+            accent: {
+                color: colors.white,
+                background: colors.accent,
+                padding: spacing.padding,
+                margin: spacing.margin
+            }
+        }
     },
     icon: {
         colors: colors

@@ -4,7 +4,15 @@ import { action } from "@storybook/addon-actions";
 import { Panel } from "../../src/index";
 
 storiesOf("Panel", module).addWithInfo("Default", () => (
-    <Panel>
-        <p>This is a panel. You can use it to emphasise or divide content.</p>
-    </Panel>
+    <div>
+        <Panel>
+            <p>This is a default panel (light)</p>
+        </Panel>
+        <Panel type="dark">
+            <p>This is a dark panel</p>
+        </Panel>
+        <Panel type="accent">
+            <p>This is an accent panel</p>
+        </Panel>
+    </div>
 ));
