@@ -1,18 +1,30 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { Panel } from "../../src/index";
+import { Panel, Row, Column } from "../../src/index";
 
 storiesOf("Panel", module).addWithInfo("Default", () => (
     <div>
         <Panel>
-            <p>This is a default panel (light)</p>
+            <Row>
+                <Column>
+                    <p>This is a default panel (light)</p>
+                </Column>
+            </Row>
         </Panel>
         <Panel type="dark">
-            <p>This is a dark panel</p>
+            <Row>
+                <Column>
+                    <p>This is a dark panel</p>
+                </Column>
+            </Row>
         </Panel>
         <Panel type="accent">
-            <p>This is an accent panel</p>
+            <Row>
+                <Column>
+                    <p>This is an accent panel</p>
+                </Column>
+            </Row>
         </Panel>
     </div>
 ));
