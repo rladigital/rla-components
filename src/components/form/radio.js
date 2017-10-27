@@ -42,7 +42,7 @@ const RadioField = ({
                             value={radio.value}
                             onChange={handleChange}
                         />
-                        {radio.text}
+                        {" " + radio.text}
                     </div>
                 ))}
             {meta.touched && meta.error && <span>{meta.error}</span>}

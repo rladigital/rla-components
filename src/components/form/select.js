@@ -34,8 +34,7 @@ const SelectField = ({
                 <FormLabel name={name} label={label} {...rest}>
                     {label}
                 </FormLabel>
-            )}
-
+            )}{" "}
             <select onChange={handleChange} {...rest}>
                 <option value="">{emptyOption}</option>
                 {options &&
