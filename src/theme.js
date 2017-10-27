@@ -119,6 +119,35 @@ const theme = {
             },
             resize: {}
         }
+    },
+    dropzone: {
+        default: "light",
+        types: {
+            light: {
+                radius: 0,
+                margin: spacing.margin,
+                padding: spacing.padding,
+                background: colors.lightGray,
+                border: "4px dashed",
+                color: colors.primary
+            },
+            dark: {
+                radius: 0,
+                margin: spacing.margin,
+                padding: spacing.padding,
+                background: colors.primary,
+                border: "4px dashed " + colors.mediumGray,
+                color: colors.white
+            },
+            accent: {
+                radius: 0,
+                padding: spacing.padding,
+                margin: spacing.margin,
+                background: colors.accent,
+                border: "4px dashed",
+                color: colors.primary
+            }
+        }
     }
 };
 
