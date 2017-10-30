@@ -8,19 +8,20 @@ import {
     MainNavMenuLink
 } from "../../src/index";
 
-const NavExample = () => (
-    <MainNavContainer>
-        <MainNavMenu>
-            <MainNavMenuLink to="/">Home</MainNavMenuLink>
-            <MainNavMenuLink to="/assets">Assets</MainNavMenuLink>
-            <MainNavMenuLink to="/pinpoint">Pinpoint</MainNavMenuLink>
-        </MainNavMenu>
-    </MainNavContainer>
-);
 storiesOf("Navigation", module).addWithInfo("Default", () => (
     <Router>
         <Switch>
-            <Route path="/" component={NavExample} />
+            <Route path="/">
+                <MainNavContainer>
+                    <MainNavMenu>
+                        <MainNavMenuLink to="/">Home</MainNavMenuLink>
+                        <MainNavMenuLink to="/assets">Assets</MainNavMenuLink>
+                        <MainNavMenuLink to="/pinpoint">
+                            Pinpoint
+                        </MainNavMenuLink>
+                    </MainNavMenu>
+                </MainNavContainer>
+            </Route>
         </Switch>
     </Router>
 ));
