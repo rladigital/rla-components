@@ -7,7 +7,7 @@ import { StyledDropzone } from "../../src/index";
 
 storiesOf("Dropzone", module).add(
     "Default",
-    withInfo("About Button")(() => (
+    withInfo("Styling the react-dropzone component")(() => (
         <div>
             <StyledDropzone>
                 This is a default StyledDropzone (light)
