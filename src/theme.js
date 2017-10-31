@@ -100,6 +100,12 @@ const theme = {
         fontWeight: "bold",
         textDecoration: "none"
     },
+    navigation: {
+        background: colors.white,
+        color: colors.black,
+        activeColor: colors.accent,
+        margin: spacing.margin
+    },
     dashboard: {
         panel: {
             bar: {

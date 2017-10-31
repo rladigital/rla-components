@@ -20,4 +20,11 @@ export { default as Dashboard } from "./components/Dashboard";
 export { default as DashboardPanel } from "./components/DashboardPanel";
 export { default as StyledLink } from "./components/styledLink";
 export { default as ButtonLink } from "./components/buttonLink";
+export {
+    default as MainNavContainer
+} from "./components/navigation/MainNavContainer";
+export { default as MainNavMenu } from "./components/navigation/MainNavMenu";
+export {
+    default as MainNavMenuLink
+} from "./components/navigation/MainNavMenuLink";
 export { default as StyledDropzone } from "./components/styledDropzone";
