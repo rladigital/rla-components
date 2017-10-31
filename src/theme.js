@@ -154,6 +154,10 @@ const theme = {
                 color: colors.primary
             }
         }
+    },
+    dropdown: {
+        minWidth: "20",
+        background: colors.lightGray
     }
 };
 
