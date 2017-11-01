@@ -22,6 +22,7 @@ class Dropdown extends React.Component {
             min-width: ${props => props.theme.dropdown.minWidth}em;
             background: ${props => props.theme.dropdown.background};
             text-align: ${props => props.alignX};
+            z-index: 1;
 
             // X position
             ${props => props.alignX} : 0;
@@ -32,6 +33,10 @@ class Dropdown extends React.Component {
             // Pull to top
             ${props =>
                 props.alignY == "top" && css`transform: translateY(-100%);`};
+
+            // Pull to bottom
+            ${props =>
+                props.alignY == "bottom" && css`transform: translateY(100%);`};
         `;
 
         const activeOn = {

@@ -158,6 +158,13 @@ const theme = {
     dropdown: {
         minWidth: "20",
         background: colors.lightGray
+    },
+    menu: {
+        color: colors.primary,
+        background: colors.white,
+        hoverBackground: colors.lightGray,
+        borderBottom: "1px solid " + colors.lightGray,
+        padding: 0.8
     }
 };
 

@@ -3,9 +3,15 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
 
-import { Button, Dropdown } from "../../src/index";
+import { Button, Dropdown, Menu, MenuItem } from "../../src/index";
 
-const menu = "Menu goes here";
+const menu = (
+    <Menu>
+        <MenuItem onClick={() => alert("menu item 1")}>Item 1</MenuItem>
+        <MenuItem onClick={() => alert("menu item 2")}>Item 2</MenuItem>
+        <MenuItem onClick={() => alert("menu item 3")}>Item 3</MenuItem>
+    </Menu>
+);
 
 storiesOf("Dropdown", module)
     .add(
