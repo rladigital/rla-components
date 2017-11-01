@@ -7404,6 +7404,24 @@ Object.defineProperty(exports, "StyledDropzone", {
     }
 });
 
+var _menu = __webpack_require__(398);
+
+Object.defineProperty(exports, "Menu", {
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_menu).default;
+    }
+});
+
+var _menuItem = __webpack_require__(399);
+
+Object.defineProperty(exports, "MenuItem", {
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_menuItem).default;
+    }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
@@ -26413,6 +26431,17 @@ var theme = {
                 color: colors.primary
             }
         }
+    },
+    dropdown: {
+        minWidth: "20",
+        background: colors.lightGray
+    },
+    menu: {
+        color: colors.primary,
+        background: colors.white,
+        hoverBackground: colors.lightGray,
+        borderBottom: "1px solid " + colors.lightGray,
+        padding: 0.8
     }
 };
 
@@ -35350,27 +35379,26 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(["\n            position: relative;\n            display: inline-block;\n        "], ["\n            position: relative;\n            display: inline-block;\n        "]),
-    _templateObject2 = _taggedTemplateLiteral(["\n            position: absolute;\n            background: ", ";\n            ", ";\n        "], ["\n            position: absolute;\n            background: ", ";\n            ", ";\n        "]),
-    _templateObject3 = _taggedTemplateLiteral(["right: 0;"], ["right: 0;"]),
-    _templateObject4 = _taggedTemplateLiteral(["left: 0;"], ["left: 0;"]),
-    _templateObject5 = _taggedTemplateLiteral(["\n            min-width: 200px;\n            background: ", ";\n            border-bottom: 1px solid ", ";\n            padding: ", "em ", "em;\n            cursor: pointer;\n            &:hover {\n                background: ", ";\n            }\n        "], ["\n            min-width: 200px;\n            background: ", ";\n            border-bottom: 1px solid ", ";\n            padding: ", "em ", "em;\n            cursor: pointer;\n            &:hover {\n                background: ", ";\n            }\n        "]);
+    _templateObject2 = _taggedTemplateLiteral(["\n            position: absolute;\n            min-width: ", "em;\n            background: ", ";\n            text-align: ", ";\n            z-index: 1;\n\n            // X position\n            ", " : 0;\n\n            // Y position\n            ", " : 0;\n\n            // Pull to top\n            ", ";\n\n            // Pull to bottom\n            ", ";\n        "], ["\n            position: absolute;\n            min-width: ", "em;\n            background: ", ";\n            text-align: ", ";\n            z-index: 1;\n\n            // X position\n            ", " : 0;\n\n            // Y position\n            ", " : 0;\n\n            // Pull to top\n            ", ";\n\n            // Pull to bottom\n            ", ";\n        "]),
+    _templateObject3 = _taggedTemplateLiteral(["transform: translateY(-100%);"], ["transform: translateY(-100%);"]),
+    _templateObject4 = _taggedTemplateLiteral(["transform: translateY(100%);"], ["transform: translateY(100%);"]);
 
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _styledComponents = __webpack_require__(3);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 var _animateCssStyledComponents = __webpack_require__(56);
-
-var _functions = __webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35397,61 +35425,60 @@ var Dropdown = function (_React$Component) {
     }
 
     _createClass(Dropdown, [{
-        key: "_onMouseEnter",
-        value: function _onMouseEnter() {
-            this.setState({ visible: true });
-        }
-    }, {
-        key: "_onMouseLeave",
-        value: function _onMouseLeave() {
-            this.setState({ visible: false });
-        }
-    }, {
-        key: "_renderItems",
-        value: function _renderItems(DropdownItem, items) {
-            var result = [];
-            for (var i = 0; i < items.length; i++) {
-                var props = items[i].props;
-                result.push(_react2.default.createElement(
-                    DropdownItem,
-                    _extends({ key: i }, props),
-                    items[i].children
-                ));
-            }
-
-            return result;
-        }
-    }, {
         key: "render",
         value: function render() {
             var _this2 = this;
 
-            var theme = this.props.theme;
+            var DropdownWrapper = _styledComponents2.default.div(_templateObject);
 
+            var Dropdown = _styledComponents2.default.div(_templateObject2, function (props) {
+                return props.theme.dropdown.minWidth;
+            }, function (props) {
+                return props.theme.dropdown.background;
+            }, function (props) {
+                return props.alignX;
+            }, function (props) {
+                return props.alignX;
+            }, function (props) {
+                return props.alignY;
+            }, function (props) {
+                return props.alignY == "top" && (0, _styledComponents.css)(_templateObject3);
+            }, function (props) {
+                return props.alignY == "bottom" && (0, _styledComponents.css)(_templateObject4);
+            });
 
-            var DropdownContainer = _styledComponents2.default.span(_templateObject);
+            var activeOn = {
+                hover: {
+                    show: "onMouseEnter",
+                    hide: "onMouseLeave"
+                },
+                click: {
+                    show: "onClick",
+                    hide: "onMouseLeave"
+                }
+            };
 
-            var DropdownMenu = _styledComponents2.default.div(_templateObject2, theme.global.colors.white, this.props.right ? (0, _styledComponents.css)(_templateObject3) : (0, _styledComponents.css)(_templateObject4));
+            var dropdownProps = {};
 
-            var DropdownItem = _styledComponents2.default.div(_templateObject5, theme.global.colors.lightGray, theme.global.colors.white, theme.global.padding / 2, theme.global.padding, (0, _functions.shade)(theme.global.colors.lightGray, -20));
+            dropdownProps[activeOn[this.props.activeOn].show] = function () {
+                return _this2.setState({ visible: true });
+            };
+
+            dropdownProps[activeOn[this.props.activeOn].hide] = function () {
+                return _this2.setState({ visible: false });
+            };
 
             return _react2.default.createElement(
-                DropdownContainer,
-                {
-                    onMouseEnter: function onMouseEnter() {
-                        return _this2._onMouseEnter();
-                    },
-                    onMouseLeave: function onMouseLeave() {
-                        return _this2._onMouseLeave();
-                    }
-                },
+                DropdownWrapper,
+                dropdownProps,
                 this.props.children,
-                this.state.visible && _react2.default.createElement(
-                    DropdownMenu,
-                    { ref: function ref(dropdown) {
-                            return _this2.dropdown = dropdown;
-                        } },
-                    this.props.items && this._renderItems(DropdownItem, this.props.items)
+                (this.state.visible || this.props.visible) && _react2.default.createElement(
+                    Dropdown,
+                    {
+                        alignX: this.props.alignX,
+                        alignY: this.props.alignY
+                    },
+                    this.props.menu
                 )
             );
         }
@@ -35460,9 +35487,26 @@ var Dropdown = function (_React$Component) {
     return Dropdown;
 }(_react2.default.Component);
 
+Dropdown.propTypes = {
+    /** Horizontal align left / right  */
+    alignX: _propTypes2.default.string,
+    /** Vertical align top / bottom  */
+    alignY: _propTypes2.default.string,
+    /** Display the dropdown on hover / click / custom */
+    activeOn: _propTypes2.default.string,
+    /** Override visibility */
+    visible: _propTypes2.default.bool
+};
+
+Dropdown.defaultProps = {
+    alignX: "left",
+    alignY: "bottom",
+    activeOn: "hover"
+};
+
 Dropdown.displayName = "Dropdown";
 
-exports.default = (0, _styledComponents.withTheme)(Dropdown);
+exports.default = Dropdown;
 
 /***/ }),
 /* 328 */
@@ -47088,6 +47132,74 @@ module.exports=function(t){function n(e){if(r[e])return r[e].exports;var o=r[e]=
     borderRadius: 5
   }
 });
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    list-style: none;\n    margin: 0;\n    padding: 0;\n"], ["\n    width: 100%;\n    list-style: none;\n    margin: 0;\n    padding: 0;\n"]);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__(3);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Menu = _styledComponents2.default.ul(_templateObject);
+
+exports.default = Menu;
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(["\n    margin: 0;\n    width: 100%;\n    cursor: pointer;\n    padding: ", ";\n    background: ", ";\n    color: ", ";\n    &:not(:last-child) {\n        border-bottom: ", ";\n    }\n    &:hover {\n        background: ", ";\n    }\n"], ["\n    margin: 0;\n    width: 100%;\n    cursor: pointer;\n    padding: ", ";\n    background: ", ";\n    color: ", ";\n    &:not(:last-child) {\n        border-bottom: ", ";\n    }\n    &:hover {\n        background: ", ";\n    }\n"]);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__(3);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var MenuItem = _styledComponents2.default.li(_templateObject, function (props) {
+    return props.theme.menu.padding / 2 + "em " + props.theme.menu.padding + "em";
+}, function (props) {
+    return props.theme.menu.background;
+}, function (props) {
+    return props.theme.menu.color;
+}, function (props) {
+    return props.theme.menu.borderBottom;
+}, function (props) {
+    return props.theme.menu.hoverBackground;
+});
+
+exports.default = MenuItem;
 
 /***/ })
 /******/ ]);

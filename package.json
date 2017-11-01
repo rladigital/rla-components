@@ -1,6 +1,6 @@
 {
     "name": "rla-components",
-    "version": "0.3.29",
+    "version": "0.3.30",
     "description": "",
     "main": "dist/rla-components.js",
     "scripts": {
@@ -37,8 +37,8 @@
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-1": "^6.24.1",
         "css-loader": "^0.28.7",
-        "react": "^16.0.0",
-        "react-dom": "^16.0.0",
+        "react": "^15.6.1",
+        "react-dom": "^15.6.1",
         "shared-git-hooks": "^1.2.1",
         "style-loader": "^0.19.0",
         "webpack": "^3.6.0",
