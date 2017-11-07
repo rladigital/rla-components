@@ -85,7 +85,8 @@ const theme = {
         margin: spacing.margin,
         radius: spacing.radius,
         background: colors.white,
-        closeButtonColor: colors.black
+        closeButtonColor: colors.black,
+        color: colrs.primary
     },
     tooltip: {
         color: colors.white,

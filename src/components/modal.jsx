@@ -67,6 +67,7 @@ class Modal extends React.Component {
             border-radius: ${theme.modal.radius}em;
             background: ${theme.modal.background};
             padding: ${theme.modal.padding}em ${theme.modal.padding / 2}rem 0;
+            color: ${theme.modal.color};
         `;
         const ModalCloseButton = styled.div.attrs({
             role: "button"
