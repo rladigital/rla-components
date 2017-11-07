@@ -27333,7 +27333,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    max-width: ", ";\n    height: ", "em;\n    border-radius: ", "em;\n    border: 1px solid\n        ", ";\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n    padding: 0 ", "em;\n    margin: 0\n        ", "\n        auto ", "em;\n    font-size: 1em;\n    background-image: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>\");\n    background-origin: content-box;\n    background-position: right -1rem center;\n    background-repeat: no-repeat;\n    background-size: 9px 6px;\n    padding-right: 1.5rem;\n    appearance: none;\n"], ["\n    width: 100%;\n    max-width: ", ";\n    height: ", "em;\n    border-radius: ", "em;\n    border: 1px solid\n        ", ";\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n    padding: 0 ", "em;\n    margin: 0\n        ", "\n        auto ", "em;\n    font-size: 1em;\n    background-image: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>\");\n    background-origin: content-box;\n    background-position: right -1rem center;\n    background-repeat: no-repeat;\n    background-size: 9px 6px;\n    padding-right: 1.5rem;\n    appearance: none;\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    max-width: ", ";\n    height: ", "em;\n    border-radius: ", "em;\n    border: 1px solid\n        ", ";\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n    padding: 0 ", "em;\n    margin: 0\n        ", "\n        auto ", "em;\n    margin-bottom: ", "em;\n    font-size: 1em;\n    background-image: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>\");\n    background-origin: content-box;\n    background-position: right -1rem center;\n    background-repeat: no-repeat;\n    background-size: 9px 6px;\n    padding-right: 1.5rem;\n    appearance: none;\n"], ["\n    width: 100%;\n    max-width: ", ";\n    height: ", "em;\n    border-radius: ", "em;\n    border: 1px solid\n        ", ";\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n    padding: 0 ", "em;\n    margin: 0\n        ", "\n        auto ", "em;\n    margin-bottom: ", "em;\n    font-size: 1em;\n    background-image: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>\");\n    background-origin: content-box;\n    background-position: right -1rem center;\n    background-repeat: no-repeat;\n    background-size: 9px 6px;\n    padding-right: 1.5rem;\n    appearance: none;\n"]);
 
 var _react = __webpack_require__(1);
 
@@ -27373,6 +27373,8 @@ var Select = _styledComponents2.default.select(_templateObject, function (props)
     return props.expanded || props.align == "right" ? 0 : "0.4em";
 }, function (props) {
     return props.align == "right" ? "0.4em" : 0;
+}, function (props) {
+    return props.theme.input.margin;
 });
 
 var SelectField = function SelectField(_ref) {
@@ -27383,10 +27385,9 @@ var SelectField = function SelectField(_ref) {
         label = _ref.label,
         inlineLabel = _ref.inlineLabel,
         emptyOption = _ref.emptyOption,
-        expanded = _ref.expanded,
         readOnly = _ref.readOnly,
         meta = _ref.meta,
-        rest = _objectWithoutProperties(_ref, ["options", "type", "name", "onChange", "label", "inlineLabel", "emptyOption", "expanded", "readOnly", "meta"]);
+        rest = _objectWithoutProperties(_ref, ["options", "type", "name", "onChange", "label", "inlineLabel", "emptyOption", "readOnly", "meta"]);
 
     var handleChange = function handleChange(event) {
         onChange({
