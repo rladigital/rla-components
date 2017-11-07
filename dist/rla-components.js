@@ -26362,7 +26362,8 @@ var theme = {
         margin: spacing.margin,
         radius: spacing.radius,
         background: colors.white,
-        closeButtonColor: colors.black
+        closeButtonColor: colors.black,
+        color: colors.primary
     },
     tooltip: {
         color: colors.white,
@@ -35561,7 +35562,7 @@ Object.defineProperty(exports, "__esModule", {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(["\n            top: 0;\n            left: 0;\n            right: 0;\n            width: 100%;\n            height: 100%;\n            overflow: auto;\n            position: fixed;\n            padding: 0 ", "rem;\n            background: rgba(0, 0, 0, 0.6);\n            z-index: 999;\n        "], ["\n            top: 0;\n            left: 0;\n            right: 0;\n            width: 100%;\n            height: 100%;\n            overflow: auto;\n            position: fixed;\n            padding: 0 ", "rem;\n            background: rgba(0, 0, 0, 0.6);\n            z-index: 999;\n        "]),
-    _templateObject2 = _taggedTemplateLiteral(["\n            max-width: 40em;\n            margin: 6em auto;\n            overflow: hidden;\n            position: relative;\n            border-radius: ", "em;\n            background: ", ";\n            padding: ", "em ", "rem 0;\n        "], ["\n            max-width: 40em;\n            margin: 6em auto;\n            overflow: hidden;\n            position: relative;\n            border-radius: ", "em;\n            background: ", ";\n            padding: ", "em ", "rem 0;\n        "]),
+    _templateObject2 = _taggedTemplateLiteral(["\n            max-width: 40em;\n            margin: 6em auto;\n            overflow: hidden;\n            position: relative;\n            border-radius: ", "em;\n            background: ", ";\n            padding: ", "em ", "rem 0;\n            color: ", ";\n        "], ["\n            max-width: 40em;\n            margin: 6em auto;\n            overflow: hidden;\n            position: relative;\n            border-radius: ", "em;\n            background: ", ";\n            padding: ", "em ", "rem 0;\n            color: ", ";\n        "]),
     _templateObject3 = _taggedTemplateLiteral(["\n            top: 0;\n            right: 0;\n            padding: 0;\n            opacity: 0.5;\n            cursor: pointer;\n            position: absolute;\n            margin: ", "rem;\n            color: ", ";\n        "], ["\n            top: 0;\n            right: 0;\n            padding: 0;\n            opacity: 0.5;\n            cursor: pointer;\n            position: absolute;\n            margin: ", "rem;\n            color: ", ";\n        "]);
 
 var _react = __webpack_require__(1);
@@ -35646,7 +35647,7 @@ var Modal = function (_React$Component) {
             } catch (err) {}
 
             var ModalWrapper = animation.fade.extend(_templateObject, theme.modal.padding);
-            var ModalInner = animation.zoom.extend(_templateObject2, theme.modal.radius, theme.modal.background, theme.modal.padding, theme.modal.padding / 2);
+            var ModalInner = animation.zoom.extend(_templateObject2, theme.modal.radius, theme.modal.background, theme.modal.padding, theme.modal.padding / 2, theme.modal.color);
             var ModalCloseButton = _styledComponents2.default.div.attrs({
                 role: "button"
             })(_templateObject3, theme.modal.margin, theme.modal.closeButtonColor);
