@@ -5,8 +5,10 @@ import Icon from "./icon";
 
 const Progress = styled.div`
     ${props => css`
+        text-align: center;
         display: inline-block;
         padding: ${props.theme.steps.border}px;
+        margin-bottom: ${props.theme.steps.margin}em;
     `};
 `;
 
@@ -20,6 +22,7 @@ const Circle = styled.div`
         box-shadow: 0px 0px 0 ${props.theme.steps.border}px
             ${props.theme.steps.borderColor};
         padding: ${props.theme.steps.padding}px;
+        margin-bottom: 20px;
         cursor: pointer;
         position: relative;
     `};
@@ -92,8 +95,8 @@ const Label = styled.div`
         white-space: nowrap;
         transform: translateX(-50%);
         color: ${props.theme.steps.labelColor};
-        font-size: 0.8em;
-        margin-top: 2px;
+        font-size: 13px;
+        bottom: -18px;
     `};
 `;
 
@@ -130,10 +133,10 @@ class Steps extends React.Component {
                                     {stages[i].icon && (
                                         <Icon name={stages[i].icon} />
                                     )}
-                                    {stages[i].label && (
-                                        <Label>{stages[i].label}</Label>
-                                    )}
                                 </CircleInner>
+                                {stages[i].label && (
+                                    <Label>{stages[i].label}</Label>
+                                )}
                             </Circle>
                             {stages.length - 1 != i && (
                                 <Bar barWidth={this.props.barWidth}>

@@ -174,7 +174,8 @@ const theme = {
         progressColor: colors.success,
         backgroundColor: colors.white,
         borderColor: colors.success,
-        labelColor: colors.primary,
+        labelColor: "inherit",
+        margin: spacing.margin,
         border: 1,
         padding: 4
     }

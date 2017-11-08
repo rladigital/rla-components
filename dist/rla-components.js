@@ -26460,7 +26460,8 @@ var theme = {
         progressColor: colors.success,
         backgroundColor: colors.white,
         borderColor: colors.success,
-        labelColor: colors.primary,
+        labelColor: "inherit",
+        margin: spacing.margin,
         border: 1,
         padding: 4
     }
@@ -35744,7 +35745,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(["\n    height: 100%;\n    overflow: hidden;\n    padding-bottom: 0;\n    padding-top: ", "em;\n    padding-left: ", "em;\n    padding-right: ", "em;\n    background-color ", ";\n    margin-bottom: ", "em;\n    color: ", ";\n"], ["\n    height: 100%;\n    overflow: hidden;\n    padding-bottom: 0;\n    padding-top: ", "em;\n    padding-left: ", "em;\n    padding-right: ", "em;\n    background-color ", ";\n    margin-bottom: ", "em;\n    color: ", ";\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n    height: 100%;\n    overflow: hidden;\n    padding-bottom: 0;\n    padding-top: ", "em;\n    padding-left: ", "em;\n    padding-right: ", "em;\n    background-color ", ";\n    margin-bottom: ", "em;\n    color: ", ";\n    text-align: ", "\n"], ["\n    height: 100%;\n    overflow: hidden;\n    padding-bottom: 0;\n    padding-top: ", "em;\n    padding-left: ", "em;\n    padding-right: ", "em;\n    background-color ", ";\n    margin-bottom: ", "em;\n    color: ", ";\n    text-align: ", "\n"]);
 
 var _propTypes = __webpack_require__(2);
 
@@ -35777,12 +35778,19 @@ var Panel = _styledComponents2.default.div(_templateObject, function (props) {
     return panel(props).margin;
 }, function (props) {
     return panel(props).color;
+}, function (props) {
+    return props.textAlign;
 });
 
 Panel.displayName = "Panel";
 
 Panel.propTypes = {
-    type: _propTypes2.default.string
+    type: _propTypes2.default.string,
+    textAlign: _propTypes2.default.string
+};
+
+Panel.defaultProps = {
+    textAlign: "left"
 };
 
 exports.default = Panel;
@@ -47249,15 +47257,15 @@ Object.defineProperty(exports, "__esModule", {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(["\n    ", ";\n"], ["\n    ", ";\n"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n        display: inline-block;\n        padding: ", "px;\n    "], ["\n        display: inline-block;\n        padding: ", "px;\n    "]),
-    _templateObject3 = _taggedTemplateLiteral(["\n        width: ", "px;\n        height: ", "px;\n        background: ", ";\n        border-radius: 50px;\n        float: left;\n        box-shadow: 0px 0px 0 ", "px\n            ", ";\n        padding: ", "px;\n        cursor: pointer;\n        position: relative;\n    "], ["\n        width: ", "px;\n        height: ", "px;\n        background: ", ";\n        border-radius: 50px;\n        float: left;\n        box-shadow: 0px 0px 0 ", "px\n            ", ";\n        padding: ", "px;\n        cursor: pointer;\n        position: relative;\n    "]),
+    _templateObject2 = _taggedTemplateLiteral(["\n        text-align: center;\n        display: inline-block;\n        padding: ", "px;\n        margin-bottom: ", "em;\n    "], ["\n        text-align: center;\n        display: inline-block;\n        padding: ", "px;\n        margin-bottom: ", "em;\n    "]),
+    _templateObject3 = _taggedTemplateLiteral(["\n        width: ", "px;\n        height: ", "px;\n        background: ", ";\n        border-radius: 50px;\n        float: left;\n        box-shadow: 0px 0px 0 ", "px\n            ", ";\n        padding: ", "px;\n        margin-bottom: 20px;\n        cursor: pointer;\n        position: relative;\n    "], ["\n        width: ", "px;\n        height: ", "px;\n        background: ", ";\n        border-radius: 50px;\n        float: left;\n        box-shadow: 0px 0px 0 ", "px\n            ", ";\n        padding: ", "px;\n        margin-bottom: 20px;\n        cursor: pointer;\n        position: relative;\n    "]),
     _templateObject4 = _taggedTemplateLiteral(["\n        width: ", "vw;\n        height: ", "px;\n        background: ", ";\n        margin: ", "px\n            0;\n        margin-left: ", "px;\n        position: relative;\n        right: ", "px;\n        float: left;\n        box-shadow: 0 ", "px 0\n                ", ",\n            0 -", "px 0 0 ", ";\n        padding: ", "px ", "px\n            ", "px 0;\n        z-index: 1;\n    "], ["\n        width: ", "vw;\n        height: ", "px;\n        background: ", ";\n        margin: ", "px\n            0;\n        margin-left: ", "px;\n        position: relative;\n        right: ", "px;\n        float: left;\n        box-shadow: 0 ", "px 0\n                ", ",\n            0 -", "px 0 0 ", ";\n        padding: ", "px ", "px\n            ", "px 0;\n        z-index: 1;\n    "]),
     _templateObject5 = _taggedTemplateLiteral(["\n        width: 100%;\n        height: 100%;\n        border-radius: 100%;\n        transition: 50ms linear;\n        transition-delay: 50ms;\n        color: ", ";\n        line-height: ", "px;\n        ", ";\n    "], ["\n        width: 100%;\n        height: 100%;\n        border-radius: 100%;\n        transition: 50ms linear;\n        transition-delay: 50ms;\n        color: ", ";\n        line-height: ", "px;\n        ", ";\n    "]),
     _templateObject6 = _taggedTemplateLiteral(["\n                background: ", ";\n                color: ", ";\n            "], ["\n                background: ", ";\n                color: ", ";\n            "]),
     _templateObject7 = _taggedTemplateLiteral(["\n    ", ";\n    ", ";\n"], ["\n    ", ";\n    ", ";\n"]),
     _templateObject8 = _taggedTemplateLiteral(["\n        width: 0;\n        height: 100%;\n        border-top-radius: 20px;\n        margin-left: -", "px;\n        padding-right: ", "px;\n        box-sizing: content-box;\n        transition: 100ms linear;\n    "], ["\n        width: 0;\n        height: 100%;\n        border-top-radius: 20px;\n        margin-left: -", "px;\n        padding-right: ", "px;\n        box-sizing: content-box;\n        transition: 100ms linear;\n    "]),
     _templateObject9 = _taggedTemplateLiteral(["\n            background: ", ";\n            width: 100%;\n        "], ["\n            background: ", ";\n            width: 100%;\n        "]),
-    _templateObject10 = _taggedTemplateLiteral(["\n        left: 50%;\n        position: absolute;\n        white-space: nowrap;\n        transform: translateX(-50%);\n        color: ", ";\n        font-size: 0.8em;\n        margin-top: 2px;\n    "], ["\n        left: 50%;\n        position: absolute;\n        white-space: nowrap;\n        transform: translateX(-50%);\n        color: ", ";\n        font-size: 0.8em;\n        margin-top: 2px;\n    "]);
+    _templateObject10 = _taggedTemplateLiteral(["\n        left: 50%;\n        position: absolute;\n        white-space: nowrap;\n        transform: translateX(-50%);\n        color: ", ";\n        font-size: 13px;\n        bottom: -18px;\n    "], ["\n        left: 50%;\n        position: absolute;\n        white-space: nowrap;\n        transform: translateX(-50%);\n        color: ", ";\n        font-size: 13px;\n        bottom: -18px;\n    "]);
 
 var _react = __webpack_require__(1);
 
@@ -47286,7 +47294,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var Progress = _styledComponents2.default.div(_templateObject, function (props) {
-    return (0, _styledComponents.css)(_templateObject2, props.theme.steps.border);
+    return (0, _styledComponents.css)(_templateObject2, props.theme.steps.border, props.theme.steps.margin);
 });
 
 var Circle = _styledComponents2.default.div(_templateObject, function (props) {
@@ -47365,12 +47373,12 @@ var Steps = function (_React$Component) {
                             _react2.default.createElement(
                                 CircleInner,
                                 { active: i <= _this3.state.current },
-                                stages[i].icon && _react2.default.createElement(_icon2.default, { name: stages[i].icon }),
-                                stages[i].label && _react2.default.createElement(
-                                    Label,
-                                    null,
-                                    stages[i].label
-                                )
+                                stages[i].icon && _react2.default.createElement(_icon2.default, { name: stages[i].icon })
+                            ),
+                            stages[i].label && _react2.default.createElement(
+                                Label,
+                                null,
+                                stages[i].label
                             )
                         ),
                         stages.length - 1 != i && _react2.default.createElement(

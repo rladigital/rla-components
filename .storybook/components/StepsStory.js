@@ -3,12 +3,12 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
 
-import { Steps } from "../../src/index";
+import { Steps, Panel } from "../../src/index";
 
 storiesOf("Steps", module).add(
     "Default",
     withInfo("Progress bar for showing steps")(() => (
-        <div style={{ textAlign: "center" }}>
+        <Panel type="light" textAlign="center">
             <Steps
                 current={2}
                 stages={[
@@ -34,6 +34,6 @@ storiesOf("Steps", module).add(
                     }
                 ]}
             />
-        </div>
+        </Panel>
     ))
 );
