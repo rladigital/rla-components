@@ -30,3 +30,4 @@ export {
 export { default as StyledDropzone } from "./components/styledDropzone";
 export { default as Menu } from "./components/menu/menu";
 export { default as MenuItem } from "./components/menu/menuItem";
+export { default as Steps } from "./components/steps";

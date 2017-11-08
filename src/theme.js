@@ -166,6 +166,17 @@ const theme = {
         hoverBackground: colors.lightGray,
         borderBottom: "1px solid " + colors.lightGray,
         padding: 0.8
+    },
+    steps: {
+        barHeight: 20,
+        spacing: -3,
+        circleDiameter: 40,
+        progressColor: colors.success,
+        backgroundColor: colors.white,
+        borderColor: colors.success,
+        labelColor: colors.primary,
+        border: 1,
+        padding: 4
     }
 };
 
