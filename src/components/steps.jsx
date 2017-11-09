@@ -107,7 +107,7 @@ class Steps extends React.Component {
             current: this.props.current
         };
     }
-    componentWillReceiveProps() {
+    componentWillUpdate() {
         var i = this.state.current;
         var target = this.props.current;
         var timer = setInterval(() => {

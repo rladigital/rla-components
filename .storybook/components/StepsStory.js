@@ -10,7 +10,7 @@ storiesOf("Steps", module).add(
     withInfo("Progress bar for showing steps")(() => (
         <Panel type="light" textAlign="center">
             <Steps
-                current={2}
+                current={1}
                 stages={[
                     {
                         label: "Step 1",

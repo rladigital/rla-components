@@ -47336,8 +47336,8 @@ var Steps = function (_React$Component) {
     }
 
     _createClass(Steps, [{
-        key: "componentWillReceiveProps",
-        value: function componentWillReceiveProps() {
+        key: "componentWillUpdate",
+        value: function componentWillUpdate() {
             var _this2 = this;
 
             var i = this.state.current;
