@@ -47336,6 +47336,11 @@ var Steps = function (_React$Component) {
     }
 
     _createClass(Steps, [{
+        key: "shouldComponentUpdate",
+        value: function shouldComponentUpdate() {
+            if (this.state.current != this.props.current) return true;
+        }
+    }, {
         key: "componentWillUpdate",
         value: function componentWillUpdate() {
             var _this2 = this;

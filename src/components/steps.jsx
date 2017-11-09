@@ -107,6 +107,9 @@ class Steps extends React.Component {
             current: this.props.current
         };
     }
+    shouldComponentUpdate() {
+        if (this.state.current != this.props.current) return true;
+    }
     componentWillUpdate() {
         var i = this.state.current;
         var target = this.props.current;
