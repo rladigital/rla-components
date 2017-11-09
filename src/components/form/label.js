@@ -8,7 +8,7 @@ const StyledLabel = styled.label`
 
 const FormLabel = props => {
     return (
-        <StyledLabel for={props.name} {...props}>
+        <StyledLabel htmlFor={props.name} {...props}>
             {props.children}
         </StyledLabel>
     );
