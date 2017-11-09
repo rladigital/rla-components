@@ -85,7 +85,8 @@ const theme = {
         margin: spacing.margin,
         radius: spacing.radius,
         background: colors.white,
-        closeButtonColor: colors.black
+        closeButtonColor: colors.black,
+        color: colors.primary
     },
     tooltip: {
         color: colors.white,
@@ -154,6 +155,28 @@ const theme = {
                 color: colors.primary
             }
         }
+    },
+    dropdown: {
+        minWidth: "20",
+        background: colors.lightGray
+    },
+    menu: {
+        color: colors.primary,
+        background: colors.white,
+        hoverBackground: colors.lightGray,
+        borderBottom: "1px solid " + colors.lightGray,
+        padding: 0.8
+    },
+    steps: {
+        barHeight: 20,
+        spacing: -3,
+        circleDiameter: 40,
+        progressColor: colors.success,
+        backgroundColor: colors.white,
+        borderColor: colors.success,
+        labelColor: colors.primary,
+        border: 1,
+        padding: 4
     }
 };
 

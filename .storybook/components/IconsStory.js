@@ -9,7 +9,7 @@ storiesOf("Icons", module)
         <Row>
             {Object.keys(icons).map(function(key) {
                 return (
-                    <Column medium="3" small="6">
+                    <Column medium={3} small={6} key={key}>
                         <Panel>
                             <p>
                                 <Icon name={key} size="2" /> name="{key}"

@@ -1,7 +1,7 @@
 import React from "react";
-import styled, { withTheme, css } from "styled-components";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
 import { ZoomIn, ZoomOut } from "animate-css-styled-components";
-import { shade } from "./_functions";
 
 class Dropdown extends React.Component {
     constructor(props) {
@@ -11,70 +11,86 @@ class Dropdown extends React.Component {
         };
     }
 
-    _onMouseEnter() {
-        this.setState({ visible: true });
-    }
-
-    _onMouseLeave() {
-        this.setState({ visible: false });
-    }
-
-    _renderItems(DropdownItem, items) {
-        let result = [];
-        for (var i = 0; i < items.length; i++) {
-            const props = items[i].props;
-            result.push(
-                <DropdownItem key={i} {...props}>
-                    {items[i].children}
-                </DropdownItem>
-            );
-        }
-
-        return result;
-    }
-
     render() {
-        const { theme } = this.props;
-
-        const DropdownContainer = styled.span`
+        const DropdownWrapper = styled.div`
             position: relative;
             display: inline-block;
         `;
 
-        const DropdownMenu = styled.div`
+        const Dropdown = styled.div`
             position: absolute;
-            background: ${theme.global.colors.white};
-            ${this.props.right ? css`right: 0;` : css`left: 0;`};
+            min-width: ${props => props.theme.dropdown.minWidth}em;
+            background: ${props => props.theme.dropdown.background};
+            text-align: ${props => props.alignX};
+            z-index: 1;
+
+            // X position
+            ${props => props.alignX} : 0;
+
+            // Y position
+            ${props => props.alignY} : 0;
+
+            // Pull to top
+            ${props =>
+                props.alignY == "top" && css`transform: translateY(-100%);`};
+
+            // Pull to bottom
+            ${props =>
+                props.alignY == "bottom" && css`transform: translateY(100%);`};
         `;
 
-        const DropdownItem = styled.div`
-            min-width: 200px;
-            background: ${theme.global.colors.lightGray};
-            border-bottom: 1px solid ${theme.global.colors.white};
-            padding: ${theme.global.padding / 2}em ${theme.global.padding}em;
-            cursor: pointer;
-            &:hover {
-                background: ${shade(theme.global.colors.lightGray, -20)};
+        const activeOn = {
+            hover: {
+                show: "onMouseEnter",
+                hide: "onMouseLeave"
+            },
+            click: {
+                show: "onClick",
+                hide: "onMouseLeave"
             }
-        `;
+        };
+
+        let dropdownProps = {};
+
+        dropdownProps[activeOn[this.props.activeOn].show] = () =>
+            this.setState({ visible: true });
+
+        dropdownProps[activeOn[this.props.activeOn].hide] = () =>
+            this.setState({ visible: false });
 
         return (
-            <DropdownContainer
-                onMouseEnter={() => this._onMouseEnter()}
-                onMouseLeave={() => this._onMouseLeave()}
-            >
+            <DropdownWrapper {...dropdownProps}>
                 {this.props.children}
-                {this.state.visible && (
-                    <DropdownMenu ref={dropdown => (this.dropdown = dropdown)}>
-                        {this.props.items &&
-                            this._renderItems(DropdownItem, this.props.items)}
-                    </DropdownMenu>
+                {(this.state.visible || this.props.visible) && (
+                    <Dropdown
+                        alignX={this.props.alignX}
+                        alignY={this.props.alignY}
+                    >
+                        {this.props.menu}
+                    </Dropdown>
                 )}
-            </DropdownContainer>
+            </DropdownWrapper>
         );
     }
 }
 
+Dropdown.propTypes = {
+    /** Horizontal align left / right  */
+    alignX: PropTypes.string,
+    /** Vertical align top / bottom  */
+    alignY: PropTypes.string,
+    /** Display the dropdown on hover / click / custom */
+    activeOn: PropTypes.string,
+    /** Override visibility */
+    visible: PropTypes.bool
+};
+
+Dropdown.defaultProps = {
+    alignX: "left",
+    alignY: "bottom",
+    activeOn: "hover"
+};
+
 Dropdown.displayName = "Dropdown";
 
-export default withTheme(Dropdown);
+export default Dropdown;
