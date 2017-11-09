@@ -47336,27 +47336,24 @@ var Steps = function (_React$Component) {
     }
 
     _createClass(Steps, [{
-        key: "shouldComponentUpdate",
-        value: function shouldComponentUpdate() {
-            if (this.state.current != this.props.current) return true;
-        }
-    }, {
-        key: "componentWillUpdate",
-        value: function componentWillUpdate() {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
             var _this2 = this;
 
-            var i = this.state.current;
-            var target = this.props.current;
-            var timer = setInterval(function () {
-                if (target > i) {
-                    i++;
-                } else if (target < i) {
-                    i--;
-                } else {
-                    clearInterval(timer);
-                }
-                _this2.setState({ current: i });
-            }, 80);
+            if (this.state.current != this.props.current) {
+                var i = this.state.current;
+                var target = this.props.current;
+                var timer = setInterval(function () {
+                    if (target > i) {
+                        i++;
+                    } else if (target < i) {
+                        i--;
+                    } else {
+                        clearInterval(timer);
+                    }
+                    _this2.setState({ current: i });
+                }, 80);
+            }
         }
     }, {
         key: "render",
