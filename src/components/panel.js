@@ -14,12 +14,18 @@ const Panel = styled.div`
     background-color ${props => panel(props).background};
     margin-bottom: ${props => panel(props).margin}em;
     color: ${props => panel(props).color};
+    text-align: ${props => props.textAlign}
 `;
 
 Panel.displayName = "Panel";
 
 Panel.propTypes = {
-    type: PropTypes.string
+    type: PropTypes.string,
+    textAlign: PropTypes.string
+};
+
+Panel.defaultProps = {
+    textAlign: "left"
 };
 
 export default Panel;

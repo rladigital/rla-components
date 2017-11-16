@@ -1,6 +1,10 @@
 {
     "name": "rla-components",
+<<<<<<< HEAD
     "version": "0.3.39",
+=======
+    "version": "0.3.50",
+>>>>>>> c1f94c86482085846a4a5529d09cfc89b53818bb
     "description": "",
     "main": "dist/rla-components.js",
     "scripts": {
