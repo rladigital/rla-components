@@ -51,9 +51,12 @@ class TimePicker extends Component {
     }
 }
 
+TimePicker.displayName = "TimePicker";
+
 TimePicker.propTypes = {
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.any.isRequired,
+    value: PropTypes.any,
+    label: PropTypes.string,
     showSecond: PropTypes.bool,
     use12Hours: PropTypes.bool
 };

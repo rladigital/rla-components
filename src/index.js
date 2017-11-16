@@ -8,6 +8,7 @@ export { default as MultiCheckbox } from "./components/form/checkbox";
 export { default as SelectField } from "./components/form/select";
 export { default as DatePicker } from "./components/form/datePicker";
 export { default as TimePicker } from "./components/form/timePicker";
+export { default as Range } from "./components/form/range";
 export { default as Column } from "./components/column";
 export { default as Dropdown } from "./components/dropdown";
 export { default as Icon } from "./components/icon";
