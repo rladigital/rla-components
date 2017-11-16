@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled, { withTheme } from "styled-components";
 
-const MainNavMenuLink = withTheme(styled(NavLink).attrs({
+const MainNavLink = withTheme(styled(NavLink).attrs({
     exact: true,
     activeClassName: "active"
 })`
@@ -21,6 +21,6 @@ const MainNavMenuLink = withTheme(styled(NavLink).attrs({
             }
         `);
 
-MainNavMenuLink.displayName = "MainNavMenuLink";
+MainNavLink.displayName = "MainNavLink";
 
-export default MainNavMenuLink;
+export default MainNavLink;

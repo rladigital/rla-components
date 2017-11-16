@@ -12,7 +12,8 @@ import {
     SelectField,
     MultiCheckbox,
     DatePicker,
-    TimePicker
+    TimePicker,
+    Range
 } from "../../src/index";
 
 storiesOf("Form Inputs", module)
@@ -199,6 +200,27 @@ storiesOf("Form Inputs", module)
                         label="Deadline"
                         onChange={newTime => {
                             console.log(newTime);
+                        }}
+                    />
+                </div>
+            );
+        })
+    )
+    .add(
+        "Range Select",
+        withInfo(
+            "This is a react component to use in place of an input type range."
+        )(() => {
+            return (
+                <div>
+                    <Range
+                        name="drivetime"
+                        label="Drivetime"
+                        value={1}
+                        minValue={0}
+                        maxValue={60}
+                        onChange={value => {
+                            console.log(value);
                         }}
                     />
                 </div>

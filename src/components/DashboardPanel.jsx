@@ -125,7 +125,7 @@ DashboardPanel.propTypes = {
         }
         if (!(componentProp in props.panels)) {
             throw new Error(
-                `The component prop must have a matching key in the panels object.  The compont: ${componentProp} isn't available`
+                `The component prop must have a matching key in the panels object.  The component: ${componentProp} isn't available`
             );
         }
     },
