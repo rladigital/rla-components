@@ -19,6 +19,13 @@ class Modal extends React.Component {
         };
     }
 
+    componentWillUnmount() {
+        // Lock body scroll if is visible
+        try {
+            document.getElementsByTagName("BODY")[0].style.overflow = "auto";
+        } catch (err) {}
+    }
+
     _closeModal(cb) {
         this._toggleModal();
         setTimeout(() => {
