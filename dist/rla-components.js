@@ -38271,6 +38271,14 @@ var Modal = function (_React$Component) {
     }
 
     _createClass(Modal, [{
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+            // Lock body scroll if is visible
+            try {
+                document.getElementsByTagName("BODY")[0].style.overflow = "auto";
+            } catch (err) {}
+        }
+    }, {
         key: "_closeModal",
         value: function _closeModal(cb) {
             var _this2 = this;
