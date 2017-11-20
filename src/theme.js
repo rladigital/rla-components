@@ -178,6 +178,26 @@ const theme = {
         margin: spacing.margin,
         border: 1,
         padding: 4
+    },
+    accordion: {
+        margin: spacing.margin,
+        padding: spacing.padding,
+        radius: spacing.radius,
+        bar: {
+            size: 2,
+            color: colors.white,
+            background: colors.primary
+        },
+        twisty: {
+            color: colors.white,
+            background: "transparent",
+            downIcon: "arrowDown",
+            upIcon: "arrowUp"
+        },
+        content: {
+            background: colors.white,
+            color: colors.black
+        }
     }
 };
 
