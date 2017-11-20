@@ -44,7 +44,6 @@ class Modal extends React.Component {
 
     render() {
         var { theme, visible, onClose } = this.props;
-        console.log(this.props);
         // Set to animate in / out based on visibility
         let animation = {
             fade: visible ? FadeIn : FadeOut,
@@ -117,8 +116,8 @@ Modal.propTypes = {
     onClose: PropTypes.func.isRequired
 };
 
-// Modal.defaultProps = {
-//     visible: false
-// };
+Modal.defaultProps = {
+    visible: false
+};
 
 export default Modal;
