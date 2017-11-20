@@ -14,6 +14,7 @@
     "author": "RLA",
     "license": "",
     "dependencies": {
+        "@storybook/addon-knobs": "^3.2.16",
         "animate-css-styled-components": "^0.0.19",
         "moment": "^2.19.1",
         "rc-time-picker": "^2.4.1",

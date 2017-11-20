@@ -12,12 +12,12 @@ import {
 /** Modal  */
 class Modal extends React.Component {
     // Modal must start closed
-    constructor(props) {
-        super(props);
-        this.state = {
-            visible: false
-        };
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         visible: false
+    //     };
+    // }
 
     componentWillUnmount() {
         // Lock body scroll if is visible
@@ -26,25 +26,28 @@ class Modal extends React.Component {
         } catch (err) {}
     }
 
-    _closeModal(cb) {
-        this._toggleModal();
-        setTimeout(() => {
-            this._toggleModal(); // Reset visibility
-            cb && cb(); // Run callback
-        }, 250);
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
     }
 
-    _toggleModal() {
-        this.setState({ visible: !this.state.visible });
-    }
+    // _closeModal(cb) {
+    //     this._toggleModal();
+    //     setTimeout(() => {
+    //         this._toggleModal(); // Reset visibility
+    //         cb && cb(); // Run callback
+    //     }, 250);
+    // }
+
+    // _toggleModal() {
+    //     this.setState({ visible: !this.state.visible });
+    // }
 
     render() {
-        var { theme, visible } = this.props;
-
+        var { theme, visible, onClose } = this.props;
         // Set to animate in / out based on visibility
         let animation = {
-            fade: !this.state.visible ? FadeIn : FadeOut,
-            zoom: !this.state.visible ? ZoomIn : ZoomOut
+            fade: visible ? FadeIn : FadeOut,
+            zoom: visible ? ZoomIn : ZoomOut
         };
 
         // Lock body scroll if is visible
@@ -55,6 +58,7 @@ class Modal extends React.Component {
         } catch (err) {}
 
         const ModalWrapper = animation.fade.extend`
+            display: ${visible ? "auto" : "none"}
             top: 0;
             left: 0;
             right: 0;
@@ -89,21 +93,16 @@ class Modal extends React.Component {
             color: ${theme.modal.closeButtonColor};
         `;
 
-        return visible ? (
-            <ModalWrapper
-                duration="0.25s"
-                onClick={() => this._closeModal(this.props.onClose)}
-            >
+        return (
+            <ModalWrapper duration="0.25s" onClick={() => onClose}>
                 <ModalInner duration="0.25s" onClick={e => e.stopPropagation()}>
-                    <ModalCloseButton
-                        onClick={() => this._closeModal(this.props.onClose)}
-                    >
+                    <ModalCloseButton onClick={() => onClose}>
                         <Icon name="close" size="1.8" />
                     </ModalCloseButton>
                     {this.props.children}
                 </ModalInner>
             </ModalWrapper>
-        ) : null;
+        );
     }
 }
 Modal = withTheme(Modal);
@@ -112,9 +111,9 @@ Modal.displayName = "Modal";
 
 Modal.propTypes = {
     /** Boolean indicating whether the modal should show */
-    visible: PropTypes.bool,
+    visible: PropTypes.bool.isRequired,
     /** The function to call when the modal is closed */
-    onClose: PropTypes.func
+    onClose: PropTypes.func.isRequired
 };
 
 Modal.defaultProps = {
