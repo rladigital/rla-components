@@ -1,5 +1,6 @@
 import { configure, addDecorator, setAddon } from "@storybook/react";
 import infoAddon from "@storybook/addon-info";
+import { withKnobs, register } from "@storybook/addon-knobs";
 import { ThemeProvider } from "styled-components";
 import React from "react";
 import { Theme } from "../src/index";
