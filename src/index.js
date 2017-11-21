@@ -27,3 +27,5 @@ export { default as StyledDropzone } from "./components/styledDropzone";
 export { default as Menu } from "./components/menu/menu";
 export { default as MenuItem } from "./components/menu/menuItem";
 export { default as Steps } from "./components/steps";
+export { default as Accordion } from "./components/accordion";
+export { default as Collapse } from "./components/collapse";
