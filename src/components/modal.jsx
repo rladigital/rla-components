@@ -26,10 +26,6 @@ class Modal extends React.Component {
         } catch (err) {}
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
-    }
-
     // _closeModal(cb) {
     //     this._toggleModal();
     //     setTimeout(() => {
