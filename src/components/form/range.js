@@ -27,6 +27,14 @@ class Range extends Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.value !== this.props.value) {
+            this.setState({
+                value: nextProps.value
+            });
+        }
+    }
+
     render() {
         const { label, name, value, onChange, ...rest } = this.props;
 

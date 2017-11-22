@@ -17,6 +17,17 @@ class MultiCheckbox extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (
+            nextProps.value !== this.props.value &&
+            Array.isArray(nextProps.value)
+        ) {
+            this.setState({
+                values: nextProps.value
+            });
+        }
+    }
+
     handleChange(event, value) {
         const { onChange } = this.props;
         let newValues = this.state.values.slice();

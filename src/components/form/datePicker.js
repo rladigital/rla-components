@@ -26,6 +26,16 @@ class DatePicker extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.value !== this.props.value) {
+            this.setState({
+                selectedDate: moment.isMoment(nextProps.value)
+                    ? nextProps.value
+                    : moment(nextProps.value, DATE_FORMAT)
+            });
+        }
+    }
+
     handleChange(date) {
         this.setState({
             selectedDate: date

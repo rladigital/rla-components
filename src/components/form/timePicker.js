@@ -18,6 +18,16 @@ class TimePicker extends Component {
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.value !== this.props.value) {
+            this.setState({
+                selectedTime: moment.isMoment(nextProps.value)
+                    ? nextProps.value
+                    : moment(nextProps.value, DATE_FORMAT)
+            });
+        }
+    }
+
     handleChange(time) {
         this.setState({
             selectedTime: time

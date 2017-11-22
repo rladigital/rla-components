@@ -3,6 +3,7 @@ import moment from "moment";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
+import { withKnobs, text, number, array } from "@storybook/addon-knobs";
 
 import {
     InputField,
@@ -16,7 +17,10 @@ import {
     Range
 } from "../../src/index";
 
-storiesOf("Form Inputs", module)
+const stories = storiesOf("Form Inputs", module);
+
+stories.addDecorator(withKnobs);
+stories
     .add(
         "Text Inputs",
         withInfo(
@@ -25,16 +29,16 @@ storiesOf("Form Inputs", module)
             <div>
                 <InputField
                     name="test"
-                    defaultValue="default"
                     label="With Label"
+                    value={text("With Label Text")}
                     onChange={value => {
                         console.log(value);
                     }}
                 />
                 <InputField
                     name="test"
-                    defaultValue="default"
                     label="With Label Block"
+                    value={text("With Label Block Text")}
                     inlineLabel={false}
                     onChange={value => {
                         console.log(value);
@@ -43,36 +47,37 @@ storiesOf("Form Inputs", module)
                 <InputField
                     name="test"
                     placeholder="with placeholder"
+                    value={text("With Placeholder Text")}
                     onChange={value => {
                         console.log(value);
                     }}
                 />
                 <InputField
                     name="test"
-                    defaultValue="password"
                     type="password"
+                    value={text("Password")}
                     onChange={value => {
                         console.log(value);
                     }}
                 />
                 <InputField
                     name="test"
-                    defaultValue="small"
                     size="small"
+                    value={text("Small Text")}
                     onChange={value => {
                         console.log(value);
                     }}
                 />
                 <InputField
                     name="test"
-                    defaultValue="default"
+                    value={text("Default Size Text")}
                     onChange={value => {
                         console.log(value);
                     }}
                 />
                 <InputField
                     name="test"
-                    defaultValue="large"
+                    value={text("Large Text")}
                     size="large"
                     onChange={value => {
                         console.log(value);
@@ -89,6 +94,7 @@ storiesOf("Form Inputs", module)
                     <TextareaField
                         name="test"
                         placeholder="placeholder text"
+                        value={text("Text for the textarea")}
                         label="With Label"
                         onChange={value => {
                             console.log(value);
@@ -216,7 +222,12 @@ storiesOf("Form Inputs", module)
                     <Range
                         name="drivetime"
                         label="Drivetime"
-                        value={1}
+                        value={number("Number Range (between 0 and 60", 0, {
+                            range: true,
+                            min: 0,
+                            max: 60,
+                            step: 1
+                        })}
                         minValue={0}
                         maxValue={60}
                         onChange={value => {

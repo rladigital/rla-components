@@ -27342,6 +27342,15 @@ var MultiCheckbox = function (_Component) {
     }
 
     _createClass(MultiCheckbox, [{
+        key: "componentWillReceiveProps",
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.value !== this.props.value && Array.isArray(nextProps.value)) {
+                this.setState({
+                    values: nextProps.value
+                });
+            }
+        }
+    }, {
         key: "handleChange",
         value: function handleChange(event, value) {
             var onChange = this.props.onChange;
@@ -37789,8 +37798,6 @@ var animation = {
     fade: _animateCssStyledComponents.FadeIn,
     zoom: _animateCssStyledComponents.ZoomIn
 };
-
-console.log(animation);
 
 var ModalWrapper = animation.fade.extend(_templateObject, function (props) {
     return props.visible ? "auto" : "none";
