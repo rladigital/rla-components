@@ -70,29 +70,21 @@ class Modal extends React.Component {
         } catch (err) {}
     }
 
-    // _closeModal(cb) {
-    //     this._toggleModal();
-    //     setTimeout(() => {
-    //         this._toggleModal(); // Reset visibility
-    //         cb && cb(); // Run callback
-    //     }, 250);
-    // }
-
-    // _toggleModal() {
-    //     this.setState({ visible: !this.state.visible });
-    // }
+    onClose = () => {
+        this.props.onClose();
+    };
 
     render() {
-        var { theme, visible, onClose } = this.props;
+        var { theme, visible } = this.props;
 
         if (visible) {
             return (
-                <ModalWrapper duration="0.25s" onClick={() => onClose}>
+                <ModalWrapper duration="0.25s" onClick={this.onClose}>
                     <ModalInner
                         duration="0.25s"
                         onClick={e => e.stopPropagation()}
                     >
-                        <ModalCloseButton onClick={() => onClose}>
+                        <ModalCloseButton onClick={this.onClose}>
                             <Icon name="close" size="1.8" />
                         </ModalCloseButton>
                         {this.props.children}
