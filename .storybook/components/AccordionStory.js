@@ -2,12 +2,30 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
+import { withKnobs, object } from "@storybook/addon-knobs";
 
-import { Accordion, Row, Column, Panel } from "../../src/index";
+import { Accordion, Row, Column, Panel, Icon } from "../../src/index";
 
-storiesOf("Accordion", module).add(
-    "Default",
-    withInfo("Default accordion")(() => (
+const stories = storiesOf("Accordion", module);
+
+stories.addDecorator(withKnobs);
+
+stories.addWithInfo("Default", () => {
+    let sections = object("visibility", [
+        {
+            label: "Section 1 Header",
+            content: "Section 1 content"
+        },
+        {
+            label: ["Section 2 Header", "another label"],
+            content: "Section 2 content"
+        },
+        {
+            label: "Section 3 Header",
+            content: "Section 3 content"
+        }
+    ]);
+    return (
         <Row>
             <Column large={6} centered>
                 <Panel>
@@ -15,38 +33,7 @@ storiesOf("Accordion", module).add(
                         <Column>
                             <Accordion
                                 active={0}
-                                sections={[
-                                    {
-                                        label: "lorem ipsum",
-                                        content: (
-                                            <Row>
-                                                <Column>
-                                                    <p>Tab 1</p>
-                                                </Column>
-                                            </Row>
-                                        )
-                                    },
-                                    {
-                                        label: "dolor sit",
-                                        content: (
-                                            <Row>
-                                                <Column>
-                                                    <p>Tab 2</p>
-                                                </Column>
-                                            </Row>
-                                        )
-                                    },
-                                    {
-                                        label: "amet",
-                                        content: (
-                                            <Row>
-                                                <Column>
-                                                    <p>Tab 3</p>
-                                                </Column>
-                                            </Row>
-                                        )
-                                    }
-                                ]}
+                                sections={sections}
                                 allowMultiple={true}
                             />
                         </Column>
@@ -54,5 +41,5 @@ storiesOf("Accordion", module).add(
                 </Panel>
             </Column>
         </Row>
-    ))
-);
+    );
+});
