@@ -49802,7 +49802,7 @@ var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    overflow:
     _templateObject3 = _taggedTemplateLiteral(["cursor: pointer;"], ["cursor: pointer;"]),
     _templateObject4 = _taggedTemplateLiteral(["\n    display: table-cell;\n    vertical-align: middle;\n    padding: ", "em;\n"], ["\n    display: table-cell;\n    vertical-align: middle;\n    padding: ", "em;\n"]),
     _templateObject5 = _taggedTemplateLiteral(["\n    text-align: center;\n    width: ", "em;\n    color: ", ";\n    background: ", ";\n    cursor: pointer;\n"], ["\n    text-align: center;\n    width: ", "em;\n    color: ", ";\n    background: ", ";\n    cursor: pointer;\n"]),
-    _templateObject6 = _taggedTemplateLiteral(["\n    width: 100%;\n    background: ", ";\n    padding-top: ", "em;\n"], ["\n    width: 100%;\n    background: ", ";\n    padding-top: ", "em;\n"]);
+    _templateObject6 = _taggedTemplateLiteral(["\n    width: 100%;\n    background: ", ";\n    padding-top: ", "em;\n    color: ", ";\n"], ["\n    width: 100%;\n    background: ", ";\n    padding-top: ", "em;\n    color: ", ";\n"]);
 
 var _react = __webpack_require__(1);
 
@@ -49860,6 +49860,8 @@ var Section = _styledComponents2.default.div(_templateObject6, function (props) 
     return props.theme.accordion.content.background;
 }, function (props) {
     return props.theme.accordion.padding;
+}, function (props) {
+    return props.theme.accordion.content.color;
 });
 
 var Accordion = function (_React$Component) {

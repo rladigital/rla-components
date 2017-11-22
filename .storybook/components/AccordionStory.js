@@ -2,29 +2,25 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
-import { withKnobs, object } from "@storybook/addon-knobs";
+import { withKnobs, number, boolean } from "@storybook/addon-knobs";
 
-import { Accordion, Row, Column, Panel, Icon } from "../../src/index";
+import {
+    Accordion,
+    AccordionItem,
+    Row,
+    Column,
+    Panel,
+    Icon
+} from "../../src/index";
 
 const stories = storiesOf("Accordion", module);
 
 stories.addDecorator(withKnobs);
 
 stories.addWithInfo("Default", () => {
-    let sections = object("sections", [
-        {
-            label: "Section 1 Header",
-            content: "Section 1 content"
-        },
-        {
-            label: ["Section 2 Header", "another label"],
-            content: "Section 2 content"
-        },
-        {
-            label: "Section 3 Header",
-            content: "Section 3 content"
-        }
-    ]);
+    let active = number("active", 0);
+    let allowMultiple = boolean("allowMultiple", false);
+    let barClickable = boolean("barClickable", true);
     return (
         <Row>
             <Column large={6} centered>
@@ -32,10 +28,37 @@ stories.addWithInfo("Default", () => {
                     <Row>
                         <Column>
                             <Accordion
-                                active={0}
-                                sections={sections}
-                                allowMultiple={true}
-                            />
+                                active={active}
+                                allowMultiple={allowMultiple}
+                                barClickable={barClickable}
+                            >
+                                <AccordionItem label="Section 1 Header">
+                                    <Row>
+                                        <Column>
+                                            <p>Your content here</p>
+                                        </Column>
+                                    </Row>
+                                </AccordionItem>
+                                <AccordionItem
+                                    label={[
+                                        "Section 2 Header",
+                                        "another label"
+                                    ]}
+                                >
+                                    <Row>
+                                        <Column>
+                                            <p>Your content here</p>
+                                        </Column>
+                                    </Row>
+                                </AccordionItem>
+                                <AccordionItem label="Section 3 Header">
+                                    <Row>
+                                        <Column>
+                                            <p>Your content here</p>
+                                        </Column>
+                                    </Row>
+                                </AccordionItem>
+                            </Accordion>
                         </Column>
                     </Row>
                 </Panel>
