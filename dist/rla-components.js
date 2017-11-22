@@ -27705,6 +27705,15 @@ var DatePicker = function (_Component) {
             }
         }
     }, {
+        key: "componentWillReceiveProps",
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.value !== this.props.value) {
+                this.setState({
+                    selectedDate: _moment2.default.isMoment(nextProps.value) ? nextProps.value : (0, _moment2.default)(nextProps.value, DATE_FORMAT)
+                });
+            }
+        }
+    }, {
         key: "handleChange",
         value: function handleChange(date) {
             this.setState({
@@ -28637,6 +28646,15 @@ var TimePicker = function (_Component) {
     }
 
     _createClass(TimePicker, [{
+        key: "componentWillReceiveProps",
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.value !== this.props.value) {
+                this.setState({
+                    selectedTime: _moment2.default.isMoment(nextProps.value) ? nextProps.value : (0, _moment2.default)(nextProps.value, DATE_FORMAT)
+                });
+            }
+        }
+    }, {
         key: "handleChange",
         value: function handleChange(time) {
             this.setState({
@@ -35177,6 +35195,15 @@ var Range = function (_Component) {
                 name: this.props.name,
                 value: value
             });
+        }
+    }, {
+        key: "componentWillReceiveProps",
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.value !== this.props.value) {
+                this.setState({
+                    value: nextProps.value
+                });
+            }
         }
     }, {
         key: "render",
