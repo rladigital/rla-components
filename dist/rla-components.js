@@ -37856,9 +37856,19 @@ var Modal = function (_React$Component) {
     _inherits(Modal, _React$Component);
 
     function Modal() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Modal);
 
-        return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Modal.__proto__ || Object.getPrototypeOf(Modal)).call.apply(_ref, [this].concat(args))), _this), _this.onClose = function () {
+            _this.props.onClose();
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Modal, [{
@@ -37895,16 +37905,13 @@ var Modal = function (_React$Component) {
         value: function render() {
             var _props = this.props,
                 theme = _props.theme,
-                visible = _props.visible,
-                onClose = _props.onClose;
+                visible = _props.visible;
 
 
             if (visible) {
                 return _react2.default.createElement(
                     ModalWrapper,
-                    { duration: "0.25s", onClick: function onClick() {
-                            return onClose;
-                        } },
+                    { duration: "0.25s", onClick: this.onClose },
                     _react2.default.createElement(
                         ModalInner,
                         {
@@ -37915,9 +37922,7 @@ var Modal = function (_React$Component) {
                         },
                         _react2.default.createElement(
                             ModalCloseButton,
-                            { onClick: function onClick() {
-                                    return onClose;
-                                } },
+                            { onClick: this.onClose },
                             _react2.default.createElement(_icon2.default, { name: "close", size: "1.8" })
                         ),
                         this.props.children
