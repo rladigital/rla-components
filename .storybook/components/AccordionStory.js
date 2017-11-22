@@ -11,7 +11,7 @@ const stories = storiesOf("Accordion", module);
 stories.addDecorator(withKnobs);
 
 stories.addWithInfo("Default", () => {
-    let sections = object("visibility", [
+    let sections = object("sections", [
         {
             label: "Section 1 Header",
             content: "Section 1 content"
