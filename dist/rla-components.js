@@ -37752,9 +37752,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(["\n            display: ", "\n            top: 0;\n            left: 0;\n            right: 0;\n            width: 100%;\n            height: 100%;\n            overflow: auto;\n            position: fixed;\n            padding: 0 ", "rem;\n            background: rgba(0, 0, 0, 0.6);\n            z-index: 999;\n        "], ["\n            display: ", "\n            top: 0;\n            left: 0;\n            right: 0;\n            width: 100%;\n            height: 100%;\n            overflow: auto;\n            position: fixed;\n            padding: 0 ", "rem;\n            background: rgba(0, 0, 0, 0.6);\n            z-index: 999;\n        "]),
-    _templateObject2 = _taggedTemplateLiteral(["\n            max-width: 40em;\n            margin: 6em auto;\n            overflow: hidden;\n            position: relative;\n            border-radius: ", "em;\n            background: ", ";\n            padding: ", "em ", "rem 0;\n            color: ", ";\n        "], ["\n            max-width: 40em;\n            margin: 6em auto;\n            overflow: hidden;\n            position: relative;\n            border-radius: ", "em;\n            background: ", ";\n            padding: ", "em ", "rem 0;\n            color: ", ";\n        "]),
-    _templateObject3 = _taggedTemplateLiteral(["\n            top: 0;\n            right: 0;\n            padding: 0;\n            opacity: 0.5;\n            cursor: pointer;\n            position: absolute;\n            margin: ", "rem;\n            color: ", ";\n        "], ["\n            top: 0;\n            right: 0;\n            padding: 0;\n            opacity: 0.5;\n            cursor: pointer;\n            position: absolute;\n            margin: ", "rem;\n            color: ", ";\n        "]);
+var _templateObject = _taggedTemplateLiteral(["\n        display: ", "\n        top: 0;\n        left: 0;\n        right: 0;\n        width: 100%;\n        height: 100%;\n        overflow: auto;\n        position: fixed;\n        padding: 0 ", "rem;\n        background: rgba(0, 0, 0, 0.6);\n        z-index: 999;\n    "], ["\n        display: ", "\n        top: 0;\n        left: 0;\n        right: 0;\n        width: 100%;\n        height: 100%;\n        overflow: auto;\n        position: fixed;\n        padding: 0 ", "rem;\n        background: rgba(0, 0, 0, 0.6);\n        z-index: 999;\n    "]),
+    _templateObject2 = _taggedTemplateLiteral(["\n    max-width: 40em;\n    margin: 6em auto;\n    overflow: hidden;\n    position: relative;\n    border-radius: ", "em;\n    background: ", ";\n    padding: ", "em\n        ", "rem 0;\n    color: ", ";\n"], ["\n    max-width: 40em;\n    margin: 6em auto;\n    overflow: hidden;\n    position: relative;\n    border-radius: ", "em;\n    background: ", ";\n    padding: ", "em\n        ", "rem 0;\n    color: ", ";\n"]),
+    _templateObject3 = _taggedTemplateLiteral(["\n    top: 0;\n    right: 0;\n    padding: 0;\n    opacity: 0.5;\n    cursor: pointer;\n    position: absolute;\n    margin: ", "rem;\n    color: ", ";\n"], ["\n    top: 0;\n    right: 0;\n    padding: 0;\n    opacity: 0.5;\n    cursor: pointer;\n    position: absolute;\n    margin: ", "rem;\n    color: ", ";\n"]);
 
 var _react = __webpack_require__(1);
 
@@ -37776,15 +37776,48 @@ var _animateCssStyledComponents = __webpack_require__(56);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+// Set to animate in / out based on visibility
+var animation = {
+    fade: _animateCssStyledComponents.FadeIn,
+    zoom: _animateCssStyledComponents.ZoomIn
+};
+
+console.log(animation);
+
+var ModalWrapper = animation.fade.extend(_templateObject, function (props) {
+    return props.visible ? "auto" : "none";
+}, function (props) {
+    return props.theme.modal.padding;
+});
+var ModalInner = animation.zoom.extend(_templateObject2, function (props) {
+    return props.theme.modal.radius;
+}, function (props) {
+    return props.theme.modal.background;
+}, function (props) {
+    return props.theme.modal.padding;
+}, function (props) {
+    return props.theme.modal.padding / 2;
+}, function (props) {
+    return props.theme.modal.color;
+});
+var ModalCloseButton = _styledComponents2.default.div.attrs({
+    role: "button"
+})(_templateObject3, function (props) {
+    return props.theme.modal.margin;
+}, function (props) {
+    return props.theme.modal.closeButtonColor;
+});
+
 /** Modal  */
+
 var Modal = function (_React$Component) {
     _inherits(Modal, _React$Component);
 
@@ -37795,16 +37828,15 @@ var Modal = function (_React$Component) {
     }
 
     _createClass(Modal, [{
+        key: "componentWillMount",
+        value: function componentWillMount() {
+            // Lock body scroll if is visible
+            try {
+                document.getElementsByTagName("BODY")[0].style.overflow = props.visible ? "hidden" : "auto";
+            } catch (err) {}
+        }
+    }, {
         key: "componentWillUnmount",
-
-        // Modal must start closed
-        // constructor(props) {
-        //     super(props);
-        //     this.state = {
-        //         visible: false
-        //     };
-        // }
-
         value: function componentWillUnmount() {
             // Lock body scroll if is visible
             try {
@@ -37831,44 +37863,35 @@ var Modal = function (_React$Component) {
                 theme = _props.theme,
                 visible = _props.visible,
                 onClose = _props.onClose;
-            // Set to animate in / out based on visibility
 
-            var animation = {
-                fade: visible ? _animateCssStyledComponents.FadeIn : _animateCssStyledComponents.FadeOut,
-                zoom: visible ? _animateCssStyledComponents.ZoomIn : _animateCssStyledComponents.ZoomOut
-            };
 
-            // Lock body scroll if is visible
-            try {
-                document.getElementsByTagName("BODY")[0].style.overflow = visible ? "hidden" : "auto";
-            } catch (err) {}
-
-            var ModalWrapper = animation.fade.extend(_templateObject, visible ? "auto" : "none", theme.modal.padding);
-            var ModalInner = animation.zoom.extend(_templateObject2, theme.modal.radius, theme.modal.background, theme.modal.padding, theme.modal.padding / 2, theme.modal.color);
-            var ModalCloseButton = _styledComponents2.default.div.attrs({
-                role: "button"
-            })(_templateObject3, theme.modal.margin, theme.modal.closeButtonColor);
-
-            return _react2.default.createElement(
-                ModalWrapper,
-                { duration: "0.25s", onClick: function onClick() {
-                        return onClose;
-                    } },
-                _react2.default.createElement(
-                    ModalInner,
-                    { duration: "0.25s", onClick: function onClick(e) {
-                            return e.stopPropagation();
+            if (visible) {
+                return _react2.default.createElement(
+                    ModalWrapper,
+                    { duration: "0.25s", onClick: function onClick() {
+                            return onClose;
                         } },
                     _react2.default.createElement(
-                        ModalCloseButton,
-                        { onClick: function onClick() {
-                                return onClose;
-                            } },
-                        _react2.default.createElement(_icon2.default, { name: "close", size: "1.8" })
-                    ),
-                    this.props.children
-                )
-            );
+                        ModalInner,
+                        {
+                            duration: "0.25s",
+                            onClick: function onClick(e) {
+                                return e.stopPropagation();
+                            }
+                        },
+                        _react2.default.createElement(
+                            ModalCloseButton,
+                            { onClick: function onClick() {
+                                    return onClose;
+                                } },
+                            _react2.default.createElement(_icon2.default, { name: "close", size: "1.8" })
+                        ),
+                        this.props.children
+                    )
+                );
+            } else {
+                return null;
+            }
         }
     }]);
 
