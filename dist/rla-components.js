@@ -7168,7 +7168,16 @@ Object.defineProperty(exports, "Accordion", {
   }
 });
 
-var _collapse = __webpack_require__(415);
+var _accordionItem = __webpack_require__(405);
+
+Object.defineProperty(exports, "AccordionItem", {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_accordionItem).default;
+  }
+});
+
+var _collapse = __webpack_require__(416);
 
 Object.defineProperty(exports, "Collapse", {
   enumerable: true,
@@ -10396,7 +10405,7 @@ module.exports = exports["default"];
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(408)
+/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(409)
   , root = typeof window === 'undefined' ? global : window
   , vendors = ['moz', 'webkit']
   , suffix = 'AnimationFrame'
@@ -26770,7 +26779,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactMotion = __webpack_require__(406);
+var _reactMotion = __webpack_require__(407);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27426,6 +27435,10 @@ var theme = {
         margin: spacing.margin,
         padding: spacing.padding,
         radius: spacing.radius,
+        header: {
+            fontWeight: "bold",
+            background: colors.accent
+        },
         bar: {
             size: 2,
             color: colors.white,
@@ -38541,6 +38554,22 @@ var icons = {
     arrowDown: {
         viewbox: "0 0 32 32",
         paths: ["M14.77,23.795L5.185,14.21c-0.879-0.879-0.879-2.317,0-3.195l0.8-0.801c0.877-0.878,2.316-0.878,3.194,0  l7.315,7.315l7.316-7.315c0.878-0.878,2.317-0.878,3.194,0l0.8,0.801c0.879,0.878,0.879,2.316,0,3.195l-9.587,9.585  c-0.471,0.472-1.104,0.682-1.723,0.647C15.875,24.477,15.243,24.267,14.77,23.795z"]
+    },
+    stethoscope: {
+        viewbox: "0 0 1792 1792",
+        paths: ["M1472 704q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm128 0q0 62-35.5 111t-92.5 70v395q0 159-131.5 271.5t-316.5 112.5-316.5-112.5-131.5-271.5v-132q-164-20-274-128t-110-252v-512q0-26 19-45t45-19q6 0 16 2 17-30 47-48t65-18q53 0 90.5 37.5t37.5 90.5-37.5 90.5-90.5 37.5q-33 0-64-18v402q0 106 94 181t226 75 226-75 94-181v-402q-31 18-64 18-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5q35 0 65 18t47 48q10-2 16-2 26 0 45 19t19 45v512q0 144-110 252t-274 128v132q0 106 94 181t226 75 226-75 94-181v-395q-57-21-92.5-70t-35.5-111q0-80 56-136t136-56 136 56 56 136z"]
+    },
+    sync: {
+        viewbox: "0 0 16 16",
+        paths: ["M14,8c-0.609,0-0.898,0.43-1,0.883C12.635,10.516,11.084,13,8,13c-0.757,0-1.473-0.172-2.114-0.474L6.414,12  C6.773,11.656,7,11.445,7,11c0-0.523-0.438-1-1-1H3c-0.609,0-1,0.492-1,1v3c0,0.541,0.428,1,1,1c0.484,0,0.688-0.273,1-0.594  l0.408-0.407C5.458,14.632,6.685,15,8,15c4.99,0,7-4.75,7-5.938C15,8.336,14.469,8,14,8z M3,7.117C3.365,5.485,4.916,3,8,3  c0.757,0,1.473,0.171,2.114,0.473L9.586,4C9.227,4.344,9,4.555,9,5c0,0.523,0.438,1,1,1h3c0.609,0,1-0.492,1-1V2  c0-0.541-0.428-1-1-1c-0.484,0-0.688,0.273-1,0.594l-0.408,0.407C10.542,1.368,9.315,1,8,1C3.01,1,1,5.75,1,6.938  C1,7.664,1.531,8,2,8C2.609,8,2.898,7.57,3,7.117z"]
+    },
+    shield: {
+        viewbox: "0 0 512 512",
+        paths: ["m461.82,3.142c-11.117-5.32-24.281-3.781-33.883,3.93-41.156,33.109-110.718,33.109-151.875,0-11.719-9.422-28.406-9.422-40.125,0-41.156,33.109-110.718,33.109-151.875,0-9.586-7.719-22.773-9.258-33.883-3.93-11.108,5.32-18.179,16.539-18.179,28.859v255.999c0,100.297 80.398,183.562 215.062,222.726 2.922,0.852 5.93,1.273 8.938,1.273 3.008,0 6.016-0.422 8.938-1.273 134.664-39.164 215.062-122.429 215.062-222.726v-255.999c-0.001-12.32-7.071-23.539-18.18-28.859zm-365.82,284.859v-32h160v-185.219c47.445,27.922 107.945,32.852 160,14.75v170.468h-160v190.57c-100.39-31.507-160-90.351-160-158.569z"]
+    },
+    formula: {
+        viewbox: "0 0 95.177 95.177",
+        paths: ["M93.779,63.676c-0.981-1.082-2.24-1.653-3.639-1.653c-1.145,0-3.953,0.396-5.318,4.062   c-0.344,0.922-0.443,1.413-0.907,1.363c-0.786-0.078-3.845-3.346-4.845-8.145l-2.482-11.6c1.961-3.177,3.977-5.629,5.988-7.292   c1.08-0.882,2.314-1.349,3.808-1.43c3.815-0.26,5.203-0.74,6.14-1.399c1.547-1.115,2.397-2.728,2.397-4.542   c0-1.596-0.604-3.019-1.75-4.115c-1.106-1.059-2.581-1.618-4.26-1.618c-2.468,0-5.239,1.142-8.474,3.49   c-1.91,1.388-3.935,3.406-6.121,6.111c-0.711-2.653-1.319-3.889-1.771-4.628c-1.396-2.303-3.664-2.303-4.41-2.303l-0.813,0.013   l-23.045,0.544l1.297-5.506c0.828-3.593,1.915-6.436,3.226-8.45c0.638-0.98,1.614-2.148,2.638-2.148   c0.387,0,1.152,0.063,2.582,0.36c3.978,0.86,5.465,0.959,6.239,0.959c1.708,0,3.21-0.571,4.347-1.651   c1.176-1.119,1.797-2.583,1.797-4.233c0-1.29-0.424-3.156-2.445-4.722c-1.396-1.081-3.311-1.629-5.691-1.629   c-3.568,0-7.349,1.141-11.241,3.39c-3.862,2.232-7.038,5.317-9.438,9.171c-2.105,3.379-3.929,8.124-5.555,14.459H21.877   l-2.238,8.831h10.186l-7.74,31.116c-1.603,6.443-2.777,8.028-3.098,8.361c-0.875,0.904-2.68,1.094-4.04,1.094   c-1.683,0-3.477-0.121-5.349-0.361c-1.286-0.157-2.265-0.234-2.991-0.234c-1.878,0-3.423,0.488-4.59,1.448   C0.716,81.858,0,83.403,0,85.14c0,1.357,0.44,3.309,2.539,4.895c1.434,1.08,3.389,1.628,5.813,1.628   c6.069,0,11.725-2.411,16.813-7.165c4.947-4.624,8.571-11.413,10.773-20.195l6.119-24.935l20.87,0.354l2.244,9.64l-4.573,6.748   c-0.824,1.209-2.051,2.701-3.658,4.441c-0.84,0.92-1.398,1.426-1.721,1.689c-1.316-1.608-2.809-2.424-4.432-2.424   c-1.525,0-2.91,0.625-4.002,1.804c-1.036,1.116-1.583,2.514-1.583,4.038c0,1.83,0.783,3.459,2.264,4.709   c1.357,1.146,3.034,1.728,4.981,1.728c2.414,0,4.884-0.921,7.344-2.737c2.053-1.519,4.697-4.526,8.074-9.189   c2.17,6.24,5.248,10.252,6.714,11.927c2.313,2.644,6.049,4.22,9.993,4.22c3.348,0,5.244-1.402,6.916-2.641l0.148-0.109   c2.926-2.164,3.54-4.545,3.54-6.166C95.174,65.965,94.691,64.679,93.779,63.676z"]
     }
 };
 
@@ -49797,12 +49826,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    margin-bottom: ", "em;\n"], ["\n    width: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    margin-bottom: ", "em;\n"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n    width: 100%;\n    height: ", "em;\n    color: ", ";\n    background: ", ";\n    display: table;\n    border-bottom: 1px solid\n        ", ";\n    ", ";\n"], ["\n    width: 100%;\n    height: ", "em;\n    color: ", ";\n    background: ", ";\n    display: table;\n    border-bottom: 1px solid\n        ", ";\n    ", ";\n"]),
-    _templateObject3 = _taggedTemplateLiteral(["cursor: pointer;"], ["cursor: pointer;"]),
-    _templateObject4 = _taggedTemplateLiteral(["\n    display: table-cell;\n    vertical-align: middle;\n    padding: ", "em;\n"], ["\n    display: table-cell;\n    vertical-align: middle;\n    padding: ", "em;\n"]),
-    _templateObject5 = _taggedTemplateLiteral(["\n    text-align: center;\n    width: ", "em;\n    color: ", ";\n    background: ", ";\n    cursor: pointer;\n"], ["\n    text-align: center;\n    width: ", "em;\n    color: ", ";\n    background: ", ";\n    cursor: pointer;\n"]),
-    _templateObject6 = _taggedTemplateLiteral(["\n    width: 100%;\n    background: ", ";\n    padding-top: ", "em;\n    color: ", ";\n"], ["\n    width: 100%;\n    background: ", ";\n    padding-top: ", "em;\n    color: ", ";\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    margin-bottom: ", "em;\n"], ["\n    width: 100%;\n    overflow: hidden;\n    border-radius: ", "em;\n    margin-bottom: ", "em;\n"]);
 
 var _react = __webpack_require__(1);
 
@@ -49815,10 +49839,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _styledComponents = __webpack_require__(3);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
-
-var _reactCollapse = __webpack_require__(405);
-
-var _index = __webpack_require__(32);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49835,34 +49855,6 @@ var AccordionWrapper = _styledComponents2.default.div(_templateObject, function 
 }, function (props) {
     return props.theme.accordion.margin;
 });
-var Bar = _styledComponents2.default.div(_templateObject2, function (props) {
-    return props.theme.accordion.bar.size;
-}, function (props) {
-    return props.theme.accordion.bar.color;
-}, function (props) {
-    return props.theme.accordion.bar.background;
-}, function (props) {
-    return props.theme.accordion.content.background;
-}, function (props) {
-    return props.barClickable && (0, _styledComponents.css)(_templateObject3);
-});
-var BarSection = _styledComponents2.default.div(_templateObject4, function (props) {
-    return props.theme.accordion.padding / 2;
-});
-var Twisty = BarSection.extend(_templateObject5, function (props) {
-    return props.theme.accordion.bar.size;
-}, function (props) {
-    return props.theme.accordion.twisty.color;
-}, function (props) {
-    return props.theme.accordion.twisty.background;
-});
-var Section = _styledComponents2.default.div(_templateObject6, function (props) {
-    return props.theme.accordion.content.background;
-}, function (props) {
-    return props.theme.accordion.padding;
-}, function (props) {
-    return props.theme.accordion.content.color;
-});
 
 var Accordion = function (_React$Component) {
     _inherits(Accordion, _React$Component);
@@ -49873,96 +49865,33 @@ var Accordion = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Accordion.__proto__ || Object.getPrototypeOf(Accordion)).call(this, props));
 
         _this.state = {
-            active: _this.props.active
+            current: _this.props.active
         };
         return _this;
     }
 
     _createClass(Accordion, [{
-        key: "toggleActive",
-        value: function toggleActive(i) {
-            var x = null;
-
-            if (this.state.active == i) {
-                x = null;
-            } else {
-                x = i;
-            }
-
-            this.setState({ active: x });
-        }
-    }, {
-        key: "isActive",
-        value: function isActive(i) {
-            if (this.state.active == i) {
-                return true;
-            }
-            return false;
-        }
-    }, {
         key: "render",
         value: function render() {
             var _this2 = this;
 
-            var _props = this.props,
-                sections = _props.sections,
-                barClickable = _props.barClickable;
-
-
+            var childrenWithProps = _react2.default.Children.map(this.props.children, function (child, i) {
+                return _react2.default.cloneElement(child, {
+                    i: i,
+                    current: _this2.state.current,
+                    barClickable: _this2.props.barClickable,
+                    allowMultiple: _this2.props.allowMultiple,
+                    onClick: function onClick(x) {
+                        return _this2.setState({
+                            current: _this2.state.current == x ? null : x
+                        });
+                    }
+                });
+            });
             return _react2.default.createElement(
                 AccordionWrapper,
                 null,
-                sections.map(function (section, i) {
-                    return _react2.default.createElement(
-                        "div",
-                        { key: i },
-                        _react2.default.createElement(
-                            Bar,
-                            {
-                                barClickable: barClickable,
-                                onClick: function onClick() {
-                                    return barClickable && _this2.toggleActive(i);
-                                }
-                            },
-                            typeof section.label == "string" ? _react2.default.createElement(
-                                BarSection,
-                                null,
-                                section.label
-                            ) : section.label.map(function (label) {
-                                return _react2.default.createElement(
-                                    BarSection,
-                                    {
-                                        style: {
-                                            width: 100 / section.label.length + "%"
-                                        },
-                                        key: i + label
-                                    },
-                                    label
-                                );
-                            }),
-                            _react2.default.createElement(
-                                Twisty,
-                                {
-                                    onClick: function onClick() {
-                                        return !barClickable && _this2.toggleActive(i);
-                                    }
-                                },
-                                _react2.default.createElement(_index.Icon, {
-                                    name: _this2.isActive(i) ? _this2.props.theme.accordion.twisty.upIcon : _this2.props.theme.accordion.twisty.downIcon
-                                })
-                            )
-                        ),
-                        _react2.default.createElement(
-                            _reactCollapse.Collapse,
-                            { isOpened: _this2.isActive(i) },
-                            _react2.default.createElement(
-                                Section,
-                                null,
-                                section.content
-                            )
-                        )
-                    );
-                })
+                childrenWithProps
             );
         }
     }]);
@@ -49973,14 +49902,18 @@ var Accordion = function (_React$Component) {
 Accordion.displayName = "Accordion";
 
 Accordion.propTypes = {
-    barClickable: _propTypes2.default.bool
+    active: _propTypes2.default.number,
+    barClickable: _propTypes2.default.bool,
+    allowMultiple: _propTypes2.default.bool
 };
 
 Accordion.defaultProps = {
-    barClickable: true
+    active: null,
+    barClickable: true,
+    allowMultiple: false
 };
 
-exports.default = (0, _styledComponents.withTheme)(Accordion);
+exports.default = Accordion;
 
 /***/ }),
 /* 405 */
@@ -49989,10 +49922,211 @@ exports.default = (0, _styledComponents.withTheme)(Accordion);
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    height: ", "em;\n    color: ", ";\n    background: ", ";\n    font-weight: ", ";\n    display: table;\n    border-bottom: 1px solid\n        ", ";\n    ", ";\n"], ["\n    width: 100%;\n    height: ", "em;\n    color: ", ";\n    background: ", ";\n    font-weight: ", ";\n    display: table;\n    border-bottom: 1px solid\n        ", ";\n    ", ";\n"]),
+    _templateObject2 = _taggedTemplateLiteral(["cursor: pointer;"], ["cursor: pointer;"]),
+    _templateObject3 = _taggedTemplateLiteral(["\n    display: table-cell;\n    vertical-align: middle;\n    padding: ", "em;\n"], ["\n    display: table-cell;\n    vertical-align: middle;\n    padding: ", "em;\n"]),
+    _templateObject4 = _taggedTemplateLiteral(["\n    text-align: center;\n    width: ", "em;\n    color: ", ";\n    background: ", ";\n    cursor: pointer;\n    ", ";\n"], ["\n    text-align: center;\n    width: ", "em;\n    color: ", ";\n    background: ", ";\n    cursor: pointer;\n    ", ";\n"]),
+    _templateObject5 = _taggedTemplateLiteral(["visibility: hidden;"], ["visibility: hidden;"]),
+    _templateObject6 = _taggedTemplateLiteral(["\n    width: 100%;\n    background: ", ";\n    padding-top: ", "em;\n    color: ", ";\n"], ["\n    width: 100%;\n    background: ", ";\n    padding-top: ", "em;\n    color: ", ";\n"]);
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__(3);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactCollapse = __webpack_require__(406);
+
+var _index = __webpack_require__(32);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Bar = _styledComponents2.default.div(_templateObject, function (props) {
+    return props.theme.accordion.bar.size;
+}, function (props) {
+    return props.theme.accordion.bar.color;
+}, function (props) {
+    return props.isHeader ? props.theme.accordion.header.background : props.theme.accordion.bar.background;
+}, function (props) {
+    return props.isHeader ? "bold" : "normal";
+}, function (props) {
+    return props.theme.accordion.content.background;
+}, function (props) {
+    return props.barClickable && props.isClickable && (0, _styledComponents.css)(_templateObject2);
+});
+var BarSection = _styledComponents2.default.div(_templateObject3, function (props) {
+    return props.theme.accordion.padding / 2;
+});
+var Twisty = BarSection.extend(_templateObject4, function (props) {
+    return props.theme.accordion.bar.size;
+}, function (props) {
+    return props.theme.accordion.twisty.color;
+}, function (props) {
+    return props.theme.accordion.twisty.background;
+}, function (props) {
+    return !props.isClickable && (0, _styledComponents.css)(_templateObject5);
+});
+var Section = _styledComponents2.default.div(_templateObject6, function (props) {
+    return props.theme.accordion.content.background;
+}, function (props) {
+    return props.theme.accordion.padding;
+}, function (props) {
+    return props.theme.accordion.content.color;
+});
+
+var AccordionItem = function (_React$Component) {
+    _inherits(AccordionItem, _React$Component);
+
+    function AccordionItem(props) {
+        _classCallCheck(this, AccordionItem);
+
+        var _this = _possibleConstructorReturn(this, (AccordionItem.__proto__ || Object.getPrototypeOf(AccordionItem)).call(this, props));
+
+        _this.state = {
+            active: false
+        };
+        return _this;
+    }
+
+    _createClass(AccordionItem, [{
+        key: "toggleActive",
+        value: function toggleActive() {
+            this.setState({ active: !this.state.active });
+            this.props.onClick(this.props.i);
+        }
+    }, {
+        key: "isActive",
+        value: function isActive() {
+            if (this.props.allowMultiple) {
+                if (this.state.active) return true;
+            } else {
+                if (this.props.current == this.props.i) return true;
+            }
+            return false;
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                label = _props.label,
+                barClickable = _props.barClickable,
+                isClickable = _props.isClickable,
+                isHeader = _props.isHeader;
+
+
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    Bar,
+                    {
+                        isHeader: isHeader,
+                        isClickable: isClickable,
+                        barClickable: barClickable,
+                        onClick: function onClick() {
+                            return barClickable && isClickable && _this2.toggleActive();
+                        }
+                    },
+                    typeof label == "string" ? _react2.default.createElement(
+                        BarSection,
+                        null,
+                        label
+                    ) : label.map(function (x, key) {
+                        return _react2.default.createElement(
+                            BarSection,
+                            {
+                                style: {
+                                    width: 100 / label.length + "%"
+                                },
+                                key: key
+                            },
+                            x
+                        );
+                    }),
+                    _react2.default.createElement(
+                        Twisty,
+                        {
+                            isClickable: isClickable,
+                            onClick: function onClick() {
+                                return !barClickable && _this2.toggleActive();
+                            }
+                        },
+                        _react2.default.createElement(_index.Icon, {
+                            name: this.isActive() ? this.props.theme.accordion.twisty.upIcon : this.props.theme.accordion.twisty.downIcon
+                        })
+                    )
+                ),
+                isClickable && _react2.default.createElement(
+                    _reactCollapse.Collapse,
+                    { isOpened: this.isActive() },
+                    _react2.default.createElement(
+                        Section,
+                        null,
+                        this.props.children
+                    )
+                )
+            );
+        }
+    }]);
+
+    return AccordionItem;
+}(_react2.default.Component);
+
+AccordionItem.displayName = "AccordionItem";
+
+AccordionItem.propTypes = {
+    i: _propTypes2.default.number,
+    current: _propTypes2.default.number,
+    label: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.array]),
+    barClickable: _propTypes2.default.bool,
+    allowMultiple: _propTypes2.default.bool,
+    isHeader: _propTypes2.default.bool,
+    isClickable: _propTypes2.default.bool,
+    onClick: _propTypes2.default.function
+};
+
+AccordionItem.defaultProps = {
+    isHeader: false,
+    isClickable: true,
+    barClickable: true,
+    allowMultiple: false
+};
+
+exports.default = (0, _styledComponents.withTheme)(AccordionItem);
+
+/***/ }),
+/* 406 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _require = __webpack_require__(224),
     Collapse = _require.Collapse;
 
-var _require2 = __webpack_require__(414),
+var _require2 = __webpack_require__(415),
     UnmountClosed = _require2.UnmountClosed;
 
 UnmountClosed.Collapse = Collapse;
@@ -50001,7 +50135,7 @@ UnmountClosed.UnmountClosed = UnmountClosed;
 module.exports = UnmountClosed;
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50011,19 +50145,19 @@ exports.__esModule = true;
 
 function _interopRequire(obj) { return obj && obj.__esModule ? obj['default'] : obj; }
 
-var _Motion = __webpack_require__(407);
+var _Motion = __webpack_require__(408);
 
 exports.Motion = _interopRequire(_Motion);
 
-var _StaggeredMotion = __webpack_require__(409);
+var _StaggeredMotion = __webpack_require__(410);
 
 exports.StaggeredMotion = _interopRequire(_StaggeredMotion);
 
-var _TransitionMotion = __webpack_require__(410);
+var _TransitionMotion = __webpack_require__(411);
 
 exports.TransitionMotion = _interopRequire(_TransitionMotion);
 
-var _spring = __webpack_require__(412);
+var _spring = __webpack_require__(413);
 
 exports.spring = _interopRequire(_spring);
 
@@ -50037,12 +50171,12 @@ exports.stripStyle = _interopRequire(_stripStyle);
 
 // deprecated, dummy warning function
 
-var _reorderKeys = __webpack_require__(413);
+var _reorderKeys = __webpack_require__(414);
 
 exports.reorderKeys = _interopRequire(_reorderKeys);
 
 /***/ }),
-/* 407 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50315,7 +50449,7 @@ module.exports = exports['default'];
 // config)
 
 /***/ }),
-/* 408 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {// Generated by CoffeeScript 1.12.2
@@ -50358,7 +50492,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(225)))
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50652,7 +50786,7 @@ module.exports = exports['default'];
 // config)
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50682,7 +50816,7 @@ var _stepper3 = __webpack_require__(68);
 
 var _stepper4 = _interopRequireDefault(_stepper3);
 
-var _mergeDiff = __webpack_require__(411);
+var _mergeDiff = __webpack_require__(412);
 
 var _mergeDiff2 = _interopRequireDefault(_mergeDiff);
 
@@ -51180,7 +51314,7 @@ module.exports = exports['default'];
 // In reality currentStyle should be 400
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51294,7 +51428,7 @@ module.exports = exports['default'];
 // to loop through and find a key's index each time), but I no longer care
 
 /***/ }),
-/* 412 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51323,7 +51457,7 @@ function spring(val, config) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 413 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51346,7 +51480,7 @@ function reorderKeys() {
 module.exports = exports['default'];
 
 /***/ }),
-/* 414 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51451,7 +51585,7 @@ UnmountClosed.propTypes = {
 };
 
 /***/ }),
-/* 415 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -13,11 +13,10 @@ class Accordion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: 0
+            current: this.props.active
         };
     }
     render() {
-        var i = 0;
         var childrenWithProps = React.Children.map(
             this.props.children,
             (child, i) =>
@@ -26,7 +25,10 @@ class Accordion extends React.Component {
                     current: this.state.current,
                     barClickable: this.props.barClickable,
                     allowMultiple: this.props.allowMultiple,
-                    onClick: x => this.setState({ current: x })
+                    onClick: x =>
+                        this.setState({
+                            current: this.state.current == x ? null : x
+                        })
                 })
         );
         return <AccordionWrapper>{childrenWithProps}</AccordionWrapper>;
@@ -36,11 +38,13 @@ class Accordion extends React.Component {
 Accordion.displayName = "Accordion";
 
 Accordion.propTypes = {
+    active: PropTypes.number,
     barClickable: PropTypes.bool,
     allowMultiple: PropTypes.bool
 };
 
 Accordion.defaultProps = {
+    active: null,
     barClickable: true,
     allowMultiple: false
 };

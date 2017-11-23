@@ -183,6 +183,10 @@ const theme = {
         margin: spacing.margin,
         padding: spacing.padding,
         radius: spacing.radius,
+        header: {
+            fontWeight: "bold",
+            background: colors.accent
+        },
         bar: {
             size: 2,
             color: colors.white,

@@ -66,3 +66,53 @@ stories.addWithInfo("Default", () => {
         </Row>
     );
 });
+
+stories.addWithInfo(
+    "With Header",
+    "You may want to add a header/s to your accordion to emphasize certain sections.",
+    () => {
+        let isHeader = boolean("isHeader", true);
+        let isClickable = boolean("isClickable", false);
+        return (
+            <Row>
+                <Column large={6} centered>
+                    <Panel>
+                        <Row>
+                            <Column>
+                                <Accordion
+                                    active={1}
+                                    allowMultiple={true}
+                                    barClickable={true}
+                                >
+                                    <AccordionItem
+                                        label="Section 1 Header"
+                                        isHeader={isHeader}
+                                        isClickable={isClickable}
+                                    >
+                                        <Row>
+                                            <Column>
+                                                <p>Your content here</p>
+                                            </Column>
+                                        </Row>
+                                    </AccordionItem>
+                                    <AccordionItem
+                                        label={[
+                                            "Section 2 Header",
+                                            "another label"
+                                        ]}
+                                    >
+                                        <Row>
+                                            <Column>
+                                                <p>Your content here</p>
+                                            </Column>
+                                        </Row>
+                                    </AccordionItem>
+                                </Accordion>
+                            </Column>
+                        </Row>
+                    </Panel>
+                </Column>
+            </Row>
+        );
+    }
+);

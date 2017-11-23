@@ -8,11 +8,16 @@ const Bar = styled.div`
     width: 100%;
     height: ${props => props.theme.accordion.bar.size}em;
     color: ${props => props.theme.accordion.bar.color};
-    background: ${props => props.theme.accordion.bar.background};
+    background: ${props =>
+        props.isHeader
+            ? props.theme.accordion.header.background
+            : props.theme.accordion.bar.background};
+    font-weight: ${props => (props.isHeader ? "bold" : "normal")};
     display: table;
     border-bottom: 1px solid
         ${props => props.theme.accordion.content.background};
-    ${props => props.barClickable && css`cursor: pointer;`};
+    ${props =>
+        props.barClickable && props.isClickable && css`cursor: pointer;`};
 `;
 const BarSection = styled.div`
     display: table-cell;
@@ -25,6 +30,7 @@ const Twisty = BarSection.extend`
     color: ${props => props.theme.accordion.twisty.color};
     background: ${props => props.theme.accordion.twisty.background};
     cursor: pointer;
+    ${props => !props.isClickable && css`visibility: hidden;`};
 `;
 const Section = styled.div`
     width: 100%;
@@ -54,13 +60,16 @@ class AccordionItem extends React.Component {
     }
 
     render() {
-        const { label, barClickable } = this.props;
+        const { label, barClickable, isClickable, isHeader } = this.props;
 
         return (
             <div>
                 <Bar
+                    isHeader={isHeader}
+                    isClickable={isClickable}
                     barClickable={barClickable}
-                    onClick={() => barClickable && this.toggleActive()}
+                    onClick={() =>
+                        barClickable && isClickable && this.toggleActive()}
                 >
                     {typeof label == "string" ? (
                         <BarSection>{label}</BarSection>
@@ -78,6 +87,7 @@ class AccordionItem extends React.Component {
                     )}
 
                     <Twisty
+                        isClickable={isClickable}
                         onClick={() => !barClickable && this.toggleActive()}
                     >
                         <Icon
@@ -89,9 +99,11 @@ class AccordionItem extends React.Component {
                         />
                     </Twisty>
                 </Bar>
-                <Collapse isOpened={this.isActive()}>
-                    <Section>{this.props.children}</Section>
-                </Collapse>
+                {isClickable && (
+                    <Collapse isOpened={this.isActive()}>
+                        <Section>{this.props.children}</Section>
+                    </Collapse>
+                )}
             </div>
         );
     }
@@ -105,10 +117,14 @@ AccordionItem.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     barClickable: PropTypes.bool,
     allowMultiple: PropTypes.bool,
+    isHeader: PropTypes.bool,
+    isClickable: PropTypes.bool,
     onClick: PropTypes.function
 };
 
 AccordionItem.defaultProps = {
+    isHeader: false,
+    isClickable: true,
     barClickable: true,
     allowMultiple: false
 };
