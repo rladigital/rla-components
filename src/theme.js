@@ -202,6 +202,36 @@ const theme = {
             background: colors.white,
             color: colors.black
         }
+    },
+    tabs: {
+        padding: spacing.padding,
+        margin: spacing.margin,
+        borderThickness: "1px",
+        borderColor: colors.primary,
+        textAlign: "center",
+        fontWeight: "bold",
+        default: {
+            color: colors.white,
+            background: colors.accent
+        },
+        active: {
+            color: colors.primary,
+            background: colors.white
+        },
+        content: {
+            color: colors.black,
+            background: colors.white
+        },
+        dividers: {
+            height: 2.5,
+            padding: 0.7,
+            fontSize: 0.4,
+            fontWeight: "bold",
+            color: colors.primary,
+            background: colors.accent,
+            border: "1px solid " + colors.primary,
+            radius: 2
+        }
     }
 };
 

@@ -30,3 +30,6 @@ export { default as Steps } from "./components/steps";
 export { default as Accordion } from "./components/accordion/accordion";
 export { default as AccordionItem } from "./components/accordion/accordionItem";
 export { default as Collapse } from "./components/collapse";
+export { default as TabContainer } from "./components/tabs/tabContainer";
+export { default as Tab } from "./components/tabs/tab";
+export { default as TabContent } from "./components/tabs/tabContent";
