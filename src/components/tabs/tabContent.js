@@ -7,9 +7,6 @@ const TabContent = styled.div`
     padding: ${props => props.theme.tabs.padding}em
         ${props => props.theme.tabs.padding / 2}em 0;
     margin-bottom: ${props => props.theme.tabs.margin}em;
-    border: ${props => props.theme.tabs.borderThickness}
-        ${props => props.theme.tabs.borderColor} solid;
-    border-top: 0;
 `;
 
 TabContent.displayName = "TabContent";

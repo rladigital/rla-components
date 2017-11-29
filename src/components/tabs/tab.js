@@ -11,6 +11,7 @@ const Tab = styled.div`
         ${props => props.theme.tabs.borderColor} solid;
     cursor: pointer;
     position: relative;
+    border-top: none;
     ${props =>
         props.current == props.index
             ? css`
@@ -26,7 +27,13 @@ const Tab = styled.div`
     ${props =>
         props.divider &&
         css`
-    &:Not(:last-child):after{
+    &:first-child{
+        border-left: none;
+    }
+    &:last-child{
+        border-right: none;
+    }
+    &:not(:last-child):after{
         content '${props => props.divider}';
         height: ${props => props.theme.tabs.dividers.height}em;
         padding: 0 ${props => props.theme.tabs.dividers.padding}em;

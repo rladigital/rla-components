@@ -51793,10 +51793,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(["\n    display: table-cell;\n    padding: ", "em\n        ", "em;\n    text-align: ", ";\n    font-weight: ", ";\n    border: ", "\n        ", " solid;\n    cursor: pointer;\n    position: relative;\n    ", ";\n    ", ";\n"], ["\n    display: table-cell;\n    padding: ", "em\n        ", "em;\n    text-align: ", ";\n    font-weight: ", ";\n    border: ", "\n        ", " solid;\n    cursor: pointer;\n    position: relative;\n    ", ";\n    ", ";\n"]),
+var _templateObject = _taggedTemplateLiteral(["\n    display: table-cell;\n    padding: ", "em\n        ", "em;\n    text-align: ", ";\n    font-weight: ", ";\n    border: ", "\n        ", " solid;\n    cursor: pointer;\n    position: relative;\n    border-top: none;\n    ", ";\n    ", ";\n"], ["\n    display: table-cell;\n    padding: ", "em\n        ", "em;\n    text-align: ", ";\n    font-weight: ", ";\n    border: ", "\n        ", " solid;\n    cursor: pointer;\n    position: relative;\n    border-top: none;\n    ", ";\n    ", ";\n"]),
     _templateObject2 = _taggedTemplateLiteral(["\n                  color: ", ";\n                  background: ", ";\n                  border-bottom-color: ", ";\n              "], ["\n                  color: ", ";\n                  background: ", ";\n                  border-bottom-color: ", ";\n              "]),
     _templateObject3 = _taggedTemplateLiteral(["\n                  color: ", ";\n                  background: ", ";\n              "], ["\n                  color: ", ";\n                  background: ", ";\n              "]),
-    _templateObject4 = _taggedTemplateLiteral(["\n    &:Not(:last-child):after{\n        content '", "';\n        height: ", "em;\n        padding: 0 ", "em;\n        border: ", ";\n        color: ", ";\n        background: ", ";\n        font-size: ", "em;\n        line-height: ", "em;\n        border-radius: ", "em;\n        position: absolute;\n        right: 0;\n        top: 50%;\n        z-index: 2;\n        transform: translate(50%, -50%);\n    }\n    "], ["\n    &:Not(:last-child):after{\n        content '", "';\n        height: ", "em;\n        padding: 0 ", "em;\n        border: ", ";\n        color: ", ";\n        background: ", ";\n        font-size: ", "em;\n        line-height: ", "em;\n        border-radius: ", "em;\n        position: absolute;\n        right: 0;\n        top: 50%;\n        z-index: 2;\n        transform: translate(50%, -50%);\n    }\n    "]);
+    _templateObject4 = _taggedTemplateLiteral(["\n    &:first-child{\n        border-left: none;\n    }\n    &:last-child{\n        border-right: none;\n    }\n    &:not(:last-child):after{\n        content '", "';\n        height: ", "em;\n        padding: 0 ", "em;\n        border: ", ";\n        color: ", ";\n        background: ", ";\n        font-size: ", "em;\n        line-height: ", "em;\n        border-radius: ", "em;\n        position: absolute;\n        right: 0;\n        top: 50%;\n        z-index: 2;\n        transform: translate(50%, -50%);\n    }\n    "], ["\n    &:first-child{\n        border-left: none;\n    }\n    &:last-child{\n        border-right: none;\n    }\n    &:not(:last-child):after{\n        content '", "';\n        height: ", "em;\n        padding: 0 ", "em;\n        border: ", ";\n        color: ", ";\n        background: ", ";\n        font-size: ", "em;\n        line-height: ", "em;\n        border-radius: ", "em;\n        position: absolute;\n        right: 0;\n        top: 50%;\n        z-index: 2;\n        transform: translate(50%, -50%);\n    }\n    "]);
 
 var _propTypes = __webpack_require__(1);
 
@@ -51880,7 +51880,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(["\n    color: ", ";\n    background: ", ";\n    padding: ", "em\n        ", "em 0;\n    margin-bottom: ", "em;\n    border: ", "\n        ", " solid;\n    border-top: 0;\n"], ["\n    color: ", ";\n    background: ", ";\n    padding: ", "em\n        ", "em 0;\n    margin-bottom: ", "em;\n    border: ", "\n        ", " solid;\n    border-top: 0;\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n    color: ", ";\n    background: ", ";\n    padding: ", "em\n        ", "em 0;\n    margin-bottom: ", "em;\n"], ["\n    color: ", ";\n    background: ", ";\n    padding: ", "em\n        ", "em 0;\n    margin-bottom: ", "em;\n"]);
 
 var _propTypes = __webpack_require__(1);
 
@@ -51904,10 +51904,6 @@ var TabContent = _styledComponents2.default.div(_templateObject, function (props
     return props.theme.tabs.padding / 2;
 }, function (props) {
     return props.theme.tabs.margin;
-}, function (props) {
-    return props.theme.tabs.borderThickness;
-}, function (props) {
-    return props.theme.tabs.borderColor;
 });
 
 TabContent.displayName = "TabContent";
