@@ -232,6 +232,26 @@ const theme = {
             border: "1px solid " + colors.primary,
             radius: 2
         }
+    },
+    carousel: {
+        item: {
+            color: colors.white,
+            background: colors.primary,
+            padding: spacing.padding
+        },
+        arrows: {
+            size: 1.5,
+            color: colors.white,
+            leftIcon: "arrowLeft",
+            rightIcon: "arrowRight"
+        },
+        dots: {
+            size: 0.5,
+            activeBackground: colors.accent,
+            background: colors.white,
+            radius: 2,
+            margin: 0.2
+        }
     }
 };
 

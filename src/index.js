@@ -33,3 +33,5 @@ export { default as Collapse } from "./components/collapse";
 export { default as TabContainer } from "./components/tabs/tabContainer";
 export { default as Tab } from "./components/tabs/tab";
 export { default as TabContent } from "./components/tabs/tabContent";
+export { default as Carousel } from "./components/carousel/carousel";
+export { default as CarouselItem } from "./components/carousel/carouselItem";
