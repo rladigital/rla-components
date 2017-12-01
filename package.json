@@ -6,7 +6,8 @@
     "scripts": {
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook -o docs",
-        "build": "webpack -p",
+        "build": "NODE_ENV=production webpack -p",
+        "build:stats": "NODE_ENV=production webpack -p --profile --json > webpack-stats.json",
         "start": "webpack-dev-server",
         "prepublishOnly": "npm run build"
     },
@@ -15,7 +16,6 @@
     "license": "",
     "dependencies": {
         "animate-css-styled-components": "^0.0.20",
-        "moment": "^2.19.2",
         "rc-time-picker": "^3.2.1",
         "react-collapse": "^4.0.3",
         "react-datepicker": "^0.55.0",
@@ -40,6 +40,7 @@
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-1": "^6.24.1",
         "css-loader": "^0.28.7",
+        "moment": "^2.19.2",
         "react": "^16.1.1",
         "react-dom": "^16.1.1",
         "shared-git-hooks": "^1.2.1",
