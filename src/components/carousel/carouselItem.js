@@ -13,6 +13,19 @@ const position = props => {
     }
 };
 
+const doesAnimate = props => {
+    if (props.first || props.last) {
+        return true;
+    } else if (
+        (props.current < props.i && props.direction == "right") ||
+        (props.current > props.i && props.direction == "left")
+    ) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
 const CarouselItem = styled.div.attrs({})`
     width: 100%;
     height: 100%;
@@ -20,7 +33,8 @@ const CarouselItem = styled.div.attrs({})`
     background: ${props => props.theme.carousel.item.background};
     padding: ${props => props.theme.carousel.item.padding}em
         ${props => props.theme.carousel.item.padding / 2}em;
-    transition: right 500ms linear;
+    transition: ${props =>
+        doesAnimate(props) ? "right 500ms linear" : "none"};
     position: absolute;
 
     right: ${props => position(props)};

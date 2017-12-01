@@ -4,8 +4,8 @@ import styled, { withTheme } from "styled-components";
 import { Icon } from "../../index";
 
 const Container = styled.div`
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: ${props => props.height};
     position: relative;
     overflow: hidden;
     background: ${props => props.theme.carousel.item.background};
@@ -18,6 +18,7 @@ const ArrowButton = styled.a`
     position: absolute;
     transform: translateY(-50%);
     color: ${props => props.theme.carousel.arrows.color};
+    cursor: pointer;
 `;
 
 const ArrowButtonLeft = ArrowButton.extend`
@@ -45,68 +46,64 @@ const Dot = styled.a`
     border-radius: ${props => props.theme.carousel.dots.radius}em;
     margin: ${props => props.theme.carousel.dots.margin}em;
     display: inline-block;
+    cursor: pointer;
 `;
 
 class Carousel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: this.props.current,
+            current: 0,
             direction: undefined,
             reset: false
         };
     }
 
     prevItem() {
+        var x;
         if (this.state.current) {
-            this.setState({
-                current: this.state.current - 1,
-                direction: "left",
-                reset: false
-            });
+            x = this.state.current - 1;
         } else {
-            this.setState({
-                current: this.props.children.length - 1,
-                direction: "left",
-                reset: true
-            });
+            x = this.props.children.length - 1;
         }
+        this.setState({ current: x, direction: "left" });
     }
 
     nextItem() {
+        var x;
         if (this.state.current != this.props.children.length - 1) {
-            this.setState({
-                current: this.state.current + 1,
-                direction: "right",
-                reset: false
-            });
+            x = this.state.current + 1;
         } else {
-            this.setState({
-                current: 0,
-                direction: "right",
-                reset: true
-            });
+            x = 0;
         }
+        this.setState({ current: x, direction: "right" });
+    }
+
+    setCurrentItem(x) {
+        var direction = this.state.current > x ? "left" : "right";
+        this.setState({
+            current: x,
+            direction: direction
+        });
     }
 
     render() {
-        let dots = [];
         let childrenWithProps = React.Children.map(
             this.props.children,
             (child, i) =>
                 React.cloneElement(child, {
                     i: i,
                     current: this.state.current,
-                    direction: this.state.direction
+                    direction: this.state.direction,
+                    first: Boolean(i == 0),
+                    last: Boolean(
+                        i == React.Children.count(this.props.children) - 1
+                    )
                 })
         );
 
-        for (var i = 0; i < React.Children.count(this.props.children); i++) {
-            dots.push(<Dot active={this.state.current == i} />);
-        }
-
         return (
-            <Container>
+            <Container height={this.props.height}>
                 {childrenWithProps}
                 <ArrowButtonLeft onClick={() => this.prevItem()}>
                     <Icon name={this.props.theme.carousel.arrows.leftIcon} />
@@ -114,7 +111,16 @@ class Carousel extends React.Component {
                 <ArrowButtonRight onClick={() => this.nextItem()}>
                     <Icon name={this.props.theme.carousel.arrows.rightIcon} />
                 </ArrowButtonRight>
-                <Dots>{dots}</Dots>
+                <Dots>
+                    {React.Children.map(this.props.children, (child, i) => {
+                        return (
+                            <Dot
+                                onClick={() => this.setCurrentItem(i)}
+                                active={this.state.current == i}
+                            />
+                        );
+                    })}
+                </Dots>
             </Container>
         );
     }
@@ -122,11 +128,13 @@ class Carousel extends React.Component {
 Carousel.displayName = "Carousel";
 
 Carousel.propTypes = {
-    current: PropTypes.number
+    height: PropTypes.string
 };
 
 Carousel = withTheme(Carousel);
 
-Carousel.defaultProps = {};
+Carousel.defaultProps = {
+    height: "100%"
+};
 
 export default Carousel;
