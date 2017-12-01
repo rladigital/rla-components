@@ -1,6 +1,10 @@
 const path = require("path");
 const webpack = require("webpack");
 var fs = require("fs");
+
+var libraryName = "rla-components";
+var outputFile = libraryName + ".js";
+
 var reactExternal = {
     root: "React",
     commonjs2: "react",
@@ -16,9 +20,11 @@ var reactDOMExternal = {
 module.exports = {
     entry: "./src/index.js",
     output: {
-        filename: "rla-components.js",
+        filename: outputFile,
         path: path.resolve(__dirname, "dist"),
-        libraryTarget: "umd"
+        library: libraryName,
+        libraryTarget: "umd",
+        umdNamedDefine: true
     },
     plugins: [
         new webpack.DefinePlugin({
