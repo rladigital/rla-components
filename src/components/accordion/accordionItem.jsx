@@ -17,7 +17,11 @@ const Bar = styled.div`
     border-bottom: 1px solid
         ${props => props.theme.accordion.content.background};
     ${props =>
-        props.barClickable && props.isClickable && css`cursor: pointer;`};
+        props.barClickable &&
+        props.isClickable &&
+        css`
+            cursor: pointer;
+        `};
 `;
 const BarSection = styled.div`
     display: table-cell;
@@ -30,7 +34,11 @@ const Twisty = BarSection.extend`
     color: ${props => props.theme.accordion.twisty.color};
     background: ${props => props.theme.accordion.twisty.background};
     cursor: pointer;
-    ${props => !props.isClickable && css`visibility: hidden;`};
+    ${props =>
+        !props.isClickable &&
+        css`
+            visibility: hidden;
+        `};
 `;
 const Section = styled.div`
     width: 100%;
@@ -69,7 +77,8 @@ class AccordionItem extends React.Component {
                     isClickable={isClickable}
                     barClickable={barClickable}
                     onClick={() =>
-                        barClickable && isClickable && this.toggleActive()}
+                        barClickable && isClickable && this.toggleActive()
+                    }
                 >
                     {typeof label == "string" ? (
                         <BarSection>{label}</BarSection>

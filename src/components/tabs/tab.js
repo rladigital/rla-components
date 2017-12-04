@@ -7,13 +7,15 @@ const Tab = styled.div`
         ${props => props.theme.tabs.padding}em;
     text-align: ${props => props.theme.tabs.textAlign};
     font-weight: ${props => props.theme.tabs.fontWeight};
-    border: ${props => props.theme.tabs.borderThickness}
+    border-right: ${props => props.theme.tabs.borderThickness}
         ${props => props.theme.tabs.borderColor} solid;
     cursor: pointer;
     position: relative;
-    border-top: none;
+    &:last-child {
+        border-right: none;
+    }
     ${props =>
-        props.current == props.index
+        props.current == props.i
             ? css`
                   color: ${props => props.theme.tabs.active.color};
                   background: ${props => props.theme.tabs.active.background};
@@ -27,28 +29,22 @@ const Tab = styled.div`
     ${props =>
         props.divider &&
         css`
-    &:first-child{
-        border-left: none;
-    }
-    &:last-child{
-        border-right: none;
-    }
-    &:not(:last-child):after{
-        content '${props => props.divider}';
-        height: ${props => props.theme.tabs.dividers.height}em;
-        padding: 0 ${props => props.theme.tabs.dividers.padding}em;
-        border: ${props => props.theme.tabs.dividers.border};
-        color: ${props => props.theme.tabs.dividers.color};
-        background: ${props => props.theme.tabs.dividers.background};
-        font-size: ${props => props.theme.tabs.dividers.fontSize}em;
-        line-height: ${props => props.theme.tabs.dividers.height}em;
-        border-radius: ${props => props.theme.tabs.dividers.radius}em;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        z-index: 2;
-        transform: translate(50%, -50%);
-    }
+            &:not(:last-child):after{
+                content '${props => props.divider}';
+                height: ${props => props.theme.tabs.dividers.height}em;
+                padding: 0 ${props => props.theme.tabs.dividers.padding}em;
+                border: ${props => props.theme.tabs.dividers.border};
+                color: ${props => props.theme.tabs.dividers.color};
+                background: ${props => props.theme.tabs.dividers.background};
+                font-size: ${props => props.theme.tabs.dividers.fontSize}em;
+                line-height: ${props => props.theme.tabs.dividers.height}em;
+                border-radius: ${props => props.theme.tabs.dividers.radius}em;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                z-index: 2;
+                transform: translate(50%, -50%);
+            }
     `};
 `;
 
