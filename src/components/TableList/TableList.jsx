@@ -14,15 +14,15 @@ class TableList extends React.Component {
         };
     }
     componentDidMount() {
-        window.addEventListener("resize", this.updateDimensions.bind(this));
+        window.addEventListener("resize", this.updateDimensions);
         this.updateDimensions();
     }
     componentWillUnmount() {
-        window.removeEventListener("resize", this.updateDimensions.bind(this));
+        window.removeEventListener("resize", this.updateDimensions);
     }
-    updateDimensions() {
+    updateDimensions = () => {
         this.setState({ width: window.innerWidth });
-    }
+    };
     renderAsList() {
         const tableElements = React.Children.toArray(this.props.children);
 
@@ -52,7 +52,10 @@ class TableList extends React.Component {
     }
     render() {
         var { type, respondsAt } = this.props;
-        if (type == "list" || this.state.width < respondsAt) {
+        if (
+            type === "list" ||
+            (type === "responsive" && this.state.width < respondsAt)
+        ) {
             return this.renderAsList();
         }
         return <table>{this.props.children}</table>;
@@ -63,13 +66,13 @@ TableList.displayName = "TableList";
 
 TableList.propTypes = {
     children: PropTypes.array, //TODO - Work on ensuring table > [thead > tr > th, tbody > *tr > td] layout
-    body: PropTypes.array,
-    type: PropTypes.oneOf(["list", "table", ""]),
+    type: PropTypes.oneOf(["responsive", "list", "table"]),
     respondsAt: PropTypes.number
 };
 
 TableList.defaultProps = {
-    respondsAt: 600
+    respondsAt: 600,
+    type: "responsive"
 };
 
 export default TableList;

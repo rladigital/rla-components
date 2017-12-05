@@ -10,7 +10,11 @@ const stories = storiesOf("Table", module);
 stories.addDecorator(withKnobs);
 
 stories.addWithInfo("Default", () => {
-    let type = select("type", { table: "Table", list: "List" }, "table");
+    let type = select(
+        "type",
+        { responsive: "Responsive", table: "Table", list: "List" },
+        "responsive"
+    );
     let respondsAt = number("Change to list at:", 600);
     let items = object("items", [
         {
