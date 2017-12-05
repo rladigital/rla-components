@@ -26,27 +26,26 @@ class TableList extends React.Component {
     renderAsList() {
         const tableElements = React.Children.toArray(this.props.children);
 
-        const headerElements = get(
+        const headers = get(
             tableElements[0],
             "props.children.props.children",
             []
-        );
-
-        const headers = headerElements.reduce((headerArray, header) => {
+        ).reduce((headerArray, header) => {
             return headerArray.concat(header.props.children);
         }, []);
 
-        const itemRowElements = get(tableElements[1], "props.children", []);
-
-        const items = itemRowElements.reduce((newItems, item) => {
-            return newItems.concat([
-                [
-                    ...item.props.children.reduce((newItem, property) => {
-                        return newItem.concat(property.props.children);
-                    }, [])
-                ]
-            ]);
-        }, []);
+        const items = get(tableElements[1], "props.children", []).reduce(
+            (newItems, item) => {
+                return newItems.concat([
+                    [
+                        ...item.props.children.reduce((newItem, property) => {
+                            return newItem.concat(property.props.children);
+                        }, [])
+                    ]
+                ]);
+            },
+            []
+        );
 
         return <DefinitionList headers={headers} items={items} />;
     }
