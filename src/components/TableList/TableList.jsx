@@ -24,22 +24,19 @@ class TableList extends React.Component {
         this.setState({ width: window.innerWidth });
     }
     renderAsList() {
-        const tableElement = React.Children.toArray(this.props.children)[0];
+        const tableElements = React.Children.toArray(this.props.children);
 
         const headerElements = get(
-            tableElement,
-            "props.children[0].props.children.props.children",
+            tableElements[0],
+            "props.children.props.children",
             []
         );
 
-        const itemRowElements = get(
-            tableElement,
-            "props.children[1].props.children",
-            []
-        );
         const headers = headerElements.reduce((headerArray, header) => {
             return headerArray.concat(header.props.children);
         }, []);
+
+        const itemRowElements = get(tableElements[1], "props.children", []);
 
         const items = itemRowElements.reduce((newItems, item) => {
             return newItems.concat([
@@ -58,14 +55,14 @@ class TableList extends React.Component {
         if (type == "list" || this.state.width < respondsAt) {
             return this.renderAsList();
         }
-        return this.props.children;
+        return <table>{this.props.children}</table>;
     }
 }
 
 TableList.displayName = "TableList";
 
 TableList.propTypes = {
-    children: PropTypes.element, //TODO - Work on ensuring table > [thead > tr > th, tbody > *tr > td] layout
+    children: PropTypes.array, //TODO - Work on ensuring table > [thead > tr > th, tbody > *tr > td] layout
     body: PropTypes.array,
     type: PropTypes.oneOf(["list", "table", ""]),
     respondsAt: PropTypes.number

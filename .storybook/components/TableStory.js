@@ -35,40 +35,38 @@ stories.addWithInfo("Default", () => {
                 <Column>
                     <h1>Priate Ship Team Listing</h1>
                     <TableList type={type} respondsAt={respondsAt}>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Employee</th>
-                                    <th>Role</th>
-                                    <th>Year in Service</th>
-                                    <th>Walk the plank?</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {items.map((item, index) => {
-                                    return (
-                                        <tr key={index}>
-                                            <td>{item.name}</td>
-                                            <td>{item.role}</td>
-                                            <td>{item.service_years}</td>
-                                            <td>
-                                                <Button
-                                                    onClick={() => {
-                                                        alert(
-                                                            `${
-                                                                item.name
-                                                            } should walk the plank`
-                                                        );
-                                                    }}
-                                                >
-                                                    Yar me harties!
-                                                </Button>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Role</th>
+                                <th>Year in Service</th>
+                                <th>Walk the plank?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {items.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{item.name}</td>
+                                        <td>{item.role}</td>
+                                        <td>{item.service_years}</td>
+                                        <td>
+                                            <Button
+                                                onClick={() => {
+                                                    alert(
+                                                        `${
+                                                            item.name
+                                                        } should walk the plank`
+                                                    );
+                                                }}
+                                            >
+                                                Yar me harties!
+                                            </Button>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
                     </TableList>
                 </Column>
             </Row>
