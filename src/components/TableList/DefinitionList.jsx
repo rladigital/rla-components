@@ -8,13 +8,17 @@ class DefinitionList extends React.Component {
 
         return (
             <div>
-                {items.map((item, index) => {
+                {items.map((item, itemIndex) => {
                     return (
-                        <dl>
+                        <dl key={itemIndex}>
                             {item.map((property, propertyIndex) => {
                                 return [
-                                    <dt>{headers[propertyIndex]}</dt>,
-                                    <dd>{property}</dd>
+                                    <dt key={`term_${propertyIndex}`}>
+                                        {headers[propertyIndex]}
+                                    </dt>,
+                                    <dd key={`definition_${propertyIndex}`}>
+                                        {property}
+                                    </dd>
                                 ];
                             })}
                         </dl>
