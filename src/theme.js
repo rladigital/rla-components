@@ -179,36 +179,11 @@ const theme = {
         border: 1,
         padding: 4
     },
-    accordion: {
-        margin: spacing.margin,
-        padding: spacing.padding,
-        radius: spacing.radius,
-        header: {
-            fontWeight: "bold",
-            background: colors.accent
-        },
-        bar: {
-            size: 2,
-            color: colors.white,
-            background: colors.primary
-        },
-        twisty: {
-            color: colors.white,
-            background: "transparent",
-            downIcon: "arrowDown",
-            upIcon: "arrowUp"
-        },
-        content: {
-            background: colors.white,
-            color: colors.black
-        }
-    },
-    tabs: {
+    tabordion: {
         padding: spacing.padding,
         margin: spacing.margin,
         borderThickness: "1px",
-        borderColor: colors.primary,
-        textAlign: "center",
+        borderColor: colors.white,
         fontWeight: "bold",
         default: {
             color: colors.white,
@@ -227,10 +202,23 @@ const theme = {
             padding: 0.7,
             fontSize: 0.4,
             fontWeight: "bold",
-            color: colors.primary,
+            color: colors.white,
             background: colors.accent,
-            border: "1px solid " + colors.primary,
+            border: "1px solid " + colors.white,
             radius: 2
+        },
+        twisty: {
+            size: 2,
+            color: colors.white,
+            background: "transparent",
+            nonActiveIcon: "arrowDown",
+            activeIcon: "arrowUp"
+        },
+        tabs: {
+            textAlign: "center"
+        },
+        accordion: {
+            textAlign: "left"
         }
     },
     carousel: {
