@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
-import { withKnobs, object, select } from "@storybook/addon-knobs";
+import { withKnobs, object, select, number } from "@storybook/addon-knobs";
 import { TableList, Panel, Row, Column, Button } from "../../src/index";
 
 const stories = storiesOf("Table", module);
@@ -11,6 +11,7 @@ stories.addDecorator(withKnobs);
 
 stories.addWithInfo("Default", () => {
     let type = select("type", { table: "Table", list: "List" }, "table");
+    let respondsAt = number("Change to list at:", 600);
     let items = object("items", [
         {
             name: "Blackbeard",
@@ -33,7 +34,7 @@ stories.addWithInfo("Default", () => {
             <Row>
                 <Column>
                     <h1>Priate Ship Team Listing</h1>
-                    <TableList type={type}>
+                    <TableList type={type} respondsAt={respondsAt}>
                         <table>
                             <thead>
                                 <tr>
