@@ -29,6 +29,7 @@ export { default as MenuItem } from "./components/menu/menuItem";
 export { default as Steps } from "./components/steps";
 export { default as Collapse } from "./components/collapse";
 export { default as Tabordion } from "./components/tabordion";
+export { default as TableList } from "./components/TableList/TableList";
 export { default as Carousel } from "./components/carousel/carousel";
 export { default as CarouselItem } from "./components/carousel/carouselItem";
 export { default as Accordion } from "./components/accordion/accordion";
