@@ -5,7 +5,8 @@ import Tab from "./tabs/tab";
 import TabContainer from "./tabs/tabContainer";
 import TabContent from "./tabs/tabContent";
 import Accordion from "./accordion/accordion";
-import AccordionItem from "./accordion/accordionItem";
+import AccordionHeader from "./accordion/accordionHeader";
+import AccordionContent from "./accordion/accordionContent";
 
 class Tabordion extends React.Component {
     constructor(props) {
@@ -31,8 +32,33 @@ class Tabordion extends React.Component {
     render() {
         var { type, respondsAt } = this.props;
         var children = React.Children.toArray(this.props.children);
-        if (type == "accordion" || (!type && this.state.width < respondsAt))
-            return <Accordion>A</Accordion>;
+        if (
+            type == "accordion" ||
+            (type == "responsive" && this.state.width < respondsAt)
+        )
+            return (
+                <Accordion>
+                    {children.map((child, i) => {
+                        return [
+                            <AccordionHeader
+                                onClick={() => this.setCurrentItem(i)}
+                                divider={this.props.divider}
+                                current={this.state.current}
+                                key={"header" + i}
+                                i={i}
+                            >
+                                {child.props.title}
+                            </AccordionHeader>,
+                            <AccordionContent
+                                key={"content" + i}
+                                isOpened={this.state.current == i}
+                            >
+                                {children[i]}
+                            </AccordionContent>
+                        ];
+                    })}
+                </Accordion>
+            );
         else
             return [
                 <TabContainer>
@@ -61,7 +87,7 @@ Tabordion.propTypes = {
     active: PropTypes.number,
     barClickable: PropTypes.bool,
     allowMultiple: PropTypes.bool,
-    type: PropTypes.oneOf(["tabs", "accordion", ""]),
+    type: PropTypes.oneOf(["tabs", "accordion", "responsive"]),
     respondsAt: PropTypes.number
 };
 
@@ -69,7 +95,8 @@ Tabordion.defaultProps = {
     active: null,
     barClickable: true,
     allowMultiple: false,
-    respondsAt: 600
+    respondsAt: 600,
+    type: "responsive"
 };
 
 export default Tabordion;
