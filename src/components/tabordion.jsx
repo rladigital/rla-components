@@ -29,6 +29,11 @@ class Tabordion extends React.Component {
     setCurrentItem(x) {
         this.setState({ current: x });
     }
+    randomString() {
+        return Math.random()
+            .toString(36)
+            .substring(7);
+    }
     render() {
         var { type, respondsAt } = this.props;
         var children = React.Children.toArray(this.props.children);
@@ -61,7 +66,7 @@ class Tabordion extends React.Component {
             );
         else
             return [
-                <TabContainer>
+                <TabContainer key={"TabContainer_" + this.randomString()}>
                     {children.map((child, i) => {
                         return (
                             <Tab
@@ -76,7 +81,9 @@ class Tabordion extends React.Component {
                         );
                     })}
                 </TabContainer>,
-                <TabContent>{children[this.state.current]}</TabContent>
+                <TabContent key={"TabContent_" + this.randomString()}>
+                    {children[this.state.current]}
+                </TabContent>
             ];
     }
 }
