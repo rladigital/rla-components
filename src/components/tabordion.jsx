@@ -13,7 +13,8 @@ class Tabordion extends React.Component {
         super(props);
         this.state = {
             current: this.props.current,
-            width: undefined
+            width: undefined,
+            random: this.randomString()
         };
     }
     componentDidMount() {
@@ -65,26 +66,43 @@ class Tabordion extends React.Component {
                 </Accordion>
             );
         else
-            return [
-                <TabContainer key={"TabContainer_" + this.randomString()}>
-                    {children.map((child, i) => {
-                        return (
-                            <Tab
-                                onClick={() => this.setCurrentItem(i)}
-                                divider={this.props.divider}
-                                current={this.state.current}
-                                key={i}
-                                i={i}
-                            >
-                                {child.props.title}
-                            </Tab>
-                        );
-                    })}
-                </TabContainer>,
-                <TabContent key={"TabContent_" + this.randomString()}>
-                    {children[this.state.current]}
-                </TabContent>
-            ];
+            return (
+                <div>
+                    <TabContainer>
+                        {children.map((child, i) => {
+                            return (
+                                <Tab
+                                    onClick={() => this.setCurrentItem(i)}
+                                    divider={this.props.divider}
+                                    current={this.state.current}
+                                    key={i}
+                                    i={i}
+                                >
+                                    {child.props.title}
+                                </Tab>
+                            );
+                        })}
+                    </TabContainer>
+                    <TabContent>
+                        {this.props.unmounts
+                            ? children[this.state.current]
+                            : children.map((child, i) => {
+                                  return (
+                                      <div
+                                          style={{
+                                              display:
+                                                  this.state.current == i
+                                                      ? "block"
+                                                      : "none"
+                                          }}
+                                      >
+                                          {child}
+                                      </div>
+                                  );
+                              })}
+                    </TabContent>
+                </div>
+            );
     }
 }
 
@@ -95,7 +113,8 @@ Tabordion.propTypes = {
     barClickable: PropTypes.bool,
     allowMultiple: PropTypes.bool,
     type: PropTypes.oneOf(["tabs", "accordion", "responsive"]),
-    respondsAt: PropTypes.number
+    respondsAt: PropTypes.number,
+    unmounts: PropTypes.bool
 };
 
 Tabordion.defaultProps = {
@@ -103,7 +122,8 @@ Tabordion.defaultProps = {
     barClickable: true,
     allowMultiple: false,
     respondsAt: 600,
-    type: "responsive"
+    type: "responsive",
+    unmounts: true
 };
 
 export default Tabordion;

@@ -2,7 +2,13 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
-import { withKnobs, number, text, select } from "@storybook/addon-knobs";
+import {
+    withKnobs,
+    number,
+    text,
+    select,
+    boolean
+} from "@storybook/addon-knobs";
 import { Tabordion, Panel, Row, Column } from "../../src/index";
 
 const stories = storiesOf("Tabordion", module);
@@ -25,6 +31,7 @@ stories.addWithInfo(
             },
             "responsive"
         );
+        let unmounts = boolean("unmounts", true);
         return (
             <Panel>
                 <Row>
@@ -33,10 +40,14 @@ stories.addWithInfo(
                             current={current}
                             divider={dividerText}
                             type={type}
+                            unmounts={unmounts}
                         >
                             <Row title="Tab 1">
                                 <Column>
                                     <h1>Tab 1</h1>
+                                    <p>
+                                        <input />
+                                    </p>
                                 </Column>
                             </Row>
                             <Row title="Tab 2">
