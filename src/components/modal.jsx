@@ -17,7 +17,7 @@ let animation = {
 };
 
 const ModalWrapper = animation.fade.extend`
-        display: ${props => (props.visible ? "auto" : "none")};
+        display: auto;
         top: 0;
         left: 0;
         right: 0;
