@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import styled, { withTheme } from "styled-components";
 import Icon from "./icon";
@@ -16,7 +17,7 @@ let animation = {
 };
 
 const ModalWrapper = animation.fade.extend`
-        display: ${props => (props.visible ? "auto" : "none")}
+        display: ${props => (props.visible ? "auto" : "none")};
         top: 0;
         left: 0;
         right: 0;
@@ -54,19 +55,26 @@ const ModalCloseButton = styled.div.attrs({
 
 /** Modal  */
 class Modal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.el = document.createElement("div");
+    }
     componentWillMount() {
         // Lock body scroll if is visible
         try {
-            document.getElementsByTagName(
-                "BODY"
-            )[0].style.overflow = props.visible ? "hidden" : "auto";
+            const bodyElement = document.getElementsByTagName("BODY")[0];
+            bodyElement.appendChild(this.el);
+            bodyElement.style.overflow = props.visible ? "hidden" : "auto";
         } catch (err) {}
     }
 
     componentWillUnmount() {
         // Lock body scroll if is visible
         try {
-            document.getElementsByTagName("BODY")[0].style.overflow = "auto";
+            const bodyElement = document.getElementsByTagName("BODY")[0];
+
+            bodyElement.removeChild(this.el);
+            bodyElement.style.overflow = "auto";
         } catch (err) {}
     }
 
@@ -74,23 +82,24 @@ class Modal extends React.Component {
         this.props.onClose();
     };
 
+    renderModal = () => {
+        return (
+            <ModalWrapper duration="0.25s" onClick={this.onClose}>
+                <ModalInner duration="0.25s" onClick={e => e.stopPropagation()}>
+                    <ModalCloseButton onClick={this.onClose}>
+                        <Icon name="close" size="1.8" />
+                    </ModalCloseButton>
+                    {this.props.children}
+                </ModalInner>
+            </ModalWrapper>
+        );
+    };
+
     render() {
         var { theme, visible } = this.props;
 
         if (visible) {
-            return (
-                <ModalWrapper duration="0.25s" onClick={this.onClose}>
-                    <ModalInner
-                        duration="0.25s"
-                        onClick={e => e.stopPropagation()}
-                    >
-                        <ModalCloseButton onClick={this.onClose}>
-                            <Icon name="close" size="1.8" />
-                        </ModalCloseButton>
-                        {this.props.children}
-                    </ModalInner>
-                </ModalWrapper>
-            );
+            return ReactDOM.createPortal(this.renderModal(), this.el);
         } else {
             return null;
         }
