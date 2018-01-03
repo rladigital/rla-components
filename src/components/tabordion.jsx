@@ -24,6 +24,13 @@ class Tabordion extends React.Component {
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateDimensions.bind(this));
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.current !== nextProps.current) {
+            this.setCurrentItem(nextProps.current);
+        }
+    }
+
     updateDimensions() {
         this.setState({ width: window.innerWidth });
     }
