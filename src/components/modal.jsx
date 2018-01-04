@@ -32,7 +32,6 @@ const ModalWrapper = animation.fade.extend`
 const ModalInner = animation.zoom.extend`
     max-width: 40em;
     margin: 6em auto;
-    overflow: hidden;
     position: relative;
     border-radius: ${props => props.theme.modal.radius}em;
     background: ${props => props.theme.modal.background};
