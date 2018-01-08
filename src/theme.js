@@ -32,7 +32,8 @@ const theme = {
         fontWeight: "normal",
         radius: spacing.radius,
         padding: spacing.padding,
-        margin: spacing.margin
+        margin: spacing.margin,
+        textTransform: "uppercase"
     },
     column: {
         columns: 12,
