@@ -39,3 +39,7 @@ export {
 export {
     default as AccordionHeader
 } from "./components/accordion/accordionHeader";
+export { default as UserInfo } from "./components/userInfo/userInfo";
+export { default as UserInfoIcon } from "./components/userInfo/userInfoIcon";
+export { default as UserInfoTitle } from "./components/userInfo/userInfoTitle";
+export { default as UserInfoText } from "./components/userInfo/userInfoText";
