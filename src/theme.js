@@ -32,7 +32,8 @@ const theme = {
         fontWeight: "normal",
         radius: spacing.radius,
         padding: spacing.padding,
-        margin: spacing.margin
+        margin: spacing.margin,
+        textTransform: "uppercase"
     },
     column: {
         columns: 12,
@@ -245,6 +246,7 @@ const theme = {
         spacingX: 0.8,
         spacingY: 0.2,
         padding: spacing.padding,
+        height: 8,
         icon: {
             size: 1,
             color: colors.primary

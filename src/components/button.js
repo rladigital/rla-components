@@ -20,7 +20,8 @@ const Button = styled.button`
     border-style: solid;
     border-width: 0.1em;
     font-size: 1em;
-    font-Weight: ${props => props.theme.button.fontWeight};
+    font-weight: ${props => props.theme.button.fontWeight};
+    text-transform: ${props => props.theme.button.textTransform};
     ${props =>
         !props.disabled
             ? css`
@@ -47,7 +48,11 @@ const Button = styled.button`
         `};
 
     /*right align button styling*/
-    ${props => props.align == "right" && css`float: right;`};
+    ${props =>
+        props.align == "right" &&
+        css`
+            float: right;
+        `};
 `;
 
 Button.displayName = "Button";

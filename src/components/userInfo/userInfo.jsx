@@ -6,8 +6,8 @@ class UserInfo extends Component {
     render() {
         const UserInfoContainer = styled.div`
             width: 100%;
-            height: 100px;
             position: relative;
+            height: ${props => props.theme.userInfo.height}em;
             background: ${props => props.theme.userInfo.backgroundColor};
         `;
         const UserInfo = styled.div`
