@@ -15,15 +15,35 @@ const DropdownWrapper = styled.div`
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
         this.state = {
             visible: this.props.visible
         };
+    }
+    componentDidMount() {
+        document.addEventListener("click", this.handleClick);
+    }
+    componentWillUnmount() {
+        document.removeEventListener("click", this.handleClick, false);
     }
     componentDidUpdate() {
         if (this.props.visible != this.state.visible) {
             setTimeout(() => {
                 this.setState({ visible: this.props.visible });
             }, this.state.visible ? this.props.delay : 0);
+        }
+    }
+    handleClick(e) {
+        console.log("test");
+        if (this.dropdownWrapper == null) {
+            document.removeEventListener("click", this.handleClick, false);
+            return;
+        }
+        if (
+            !this.dropdownWrapper.contains(e.target) &&
+            this.props.hideDropdown
+        ) {
+            this.props.hideDropdown();
         }
     }
     render() {
@@ -34,6 +54,9 @@ class Dropdown extends React.Component {
         return (
             this.state.visible && (
                 <DropdownWrapper
+                    innerRef={dropdownWrapper =>
+                        (this.dropdownWrapper = dropdownWrapper)
+                    }
                     position={this.props.position}
                     width={this.props.width}
                     delay={this.props.delay}
@@ -51,7 +74,8 @@ Dropdown.propTypes = {
     width: PropTypes.number,
     delay: PropTypes.number,
     visible: PropTypes.bool,
-    toggleRef: PropTypes.object
+    toggleRef: PropTypes.object,
+    hideDropdown: PropTypes.func
 };
 
 Dropdown.defaultProps = {

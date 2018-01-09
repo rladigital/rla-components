@@ -31,6 +31,7 @@ stories.addWithInfo("Default", () => {
                 visible={visible}
                 position={position}
                 delay={delay}
+                hideDropdown={() => alert("Hide dropdown")}
             >
                 <Menu>
                     <MenuItem onClick={() => alert("menu item 1")}>
