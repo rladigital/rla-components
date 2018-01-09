@@ -1,4 +1,4 @@
-var colors = {
+export const colors = {
     primary: "#252b33",
     accent: "#86c3c4",
     black: "#000000",
@@ -12,13 +12,13 @@ var colors = {
     info: "#00bcd4"
 };
 
-var sizes = {
+export const sizes = {
     small: "1",
     default: "2",
     large: "3"
 };
 
-var spacing = {
+export const spacing = {
     radius: "0.2",
     padding: "1.2",
     margin: "1.2"
@@ -101,12 +101,6 @@ const theme = {
         colors: colors,
         fontWeight: "bold",
         textDecoration: "none"
-    },
-    navigation: {
-        background: colors.white,
-        color: colors.black,
-        activeColor: colors.accent,
-        margin: spacing.margin
     },
     dashboard: {
         panel: {
