@@ -241,6 +241,33 @@ const theme = {
             radius: 2,
             margin: 0.2
         }
+    },
+    userInfo: {
+        spacingX: 0.8,
+        spacingY: 0.2,
+        padding: spacing.padding,
+        height: 8,
+        icon: {
+            size: 1,
+            color: colors.primary
+        },
+        notification: {
+            size: 0.7,
+            top: -0.5,
+            right: -0.5,
+            minWidth: 1.2,
+            color: colors.white,
+            backgroundColor: colors.accent
+        },
+        title: {
+            size: 1,
+            color: colors.primary
+        },
+        text: {
+            size: 0.8,
+            color: colors.accent
+        },
+        backgroundColor: colors.lightGray
     }
 };
 
