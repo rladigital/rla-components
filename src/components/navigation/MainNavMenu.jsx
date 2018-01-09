@@ -20,22 +20,16 @@ MainNavMenu.displayName = "MainNavMenu";
 MainNavMenu.propTypes = {
     /** Font color - A valid css color value to use when a navigation option is not selected */
     color: PropTypes.string,
-    /** Text Tranform - A valid css text-transform value */
-    textTransform: PropTypes.string,
     /** The css background property for the navigation container */
     background: PropTypes.string,
     /** The css margin property for the navigation container */
-    margin: PropTypes.string,
-    /** Active Font color - A valid css color value to use when a navigation option is selected */
-    activeColor: PropTypes.string
+    margin: PropTypes.string
 };
 
 MainNavMenu.defaultProps = {
     color: colors.black,
-    textTransform: "none",
     background: colors.white,
-    margin: `0 0 ${spacing.margin}em 0`,
-    activeColor: colors.accent
+    margin: `0 0 ${spacing.margin}em 0`
 };
 
 export default MainNavMenu;
