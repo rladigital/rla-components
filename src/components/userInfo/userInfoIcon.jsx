@@ -27,12 +27,11 @@ class UserInfoIcon extends Component {
             background: ${props =>
                 props.theme.userInfo.notification.backgroundColor};
         `;
+        const { children, notifications, ...rest } = this.props;
         return (
-            <UserInfoIcon onClick={() => this.props.onClick()}>
-                {this.props.children}
-                {this.props.notifications && (
-                    <Notification>{this.props.notifications}</Notification>
-                )}
+            <UserInfoIcon {...rest}>
+                {children}
+                {notifications && <Notification>{notifications}</Notification>}
             </UserInfoIcon>
         );
     }
