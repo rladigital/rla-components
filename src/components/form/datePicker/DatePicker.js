@@ -6,6 +6,7 @@ import moment from "moment";
 import styled, { css } from "styled-components";
 import { shade } from "../../_functions";
 import FormLabel from "../label";
+import DatePickerInputField from "./DatePickerInputField";
 import CalendarContainer from "./CalendarContainer";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -56,6 +57,7 @@ class DatePicker extends Component {
                 {this.props.easyRead && <b>{this.props.easyRead}</b>}
                 <ReactDatePicker
                     {...field}
+                    customInput={<DatePickerInputField />}
                     dateFormat={DATE_FORMAT}
                     selected={this.state.selectedDate}
                     onChange={this.handleChange.bind(this)}

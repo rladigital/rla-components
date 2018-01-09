@@ -19,7 +19,7 @@ const types = [
     "week"
 ];
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
     ${props =>
         types.indexOf(props.type) !== -1 &&
         css`

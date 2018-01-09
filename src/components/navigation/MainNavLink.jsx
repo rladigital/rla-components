@@ -13,7 +13,6 @@ const MainNavLink = styled(NavLink).attrs({
             padding 0.6em 0;
             text-decoration: none;
             color: ${props => props.color};
-            font-weight: bold;
             text-transform: ${props => props.textTransform};
             &:first-child {
                 margin-left: 0;
