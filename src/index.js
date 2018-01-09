@@ -6,7 +6,7 @@ export { default as TextareaField } from "./components/form/textarea";
 export { default as RadioField } from "./components/form/radio";
 export { default as MultiCheckbox } from "./components/form/checkbox";
 export { default as SelectField } from "./components/form/select";
-export { default as DatePicker } from "./components/form/datePicker";
+export { default as DatePicker } from "./components/form/datePicker/DatePicker";
 export { default as TimePicker } from "./components/form/timePicker";
 export { default as Range } from "./components/form/range";
 export { default as Column } from "./components/column";
