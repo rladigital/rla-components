@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import ReactDatePicker from "react-datepicker";
 import moment from "moment";
 import styled, { css } from "styled-components";
-import { shade } from "../_functions";
-import FormLabel from "./label";
+import { shade } from "../../_functions";
+import FormLabel from "../label";
+import CalendarContainer from "./CalendarContainer";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -44,7 +46,7 @@ class DatePicker extends Component {
         return this.props.onChange({ name: this.props.name, value: newDate });
     }
 
-    render() {
+    render = () => {
         const field = this.props;
         return (
             <div>
@@ -57,10 +59,11 @@ class DatePicker extends Component {
                     dateFormat={DATE_FORMAT}
                     selected={this.state.selectedDate}
                     onChange={this.handleChange.bind(this)}
-                    className={`form-control ${field.meta.touched &&
-                    field.meta.invalid
-                        ? "alert"
-                        : ""}`}
+                    className={`form-control ${
+                        field.meta.touched && field.meta.invalid ? "alert" : ""
+                    }`}
+                    popperContainer={CalendarContainer}
+                    popperClassName="showInFront"
                 />
                 {field.meta.touched &&
                     field.meta.error && (
@@ -68,7 +71,7 @@ class DatePicker extends Component {
                     )}
             </div>
         );
-    }
+    };
 }
 
 DatePicker.propTypes = {
