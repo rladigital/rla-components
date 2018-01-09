@@ -17,7 +17,7 @@ stories.addDecorator(withKnobs);
 
 stories.addWithInfo(
     "Default",
-    "Tabordion is a component that can be tabs, accordion or both! Children of the Tabordion just need a title prop to automatically render the necessary UI elements.",
+    "Tabordion is a component that can be tabs, accordion or both! Children of the Tabordion just need a heading prop to automatically render the necessary UI elements.",
     () => {
         let current = number("current", 0);
         let dividerText = text("dividerText", "Or");
@@ -42,7 +42,7 @@ stories.addWithInfo(
                             type={type}
                             unmounts={unmounts}
                         >
-                            <Row title="Tab 1">
+                            <Row heading="Tab 1">
                                 <Column>
                                     <h1>Tab 1</h1>
                                     <p>
@@ -50,12 +50,12 @@ stories.addWithInfo(
                                     </p>
                                 </Column>
                             </Row>
-                            <Row title="Tab 2">
+                            <Row heading="Tab 2">
                                 <Column>
                                     <h1>Tab 2</h1>
                                 </Column>
                             </Row>
-                            <Row title="Tab 3">
+                            <Row heading="Tab 3">
                                 <Column>
                                     <h1>Tab 3</h1>
                                 </Column>
