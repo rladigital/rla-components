@@ -16,17 +16,25 @@ class UserInfo extends Component {
             position: absolute;
             transform: translateY(-50%);
             right: ${props => props.theme.userInfo.padding}em;
+            text-transform: ${props => props.textTransform};
         `;
         return (
             <UserInfoContainer>
-                <UserInfo>{this.props.children}</UserInfo>
+                <UserInfo textTransform={this.props.textTransform}>
+                    {this.props.children}
+                </UserInfo>
             </UserInfoContainer>
         );
     }
 }
 
-UserInfo.propTypes = {};
+UserInfo.propTypes = {
+    /** Text Tranform - A valid css text-transform value */
+    textTransform: PropTypes.string
+};
 
-UserInfo.defaultProps = {};
+UserInfo.defaultProps = {
+    textTransform: "none"
+};
 
 export default UserInfo;
