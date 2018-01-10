@@ -10,9 +10,13 @@ import DatePickerInputField from "./DatePickerInputField";
 import CalendarContainer from "./CalendarContainer";
 
 import "react-datepicker/dist/react-datepicker.css";
+import "./datePicker.css";
 
 const DATE_FORMAT = "DD/MM/YYYY";
-
+const DatePickerContainer = styled.div`
+    width: 100%;
+    max-width: ${props => (props.expanded ? "100%" : "100%")};
+`;
 class DatePicker extends Component {
     constructor(props) {
         super(props);
@@ -50,7 +54,7 @@ class DatePicker extends Component {
     render = () => {
         const field = this.props;
         return (
-            <div>
+            <DatePickerContainer>
                 {this.props.label && (
                     <FormLabel {...field}>{this.props.label}</FormLabel>
                 )}
@@ -71,7 +75,7 @@ class DatePicker extends Component {
                     field.meta.error && (
                         <small className="alert">{field.meta.error}</small>
                     )}
-            </div>
+            </DatePickerContainer>
         );
     };
 }
@@ -93,6 +97,7 @@ DatePicker.propTypes = {
     })
 };
 DatePicker.defaultProps = {
-    meta: {}
+    meta: {},
+    expanded: true
 };
 export default DatePicker;
