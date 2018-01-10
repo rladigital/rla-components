@@ -105,7 +105,7 @@ InputField.propTypes = {
 
 InputField.defaultProps = {
     size: "default",
-    expanded: false,
+    expanded: true,
     block: true,
     type: "text",
     readOnly: false,

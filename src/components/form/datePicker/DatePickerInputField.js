@@ -34,8 +34,26 @@ class DatePickerInputField extends Component {
 
 DatePickerInputField.displayName = "DatePickerInputField";
 
-DatePickerInputField.propTypes = {};
+DatePickerInputField.propTypes = {
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    size: PropTypes.string,
+    expanded: PropTypes.bool,
+    block: PropTypes.bool,
+    input: PropTypes.object,
+    type: PropTypes.string,
+    label: PropTypes.string,
+    readOnly: PropTypes.bool,
+    error: PropTypes.string
+};
 
-DatePickerInputField.defaultProps = {};
+DatePickerInputField.defaultProps = {
+    size: "default",
+    expanded: true,
+    block: true,
+    type: "text",
+    readOnly: false,
+    error: ""
+};
 
 export default DatePickerInputField;

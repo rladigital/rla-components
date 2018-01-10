@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const type = props => (props.type ? props.type : props.theme.panel.default);
-const panel = props => props.theme.panel.types[type(props)];
+const panel = props => props.theme.panel.types[props.type];
 
 const Panel = styled.div`
     height: 100%;
@@ -25,6 +24,7 @@ Panel.propTypes = {
 };
 
 Panel.defaultProps = {
+    type: "default",
     textAlign: "left"
 };
 
