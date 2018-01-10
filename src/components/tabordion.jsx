@@ -60,7 +60,7 @@ class Tabordion extends React.Component {
                                 key={"header" + i}
                                 i={i}
                             >
-                                {child.props.title}
+                                {child.props.heading}
                             </AccordionHeader>,
                             <AccordionContent
                                 key={"content" + i}
@@ -85,7 +85,7 @@ class Tabordion extends React.Component {
                                     key={i}
                                     i={i}
                                 >
-                                    {child.props.title}
+                                    {child.props.heading}
                                 </Tab>
                             );
                         })}

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { get } from "lodash";
 
-import Table from "./Table";
 import DefinitionList from "./DefinitionList";
 
 class TableList extends React.Component {
@@ -57,7 +56,7 @@ class TableList extends React.Component {
         ) {
             return this.renderAsList();
         }
-        return <table>{this.props.children}</table>;
+        return <table style={{ width: "100%" }}>{this.props.children}</table>;
     }
 }
 
