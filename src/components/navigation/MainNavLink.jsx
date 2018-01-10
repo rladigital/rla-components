@@ -9,36 +9,24 @@ const MainNavLink = styled(NavLink).attrs({
     activeClassName: "active"
 })`
             display: inline-block;
-            margin: ${props => props.margin};
-            padding 0.6em 0;
+            margin: ${props => props.theme.navigation.navLink.margin}em;
+            padding ${props => props.theme.navigation.navLink.padding}em;
             text-decoration: none;
-            color: ${props => props.color};
-            text-transform: ${props => props.textTransform};
+            color: ${props => props.theme.navigation.navLink.color};
+            text-transform: ${props =>
+                props.theme.navigation.navLink.textTransform};
             &:first-child {
                 margin-left: 0;
             }
             &.active{
-                box-shadow: inset 0px -5px ${props => props.activeColor};
+                box-shadow: inset 0px -5px ${props =>
+                    props.theme.navigation.navLink.activeColor};
             }
         `;
 
 MainNavLink.displayName = "MainNavLink";
 
-MainNavLink.propTypes = {
-    /** Font color - A valid css color value to use when a navigation option is not selected */
-    color: PropTypes.string,
-    /** Text Tranform - A valid css text-transform value */
-    textTransform: PropTypes.string,
-    /** The css margin property for the navigation container */
-    margin: PropTypes.string,
-    /** Active Font color - A valid css color value to use when a navigation option is selected */
-    activeColor: PropTypes.string
-};
+MainNavLink.propTypes = {};
 
-MainNavLink.defaultProps = {
-    color: colors.black,
-    textTransform: "none",
-    margin: `0 0.6em`,
-    activeColor: colors.accent
-};
+MainNavLink.defaultProps = {};
 export default MainNavLink;
