@@ -96,6 +96,7 @@ class Tabordion extends React.Component {
                             : children.map((child, i) => {
                                   return (
                                       <div
+                                          key={i}
                                           style={{
                                               display:
                                                   this.state.current == i
