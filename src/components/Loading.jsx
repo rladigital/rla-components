@@ -8,8 +8,13 @@ const Loading = props => {
         position: relative;
         width: ${props.width};
         height: ${props.height};
-        ${props.align == "center" && css`margin: auto;`} ${props.align ==
-                "right" && css`float: right;`};
+        ${props.align == "center" &&
+            css`
+                margin: auto;
+            `} ${props.align == "right" &&
+                css`
+                    float: right;
+                `};
     `;
 
     const LoadingInner = styled.div`
@@ -65,7 +70,7 @@ Loading.propTypes = {
 
 Loading.defaultProps = {
     color: "rgba(0,0,0,0.3)",
-    type: "spinningBubbles",
+    type: "spin",
     width: "200px",
     height: "200px",
     align: "left"
