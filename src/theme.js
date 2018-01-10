@@ -25,6 +25,15 @@ export const spacing = {
 };
 
 const theme = {
+    navigation: {
+        navLink: {
+            margin: 0,
+            color: colors.black,
+            activeColor: colors.accent,
+            padding: spacing.padding,
+            textTransform: "uppercase"
+        }
+    },
     button: {
         colors: colors,
         sizes: sizes,
