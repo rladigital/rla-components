@@ -2,9 +2,9 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
+import { withKnobs, boolean, text } from "@storybook/addon-knobs";
 
-import { Button } from "../../src/index";
+import { Button, SaveButton } from "../../src/index";
 
 const stories = storiesOf("Button", module);
 
@@ -67,4 +67,14 @@ stories
                 <Button align="center">center</Button>
             </div>
         ))
+    )
+    .add(
+        "Save Button",
+        withInfo(
+            "A button designed to be used for form submissions, where the button needs to be disabled whilst saving"
+        )(() => {
+            let saving = boolean("Saving", false);
+            let label = text("Label", "Save");
+            return <SaveButton saving={saving} label={label} />;
+        })
     );
