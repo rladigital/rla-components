@@ -19,7 +19,9 @@ const SaveButton = props => {
     );
 };
 
-SaveButton.PropTypes = {
+SaveButton.displayName = "SaveButton";
+
+SaveButton.propTypes = {
     saving: PropTypes.bool,
     label: PropTypes.string
 };
