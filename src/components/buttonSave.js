@@ -23,7 +23,7 @@ SaveButton.displayName = "SaveButton";
 
 SaveButton.propTypes = {
     saving: PropTypes.bool,
-    label: PropTypes.oneOfType(PropTypes.string, PropTypes.object)
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 SaveButton.defaultProps = {
