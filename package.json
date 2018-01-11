@@ -15,6 +15,9 @@
     "author": "RLA",
     "license": "",
     "dependencies": {
+        "@fortawesome/fontawesome": "^1.1.2",
+        "@fortawesome/fontawesome-free-solid": "^5.0.4",
+        "@fortawesome/react-fontawesome": "^0.0.17",
         "animate-css-styled-components": "^0.0.20",
         "rc-time-picker": "^3.2.1",
         "react-collapse": "^4.0.3",
