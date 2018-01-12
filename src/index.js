@@ -1,7 +1,7 @@
 export { default as Theme } from "./theme";
 export { default as Button } from "./components/button";
 export { default as SaveButton } from "./components/buttonSave";
-export { default as LoadingButton } from "./components/buttonLoading";
+export { default as SubmitButton } from "./components/buttonSubmit";
 export { default as FormLabel } from "./components/form/label";
 export { default as InputField } from "./components/form/input";
 export { default as TextareaField } from "./components/form/textarea";
