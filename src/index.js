@@ -44,3 +44,4 @@ export { default as UserInfo } from "./components/userInfo/userInfo";
 export { default as UserInfoIcon } from "./components/userInfo/userInfoIcon";
 export { default as UserInfoTitle } from "./components/userInfo/userInfoTitle";
 export { default as UserInfoText } from "./components/userInfo/userInfoText";
+export { default as Footer } from "./components/footer";
