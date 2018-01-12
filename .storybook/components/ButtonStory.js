@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
 import { withKnobs, boolean, text } from "@storybook/addon-knobs";
 
-import { Button, SaveButton } from "../../src/index";
+import { Button, SaveButton, LoadingButton } from "../../src/index";
 
 const stories = storiesOf("Button", module);
 
@@ -69,9 +69,19 @@ stories
         ))
     )
     .add(
+        "Loading Button",
+        withInfo(
+            "A button designed to be used for form submissions, where the button needs to be disabled whilst submitting"
+        )(() => {
+            let loading = boolean("Loading", false);
+            let label = text("Label", "Save");
+            return <LoadingButton loading={loading} label={label} />;
+        })
+    )
+    .add(
         "Save Button",
         withInfo(
-            "A button designed to be used for form submissions, where the button needs to be disabled whilst saving"
+            "A button designed to be used for form submissions, when saving information, where the button needs to be disabled whilst saving"
         )(() => {
             let saving = boolean("Saving", false);
             let label = text("Label", "Save");
