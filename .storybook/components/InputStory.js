@@ -3,15 +3,17 @@ import moment from "moment";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
-import { withKnobs, text, number, array } from "@storybook/addon-knobs";
+import { withKnobs, text, number, array, boolean } from "@storybook/addon-knobs";
 
 import {
     InputField,
     TextareaField,
     Button,
     RadioField,
+    Select,
     SelectField,
     MultiCheckbox,
+    CheckboxButtons,
     DatePicker,
     TimePicker,
     Range
@@ -25,70 +27,77 @@ stories
         "Text Inputs",
         withInfo(
             "This is the default input. It is automatically set to type='text'. The inputField accepts all of the standard HTML5 attributes such as placeholder, value etc. Styles are applied based on type."
-        )(() => (
-            <div>
-                <InputField
-                    name="test"
-                    label="With Label"
-                    value={text("With Label Text")}
-                    onChange={value => {
-                        console.log(value);
-                    }}
-                />
-                <InputField
-                    name="test"
-                    label="With Label Block"
-                    value={text("With Label Block Text")}
-                    inlineLabel={false}
-                    onChange={value => {
-                        console.log(value);
-                    }}
-                />
-                <InputField
-                    name="test"
-                    placeholder="with placeholder"
-                    value={text("With Placeholder Text")}
-                    onChange={value => {
-                        console.log(value);
-                    }}
-                />
-                <InputField
-                    name="test"
-                    type="password"
-                    value={text("Password")}
-                    onChange={value => {
-                        console.log(value);
-                    }}
-                />
-                <InputField
-                    name="test"
-                    size="small"
-                    value={text("Small Text")}
-                    onChange={value => {
-                        console.log(value);
-                    }}
-                />
-                <InputField
-                    name="test"
-                    value={text("Default Size Text")}
-                    onChange={value => {
-                        console.log(value);
-                    }}
-                />
-                <InputField
-                    name="test"
-                    value={text("Large Text")}
-                    size="large"
-                    onChange={value => {
-                        console.log(value);
-                    }}
-                />
-            </div>
-        ))
+        )(() => {
+            let error = text('error', '');
+
+            return (
+                <div>
+                    <InputField
+                        name="test"
+                        label="With Label"
+                        value={text("With Label Text")}
+                        onChange={value => {
+                            console.log(value);
+                        }}
+                        error={error}
+                    />
+                    <InputField
+                        name="test"
+                        label="With Label Block"
+                        value={text("With Label Block Text")}
+                        inlineLabel={false}
+                        onChange={value => {
+                            console.log(value);
+                        }}
+                    />
+                    <InputField
+                        name="test"
+                        placeholder="with placeholder"
+                        value={text("With Placeholder Text")}
+                        onChange={value => {
+                            console.log(value);
+                        }}
+                    />
+                    <InputField
+                        name="test"
+                        type="password"
+                        value={text("Password")}
+                        onChange={value => {
+                            console.log(value);
+                        }}
+                    />
+                    <InputField
+                        name="test"
+                        size="small"
+                        value={text("Small Text")}
+                        onChange={value => {
+                            console.log(value);
+                        }}
+                    />
+                    <InputField
+                        name="test"
+                        value={text("Default Size Text")}
+                        onChange={value => {
+                            console.log(value);
+                        }}
+                    />
+                    <InputField
+                        name="test"
+                        value={text("Large Text")}
+                        size="large"
+                        onChange={value => {
+                            console.log(value);
+                        }}
+                    />
+                </div>
+            )
+        })
     )
     .add(
         "Textarea",
         withInfo("This is an example textarea.")(() => {
+            let error = text('error', '');
+
             return (
                 <div>
                     <TextareaField
@@ -99,6 +108,7 @@ stories
                         onChange={value => {
                             console.log(value);
                         }}
+                        error={error}
                     />
                 </div>
             );
@@ -107,6 +117,8 @@ stories
     .add(
         "Radio Buttons",
         withInfo("This is for radio buttons.")(() => {
+            let error = text('error', '');
+
             const options = [
                 { value: "1", text: "first" },
                 { value: "2", text: "second" },
@@ -122,6 +134,7 @@ stories
                         onChange={value => {
                             console.log(value);
                         }}
+                        error={error}
                     />
                 </div>
             );
@@ -129,7 +142,44 @@ stories
     )
     .add(
         "Select",
-        withInfo("This is for select menus.")(() => {
+        withInfo("This is for Select menus.")(() => {
+            let multi = boolean("multi", false);
+            let tags = boolean("tags", false);
+            let creatable = boolean('creatable', false);
+            let placeholder = text('placeholder', 'Select Option...')
+            let error = text('error', '');
+
+            const options = [
+                { value: "first-value", text: "first" },
+                { value: "second-value", text: "second" },
+                { value: "third-value", text: "third" },
+                { value: "forth-value", text: "forth" }
+            ];
+            return (
+                <div>
+                    <Select
+                        name="test-select"
+                        defaultValue="second-value"
+                        labelProps={{ label: "Select an Option" }}
+                        options={options}
+                        onChange={selection => {
+                            console.log(selection);
+                        }}
+                        tags={tags}
+                        multi={multi}
+                        error={error}
+                        creatable={creatable}
+                        placeholder={placeholder}
+                    />
+                </div>
+            );
+        })
+    )
+    .add(
+        "SelectField",
+        withInfo("This is for SelectField menus.")(() => {
+            let error = text('error', '');
+
             const options = [
                 { value: "1", text: "first" },
                 { value: "2", text: "second" },
@@ -147,6 +197,7 @@ stories
                         onChange={selection => {
                             console.log(selection);
                         }}
+                        error={error}
                     />
                 </div>
             );
@@ -155,6 +206,8 @@ stories
     .add(
         "Checkboxes",
         withInfo("This is for checkboxes.")(() => {
+            let error = text('error', '');
+
             const options = [
                 { value: "1", text: "first" },
                 { value: "2", text: "second" },
@@ -171,6 +224,35 @@ stories
                         onChange={selection => {
                             console.log(selection);
                         }}
+                        error={error}
+                    />
+                </div>
+            );
+        })
+    )
+    .add(
+        "CheckboxButtons",
+        withInfo("This is for checkbox buttons.")(() => {
+            let error = text('error', '');
+
+            const options = [
+                { value: "1", text: "first" },
+                { value: "2", text: "second" },
+                { value: "3", text: "third" },
+                { value: "4", text: "forth" }
+            ];
+            return (
+                <div>
+                    <CheckboxButtons
+                        name="test-checkboxbuttons"
+                        defaultValue={['1', '3']}
+                        label="Checkbox Buttons"
+                        options={options}
+                        onChange={selection => {
+                            console.log(selection);
+                        }}
+                        buttonProps={{ defaultColor: 'success', activeColor: 'alert' }}
+                        error={error}
                     />
                 </div>
             );
@@ -179,6 +261,8 @@ stories
     .add(
         "Date Picker",
         withInfo("This is a date picker.")(() => {
+            let error = text('error', '');
+
             return (
                 <div>
                     <DatePicker
@@ -191,6 +275,7 @@ stories
                         onChange={newDate => {
                             console.log(newDate);
                         }}
+                        error={error}
                     />
                 </div>
             );
@@ -199,6 +284,8 @@ stories
     .add(
         "Time Picker",
         withInfo("This is a time picker.")(() => {
+            let error = text('error', '');
+
             return (
                 <div>
                     <TimePicker
@@ -207,6 +294,7 @@ stories
                         onChange={newTime => {
                             console.log(newTime);
                         }}
+                        error={error}
                     />
                 </div>
             );
@@ -217,6 +305,8 @@ stories
         withInfo(
             "This is a react component to use in place of an input type range."
         )(() => {
+            let error = text('error', '');
+
             return (
                 <div>
                     <Range
@@ -233,6 +323,7 @@ stories
                         onChange={value => {
                             console.log(value);
                         }}
+                        error={error}
                     />
                 </div>
             );

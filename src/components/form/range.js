@@ -6,8 +6,8 @@ import styled, { css } from "styled-components";
 import { shade } from "../_functions";
 import FormLabel from "./label";
 import { rangePropType, valuePropType } from "./rangePropTypes";
-
 import "react-input-range/lib/css/index.css";
+import InputError from "./inputError";
 
 class Range extends Component {
     constructor(props) {
@@ -36,7 +36,7 @@ class Range extends Component {
     }
 
     render() {
-        const { label, name, value, onChange, ...rest } = this.props;
+        const { label, name, value, onChange, error, ...rest } = this.props;
 
         return (
             <div>
@@ -56,7 +56,9 @@ class Range extends Component {
                     value={this.state.value}
                     onChange={this.handleChange.bind(this)}
                     {...rest}
-                />
+                /><br />
+
+                <InputError error={error} />
             </div>
         );
     }
@@ -77,9 +79,12 @@ Range.propTypes = {
     onChangeStart: PropTypes.func,
     onChangeComplete: PropTypes.func,
     step: PropTypes.number,
-    value: valuePropType
+    value: valuePropType,
+    error: PropTypes.string
 };
 
-Range.defaultProps = {};
+Range.defaultProps = {
+    error: ''
+};
 
 export default Range;

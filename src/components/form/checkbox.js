@@ -5,6 +5,7 @@ import isArray from "lodash/isArray";
 import styled, { css } from "styled-components";
 import { shade } from "../_functions";
 import FormLabel from "./label";
+import InputError from "./inputError";
 
 class MultiCheckbox extends Component {
     constructor(props) {
@@ -43,7 +44,7 @@ class MultiCheckbox extends Component {
     }
 
     render() {
-        const { options, onBlur, ...rest } = this.props;
+        const { options, onBlur, error, ...rest } = this.props;
         const { values } = this.state;
 
         const checkboxes = options.map(option => {
@@ -71,6 +72,8 @@ class MultiCheckbox extends Component {
                     <FormLabel {...rest}>{this.props.label}</FormLabel>
                 )}
                 {checkboxes}
+
+                <InputError error={error} />
             </div>
         );
     }
@@ -85,7 +88,8 @@ MultiCheckbox.propTypes = {
             value: PropTypes.any.isRequired,
             text: PropTypes.string.isRequired
         })
-    ).isRequired
+    ).isRequired,
+    error: PropTypes.string
 };
 
 export default MultiCheckbox;
