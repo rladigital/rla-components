@@ -87,6 +87,7 @@ const theme = {
         margin: spacing.margin,
         radius: spacing.radius,
         error: {
+            color: colors.alert,
             borderColor: colors.alert
         }
     },

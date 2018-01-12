@@ -8,6 +8,7 @@ import { shade } from "../../_functions";
 import FormLabel from "../label";
 import DatePickerInputField from "./DatePickerInputField";
 import CalendarContainer from "./CalendarContainer";
+import InputError from "../inputError";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./datePicker.css";
@@ -66,15 +67,13 @@ class DatePicker extends Component {
                     selected={this.state.selectedDate}
                     onChange={this.handleChange.bind(this)}
                     className={`form-control ${
-                        field.meta.touched && field.meta.invalid ? "alert" : ""
+                        field.error ? "alert" : ""
                     }`}
                     popperContainer={CalendarContainer}
                     popperClassName="showInFront"
                 />
-                {field.meta.touched &&
-                    field.meta.error && (
-                        <small className="alert">{field.meta.error}</small>
-                    )}
+
+                <InputError error={field.error} />
             </DatePickerContainer>
         );
     };
@@ -91,13 +90,10 @@ DatePicker.propTypes = {
     input: PropTypes.object,
     label: PropTypes.string,
     emptyOption: PropTypes.string,
-    meta: PropTypes.shape({
-        touched: PropTypes.bool,
-        error: PropTypes.string
-    })
+    error: PropTypes.string
 };
 DatePicker.defaultProps = {
-    meta: {},
+    error: '',
     expanded: true
 };
 export default DatePicker;
