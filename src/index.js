@@ -1,5 +1,7 @@
 export { default as Theme } from "./theme";
 export { default as Button } from "./components/button";
+export { default as SaveButton } from "./components/buttonSave";
+export { default as LoadingButton } from "./components/buttonLoading";
 export { default as FormLabel } from "./components/form/label";
 export { default as InputField } from "./components/form/input";
 export { default as TextareaField } from "./components/form/textarea";
@@ -45,3 +47,4 @@ export { default as UserInfo } from "./components/userInfo/userInfo";
 export { default as UserInfoIcon } from "./components/userInfo/userInfoIcon";
 export { default as UserInfoTitle } from "./components/userInfo/userInfoTitle";
 export { default as UserInfoText } from "./components/userInfo/userInfoText";
+export { default as Footer } from "./components/footer";

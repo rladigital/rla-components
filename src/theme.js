@@ -272,6 +272,10 @@ const theme = {
             color: colors.accent
         },
         backgroundColor: colors.lightGray
+    },
+    footer: {
+        background: colors.primary,
+        padding: spacing.padding
     }
 };
 
