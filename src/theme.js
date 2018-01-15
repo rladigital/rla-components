@@ -44,6 +44,9 @@ const theme = {
         margin: spacing.margin,
         textTransform: "uppercase"
     },
+    row: {
+        padding: spacing.padding
+    },
     column: {
         columns: 12,
         padding: spacing.padding,
@@ -57,7 +60,7 @@ const theme = {
     panel: {
         default: "light",
         types: {
-            light: {
+            default: {
                 color: colors.black,
                 background: colors.lightGray,
                 padding: spacing.padding,
@@ -176,9 +179,9 @@ const theme = {
         barHeight: 20,
         spacing: -3,
         circleDiameter: 40,
-        progressColor: colors.success,
+        progressColor: colors.accent,
         backgroundColor: colors.white,
-        borderColor: colors.success,
+        borderColor: colors.secondary,
         labelColor: "inherit",
         margin: spacing.margin,
         border: 1,

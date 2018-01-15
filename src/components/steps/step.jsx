@@ -1,16 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { withTheme, css } from "styled-components";
-import Icon from "./icon";
-
-const Progress = styled.div`
-    ${props => css`
-        text-align: center;
-        display: inline-block;
-        padding: ${props.theme.steps.border}px;
-        margin-bottom: ${props.theme.steps.margin}em;
-    `};
-`;
 
 const Circle = styled.div`
     ${props => css`
@@ -101,55 +91,22 @@ const Label = styled.div`
 `;
 
 class Steps extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            current: this.props.current
-        };
-    }
-
-    componentDidUpdate() {
-        if (this.state.current != this.props.current) {
-            var i = this.state.current;
-            var target = this.props.current;
-            var timer = setInterval(() => {
-                if (target > i) {
-                    i++;
-                } else if (target < i) {
-                    i--;
-                } else {
-                    clearInterval(timer);
-                }
-                this.setState({ current: i });
-            }, 80);
-        }
-    }
     render() {
-        const { stages } = this.props;
-        return (
-            <Progress>
-                {stages &&
-                    stages.map((x, i) => (
-                        <span key={i}>
-                            <Circle onClick={stages[i].onClick}>
-                                <CircleInner active={i <= this.state.current}>
-                                    {stages[i].icon && (
-                                        <Icon name={stages[i].icon} />
-                                    )}
-                                </CircleInner>
-                                {stages[i].label && (
-                                    <Label>{stages[i].label}</Label>
-                                )}
-                            </Circle>
-                            {stages.length - 1 != i && (
-                                <Bar barWidth={this.props.barWidth}>
-                                    <BarInner active={i < this.state.current} />
-                                </Bar>
-                            )}
-                        </span>
-                    ))}
-            </Progress>
-        );
+        const { i, onClick, current, hasBar, barWidth, label } = this.props;
+
+        return [
+            <Circle onClick={onClick}>
+                <CircleInner active={i <= current}>
+                    {this.props.children}
+                </CircleInner>
+                {label && <Label>{label}</Label>}
+            </Circle>,
+            hasBar && (
+                <Bar barWidth={barWidth}>
+                    <BarInner active={i < current} />
+                </Bar>
+            )
+        ];
     }
 }
 

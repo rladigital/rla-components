@@ -11,7 +11,7 @@ const Button = styled.button`
     color: ${props => (props.hollow ? background : "#FFF")};
     margin: 0
         ${props => (props.expanded || props.align == "right" ? 0 : "0.4em")}
-        ${props => props.theme.button.margin}em
+        ${props => props.collapse && props.theme.button.margin}em
         ${props => (props.align == "right" ? "0.4em" : 0)}em;
     padding: 0 ${props => props.theme.button.sizes[props.size] / 2}em;
     transition: color 0.25s, background 0.25s, border 0.25s;
@@ -63,7 +63,8 @@ Button.propTypes = {
     size: PropTypes.string,
     hollow: PropTypes.bool,
     disabled: PropTypes.bool,
-    alignment: PropTypes.string
+    alignment: PropTypes.string,
+    collapse: PropTypes.bool
 };
 
 Button.defaultProps = {
@@ -72,7 +73,8 @@ Button.defaultProps = {
     size: "default",
     hollow: false,
     disabled: false,
-    alignment: "left"
+    alignment: "left",
+    collapse: false
 };
 
 export default Button;

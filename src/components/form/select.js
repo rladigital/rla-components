@@ -88,7 +88,10 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
-    error: ''
+    error: '',
+    labelProps: {
+        label: ''
+    }
 };
 
 export default Select;

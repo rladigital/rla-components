@@ -7,6 +7,12 @@ import TabContent from "./tabs/tabContent";
 import Accordion from "./accordion/accordion";
 import AccordionHeader from "./accordion/accordionHeader";
 import AccordionContent from "./accordion/accordionContent";
+import Steps from "./steps/steps";
+import Step from "./steps/step";
+
+const StepsContainer = styled.div`
+    text-align: center;
+`;
 
 class Tabordion extends React.Component {
     constructor(props) {
@@ -43,36 +49,11 @@ class Tabordion extends React.Component {
             .substring(7);
     }
     render() {
-        var { type, respondsAt } = this.props;
+        var { type, respondsAt, responsive } = this.props;
         var children = React.Children.toArray(this.props.children);
-        if (
-            type == "accordion" ||
-            (type == "responsive" && this.state.width < respondsAt)
-        )
-            return (
-                <Accordion>
-                    {children.map((child, i) => {
-                        return [
-                            <AccordionHeader
-                                onClick={() => this.setCurrentItem(i)}
-                                divider={this.props.divider}
-                                current={this.state.current}
-                                key={"header" + i}
-                                i={i}
-                            >
-                                {child.props.heading}
-                            </AccordionHeader>,
-                            <AccordionContent
-                                key={"content" + i}
-                                isOpened={this.state.current == i}
-                            >
-                                {children[i]}
-                            </AccordionContent>
-                        ];
-                    })}
-                </Accordion>
-            );
-        else
+        var breakpoint = Boolean(responsive && this.state.width < respondsAt);
+
+        if (type == "tabs" && !breakpoint)
             return (
                 <div>
                     <TabContainer>
@@ -90,27 +71,87 @@ class Tabordion extends React.Component {
                             );
                         })}
                     </TabContainer>
-                    <TabContent>
-                        {this.props.unmounts
-                            ? children[this.state.current]
-                            : children.map((child, i) => {
-                                  return (
-                                      <div
-                                          key={i}
-                                          style={{
-                                              display:
-                                                  this.state.current == i
-                                                      ? "block"
-                                                      : "none"
-                                          }}
-                                      >
-                                          {child}
-                                      </div>
-                                  );
-                              })}
-                    </TabContent>
+                    <Content
+                        unmounts={this.props.unmounts}
+                        children={children}
+                        current={this.state.current}
+                    />
                 </div>
             );
+        else if (type == "steps" && !breakpoint)
+            return (
+                <div>
+                    <StepsContainer>
+                        <Steps current={this.state.current}>
+                            {children.map((child, i) => {
+                                return (
+                                    <Step
+                                        label={child.props.heading}
+                                        onClick={() => this.setCurrentItem(i)}
+                                        divider={this.props.divider}
+                                        key={i}
+                                        i={i}
+                                    >
+                                        {child.props.icon}
+                                    </Step>
+                                );
+                            })}
+                        </Steps>
+                    </StepsContainer>
+                    <Content
+                        unmounts={this.props.unmounts}
+                        children={children}
+                        current={this.state.current}
+                    />
+                </div>
+            );
+        return (
+            <Accordion>
+                {children.map((child, i) => {
+                    return [
+                        <AccordionHeader
+                            onClick={() => this.setCurrentItem(i)}
+                            divider={this.props.divider}
+                            current={this.state.current}
+                            key={"header" + i}
+                            i={i}
+                        >
+                            {child.props.heading}
+                        </AccordionHeader>,
+                        <AccordionContent
+                            key={"content" + i}
+                            isOpened={this.state.current == i}
+                        >
+                            {children[i]}
+                        </AccordionContent>
+                    ];
+                })}
+            </Accordion>
+        );
+    }
+}
+
+class Content extends React.Component {
+    render() {
+        let { children, unmounts, current } = this.props;
+        return (
+            <TabContent>
+                {unmounts
+                    ? children[current]
+                    : children.map((child, i) => {
+                          return (
+                              <div
+                                  key={i}
+                                  style={{
+                                      display: current == i ? "block" : "none"
+                                  }}
+                              >
+                                  {child}
+                              </div>
+                          );
+                      })}
+            </TabContent>
+        );
     }
 }
 
@@ -120,9 +161,10 @@ Tabordion.propTypes = {
     active: PropTypes.number,
     barClickable: PropTypes.bool,
     allowMultiple: PropTypes.bool,
-    type: PropTypes.oneOf(["tabs", "accordion", "responsive"]),
+    type: PropTypes.oneOf(["tabs", "accordion", "steps"]),
     respondsAt: PropTypes.number,
-    unmounts: PropTypes.bool
+    unmounts: PropTypes.bool,
+    responsive: PropTypes.bool
 };
 
 Tabordion.defaultProps = {
@@ -130,8 +172,9 @@ Tabordion.defaultProps = {
     barClickable: true,
     allowMultiple: false,
     respondsAt: 600,
-    type: "responsive",
-    unmounts: true
+    type: "tabs",
+    unmounts: true,
+    responsive: true
 };
 
 export default Tabordion;

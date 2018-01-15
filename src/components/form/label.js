@@ -4,6 +4,8 @@ import styled, { css } from "styled-components";
 
 const StyledLabel = styled.label`
     display: ${props => (props.inlineLabel ? "inline-block" : "block")};
+    margin-bottom: ${props => props.theme.input.margin / 2}em;
+    font-weight: bold;
 `;
 
 const FormLabel = props => {

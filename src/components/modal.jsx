@@ -36,7 +36,7 @@ const ModalInner = animation.zoom.extend`
     border-radius: ${props => props.theme.modal.radius}em;
     background: ${props => props.theme.modal.background};
     padding: ${props => props.theme.modal.padding}em
-        ${props => props.theme.modal.padding / 2}rem 0;
+        0 0;
     color: ${props => props.theme.modal.color};
 `;
 const ModalCloseButton = styled.div.attrs({
