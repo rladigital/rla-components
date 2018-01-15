@@ -163,7 +163,8 @@ Tabordion.propTypes = {
     allowMultiple: PropTypes.bool,
     type: PropTypes.oneOf(["tabs", "accordion", "steps"]),
     respondsAt: PropTypes.number,
-    unmounts: PropTypes.bool
+    unmounts: PropTypes.bool,
+    responsive: PropTypes.bool
 };
 
 Tabordion.defaultProps = {
@@ -171,8 +172,9 @@ Tabordion.defaultProps = {
     barClickable: true,
     allowMultiple: false,
     respondsAt: 600,
-    type: "responsive",
-    unmounts: true
+    type: "tabs",
+    unmounts: true,
+    responsive: true
 };
 
 export default Tabordion;
