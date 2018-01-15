@@ -9,7 +9,7 @@ import {
     select,
     boolean
 } from "@storybook/addon-knobs";
-import { Tabordion, Panel, Row, Column } from "../../src/index";
+import { Tabordion, Panel, Row, Column, Icon } from "../../src/index";
 
 const stories = storiesOf("Tabordion", module);
 
@@ -22,16 +22,9 @@ stories.addWithInfo(
         let current = number("current", 0);
         let dividerText = text("dividerText", "Or");
         let respondsAt = number("respondsAt", 600);
-        let type = select(
-            "type",
-            {
-                tabs: "tabs",
-                accordion: "accordion",
-                responsive: "responsive"
-            },
-            "responsive"
-        );
+        let type = select("type", ["tabs", "accordion", "steps"], "responsive");
         let unmounts = boolean("unmounts", true);
+        let responsive = boolean("responsive", true);
         return (
             <Panel>
                 <Row>
@@ -41,8 +34,9 @@ stories.addWithInfo(
                             divider={dividerText}
                             type={type}
                             unmounts={unmounts}
+                            responsive={responsive}
                         >
-                            <Row heading="Tab 1">
+                            <Row heading="Tab 1" icon={<Icon name="gear" />}>
                                 <Column>
                                     <h1>Tab 1</h1>
                                     <p>
@@ -50,12 +44,12 @@ stories.addWithInfo(
                                     </p>
                                 </Column>
                             </Row>
-                            <Row heading="Tab 2">
+                            <Row heading="Tab 2" icon={<Icon name="bell" />}>
                                 <Column>
                                     <h1>Tab 2</h1>
                                 </Column>
                             </Row>
-                            <Row heading="Tab 3">
+                            <Row heading="Tab 3" icon={<Icon name="check" />}>
                                 <Column>
                                     <h1>Tab 3</h1>
                                 </Column>
