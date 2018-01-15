@@ -6,6 +6,10 @@ import styled, { css } from "styled-components";
 import { shade } from "../_functions";
 import FormLabel from "./label";
 
+const CheckboxContainer = styled.div`
+    margin-bottom: ${props => props.theme.input.margin}em;
+`;
+
 class MultiCheckbox extends Component {
     constructor(props) {
         super(props);
@@ -55,10 +59,11 @@ class MultiCheckbox extends Component {
                         <input
                             type="checkbox"
                             onChange={event =>
-                                this.handleChange(event, option.value)}
+                                this.handleChange(event, option.value)
+                            }
                             checked={isChecked}
                             value={option.value}
-                        />
+                        />{" "}
                         {option.text}
                     </label>
                 </div>
@@ -66,12 +71,12 @@ class MultiCheckbox extends Component {
         });
 
         return (
-            <div>
+            <CheckboxContainer>
                 {this.props.label && (
                     <FormLabel {...rest}>{this.props.label}</FormLabel>
                 )}
                 {checkboxes}
-            </div>
+            </CheckboxContainer>
         );
     }
 }
