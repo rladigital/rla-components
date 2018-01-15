@@ -34,7 +34,7 @@ stories.addWithInfo("Default", () => {
         }
     ]);
     return (
-        <Panel type="light" textAlign="center">
+        <Panel textAlign="center">
             <Steps current={current} stages={stages} />
         </Panel>
     );

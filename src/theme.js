@@ -44,6 +44,9 @@ const theme = {
         margin: spacing.margin,
         textTransform: "uppercase"
     },
+    row: {
+        padding: spacing.padding
+    },
     column: {
         columns: 12,
         padding: spacing.padding,
@@ -57,7 +60,7 @@ const theme = {
     panel: {
         default: "light",
         types: {
-            light: {
+            default: {
                 color: colors.black,
                 background: colors.lightGray,
                 padding: spacing.padding,
