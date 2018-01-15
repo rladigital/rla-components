@@ -1,78 +1,74 @@
 import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { shade } from "../_functions";
 import FormLabel from "./label";
+import PropTypes from "prop-types";
+import isArray from "lodash/isArray";
+import InputError from "./inputError";
+import 'react-select/dist/react-select.css';
+import ReactSelect, { Creatable } from 'react-select';
 
-const Select = styled.select`
-    width: 100%;
-    max-width: ${props => (props.expanded ? "100%" : "10em")};
-    height: ${props => props.theme.input.sizes[props.size]}em;
-    border-radius: ${props => props.theme.input.radius}em;
-    border: 1px solid
-        ${props =>
-            props.error
-                ? props.theme.input.error.borderColor
-                : props.theme.input.borderColor};
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    padding: 0 ${props => props.theme.input.sizes[props.size] / 4}em;
-    margin: 0
-        ${props => (props.expanded || props.align == "right" ? 0 : "0.4em")}
-        auto ${props => (props.align == "right" ? "0.4em" : 0)}em;
-    margin-bottom: ${props => props.theme.input.margin}em;
-    font-size: 1em;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>");
-    background-origin: content-box;
-    background-position: right -1rem center;
-    background-repeat: no-repeat;
-    background-size: 9px 6px;
-    padding-right: 1.5rem;
-    appearance: none;
-`;
+class Select extends React.Component
+{
+    constructor(props) {
+        super(props);
 
-const SelectField = ({
-    options,
-    type,
-    name,
-    onChange,
-    label,
-    inlineLabel,
-    emptyOption,
-    readOnly,
-    meta,
+        this.state = {
+            value: props.defaultValue || ''
+        };
+    }
 
-    ...rest
-}) => {
-    const handleChange = event => {
-        onChange({
-            name: name,
-            value: event.target.value
-        });
-    };
-    return (
-        <span>
-            {label && (
-                <FormLabel name={name} label={label} {...rest}>
-                    {label}
-                </FormLabel>
-            )}{" "}
-            <Select onChange={handleChange} {...rest}>
-                <option value="">{emptyOption}</option>
-                {options &&
-                    options.map((opt, index) => (
-                        <option value={opt.value} key={index}>
-                            {opt.text}
-                        </option>
-                    ))}
-            </Select>
-            {meta.touched && meta.error && <span>{meta.error}</span>}
-        </span>
-    );
-};
+    componentWillReceiveProps(props) {
+        if (props.value !== this.props.value) {
+            this.setState({ value: props.value });
+        }
+    }
 
-SelectField.displayName = "SelectField";
+    handleChange = selected => {
+        let value              = '';
+        let { name, onChange } = this.props;
 
-SelectField.propTypes = {
+        if (isArray(selected)) {
+            value = selected.map(selected => selected.value)
+        }
+        else if (selected && selected.value) {
+            value = selected.value
+        }
+
+        this.setState({ value: selected }, () => onChange({ name, value }));
+    }
+
+    shouldKeyDownEventCreateNewOption = ({ keyCode }) => {
+        return [9, 13, this.props.tags ? 188 : ''].indexOf(keyCode) != -1 // Create new options only on tab and enter
+    }
+
+    render() {
+        const { options, name, onChange, labelProps, error, creatable, tags, ...rest } = this.props
+        const Component = creatable || tags ? Creatable : ReactSelect
+
+        return (
+            <div>
+                {labelProps.label && (
+                    <FormLabel name={name} {...labelProps}>
+                        {labelProps.label}
+                    </FormLabel>
+                )}{" "}
+
+                <Component
+                    options={options.map(option => ({ value: option.value, label: option.text }))}
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    shouldKeyDownEventCreateNewOption={this.shouldKeyDownEventCreateNewOption}
+                    {...rest}
+                />
+
+                <InputError error={error} />
+            </div>
+        );
+    }
+}
+
+Select.displayName = "Select";
+
+Select.propTypes = {
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(
@@ -81,22 +77,21 @@ SelectField.propTypes = {
             text: PropTypes.string.isRequired
         })
     ),
-    size: PropTypes.string,
-    expanded: PropTypes.bool,
-    inlineLabel: PropTypes.bool,
-    input: PropTypes.object,
-    label: PropTypes.string,
-    emptyOption: PropTypes.string,
-    meta: PropTypes.shape({
-        touched: PropTypes.bool,
-        error: PropTypes.string
-    })
+    labelProps: PropTypes.shape({
+        label: PropTypes.string.isRequired
+    }),
+    placeholder: PropTypes.string,
+    multi: PropTypes.bool,
+    creatable: PropTypes.bool,
+    tags: PropTypes.bool,
+    error: PropTypes.string
 };
-SelectField.defaultProps = {
-    size: "default",
-    expanded: false,
-    inlineLabel: true,
-    emptyOption: "--Select One--",
-    meta: {}
+
+Select.defaultProps = {
+    error: '',
+    labelProps: {
+        label: ''
+    }
 };
-export default SelectField;
+
+export default Select;

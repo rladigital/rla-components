@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "../_functions";
 import FormLabel from "./label";
+import InputError from "./inputError";
 
 const StyledTextarea = styled.textarea`
     width: 100%;
@@ -24,7 +25,7 @@ const TextareaField = ({
     readOnly,
     rows,
     columns,
-    meta,
+    error,
     ...rest
 }) => {
     let fieldOptions = {};
@@ -53,7 +54,8 @@ const TextareaField = ({
                 {...fieldOptions}
                 {...rest}
             />
-            {meta.touched && meta.error && <span>{meta.error}</span>}
+
+            <InputError error={error} />
         </div>
     );
 };
@@ -71,10 +73,7 @@ TextareaField.propTypes = {
     columns: PropTypes.number,
     label: PropTypes.string,
     readOnly: PropTypes.bool,
-    meta: PropTypes.shape({
-        touched: PropTypes.bool,
-        error: PropTypes.string
-    })
+    error: PropTypes.string
 };
 TextareaField.defaultProps = {
     size: "default",
@@ -84,6 +83,6 @@ TextareaField.defaultProps = {
     columns: 20,
     type: "text",
     readOnly: false,
-    meta: {}
+    error: ''
 };
 export default TextareaField;

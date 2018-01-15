@@ -5,6 +5,7 @@ import moment from "moment";
 import styled, { css } from "styled-components";
 import { shade } from "../_functions";
 import FormLabel from "./label";
+import InputError from "./inputError";
 
 import "rc-time-picker/assets/index.css";
 
@@ -39,7 +40,7 @@ class TimePicker extends Component {
     }
 
     render() {
-        const { label, name, value, onChange, ...rest } = this.props;
+        const { label, name, value, onChange, error, ...rest } = this.props;
 
         return (
             <div>
@@ -48,7 +49,9 @@ class TimePicker extends Component {
                         {label}
                     </FormLabel>
                 )}
+
                 {this.props.easyRead && <b>{this.props.easyRead}</b>}
+
                 <RCTimePicker
                     name={this.props.name}
                     defaultValue={this.state.selectedTime}
@@ -56,6 +59,8 @@ class TimePicker extends Component {
                     onChange={this.handleChange.bind(this)}
                     {...rest}
                 />
+
+                <InputError error={error} />
             </div>
         );
     }
@@ -68,11 +73,13 @@ TimePicker.propTypes = {
     value: PropTypes.any,
     label: PropTypes.string,
     showSecond: PropTypes.bool,
-    use12Hours: PropTypes.bool
+    use12Hours: PropTypes.bool,
+    error: PropTypes.string
 };
 
 TimePicker.defaultProps = {
-    showSecond: false
+    showSecond: false,
+    error: ''
 };
 
 export default TimePicker;

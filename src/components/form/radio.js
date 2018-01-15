@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "../_functions";
 import FormLabel from "./label";
+import InputError from "./inputError";
 
 const StyledInput = styled.input`
     margin-bottom: ${props => props.theme.margin}em;
@@ -16,7 +17,7 @@ const RadioField = ({
     onChange,
     label,
     readOnly,
-    meta,
+    error,
     ...rest
 }) => {
     const handleChange = event => {
@@ -45,7 +46,8 @@ const RadioField = ({
                         {" " + radio.text}
                     </div>
                 ))}
-            {meta.touched && meta.error && <span>{meta.error}</span>}
+
+            <InputError error={error} />
         </div>
     );
 };
@@ -68,10 +70,7 @@ RadioField.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string,
     readOnly: PropTypes.bool,
-    meta: PropTypes.shape({
-        touched: PropTypes.bool,
-        error: PropTypes.string
-    })
+    error: PropTypes.string
 };
 RadioField.defaultProps = {
     size: "default",
@@ -79,6 +78,6 @@ RadioField.defaultProps = {
     inlineLabel: true,
     type: "text",
     readOnly: false,
-    meta: {}
+    error: ''
 };
 export default RadioField;

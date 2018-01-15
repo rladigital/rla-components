@@ -5,10 +5,7 @@ import isArray from "lodash/isArray";
 import styled, { css } from "styled-components";
 import { shade } from "../_functions";
 import FormLabel from "./label";
-
-const CheckboxContainer = styled.div`
-    margin-bottom: ${props => props.theme.input.margin}em;
-`;
+import InputError from "./inputError";
 
 class MultiCheckbox extends Component {
     constructor(props) {
@@ -47,7 +44,7 @@ class MultiCheckbox extends Component {
     }
 
     render() {
-        const { options, onBlur, ...rest } = this.props;
+        const { options, onBlur, error, ...rest } = this.props;
         const { values } = this.state;
 
         const checkboxes = options.map(option => {
@@ -59,11 +56,10 @@ class MultiCheckbox extends Component {
                         <input
                             type="checkbox"
                             onChange={event =>
-                                this.handleChange(event, option.value)
-                            }
+                                this.handleChange(event, option.value)}
                             checked={isChecked}
                             value={option.value}
-                        />{" "}
+                        />
                         {option.text}
                     </label>
                 </div>
@@ -71,12 +67,14 @@ class MultiCheckbox extends Component {
         });
 
         return (
-            <CheckboxContainer>
+            <div>
                 {this.props.label && (
                     <FormLabel {...rest}>{this.props.label}</FormLabel>
                 )}
                 {checkboxes}
-            </CheckboxContainer>
+
+                <InputError error={error} />
+            </div>
         );
     }
 }
@@ -90,7 +88,8 @@ MultiCheckbox.propTypes = {
             value: PropTypes.any.isRequired,
             text: PropTypes.string.isRequired
         })
-    ).isRequired
+    ).isRequired,
+    error: PropTypes.string
 };
 
 export default MultiCheckbox;

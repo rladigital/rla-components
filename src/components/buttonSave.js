@@ -4,18 +4,16 @@ import FAIcon from "@fortawesome/react-fontawesome";
 import faCircleNotch from "@fortawesome/fontawesome-free-solid/faCircleNotch";
 import faSave from "@fortawesome/fontawesome-free-solid/faSave";
 
-import Button from "./button";
+import SubmitButton from "./buttonSubmit";
 
 const SaveButton = props => {
     return (
-        <Button disabled={props.saving} {...props}>
-            {props.saving ? (
-                <FAIcon icon={faCircleNotch} spin />
-            ) : (
-                <FAIcon icon={faSave} />
-            )}{" "}
-            {props.label}
-        </Button>
+        <SubmitButton
+            submitting={props.saving}
+            icon={<FAIcon icon={faSave} />}
+            submittingIcon={<FAIcon icon={faCircleNotch} spin />}
+            {...props}
+        />
     );
 };
 
