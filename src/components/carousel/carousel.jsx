@@ -125,13 +125,14 @@ class Carousel extends React.Component {
         );
     }
 }
+
+Carousel = withTheme(Carousel);
+
 Carousel.displayName = "Carousel";
 
 Carousel.propTypes = {
     height: PropTypes.string
 };
-
-Carousel = withTheme(Carousel);
 
 Carousel.defaultProps = {
     height: "100%"
