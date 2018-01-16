@@ -71,11 +71,13 @@ class Tabordion extends React.Component {
                             );
                         })}
                     </TabContainer>
-                    <Content
-                        unmounts={this.props.unmounts}
-                        children={children}
-                        current={this.state.current}
-                    />
+                    <TabContent>
+                        <Content
+                            unmounts={this.props.unmounts}
+                            children={children}
+                            current={this.state.current}
+                        />
+                    </TabContent>
                 </div>
             );
         else if (type == "steps" && !breakpoint)
@@ -134,24 +136,20 @@ class Tabordion extends React.Component {
 class Content extends React.Component {
     render() {
         let { children, unmounts, current } = this.props;
-        return (
-            <TabContent>
-                {unmounts
-                    ? children[current]
-                    : children.map((child, i) => {
-                          return (
-                              <div
-                                  key={i}
-                                  style={{
-                                      display: current == i ? "block" : "none"
-                                  }}
-                              >
-                                  {child}
-                              </div>
-                          );
-                      })}
-            </TabContent>
-        );
+        return unmounts
+            ? children[current]
+            : children.map((child, i) => {
+                  return (
+                      <div
+                          key={i}
+                          style={{
+                              display: current == i ? "block" : "none"
+                          }}
+                      >
+                          {child}
+                      </div>
+                  );
+              });
     }
 }
 

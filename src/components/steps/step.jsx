@@ -48,9 +48,7 @@ const CircleInner = styled.div`
         transition: 50ms linear;
         transition-delay: 50ms;
         color: ${props.theme.steps.progressColor};
-        line-height: ${props.theme.steps.circleDiameter -
-            props.theme.steps.padding * 2 -
-            2}px;
+        position: relative;
         ${props =>
             props.active &&
             css`
@@ -78,6 +76,13 @@ const BarInner = styled.div`
         `};
 `;
 
+const Icon = styled.div`
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+`;
+
 const Label = styled.div`
     ${props => css`
         left: 50%;
@@ -97,7 +102,7 @@ class Steps extends React.Component {
         return [
             <Circle onClick={onClick}>
                 <CircleInner active={i <= current}>
-                    {this.props.children}
+                    <Icon>{this.props.children}</Icon>
                 </CircleInner>
                 {label && <Label>{label}</Label>}
             </Circle>,
