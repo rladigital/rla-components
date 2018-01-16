@@ -100,14 +100,14 @@ class Steps extends React.Component {
         const { i, onClick, current, hasBar, barWidth, label } = this.props;
 
         return [
-            <Circle onClick={onClick}>
+            <Circle onClick={onClick} key={"step_cicle_" + i}>
                 <CircleInner active={i <= current}>
                     <Icon>{this.props.children}</Icon>
                 </CircleInner>
                 {label && <Label>{label}</Label>}
             </Circle>,
             hasBar && (
-                <Bar barWidth={barWidth}>
+                <Bar barWidth={barWidth} key={"step_bar_" + i}>
                     <BarInner active={i < current} />
                 </Bar>
             )

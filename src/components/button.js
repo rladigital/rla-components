@@ -11,7 +11,7 @@ const Button = styled.button`
     color: ${props => (props.hollow ? background : "#FFF")};
     margin: 0
         ${props => (props.expanded || props.align == "right" ? 0 : "0.4em")}
-        ${props => props.collapse && props.theme.button.margin}em
+        ${props => (props.collapse ? 0 : props.theme.button.margin)}em
         ${props => (props.align == "right" ? "0.4em" : 0)}em;
     padding: 0 ${props => props.theme.button.sizes[props.size] / 2}em;
     transition: color 0.25s, background 0.25s, border 0.25s;
