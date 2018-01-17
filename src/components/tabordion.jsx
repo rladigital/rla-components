@@ -41,7 +41,7 @@ class Tabordion extends React.Component {
     }
 
     componentDidUpdate() {
-        this.props.cb();
+        if (this.props.cb) this.props.cb();
     }
 
     updateDimensions() {
@@ -206,7 +206,8 @@ Tabordion.propTypes = {
     type: PropTypes.oneOf(["tabs", "accordion", "steps"]),
     respondsAt: PropTypes.number,
     unmounts: PropTypes.bool,
-    responsive: PropTypes.bool
+    responsive: PropTypes.bool,
+    cb: PropTypes.func
 };
 
 Tabordion.defaultProps = {
