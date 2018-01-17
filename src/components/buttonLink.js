@@ -8,6 +8,7 @@ const ButtonLink = Button.withComponent(Link).extend`
     display: inline-block;
     text-decoration: inherit;
     line-height: ${props => props.theme.button.sizes[props.size]}em;
+    border: none;
 `;
 
 ButtonLink.displayName = "ButtonLink";
