@@ -7,6 +7,7 @@ import InputError from "./inputError";
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faSquare from '@fortawesome/fontawesome-free-solid/faSquare'
 import faCheckSquare from '@fortawesome/fontawesome-free-solid/faCheckSquare'
+import {withTheme} from "styled-components";
 
 class CheckboxButtons extends React.Component {
     constructor(props) {
@@ -45,14 +46,14 @@ class CheckboxButtons extends React.Component {
 
     render() {
         const { values } = this.state;
-        const { options, error, buttonProps: { defaultColor, activeColor, ...buttonProps }, ...rest } = this.props;
-
+        const { theme, options, error, buttonProps: { defaultColor, activeColor, ...buttonProps }, ...rest } = this.props;
+        
         const buttons = options.map(option => {
             let isChecked = values.indexOf(option.value) > -1;
             let params    = {
                 ...buttonProps,
                 key    : option.value,
-                color  : isChecked ? (activeColor || 'success') : (defaultColor || 'accent'),
+                color  : isChecked ? (activeColor || theme.checkboxButton.activeColor) : (defaultColor || theme.checkboxButton.defaultColor),
                 onClick: () => this.handleChange(option.value)
             };
 
@@ -97,7 +98,8 @@ CheckboxButtons.propTypes = {
 };
 
 CheckboxButtons.defaultProps = {
-    error: ''
+    error: '',
+    buttonProps: {}
 };
 
-export default CheckboxButtons;
+export default withTheme(CheckboxButtons);

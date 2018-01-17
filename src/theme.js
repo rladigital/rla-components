@@ -279,6 +279,10 @@ const theme = {
     footer: {
         background: colors.primary,
         padding: spacing.padding
+    },
+    checkboxButton:{
+        activeColor: 'accent',
+        defaultColor: 'primary'
     }
 };
 
