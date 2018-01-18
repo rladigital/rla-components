@@ -6,12 +6,10 @@ import faSave from "@fortawesome/fontawesome-free-solid/faSave";
 
 import Button from "./button";
 
-const SubmitButton = props => {
-    const { submitting, submittingIcon } = props;
-    const icon = !props.icon ? "" : props.icon;
+const SubmitButton = ({ icon, submitting, submittingIcon, ...props }) => {
     return (
         <Button disabled={submitting} {...props}>
-            {submitting ? submittingIcon : icon} {props.label}
+            {submitting ? submittingIcon : (icon ? icon : "")} {props.label}
         </Button>
     );
 };
