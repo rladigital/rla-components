@@ -106,72 +106,62 @@ class Tabordion extends React.Component {
             <div>
                 {type == "tabs" &&
                     !breakpoint && (
-                        <div>
-                            <TabContainer>
+                        <TabContainer>
+                            {children.map((child, i) => {
+                                return (
+                                    <Tab
+                                        onClick={() => this.setCurrentItem(i)}
+                                        divider={this.props.divider}
+                                        current={this.state.current}
+                                        key={i}
+                                        i={i}
+                                    >
+                                        {child.props.heading}
+                                    </Tab>
+                                );
+                            })}
+                        </TabContainer>
+                    )}
+                {type == "steps" &&
+                    !breakpoint && (
+                        <StepsContainer>
+                            <Steps current={this.state.current}>
                                 {children.map((child, i) => {
                                     return (
-                                        <Tab
+                                        <Step
+                                            label={child.props.heading}
                                             onClick={() =>
                                                 this.setCurrentItem(i)
                                             }
                                             divider={this.props.divider}
-                                            current={this.state.current}
-                                            key={i}
+                                            key={"step_" + i}
                                             i={i}
                                         >
-                                            {child.props.heading}
-                                        </Tab>
+                                            {child.props.icon}
+                                        </Step>
                                     );
                                 })}
-                            </TabContainer>
-                        </div>
-                    )}
-                {type == "steps" &&
-                    !breakpoint && (
-                        <div>
-                            <StepsContainer>
-                                <Steps current={this.state.current}>
-                                    {children.map((child, i) => {
-                                        return (
-                                            <Step
-                                                label={child.props.heading}
-                                                onClick={() =>
-                                                    this.setCurrentItem(i)
-                                                }
-                                                divider={this.props.divider}
-                                                key={"step_" + i}
-                                                i={i}
-                                            >
-                                                {child.props.icon}
-                                            </Step>
-                                        );
-                                    })}
-                                </Steps>
-                            </StepsContainer>
-                        </div>
+                            </Steps>
+                        </StepsContainer>
                     )}
                 {(type == "accordion" || breakpoint) && (
-                    <div>
-                        <AccordionGroup
-                            slice={[0, this.state.current + 1]}
-                            divider={this.props.divider}
-                            current={this.state.current}
-                            children={children}
-                            cb={this.setCurrentItem.bind(this)}
-                        />
-                    </div>
+                    <AccordionGroup
+                        slice={[0, this.state.current + 1]}
+                        divider={this.props.divider}
+                        current={this.state.current}
+                        children={children}
+                        cb={this.setCurrentItem.bind(this)}
+                    />
                 )}
                 {content}
                 {(type == "accordion" || breakpoint) && (
-                    <div>
-                        <AccordionGroup
-                            slice={[this.state.current + 1, children.length]}
-                            divider={this.props.divider}
-                            current={this.state.current}
-                            children={children}
-                            cb={this.setCurrentItem.bind(this)}
-                        />
-                    </div>
+                    <AccordionGroup
+                        slice={[this.state.current + 1, children.length]}
+                        divider={this.props.divider}
+                        current={this.state.current}
+                        children={children}
+                        cb={this.setCurrentItem.bind(this)}
+                    />
                 )}
             </div>
         );

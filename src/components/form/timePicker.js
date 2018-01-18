@@ -79,7 +79,7 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
     showSecond: false,
-    error: ''
+    error: ""
 };
 
 export default TimePicker;

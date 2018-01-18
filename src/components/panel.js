@@ -8,7 +8,7 @@ const Panel = styled.div`
     overflow: hidden;
     padding-bottom: 0;
     background-color ${props => panel(props).background};
-    margin-bottom: ${props => panel(props).margin}em;
+    margin-bottom: ${props => props.margin || panel(props).margin}em;
     color: ${props => panel(props).color};
     text-align: ${props => props.textAlign};
     
@@ -25,7 +25,8 @@ Panel.propTypes = {
     type: PropTypes.string,
     textAlign: PropTypes.string,
     /** Boolean indicating whether the panel should have padding */
-    collapse: PropTypes.bool
+    collapse: PropTypes.bool,
+    margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Panel.defaultProps = {

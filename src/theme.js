@@ -182,6 +182,7 @@ const theme = {
         progressColor: colors.accent,
         backgroundColor: colors.white,
         borderColor: colors.secondary,
+        borderRadius: 100,
         labelColor: "inherit",
         margin: spacing.margin,
         border: 1,
@@ -280,9 +281,9 @@ const theme = {
         background: colors.primary,
         padding: spacing.padding
     },
-    checkboxButton:{
-        activeColor: 'accent',
-        defaultColor: 'primary'
+    checkboxButton: {
+        activeColor: "accent",
+        defaultColor: "primary"
     }
 };
 
