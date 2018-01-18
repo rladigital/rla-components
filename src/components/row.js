@@ -1,9 +1,9 @@
+import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
-const Row = styled.div`
+const StyledRow = styled.div`
     margin: auto;
-    overflow: hidden;
     max-width: ${props => (props.expanded ? "100%" : props.width + "px")};
     ${props =>
         !props.collapse &&
@@ -11,6 +11,22 @@ const Row = styled.div`
             padding: 0 ${props => props.theme.row.padding / 2}em;
         `};
 `;
+
+const Clear = styled.div`
+    clear: both;
+`;
+
+class Row extends React.Component {
+    render() {
+        const { children, ...rest } = this.props;
+        return (
+            <StyledRow {...rest}>
+                {children}
+                <Clear />
+            </StyledRow>
+        );
+    }
+}
 
 Row.displayName = "Row";
 
