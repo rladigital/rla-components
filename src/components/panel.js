@@ -9,14 +9,10 @@ const Panel = styled.div`
     padding-bottom: 0;
     background-color ${props => panel(props).background};
     margin-bottom: ${props => props.margin || panel(props).margin}em;
+    padding-top: ${props => props.padding || panel(props).padding}em;
     color: ${props => panel(props).color};
     text-align: ${props => props.textAlign};
     
-    ${props =>
-        !props.collapse &&
-        css`
-            padding-top: ${props => panel(props).padding}em;
-        `};
 `;
 
 Panel.displayName = "Panel";
@@ -24,9 +20,8 @@ Panel.displayName = "Panel";
 Panel.propTypes = {
     type: PropTypes.string,
     textAlign: PropTypes.string,
-    /** Boolean indicating whether the panel should have padding */
-    collapse: PropTypes.bool,
-    margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Panel.defaultProps = {
