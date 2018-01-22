@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { shade } from "../_functions";
+import { shade } from "../../functions";
 import FormLabel from "./label";
 import InputError from "./inputError";
 
@@ -56,7 +56,6 @@ const SelectField = ({
                     {label}
                 </FormLabel>
             )}{" "}
-
             <Select onChange={handleChange} {...rest}>
                 <option value="">{emptyOption}</option>
                 {options &&
@@ -66,7 +65,6 @@ const SelectField = ({
                         </option>
                     ))}
             </Select>
-
             <InputError error={error} />
         </div>
     );
@@ -96,6 +94,6 @@ SelectField.defaultProps = {
     expanded: false,
     inlineLabel: true,
     emptyOption: "--Select One--",
-    error: ''
+    error: ""
 };
 export default SelectField;

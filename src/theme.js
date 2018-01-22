@@ -1,6 +1,9 @@
+// Colors
+const primaryColor = "#86c3c4";
+
 export const colors = {
-    primary: "#252b33",
-    accent: "#86c3c4",
+    primary: "#86c3c4",
+    secondary: "#252b33",
     black: "#000000",
     white: "#ffffff",
     lightGray: "#ececec",
@@ -13,8 +16,8 @@ export const colors = {
 };
 
 export const sizes = {
-    small: "1",
     default: "2",
+    small: "1.2",
     large: "3"
 };
 
@@ -29,20 +32,15 @@ const theme = {
         navLink: {
             margin: 0,
             color: colors.black,
-            activeColor: colors.accent,
+            activeColor: colors.primary,
             padding: spacing.padding,
             textTransform: "uppercase"
         }
     },
     button: {
-        colors: colors,
-        sizes: sizes,
-        textColor: colors.white,
-        fontWeight: "normal",
-        radius: spacing.radius,
-        padding: spacing.padding,
-        margin: spacing.margin,
-        textTransform: "uppercase"
+        fontWeight: "bold",
+        textTransform: "uppercase",
+        borderRadius: spacing.radius
     },
     row: {
         padding: spacing.padding
@@ -68,13 +66,13 @@ const theme = {
             },
             dark: {
                 color: colors.white,
-                background: colors.primary,
+                background: colors.secondary,
                 padding: spacing.padding,
                 margin: spacing.margin
             },
-            accent: {
+            primary: {
                 color: colors.white,
-                background: colors.accent,
+                background: colors.primary,
                 padding: spacing.padding,
                 margin: spacing.margin
             }
@@ -100,11 +98,11 @@ const theme = {
         radius: spacing.radius,
         background: colors.white,
         closeButtonColor: colors.black,
-        color: colors.primary
+        color: colors.secondary
     },
     tooltip: {
         color: colors.white,
-        background: colors.primary,
+        background: colors.secondary,
         padding: spacing.padding,
         margin: spacing.margin,
         radius: spacing.radius
@@ -144,23 +142,23 @@ const theme = {
                 padding: spacing.padding,
                 background: colors.lightGray,
                 border: "4px dashed",
-                color: colors.primary
+                color: colors.secondary
             },
             dark: {
                 radius: 0,
                 margin: spacing.margin,
                 padding: spacing.padding,
-                background: colors.primary,
+                background: colors.secondary,
                 border: "4px dashed " + colors.mediumGray,
                 color: colors.white
             },
-            accent: {
+            primary: {
                 radius: 0,
                 padding: spacing.padding,
                 margin: spacing.margin,
-                background: colors.accent,
+                background: colors.primary,
                 border: "4px dashed",
-                color: colors.primary
+                color: colors.secondary
             }
         }
     },
@@ -169,7 +167,7 @@ const theme = {
         background: colors.lightGray
     },
     menu: {
-        color: colors.primary,
+        color: colors.secondary,
         background: colors.white,
         hoverBackground: colors.lightGray,
         borderBottom: "1px solid " + colors.lightGray,
@@ -179,7 +177,7 @@ const theme = {
         barHeight: 20,
         spacing: -3,
         circleDiameter: 40,
-        progressColor: colors.accent,
+        progressColor: colors.primary,
         backgroundColor: colors.white,
         borderColor: colors.secondary,
         borderRadius: 100,
@@ -196,10 +194,10 @@ const theme = {
         fontWeight: "bold",
         default: {
             color: colors.white,
-            background: colors.accent
+            background: colors.primary
         },
         active: {
-            color: colors.primary,
+            color: colors.secondary,
             background: colors.white
         },
         content: {
@@ -212,7 +210,7 @@ const theme = {
             fontSize: 0.4,
             fontWeight: "bold",
             color: colors.white,
-            background: colors.accent,
+            background: colors.primary,
             border: "1px solid " + colors.white,
             radius: 2
         },
@@ -233,7 +231,7 @@ const theme = {
     carousel: {
         item: {
             color: colors.white,
-            background: colors.primary,
+            background: colors.secondary,
             padding: spacing.padding
         },
         arrows: {
@@ -244,7 +242,7 @@ const theme = {
         },
         dots: {
             size: 0.5,
-            activeBackground: colors.accent,
+            activeBackground: colors.primary,
             background: colors.white,
             radius: 2,
             margin: 0.2
@@ -257,7 +255,7 @@ const theme = {
         height: 8,
         icon: {
             size: 1,
-            color: colors.primary
+            color: colors.secondary
         },
         notification: {
             size: 0.7,
@@ -265,25 +263,25 @@ const theme = {
             right: -0.5,
             minWidth: 1.2,
             color: colors.white,
-            backgroundColor: colors.accent
+            backgroundColor: colors.primary
         },
         title: {
             size: 1,
-            color: colors.primary
+            color: colors.secondary
         },
         text: {
             size: 0.8,
-            color: colors.accent
+            color: colors.primary
         },
         backgroundColor: colors.lightGray
     },
     footer: {
-        background: colors.primary,
+        background: colors.secondary,
         padding: spacing.padding
     },
     checkboxButton: {
-        activeColor: "accent",
-        defaultColor: "primary"
+        activeColor: "primary",
+        defaultColor: "secondary"
     }
 };
 

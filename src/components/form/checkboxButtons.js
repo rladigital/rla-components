@@ -57,12 +57,12 @@ class CheckboxButtons extends React.Component {
                 onClick: () => this.handleChange(option.value)
             };
 
-            return (
+            return [
                 <Button {...params}>
                     <FontAwesomeIcon icon={isChecked ? faCheckSquare : faSquare} />
                     {' '}{option.text}
-                </Button>
-            );
+                </Button>," "
+            ];
         });
 
         return (

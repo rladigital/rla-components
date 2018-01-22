@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { shade } from "../_functions";
+import { shade } from "../../functions";
 import InputError from "./inputError";
 import FormLabel from "./label";
 
@@ -77,7 +77,6 @@ const InputField = ({
                     {label}
                 </FormLabel>
             )}{" "}
-
             <StyledInput
                 type={type}
                 name={name}
@@ -85,7 +84,6 @@ const InputField = ({
                 onChange={handleChange}
                 {...rest}
             />
-
             <InputError error={error} />
         </div>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { shade } from "../_functions";
+import { shade } from "../../functions";
 import FormLabel from "./label";
 import InputError from "./inputError";
 
@@ -78,6 +78,6 @@ RadioField.defaultProps = {
     inlineLabel: true,
     type: "text",
     readOnly: false,
-    error: ''
+    error: ""
 };
 export default RadioField;

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import ReactDatePicker from "react-datepicker";
 import moment from "moment";
 import styled, { css } from "styled-components";
-import { shade } from "../../_functions";
+import { shade } from "../../../functions";
 import FormLabel from "../label";
 import DatePickerInputField from "./DatePickerInputField";
 import CalendarContainer from "./CalendarContainer";
@@ -66,9 +66,7 @@ class DatePicker extends Component {
                     dateFormat={DATE_FORMAT}
                     selected={this.state.selectedDate}
                     onChange={this.handleChange.bind(this)}
-                    className={`form-control ${
-                        field.error ? "alert" : ""
-                    }`}
+                    className={`form-control ${field.error ? "alert" : ""}`}
                     popperContainer={CalendarContainer}
                     popperClassName="showInFront"
                 />
@@ -93,7 +91,7 @@ DatePicker.propTypes = {
     error: PropTypes.string
 };
 DatePicker.defaultProps = {
-    error: '',
+    error: "",
     expanded: true
 };
 export default DatePicker;
