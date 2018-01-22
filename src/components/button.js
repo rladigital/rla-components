@@ -2,11 +2,7 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "../functions";
 import { colors, spacing, sizes } from "../theme";
-import { hexToHSL, HSLToHex } from "../functions";
-
-function foregroundColor(x) {
-    return hexToHSL(x).l < 0.7 ? "white" : "black";
-}
+import { hexToHSL, HSLToHex, foregroundColor } from "../functions";
 
 function hoverColor(x) {
     let hsl = hexToHSL(x);
@@ -25,9 +21,7 @@ const Button = styled.button`
     text-transform: ${props => props.theme.button.textTransform};
     border-radius: ${props => props.theme.button.borderRadius}em;
     margin-bottom: ${props =>
-        props.marginBottom != undefined
-            ? props.marginBottom
-            : spacing.margin}em;
+        props.margin != undefined ? props.margin : spacing.margin}em;
 
     // hollow button styles
     ${props =>
@@ -88,7 +82,7 @@ Button.propTypes = {
     disabled: PropTypes.bool,
     hollow: PropTypes.bool,
     color: PropTypes.string,
-    marginBottom: PropTypes.number,
+    margin: PropTypes.number,
     padding: PropTypes.number,
     size: PropTypes.string
 };

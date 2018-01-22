@@ -1,33 +1,31 @@
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { shade } from "../functions";
+import { colors, spacing, panel } from "../theme";
+import { foregroundColor } from "../functions";
 
-const panel = props => props.theme.panel.types[props.type];
+let background = props =>
+    colors[props.type] || colors[props.theme.panel.default];
 
 const Panel = styled.div`
-    height: 100%;
-    overflow: hidden;
-    padding-bottom: 0;
-    background-color ${props => panel(props).background};
-    margin-bottom: ${props => props.margin || panel(props).margin}em;
-    padding-top: ${props => props.padding || panel(props).padding}em;
-    color: ${props => panel(props).color};
-    text-align: ${props => props.textAlign};
-    
+    color: ${props => foregroundColor(background(props))};
+    background-color: ${props => background(props)};
+    margin-bottom: ${props =>
+        props.margin != undefined ? props.margin : spacing.margin}em;
+    padding-top: ${props =>
+        props.padding != undefined ? props.padding : spacing.padding}em;
 `;
 
 Panel.displayName = "Panel";
 
 Panel.propTypes = {
     type: PropTypes.string,
-    textAlign: PropTypes.string,
-    margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    marginBottom: PropTypes.number,
+    padding: PropTypes.number,
+    margin: PropTypes.number,
+    padding: PropTypes.number
 };
 
-Panel.defaultProps = {
-    type: "default",
-    textAlign: "left",
-    collapse: false
-};
+Panel.defaultProps = {};
 
 export default Panel;

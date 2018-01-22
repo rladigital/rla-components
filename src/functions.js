@@ -92,3 +92,7 @@ export function HSLToHex(hsl) {
     };
     return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
+
+export function foregroundColor(x) {
+    return hexToHSL(x).l < 0.7 ? "white" : "black";
+}

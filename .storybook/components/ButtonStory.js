@@ -26,7 +26,8 @@ stories
             let hollow = boolean("hollow", false);
             let color = select("color", Object.keys(colors));
             let size = select("size", Object.keys(sizes));
-            let marginBottom = number("marginBottom", undefined);
+            let margin = number("margin", undefined);
+            let padding = number("padding", undefined);
             return (
                 <Button
                     expanded={expanded}
@@ -34,7 +35,8 @@ stories
                     hollow={hollow}
                     color={color}
                     size={size}
-                    marginBottom={marginBottom}
+                    margin={margin}
+                    padding={padding}
                 >
                     Button text
                 </Button>

@@ -1,6 +1,4 @@
 // Colors
-const primaryColor = "#86c3c4";
-
 export const colors = {
     primary: "#86c3c4",
     secondary: "#252b33",
@@ -56,27 +54,7 @@ const theme = {
         }
     },
     panel: {
-        default: "light",
-        types: {
-            default: {
-                color: colors.black,
-                background: colors.lightGray,
-                padding: spacing.padding,
-                margin: spacing.margin
-            },
-            dark: {
-                color: colors.white,
-                background: colors.secondary,
-                padding: spacing.padding,
-                margin: spacing.margin
-            },
-            primary: {
-                color: colors.white,
-                background: colors.primary,
-                padding: spacing.padding,
-                margin: spacing.margin
-            }
-        }
+        default: "secondary"
     },
     icon: {
         colors: colors
