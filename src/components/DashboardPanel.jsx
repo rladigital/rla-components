@@ -20,8 +20,12 @@ const Header = styled.div`
     top: 0;
     overflow: hidden;
 `;
-const HeaderLeft = styled.div`float: left;`;
-const HeaderRight = styled.div`float: right;`;
+const HeaderLeft = styled.div`
+    float: left;
+`;
+const HeaderRight = styled.div`
+    float: right;
+`;
 
 const HeaderButton = styled.button`
     margin: 0;
@@ -98,7 +102,6 @@ class DashboardPanel extends Component {
                     </Header>
                 )}
                 <Content>
-                    &nbsp;
                     {React.createElement(panels[panel.component], panel.props)}
                 </Content>
             </Wrapper>
