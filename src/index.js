@@ -50,3 +50,4 @@ export { default as UserInfoTitle } from "./components/userInfo/userInfoTitle";
 export { default as UserInfoText } from "./components/userInfo/userInfoText";
 export { default as Footer } from "./components/footer";
 export { default as Hero } from "./components/hero";
+export { default as Centred } from "./components/centred";
