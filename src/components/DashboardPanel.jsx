@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, Icon } from "../index";
 import styled, { withTheme, css } from "styled-components";
+import { Scrollbars } from "react-custom-scrollbars";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -44,7 +45,7 @@ const Title = styled.div`
     font-size: ${props => props.theme.dashboard.panel.bar.fontSize}em;
     line-height: 40px;
 `;
-const Content = styled.div`
+const Content = styled(Scrollbars)`
     width: 100%;
     height: 100%;
     overflow-y: auto;
@@ -102,7 +103,7 @@ class DashboardPanel extends Component {
                         </HeaderRight>
                     </Header>
                 )}
-                <Content>
+                <Content autohide>
                     {React.createElement(panels[panel.component], panel.props)}
                 </Content>
             </Wrapper>

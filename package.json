@@ -7,8 +7,7 @@
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook -o docs",
         "build": "NODE_ENV=production webpack -p",
-        "build:stats":
-            "NODE_ENV=production webpack -p --profile --json > webpack-stats.json",
+        "build:stats": "NODE_ENV=production webpack -p --profile --json > webpack-stats.json",
         "start": "webpack-dev-server",
         "prepublishOnly": "npm run build"
     },
@@ -22,6 +21,7 @@
         "animate-css-styled-components": "^0.0.20",
         "rc-time-picker": "^3.2.1",
         "react-collapse": "^4.0.3",
+        "react-custom-scrollbars": "^4.2.1",
         "react-datepicker": "^1.0.4",
         "react-dropzone": "^4.2.1",
         "react-grid-layout": "^0.16.0",
