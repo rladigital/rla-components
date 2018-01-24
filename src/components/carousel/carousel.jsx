@@ -20,6 +20,7 @@ const ArrowButton = styled.a`
     transform: translateY(-50%);
     color: ${props => props.theme.carousel.arrows.color};
     cursor: pointer;
+    z-index: 1;
 `;
 
 const ArrowButtonLeft = ArrowButton.extend`
@@ -109,7 +110,7 @@ class Carousel extends React.Component {
 
         return (
             <Container height={this.props.height}>
-                <Scrollbars autoHide>{childrenWithProps}</Scrollbars>
+                <Scrollbars autoHide="true">{childrenWithProps}</Scrollbars>
                 <ArrowButtonLeft onClick={() => this.prevItem()}>
                     <Icon name={this.props.theme.carousel.arrows.leftIcon} />
                 </ArrowButtonLeft>
