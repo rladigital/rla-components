@@ -103,7 +103,7 @@ class DashboardPanel extends Component {
                         </HeaderRight>
                     </Header>
                 )}
-                <Content autohide>
+                <Content autohide="true">
                     {React.createElement(panels[panel.component], panel.props)}
                 </Content>
             </Wrapper>
