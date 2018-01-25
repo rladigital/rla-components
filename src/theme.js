@@ -25,6 +25,13 @@ export const spacing = {
     margin: "1.2"
 };
 
+export const breakpoints = {
+    small: 0,
+    medium: 500,
+    large: 700,
+    xlarge: 1050
+};
+
 const theme = {
     navigation: {
         navLink: {
@@ -46,12 +53,7 @@ const theme = {
     column: {
         columns: 12,
         padding: spacing.padding,
-        breakpoints: {
-            small: 0,
-            medium: 350,
-            large: 700,
-            xlarge: 1050
-        }
+        breakpoints: breakpoints
     },
     panel: {
         default: "secondary"
