@@ -100,7 +100,7 @@ const theme = {
                 background: colors.lightGray,
                 fontWeight: "bold",
                 fontSize: "0.9",
-                titleColor: colors.white
+                titleColor: colors.black
             },
             content: {
                 background: colors.lightGray

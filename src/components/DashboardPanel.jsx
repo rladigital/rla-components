@@ -20,12 +20,17 @@ const Header = styled.div`
     position: absolute;
     top: 0;
     overflow: hidden;
+    display: table;
+    table-layout: fixed;
 `;
 const HeaderLeft = styled.div`
-    float: left;
+    max-width: 100%;
+    display: table-cell;
 `;
-const HeaderRight = styled.div`
-    float: right;
+const HeaderRight = HeaderLeft.extend`
+    width: ${props => (props.configurable ? 60 : 30)}px;
+    white-space: nowrap;
+    text-align: right;
 `;
 
 const HeaderButton = styled.button`
@@ -43,6 +48,9 @@ const Title = styled.div`
     padding: 0 ${props => props.theme.dashboard.panel.bar.padding / 2}em;
     font-weight: ${props => props.theme.dashboard.panel.bar.fontWeight};
     font-size: ${props => props.theme.dashboard.panel.bar.fontSize}em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     line-height: 40px;
 `;
 const Content = styled(Scrollbars)`
@@ -77,9 +85,11 @@ class DashboardPanel extends Component {
                 {showHeader && (
                     <Header className="dragHandle">
                         <HeaderLeft>
-                            {panelTitle && <Title>{panelTitle}</Title>}
+                            {panelTitle && (
+                                <Title title={panelTitle}>{panelTitle}</Title>
+                            )}
                         </HeaderLeft>
-                        <HeaderRight>
+                        <HeaderRight configurable={panel.configurable}>
                             {panel.configurable && (
                                 <HeaderButton
                                     size="small"
