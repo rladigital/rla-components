@@ -37,6 +37,9 @@ export { default as Tabordion } from "./components/tabordion";
 export { default as TableList } from "./components/TableList/TableList";
 export { default as Carousel } from "./components/carousel/carousel";
 export { default as CarouselItem } from "./components/carousel/carouselItem";
+export {
+    default as GreedyCarousel
+} from "./components/carousel/greedyCarousel";
 export { default as Accordion } from "./components/accordion/accordion";
 export {
     default as AccordionContent

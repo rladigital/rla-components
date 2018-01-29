@@ -77,8 +77,6 @@ class DashboardPanel extends Component {
             ...rest
         } = this.props;
 
-        console.log(this.props);
-
         //Generate a panel obejct to simplify passing values
         const panel = {
             key: panelKey,

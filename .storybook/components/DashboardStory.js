@@ -190,9 +190,7 @@ storiesOf("Dashboard", module)
                                 alert("Deleting Panel Dialog would show here");
                             }}
                             showHeader={true}
-                        >
-                            test
-                        </DashboardPanel>
+                        />
                     ))}
                 </Dashboard>
             </Column>

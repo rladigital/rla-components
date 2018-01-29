@@ -110,23 +110,29 @@ class Carousel extends React.Component {
 
         return (
             <Container height={this.props.height}>
-                <Scrollbars autoHide="true">{childrenWithProps}</Scrollbars>
-                <ArrowButtonLeft onClick={() => this.prevItem()}>
-                    <Icon name={this.props.theme.carousel.arrows.leftIcon} />
-                </ArrowButtonLeft>
-                <ArrowButtonRight onClick={() => this.nextItem()}>
-                    <Icon name={this.props.theme.carousel.arrows.rightIcon} />
-                </ArrowButtonRight>
-                <Dots>
-                    {React.Children.map(this.props.children, (child, i) => {
-                        return (
-                            <Dot
-                                onClick={() => this.setCurrentItem(i)}
-                                active={this.state.current == i}
-                            />
-                        );
-                    })}
-                </Dots>
+                <Scrollbars autoHide={true}>{childrenWithProps}</Scrollbars>
+                {!this.props.hideControls && [
+                    <ArrowButtonLeft onClick={() => this.prevItem()}>
+                        <Icon
+                            name={this.props.theme.carousel.arrows.leftIcon}
+                        />
+                    </ArrowButtonLeft>,
+                    <ArrowButtonRight onClick={() => this.nextItem()}>
+                        <Icon
+                            name={this.props.theme.carousel.arrows.rightIcon}
+                        />
+                    </ArrowButtonRight>,
+                    <Dots>
+                        {React.Children.map(this.props.children, (child, i) => {
+                            return (
+                                <Dot
+                                    onClick={() => this.setCurrentItem(i)}
+                                    active={this.state.current == i}
+                                />
+                            );
+                        })}
+                    </Dots>
+                ]}
             </Container>
         );
     }
@@ -137,10 +143,12 @@ Carousel = withTheme(Carousel);
 Carousel.displayName = "Carousel";
 
 Carousel.propTypes = {
+    hideControls: PropTypes.bool,
     height: PropTypes.string
 };
 
 Carousel.defaultProps = {
+    hideControls: false,
     height: "100%"
 };
 
