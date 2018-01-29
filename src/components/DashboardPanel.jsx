@@ -3,74 +3,81 @@ import PropTypes from "prop-types";
 import { Button, Icon } from "../index";
 import styled, { withTheme, css } from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
+import Row from "./row";
 
-const Wrapper = styled.div`
+const Panel = styled.div`
     width: 100%;
     height: 100%;
-    overflow: hidden;
     border-radius: ${props => props.theme.dashboard.panel.wrapper.radius}em;
     background: ${props => props.theme.dashboard.panel.content.background};
-    padding-top: ${props => (props.showHeader ? "40px" : "0")};
-`;
-const Header = styled.div`
-    width: 100%;
-    cursor: move;
-    padding: 0 ${props => props.theme.dashboard.panel.bar.padding}em;
-    background: ${props => props.theme.dashboard.panel.bar.background};
-    position: absolute;
-    top: 0;
-    overflow: hidden;
-    display: table;
-    table-layout: fixed;
-`;
-const HeaderLeft = styled.div`
-    max-width: 100%;
-    display: table-cell;
-`;
-const HeaderRight = HeaderLeft.extend`
-    width: ${props => (props.configurable ? 60 : 30)}px;
-    white-space: nowrap;
-    text-align: right;
+    padding-top: 40px;
 `;
 
-const HeaderButton = styled.button`
-    margin: 0;
-    padding: 0 ${props => props.theme.dashboard.panel.bar.padding / 2}em;
-    border: none;
-    background: transparent;
-    display: inline-block;
-    font-size: ${props => props.theme.dashboard.panel.bar.iconSize}em;
+const Header = styled.div`
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     height: 40px;
-    color: ${props => props.theme.dashboard.panel.bar.iconColor};
+    position: absolute;
+    background: #f5f5f5b0;
+    display: table;
+    table-layout: fixed;
+    background: ${props => props.theme.dashboard.panel.bar.background};
+    cursor: move;
 `;
+
+const Content = styled(Scrollbars)`
+    width: 100%;
+    height: 100%;
+`;
+
+const Left = styled.div`
+    padding: 0 ${props => props.theme.dashboard.panel.bar.padding}em;
+    display: table-cell;
+    vertical-align: middle;
+`;
+
+const Right = Left.extend`
+    text-align: right;
+    white-space: nowrap;
+    width: 60px;
+`;
+
+const HeaderIcon = styled.a`
+    font-size: ${props => props.theme.dashboard.panel.bar.iconSize}em;
+    color: ${props => props.theme.dashboard.panel.bar.iconColor};
+    cursor: pointer;
+`;
+
 const Title = styled.div`
     color: ${props => props.theme.dashboard.panel.bar.titleColor};
-    padding: 0 ${props => props.theme.dashboard.panel.bar.padding / 2}em;
     font-weight: ${props => props.theme.dashboard.panel.bar.fontWeight};
     font-size: ${props => props.theme.dashboard.panel.bar.fontSize}em;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    line-height: 40px;
-`;
-const Content = styled(Scrollbars)`
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    position: relative;
 `;
 
 class DashboardPanel extends Component {
     render() {
         const {
+            style,
             panelKey,
             panelProps,
             panelTitle,
             component,
-            panels,
             configurable,
-            showHeader
+            panels,
+            configurePanel,
+            deletePanelConfirmation,
+            showHeader,
+            configureIcon,
+            deleteIcon,
+            ...rest
         } = this.props;
+
+        console.log(this.props);
 
         //Generate a panel obejct to simplify passing values
         const panel = {
@@ -80,43 +87,39 @@ class DashboardPanel extends Component {
             component,
             configurable
         };
+
+        const NewPanelProps = Object.assign(style, panelProps);
+
         return (
-            <Wrapper key={panel.key} showHeader={showHeader}>
+            <Panel style={style} {...rest}>
+                <Content>
+                    {React.createElement(panels[component], NewPanelProps)}
+                </Content>
                 {showHeader && (
                     <Header className="dragHandle">
-                        <HeaderLeft>
-                            {panelTitle && (
-                                <Title title={panelTitle}>{panelTitle}</Title>
-                            )}
-                        </HeaderLeft>
-                        <HeaderRight configurable={panel.configurable}>
-                            {panel.configurable && (
-                                <HeaderButton
-                                    size="small"
-                                    onClick={this.props.configurePanel.bind(
-                                        this,
-                                        panel
-                                    )}
+                        <Left>{panelTitle && <Title>{panelTitle}</Title>}</Left>
+
+                        <Right>
+                            {configurable && (
+                                <HeaderIcon
+                                    onClick={configurePanel.bind(this, panel)}
                                 >
-                                    <Icon name="gear" />
-                                </HeaderButton>
+                                    {configureIcon}
+                                </HeaderIcon>
                             )}
-                            <HeaderButton
-                                size="small"
-                                onClick={this.props.deletePanelConfirmation.bind(
+                            <HeaderIcon
+                                onClick={deletePanelConfirmation.bind(
                                     this,
                                     panel
                                 )}
                             >
-                                <Icon name="close" />
-                            </HeaderButton>
-                        </HeaderRight>
+                                {deleteIcon}
+                            </HeaderIcon>
+                        </Right>
                     </Header>
                 )}
-                <Content autohide="true">
-                    {React.createElement(panels[panel.component], panel.props)}
-                </Content>
-            </Wrapper>
+                {this.props.children}
+            </Panel>
         );
     }
 }
@@ -154,10 +157,16 @@ DashboardPanel.propTypes = {
     /** A callback that's called when the configure panel button is pressed */
     configurePanel: PropTypes.func,
     /** Used to turn on or off the header bar */
-    showHeader: PropTypes.bool
+    showHeader: PropTypes.bool,
+    configureIcon: PropTypes.element,
+    deleteIcon: PropTypes.element
 };
 DashboardPanel.defaultProps = {
-    showHeader: true
+    style: {},
+    panelProps: {},
+    showHeader: true,
+    configureIcon: <Icon name="gear" />,
+    deleteIcon: <Icon name="close" />
 };
 
 export default withTheme(DashboardPanel);

@@ -31,7 +31,7 @@ Dashboard.propTypes = {
     cols: PropTypes.object,
 
     /** layouts is an object mapping breakpoints to layouts.
-    e.g. {lg: Layout, md: Layout, ...}, there's more to it than this, but we'll let the wrapped react-grid-layout handle the extra checks */
+     e.g. {lg: Layout, md: Layout, ...}, there's more to it than this, but we'll let the wrapped react-grid-layout handle the extra checks */
     layouts: PropTypes.object,
 
     /** The width of this component.*/
@@ -44,13 +44,13 @@ Dashboard.propTypes = {
     onBreakpointChange: PropTypes.func,
 
     /** Callback so you can save the layout.
-    Calls back with (currentLayout, allLayouts). allLayouts are keyed by breakpoint.*/
+     Calls back with (currentLayout, allLayouts). allLayouts are keyed by breakpoint.*/
     onLayoutChange: PropTypes.func,
 
     /** Calls back with (containerWidth, margin, cols, containerPadding)*/
     onWidthChange: PropTypes.func,
 
-    /** A css class selector of the class to be used as a drag handle in each panel, 
+    /** A css class selector of the class to be used as a drag handle in each panel,
      * if using the DashboardPanel component this should be set to ".dragHandle"
      * NOTE: This is not defaulted as if missing the whole panel is treated as the drag handle */
     draggableHandle: PropTypes.string

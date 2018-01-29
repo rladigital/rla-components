@@ -8,7 +8,8 @@ import {
     Column,
     Modal,
     Dashboard,
-    DashboardPanel
+    DashboardPanel,
+    Icon
 } from "../../src/index";
 
 const SamplePanel = props => {
@@ -43,13 +44,13 @@ const items = [
     },
     {
         key: "46098539-6c5f-4240-a1a7-8ea4f57c22c6",
-        props: null,
+        props: {},
         component: "SamplePanel",
         configurable: false
     },
     {
         key: "d9fb91be-8109-4a78-9be6-7c4a6b6f37f0",
-        props: null,
+        props: {},
         component: "SamplePanel",
         configurable: false
     }
@@ -155,7 +156,7 @@ const panels = {
 };
 
 const updateLayout = (layout, layouts) => {
-    console.log(layouts);
+    //console.log(layouts);
     action("updating-layout");
 };
 storiesOf("Dashboard", module)
@@ -167,31 +168,31 @@ storiesOf("Dashboard", module)
                     onLayoutChange={updateLayout}
                     draggableHandle=".dragHandle"
                 >
-                    {items.map(panel => (
-                        <div key={panel.key}>
-                            <DashboardPanel
-                                panelkey={panel.key}
-                                panelProps={panel.props}
-                                panelTitle={
-                                    panel.props && panel.props.title
-                                        ? panel.props.title
-                                        : panel.title
-                                }
-                                component={panel.component}
-                                configurable={panel.configurable}
-                                panels={panels}
-                                configurePanel={panel => {
-                                    alert(
-                                        "Configuring Panel Dialog would show here"
-                                    );
-                                }}
-                                deletePanelConfirmation={() => {
-                                    alert(
-                                        "Deleting Panel Dialog would show here"
-                                    );
-                                }}
-                            />
-                        </div>
+                    {items.map((panel, i) => (
+                        <DashboardPanel
+                            key={panel.key}
+                            panelKey={panel.key}
+                            panelProps={panel.props}
+                            panelTitle={
+                                panel.props && panel.props.title
+                                    ? panel.props.title
+                                    : panel.title
+                            }
+                            component={panel.component}
+                            configurable={panel.configurable}
+                            panels={panels}
+                            configurePanel={panel => {
+                                alert(
+                                    "Configuring Panel Dialog would show here"
+                                );
+                            }}
+                            deletePanelConfirmation={() => {
+                                alert("Deleting Panel Dialog would show here");
+                            }}
+                            showHeader={true}
+                        >
+                            test
+                        </DashboardPanel>
                     ))}
                 </Dashboard>
             </Column>
@@ -202,31 +203,28 @@ storiesOf("Dashboard", module)
             <Column medium={12}>
                 <Dashboard layouts={layouts} onLayoutChange={updateLayout}>
                     {items.map(panel => (
-                        <div key={panel.key}>
-                            <DashboardPanel
-                                panelkey={panel.key}
-                                panelProps={panel.props}
-                                panelTitle={
-                                    panel.props && panel.props.title
-                                        ? panel.props.title
-                                        : panel.title
-                                }
-                                component={panel.component}
-                                configurable={panel.configurable}
-                                panels={panels}
-                                configurePanel={panel => {
-                                    alert(
-                                        "Configuring Panel Dialog would show here"
-                                    );
-                                }}
-                                deletePanelConfirmation={() => {
-                                    alert(
-                                        "Deleting Panel Dialog would show here"
-                                    );
-                                }}
-                                showHeader={false}
-                            />
-                        </div>
+                        <DashboardPanel
+                            key={i}
+                            panelKey={panel.key}
+                            panelProps={panel.props}
+                            panelTitle={
+                                panel.props && panel.props.title
+                                    ? panel.props.title
+                                    : panel.title
+                            }
+                            component={panel.component}
+                            configurable={panel.configurable}
+                            panels={panels}
+                            configurePanel={panel => {
+                                alert(
+                                    "Configuring Panel Dialog would show here"
+                                );
+                            }}
+                            deletePanelConfirmation={() => {
+                                alert("Deleting Panel Dialog would show here");
+                            }}
+                            showHeader={false}
+                        />
                     ))}
                 </Dashboard>
             </Column>
