@@ -21,17 +21,15 @@ class GreedyCarousel extends React.Component {
         const {
             children,
             layout,
-            rows,
-            columns,
             perTile,
+            squareStackVertical,
             ...rest
         } = this.props;
 
         const { w, h } = layout;
 
         let perCarouselItem =
-            Math.max(1, Math.floor(w / h), Math.floor(h / w), rows, columns) *
-            perTile;
+            Math.max(1, Math.floor(w / h), Math.floor(h / w)) * perTile;
 
         let chunks = this.chunk(children, perCarouselItem);
 
@@ -47,7 +45,8 @@ class GreedyCarousel extends React.Component {
                                         autoHide
                                         key={i}
                                         style={
-                                            w > h
+                                            (squareStackVertical && w > h) ||
+                                            (!squareStackVertical && w >= h)
                                                 ? {
                                                       float: "left",
                                                       position: "relative",
@@ -74,20 +73,20 @@ class GreedyCarousel extends React.Component {
 }
 
 Carousel.PropTypes = {
-    /** Optional: specify the number of rows if you want to display 1 item per row. */
-    rows: PropTypes.number,
-    /** Optional: specify the number of columnss if you want to display 1 item per columns. */
-    columns: PropTypes.number,
     /** Optional: show more items per tile. */
     perTile: PropTypes.number,
-    layout: PropTypes.object
+    /** The parent layout */
+    layout: PropTypes.object,
+    /** If Tile is square but has more than one item showing, use squareStackVertical if you want items to stack vertically. */
+    squareStackVertical: PropTypes.bool
 };
 
 GreedyCarousel.defaultProps = {
     rows: 1,
     columns: 1,
     perTile: 1,
-    layout: { w: 1, h: 1 }
+    layout: { w: 1, h: 1 },
+    squareStackVertical: false
 };
 
 export default GreedyCarousel;
