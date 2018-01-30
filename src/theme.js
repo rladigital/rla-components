@@ -33,6 +33,8 @@ export const breakpoints = {
 };
 
 const theme = {
+    darkColor: colors.background,
+    lightColor: colors.white,
     navigation: {
         navLink: {
             margin: 0,

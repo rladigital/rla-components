@@ -19,7 +19,10 @@ const Button = styled.button`
     min-height: ${props => sizes[props.size]}em;
     font-weight: ${props => props.theme.button.fontWeight};
     text-transform: ${props => props.theme.button.textTransform};
-    border-radius: ${props => props.theme.button.borderRadius}em;
+    border-radius: ${props =>
+        props.borderRadius != undefined
+            ? props.borderRadius
+            : props.theme.button.borderRadius + "em"};
     margin-bottom: ${props =>
         props.margin != undefined ? props.margin : spacing.margin}em;
 
@@ -27,7 +30,13 @@ const Button = styled.button`
     ${props =>
         !props.hollow
             ? css`
-                  color: ${props => foregroundColor(colors[props.color])};
+                  color: ${props =>
+                      foregroundColor(
+                          colors[props.color],
+                          0.5,
+                          props.theme.lightColor,
+                          props.theme.darkColor
+                      )};
                   background-color: ${props => colors[props.color]};
               `
             : css`
@@ -84,7 +93,8 @@ Button.propTypes = {
     color: PropTypes.string,
     margin: PropTypes.number,
     padding: PropTypes.number,
-    size: PropTypes.string
+    size: PropTypes.string,
+    borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Button.defaultProps = {
