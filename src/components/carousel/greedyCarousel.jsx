@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Carousel from "./carousel";
 import CarouselItem from "./carouselItem";
+import { Scrollbars } from "react-custom-scrollbars";
 
 class GreedyCarousel extends React.Component {
     chunk(myArray, chunk_size) {
@@ -17,11 +18,20 @@ class GreedyCarousel extends React.Component {
         return tempArray;
     }
     render() {
-        const { children, layout, ...rest } = this.props;
+        const {
+            children,
+            layout,
+            rows,
+            columns,
+            perTile,
+            ...rest
+        } = this.props;
 
         const { w, h } = layout;
 
-        let perCarouselItem = Math.max(1, Math.floor(w / h), Math.floor(h / w));
+        let perCarouselItem =
+            Math.max(1, Math.floor(w / h), Math.floor(h / w), rows, columns) *
+            perTile;
 
         let chunks = this.chunk(children, perCarouselItem);
 
@@ -33,7 +43,8 @@ class GreedyCarousel extends React.Component {
                             {chunk.map((child, i) => {
                                 var size = 100 / chunk.length + "%";
                                 return (
-                                    <div
+                                    <Scrollbars
+                                        autoHide
                                         key={i}
                                         style={
                                             w > h
@@ -51,7 +62,7 @@ class GreedyCarousel extends React.Component {
                                         }
                                     >
                                         {child}
-                                    </div>
+                                    </Scrollbars>
                                 );
                             })}
                         </CarouselItem>
@@ -63,10 +74,19 @@ class GreedyCarousel extends React.Component {
 }
 
 Carousel.PropTypes = {
+    /** Optional: specify the number of rows if you want to display 1 item per row. */
+    rows: PropTypes.number,
+    /** Optional: specify the number of columnss if you want to display 1 item per columns. */
+    columns: PropTypes.number,
+    /** Optional: show more items per tile. */
+    perTile: PropTypes.number,
     layout: PropTypes.object
 };
 
 GreedyCarousel.defaultProps = {
+    rows: 1,
+    columns: 1,
+    perTile: 1,
     layout: { w: 1, h: 1 }
 };
 

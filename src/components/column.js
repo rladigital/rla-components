@@ -12,7 +12,7 @@ const widthPercentage = function(width) {
 const media = Object.keys(breakpoints).reduce((acc, label) => {
     acc[label] = (...args) => props =>
         props.parentWidth
-            ? props.parentWidth > breakpoints[label] &&
+            ? parseInt(props.parentWidth) > breakpoints[label] &&
               css`
                   ${css(...args)};
               `

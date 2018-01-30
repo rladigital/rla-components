@@ -110,7 +110,7 @@ class Carousel extends React.Component {
 
         return (
             <Container height={this.props.height}>
-                <Scrollbars autoHide={true}>{childrenWithProps}</Scrollbars>
+                <Scrollbars autoHide>{childrenWithProps}</Scrollbars>
                 {!this.props.hideControls && [
                     <ArrowButtonLeft onClick={() => this.prevItem()}>
                         <Icon
