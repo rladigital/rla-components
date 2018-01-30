@@ -52,32 +52,31 @@ const ModalCloseButton = styled.div.attrs({
     color: ${props => props.theme.modal.closeButtonColor};
 `;
 
+const bodyElement = document.getElementsByTagName("BODY")[0];
+
 /** Modal  */
 class Modal extends React.Component {
     constructor(props) {
         super(props);
         this.el = document.createElement("div");
     }
+
     componentWillMount() {
-        // Lock body scroll if is visible
-        try {
-            const bodyElement = document.getElementsByTagName("BODY")[0];
-            bodyElement.appendChild(this.el);
-            bodyElement.style.overflow = props.visible ? "hidden" : "auto";
-        } catch (err) {}
+        // init portal element
+        bodyElement.appendChild(this.el);
     }
 
     componentWillUnmount() {
-        // Lock body scroll if is visible
-        try {
-            const bodyElement = document.getElementsByTagName("BODY")[0];
+        // destroy portal element
+        bodyElement.removeChild(this.el);
+    }
 
-            bodyElement.removeChild(this.el);
-            bodyElement.style.overflow = "auto";
-        } catch (err) {}
+    componentDidUpdate() {
+        bodyElement.style.overflow = this.props.visible ? "hidden" : "visible";
     }
 
     onClose = () => {
+        this.setState({ visible: false });
         this.props.onClose();
     };
 
