@@ -65,19 +65,19 @@ class Carousel extends React.Component {
         };
     }
 
-    prevItem() {
+    prevItem(children) {
         var x;
         if (this.state.current) {
             x = this.state.current - 1;
         } else {
-            x = this.props.children.length - 1;
+            x = children.length - 1;
         }
         this.setState({ current: x, direction: "left" });
     }
 
-    nextItem() {
+    nextItem(children) {
         var x;
-        if (this.state.current != this.props.children.length - 1) {
+        if (this.state.current != children.length - 1) {
             x = this.state.current + 1;
         } else {
             x = 0;
@@ -94,37 +94,37 @@ class Carousel extends React.Component {
     }
 
     render() {
-        let childrenWithProps = React.Children.map(
-            this.props.children,
-            (child, i) =>
-                child &&
-                React.cloneElement(child, {
-                    i: i,
-                    current: this.state.current,
-                    direction: this.state.direction,
-                    first: Boolean(i == 0),
-                    last: Boolean(
-                        i == React.Children.count(this.props.children) - 1
-                    )
-                })
+        let children = this.props.children.filter(function(x) {
+            console.log(x);
+            return x != (undefined || null || false || "");
+        });
+
+        let childrenWithProps = React.Children.map(children, (child, i) =>
+            React.cloneElement(child, {
+                i: i,
+                current: this.state.current,
+                direction: this.state.direction,
+                first: Boolean(i == 0),
+                last: Boolean(i == React.Children.count(children) - 1)
+            })
         );
 
         return (
             <Container height={this.props.height}>
                 <Scrollbars autoHide>{childrenWithProps}</Scrollbars>
                 {!this.props.hideControls && [
-                    <ArrowButtonLeft onClick={() => this.prevItem()}>
+                    <ArrowButtonLeft onClick={() => this.prevItem(children)}>
                         <Icon
                             name={this.props.theme.carousel.arrows.leftIcon}
                         />
                     </ArrowButtonLeft>,
-                    <ArrowButtonRight onClick={() => this.nextItem()}>
+                    <ArrowButtonRight onClick={() => this.nextItem(children)}>
                         <Icon
                             name={this.props.theme.carousel.arrows.rightIcon}
                         />
                     </ArrowButtonRight>,
                     <Dots>
-                        {React.Children.map(this.props.children, (child, i) => {
+                        {React.Children.map(children, (child, i) => {
                             return (
                                 <Dot
                                     onClick={() => this.setCurrentItem(i)}
