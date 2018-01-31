@@ -72,7 +72,7 @@ class Modal extends React.Component {
     }
 
     componentDidUpdate() {
-        bodyElement.style.overflow = this.props.visible ? "hidden" : "visible";
+        //bodyElement.style.overflow = this.props.visible ? "hidden" : "visible";
     }
 
     onClose = () => {

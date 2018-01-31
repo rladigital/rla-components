@@ -50,7 +50,7 @@ const SelectField = ({
         });
     };
     return (
-        <div>
+        <span>
             {label && (
                 <FormLabel name={name} label={label} {...rest}>
                     {label}
@@ -66,7 +66,7 @@ const SelectField = ({
                     ))}
             </Select>
             <InputError error={error} />
-        </div>
+        </span>
     );
 };
 
