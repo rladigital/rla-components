@@ -33,7 +33,7 @@ const Button = styled.button`
                   color: ${props =>
                       foregroundColor(
                           colors[props.color],
-                          0.5,
+                          0.6,
                           props.theme.lightColor,
                           props.theme.darkColor
                       )};

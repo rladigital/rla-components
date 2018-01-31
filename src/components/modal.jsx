@@ -30,7 +30,7 @@ const ModalWrapper = animation.fade.extend`
         z-index: 999;
     `;
 const ModalInner = animation.zoom.extend`
-    max-width: 40em;
+    max-width: ${props => props.maxWidth};
     margin: 6em auto;
     position: relative;
     border-radius: ${props => props.theme.modal.radius}em;
@@ -81,9 +81,14 @@ class Modal extends React.Component {
     };
 
     renderModal = () => {
+        const { maxWidth, children } = this.props;
         return (
             <ModalWrapper duration="0.25s" onClick={this.onClose}>
-                <ModalInner duration="0.25s" onClick={e => e.stopPropagation()}>
+                <ModalInner
+                    duration="0.25s"
+                    onClick={e => e.stopPropagation()}
+                    maxWidth={maxWidth}
+                >
                     <ModalCloseButton onClick={this.onClose}>
                         <Icon name="close" size="1.8" />
                     </ModalCloseButton>
@@ -111,11 +116,13 @@ Modal.propTypes = {
     /** Boolean indicating whether the modal should show */
     visible: PropTypes.bool.isRequired,
     /** The function to call when the modal is closed */
-    onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
+    maxWidth: PropTypes.string
 };
 
 Modal.defaultProps = {
-    visible: false
+    visible: false,
+    maxWidth: "640px"
 };
 
 export default Modal;
