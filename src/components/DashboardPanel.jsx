@@ -98,13 +98,14 @@ class DashboardPanel extends Component {
                         <Left>{panelTitle && <Title>{panelTitle}</Title>}</Left>
 
                         <Right>
-                            {configurable && (
+                            {configurable && [
                                 <HeaderIcon
                                     onClick={configurePanel.bind(this, panel)}
                                 >
                                     {configureIcon}
-                                </HeaderIcon>
-                            )}
+                                </HeaderIcon>,
+                                " "
+                            ]}
                             <HeaderIcon
                                 onClick={deletePanelConfirmation.bind(
                                     this,
