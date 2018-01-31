@@ -97,6 +97,7 @@ class Carousel extends React.Component {
         let childrenWithProps = React.Children.map(
             this.props.children,
             (child, i) =>
+                child &&
                 React.cloneElement(child, {
                     i: i,
                     current: this.state.current,
