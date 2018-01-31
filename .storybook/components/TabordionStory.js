@@ -7,7 +7,8 @@ import {
     number,
     text,
     select,
-    boolean
+    boolean,
+    func
 } from "@storybook/addon-knobs";
 import { Tabordion, Panel, Row, Column, Icon, Button } from "../../src/index";
 
@@ -25,6 +26,7 @@ stories.addWithInfo(
         let type = select("type", ["tabs", "accordion", "steps"], "tabs");
         let unmounts = boolean("unmounts", true);
         let responsive = boolean("responsive", true);
+
         return (
             <Panel>
                 <Row>
@@ -35,7 +37,7 @@ stories.addWithInfo(
                             type={type}
                             unmounts={unmounts}
                             responsive={responsive}
-                            onClick={x => alert("you clicked tab" + x)}
+                            onTabClick={() => alert("you clicked an item")}
                         >
                             <Row heading="Tab 1" icon={<Icon name="gear" />}>
                                 <Column>
@@ -62,10 +64,6 @@ stories.addWithInfo(
                             </Row>
                         </Tabordion>
                     </Column>
-                </Row>
-                <Row>
-                    <Button>Prev</Button>
-                    <Button>Next</Button>
                 </Row>
             </Panel>
         );

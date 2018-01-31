@@ -67,6 +67,12 @@ class Tabordion extends React.Component {
     next() {
         this.setCurrentItem(this.state.current + 1);
     }
+    handleTabClick(x) {
+        this.props.onTabClick();
+        if (x) {
+            x();
+        }
+    }
     content(children, unmounts, current) {
         return unmounts
             ? children[current]
@@ -110,7 +116,11 @@ class Tabordion extends React.Component {
                             {children.map((child, i) => {
                                 return (
                                     <Tab
-                                        onClick={() => this.setCurrentItem(i)}
+                                        onClick={() =>
+                                            this.handleTabClick(
+                                                this.setCurrentItem(i)
+                                            )
+                                        }
                                         divider={this.props.divider}
                                         current={this.state.current}
                                         key={i}
@@ -131,7 +141,9 @@ class Tabordion extends React.Component {
                                         <Step
                                             label={child.props.heading}
                                             onClick={() =>
-                                                this.setCurrentItem(i)
+                                                this.handleTabClick(
+                                                    this.setCurrentItem(i)
+                                                )
                                             }
                                             divider={this.props.divider}
                                             key={"step_" + i}
@@ -150,6 +162,7 @@ class Tabordion extends React.Component {
                         divider={this.props.divider}
                         current={this.state.current}
                         children={children}
+                        handleTabClick={this.handleTabClick.bind(this)}
                         cb={this.setCurrentItem.bind(this)}
                     />
                 )}
@@ -160,6 +173,7 @@ class Tabordion extends React.Component {
                         divider={this.props.divider}
                         current={this.state.current}
                         children={children}
+                        handleTabClick={this.handleTabClick.bind(this)}
                         cb={this.setCurrentItem.bind(this)}
                     />
                 )}
@@ -170,12 +184,12 @@ class Tabordion extends React.Component {
 
 class AccordionGroup extends React.Component {
     render() {
-        const { slice, children, cb, ...rest } = this.props;
+        const { slice, children, cb, handleTabClick, ...rest } = this.props;
         return children.slice(slice[0], slice[1]).map((child, i) => {
             i = i + slice[0];
             return (
                 <AccordionHeader
-                    onClick={() => cb(i)}
+                    onClick={() => handleTabClick(cb(i))}
                     key={"header" + i}
                     i={i}
                     {...rest}
@@ -197,7 +211,8 @@ Tabordion.propTypes = {
     respondsAt: PropTypes.number,
     unmounts: PropTypes.bool,
     responsive: PropTypes.bool,
-    cb: PropTypes.func
+    /** Callback function for when tab is clicked */
+    onTabClick: PropTypes.func
 };
 
 Tabordion.defaultProps = {
