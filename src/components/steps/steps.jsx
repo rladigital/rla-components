@@ -7,7 +7,7 @@ const Progress = styled.div`
         text-align: center;
         display: inline-block;
         padding: ${props.theme.steps.border}px;
-        margin-bottom: ${props.theme.steps.margin}em;
+        margin-bottom: ${props.margin || props.theme.steps.margin}em;
     `};
 `;
 
@@ -36,7 +36,7 @@ class Steps extends React.Component {
         }
     }
     render() {
-        const { stages } = this.props;
+        const { stages, children, barWidth, ...rest } = this.props;
         let childrenWithProps = React.Children.map(
             this.props.children,
             (child, i) =>
@@ -45,10 +45,11 @@ class Steps extends React.Component {
                     current: this.state.current,
                     hasBar: !Boolean(
                         i == React.Children.count(this.props.children) - 1
-                    )
+                    ),
+                    barWidth: barWidth
                 })
         );
-        return <Progress>{childrenWithProps}</Progress>;
+        return <Progress {...rest}>{childrenWithProps}</Progress>;
     }
 }
 
@@ -60,7 +61,8 @@ Steps.propTypes = {
     /** Array of stages - shows the label and callback in an object. */
     stages: PropTypes.array,
     /** The width of the lines between the dots */
-    barWidth: PropTypes.number
+    barWidth: PropTypes.number,
+    margin: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Steps.defaultProps = {

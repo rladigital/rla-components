@@ -9,6 +9,9 @@ import AccordionHeader from "./accordion/accordionHeader";
 import AccordionContent from "./accordion/accordionContent";
 import Steps from "./steps/steps";
 import Step from "./steps/step";
+import Row from "./row";
+import Column from "./column";
+import Button from "./button";
 
 const StepsContainer = styled.div`
     text-align: center;
@@ -37,6 +40,10 @@ class Tabordion extends React.Component {
         }
     }
 
+    componentDidUpdate() {
+        if (this.props.cb) this.props.cb();
+    }
+
     updateDimensions() {
         this.setState({ width: window.innerWidth });
     }
@@ -48,110 +55,149 @@ class Tabordion extends React.Component {
             .toString(36)
             .substring(7);
     }
+    position() {
+        return this.state.current;
+    }
+    length() {
+        return React.Children.count(this.props.children);
+    }
+    prev() {
+        this.setCurrentItem(this.state.current - 1);
+    }
+    next() {
+        this.setCurrentItem(this.state.current + 1);
+    }
+    handleTabClick(x) {
+        this.props.onTabClick();
+        if (x) {
+            x();
+        }
+    }
+    content(children, unmounts, current) {
+        return unmounts
+            ? children[current]
+            : children.map((child, i) => {
+                  return (
+                      <div
+                          key={i}
+                          style={{
+                              display: current == i ? "block" : "none"
+                          }}
+                      >
+                          {child}
+                      </div>
+                  );
+              });
+    }
     render() {
-        var { type, respondsAt, responsive } = this.props;
+        var {
+            type,
+            respondsAt,
+            responsive,
+            unmounts,
+            isWizard,
+            nextButtonText,
+            prevButtonText,
+            nextButtonDisabled,
+            prevButtonDisabled,
+            wizardColumnProps,
+            wizardRowProps,
+            wizardButtonProps
+        } = this.props;
         var children = React.Children.toArray(this.props.children);
         var breakpoint = Boolean(responsive && this.state.width < respondsAt);
+        var content = this.content(children, unmounts, this.state.current);
 
-        if (type == "tabs" && !breakpoint)
-            return (
-                <div>
-                    <TabContainer>
-                        {children.map((child, i) => {
-                            return (
-                                <Tab
-                                    onClick={() => this.setCurrentItem(i)}
-                                    divider={this.props.divider}
-                                    current={this.state.current}
-                                    key={i}
-                                    i={i}
-                                >
-                                    {child.props.heading}
-                                </Tab>
-                            );
-                        })}
-                    </TabContainer>
-                    <Content
-                        unmounts={this.props.unmounts}
-                        children={children}
-                        current={this.state.current}
-                    />
-                </div>
-            );
-        else if (type == "steps" && !breakpoint)
-            return (
-                <div>
-                    <StepsContainer>
-                        <Steps current={this.state.current}>
+        return (
+            <div>
+                {type == "tabs" &&
+                    !breakpoint && (
+                        <TabContainer>
                             {children.map((child, i) => {
                                 return (
-                                    <Step
-                                        label={child.props.heading}
-                                        onClick={() => this.setCurrentItem(i)}
+                                    <Tab
+                                        onClick={() =>
+                                            this.handleTabClick(
+                                                this.setCurrentItem(i)
+                                            )
+                                        }
                                         divider={this.props.divider}
+                                        current={this.state.current}
                                         key={i}
                                         i={i}
                                     >
-                                        {child.props.icon}
-                                    </Step>
+                                        {child.props.heading}
+                                    </Tab>
                                 );
                             })}
-                        </Steps>
-                    </StepsContainer>
-                    <Content
-                        unmounts={this.props.unmounts}
-                        children={children}
+                        </TabContainer>
+                    )}
+                {type == "steps" &&
+                    !breakpoint && (
+                        <StepsContainer>
+                            <Steps current={this.state.current}>
+                                {children.map((child, i) => {
+                                    return (
+                                        <Step
+                                            label={child.props.heading}
+                                            onClick={() =>
+                                                this.handleTabClick(
+                                                    this.setCurrentItem(i)
+                                                )
+                                            }
+                                            divider={this.props.divider}
+                                            key={"step_" + i}
+                                            i={i}
+                                        >
+                                            {child.props.icon}
+                                        </Step>
+                                    );
+                                })}
+                            </Steps>
+                        </StepsContainer>
+                    )}
+                {(type == "accordion" || breakpoint) && (
+                    <AccordionGroup
+                        slice={[0, this.state.current + 1]}
+                        divider={this.props.divider}
                         current={this.state.current}
+                        children={children}
+                        handleTabClick={this.handleTabClick.bind(this)}
+                        cb={this.setCurrentItem.bind(this)}
                     />
-                </div>
-            );
-        return (
-            <Accordion>
-                {children.map((child, i) => {
-                    return [
-                        <AccordionHeader
-                            onClick={() => this.setCurrentItem(i)}
-                            divider={this.props.divider}
-                            current={this.state.current}
-                            key={"header" + i}
-                            i={i}
-                        >
-                            {child.props.heading}
-                        </AccordionHeader>,
-                        <AccordionContent
-                            key={"content" + i}
-                            isOpened={this.state.current == i}
-                        >
-                            {children[i]}
-                        </AccordionContent>
-                    ];
-                })}
-            </Accordion>
+                )}
+                {content}
+                {(type == "accordion" || breakpoint) && (
+                    <AccordionGroup
+                        slice={[this.state.current + 1, children.length]}
+                        divider={this.props.divider}
+                        current={this.state.current}
+                        children={children}
+                        handleTabClick={this.handleTabClick.bind(this)}
+                        cb={this.setCurrentItem.bind(this)}
+                    />
+                )}
+            </div>
         );
     }
 }
 
-class Content extends React.Component {
+class AccordionGroup extends React.Component {
     render() {
-        let { children, unmounts, current } = this.props;
-        return (
-            <TabContent>
-                {unmounts
-                    ? children[current]
-                    : children.map((child, i) => {
-                          return (
-                              <div
-                                  key={i}
-                                  style={{
-                                      display: current == i ? "block" : "none"
-                                  }}
-                              >
-                                  {child}
-                              </div>
-                          );
-                      })}
-            </TabContent>
-        );
+        const { slice, children, cb, handleTabClick, ...rest } = this.props;
+        return children.slice(slice[0], slice[1]).map((child, i) => {
+            i = i + slice[0];
+            return (
+                <AccordionHeader
+                    onClick={() => handleTabClick(cb(i))}
+                    key={"header" + i}
+                    i={i}
+                    {...rest}
+                >
+                    {child.props.heading}
+                </AccordionHeader>
+            );
+        });
     }
 }
 
@@ -164,7 +210,9 @@ Tabordion.propTypes = {
     type: PropTypes.oneOf(["tabs", "accordion", "steps"]),
     respondsAt: PropTypes.number,
     unmounts: PropTypes.bool,
-    responsive: PropTypes.bool
+    responsive: PropTypes.bool,
+    /** Callback function for when tab is clicked */
+    onTabClick: PropTypes.func
 };
 
 Tabordion.defaultProps = {

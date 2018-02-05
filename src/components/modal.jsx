@@ -30,7 +30,7 @@ const ModalWrapper = animation.fade.extend`
         z-index: 999;
     `;
 const ModalInner = animation.zoom.extend`
-    max-width: 40em;
+    max-width: ${props => props.maxWidth};
     margin: 6em auto;
     position: relative;
     border-radius: ${props => props.theme.modal.radius}em;
@@ -52,39 +52,43 @@ const ModalCloseButton = styled.div.attrs({
     color: ${props => props.theme.modal.closeButtonColor};
 `;
 
+const bodyElement = document.getElementsByTagName("BODY")[0];
+
 /** Modal  */
 class Modal extends React.Component {
     constructor(props) {
         super(props);
         this.el = document.createElement("div");
     }
+
     componentWillMount() {
-        // Lock body scroll if is visible
-        try {
-            const bodyElement = document.getElementsByTagName("BODY")[0];
-            bodyElement.appendChild(this.el);
-            bodyElement.style.overflow = props.visible ? "hidden" : "auto";
-        } catch (err) {}
+        // init portal element
+        bodyElement.appendChild(this.el);
     }
 
     componentWillUnmount() {
-        // Lock body scroll if is visible
-        try {
-            const bodyElement = document.getElementsByTagName("BODY")[0];
+        // destroy portal element
+        bodyElement.removeChild(this.el);
+    }
 
-            bodyElement.removeChild(this.el);
-            bodyElement.style.overflow = "auto";
-        } catch (err) {}
+    componentDidUpdate() {
+        //bodyElement.style.overflow = this.props.visible ? "hidden" : "visible";
     }
 
     onClose = () => {
+        this.setState({ visible: false });
         this.props.onClose();
     };
 
     renderModal = () => {
+        const { maxWidth, children } = this.props;
         return (
             <ModalWrapper duration="0.25s" onClick={this.onClose}>
-                <ModalInner duration="0.25s" onClick={e => e.stopPropagation()}>
+                <ModalInner
+                    duration="0.25s"
+                    onClick={e => e.stopPropagation()}
+                    maxWidth={maxWidth}
+                >
                     <ModalCloseButton onClick={this.onClose}>
                         <Icon name="close" size="1.8" />
                     </ModalCloseButton>
@@ -112,11 +116,13 @@ Modal.propTypes = {
     /** Boolean indicating whether the modal should show */
     visible: PropTypes.bool.isRequired,
     /** The function to call when the modal is closed */
-    onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
+    maxWidth: PropTypes.string
 };
 
 Modal.defaultProps = {
-    visible: false
+    visible: false,
+    maxWidth: "640px"
 };
 
 export default Modal;

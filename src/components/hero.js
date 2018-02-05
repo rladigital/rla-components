@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Panel from "./panel";
+import { colors, spacing, sizes } from "../theme";
 
 const panel = props => props.theme.panel.types[props.type];
 
@@ -13,19 +14,15 @@ const Hero = Panel.extend`
     background-repeat: no-repeat;
 `;
 
-Panel.displayName = "Hero";
+Hero.displayName = "Hero";
 
-Panel.propTypes = {
-    type: PropTypes.string,
-    textAlign: PropTypes.string,
+Hero.propTypes = {
     height: PropTypes.number,
     backgroundImage: PropTypes.string,
     backgroundSize: PropTypes.string
 };
 
-Panel.defaultProps = {
-    type: "default",
-    textAlign: "left",
+Hero.defaultProps = {
     height: 500,
     backgroundSize: "cover"
 };

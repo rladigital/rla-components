@@ -1,80 +1,108 @@
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { shade } from "./_functions";
+import { shade } from "../functions";
+import { colors, spacing, sizes } from "../theme";
+import { hexToHSL, HSLToHex, foregroundColor } from "../functions";
 
-const background = props => props.theme.button.colors[props.color];
+function hoverColor(x) {
+    let hsl = hexToHSL(x);
+    hsl.l = hsl.l * 0.8;
+    let hex = HSLToHex(hsl);
+    return hex;
+}
 
 const Button = styled.button`
-    width: ${props => (props.expanded ? "100%" : "auto")};
-    min-height: ${props => props.theme.button.sizes[props.size]}em;
-    background: ${props => (props.hollow ? "transparent" : background)};
-    color: ${props => (props.hollow ? background : "#FFF")};
-    margin: 0
-        ${props => (props.expanded || props.align == "right" ? 0 : "0.4em")}
-        ${props => props.collapse && props.theme.button.margin}em
-        ${props => (props.align == "right" ? "0.4em" : 0)}em;
-    padding: 0 ${props => props.theme.button.sizes[props.size] / 2}em;
-    transition: color 0.25s, background 0.25s, border 0.25s;
-    border-color: ${background};
-    border-radius: ${props => props.theme.button.radius}em;
-    border-style: solid;
-    border-width: 0.1em;
+    border: none;
     font-size: 1em;
+    text-align: center;
+    transition: background-color 0.25s ease;
+    min-height: ${props => sizes[props.size]}em;
     font-weight: ${props => props.theme.button.fontWeight};
     text-transform: ${props => props.theme.button.textTransform};
+    border-radius: ${props =>
+        props.borderRadius != undefined
+            ? props.borderRadius
+            : props.theme.button.borderRadius + "em"};
+    margin-bottom: ${props =>
+        props.margin != undefined ? props.margin : spacing.margin}em;
+
+    // hollow button styles
     ${props =>
-        !props.disabled
+        !props.hollow
             ? css`
-                  &:hover {
-                      background: ${props =>
-                          !props.hollow && shade(background(props), -40)};
-                      color: ${props =>
-                          props.hollow && shade(background(props), -40)};
-                      border-color: ${props => shade(background(props), -40)};
-                      cursor: pointer;
-                  }
+                  color: ${props =>
+                      foregroundColor(
+                          colors[props.color],
+                          0.6,
+                          props.theme.lightColor,
+                          props.theme.darkColor
+                      )};
+                  background-color: ${props => colors[props.color]};
               `
             : css`
-                  opacity: 0.5;
-                  cursor: not-allowed;
+                  color: ${props => colors[props.color]};
+                  box-shadow: inset 0 0 0 1px ${props => colors[props.color]};
+                  background-color: transparent;
               `};
 
-    /*center align button styling*/
+    //  disabled button styles
     ${props =>
-        props.align == "center" &&
+        props.disabled
+            ? css`
+                  opacity: 0.5;
+                  cursor: not-allowed;
+              `
+            : css`
+                  cursor: pointer;
+              `};
+
+    // active style
+    ${props =>
+        !props.hollow &&
+        !props.disabled &&
         css`
-            display: block;
-            margin: auto;
+            &:hover {
+                background-color: ${props => hoverColor(colors[props.color])};
+            }
         `};
 
-    /*right align button styling*/
+    // expanded
     ${props =>
-        props.align == "right" &&
-        css`
-            float: right;
-        `};
+        props.expanded
+            ? css`
+                  width: 100%;
+              `
+            : css`
+                  padding-left: ${props =>
+                      props.padding != undefined
+                          ? props.padding
+                          : spacing.padding}em;
+                  padding-right: ${props =>
+                      props.padding != undefined
+                          ? props.padding
+                          : spacing.padding}em;
+              `};
 `;
 
 Button.displayName = "Button";
 
 Button.propTypes = {
     expanded: PropTypes.bool,
-    color: PropTypes.string,
-    size: PropTypes.string,
-    hollow: PropTypes.bool,
     disabled: PropTypes.bool,
-    alignment: PropTypes.string,
-    collapse: PropTypes.bool
+    hollow: PropTypes.bool,
+    color: PropTypes.string,
+    margin: PropTypes.number,
+    padding: PropTypes.number,
+    size: PropTypes.string,
+    borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Button.defaultProps = {
     expanded: false,
-    color: "accent",
-    size: "default",
-    hollow: false,
     disabled: false,
-    alignment: "left",
-    collapse: false
+    hollow: false,
+    color: Object.keys(colors)[0],
+    size: Object.keys(sizes)[0]
 };
 
 export default Button;

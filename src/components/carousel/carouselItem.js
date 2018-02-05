@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const position = props => {
     if (props.current == props.i) {
@@ -26,18 +26,23 @@ const doesAnimate = props => {
     }
 };
 
-const CarouselItem = styled.div.attrs({})`
+const CarouselItem = styled.div`
     width: 100%;
     height: 100%;
     color: ${props => props.theme.carousel.item.color};
     background: ${props => props.theme.carousel.item.background};
-    padding: ${props => props.theme.carousel.item.padding}em
-        ${props => props.theme.carousel.item.padding / 2}em;
+    padding-top: ${props => props.theme.carousel.item.padding}em;
     transition: ${props =>
         doesAnimate(props) ? "right 500ms linear" : "none"};
     position: absolute;
 
     right: ${props => position(props)};
+
+    ${props =>
+        props.current != props.i &&
+        css`
+            overflow: hidden;
+        `};
 `;
 
 CarouselItem.displayName = "CarouselItem";

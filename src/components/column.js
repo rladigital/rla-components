@@ -1,25 +1,26 @@
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-
-const sizes = {
-    small: 0,
-    medium: 350,
-    large: 700,
-    xlarge: 1050
-};
+import { breakpoints } from "../theme";
 
 // Width to percentage
 const widthPercentage = function(width) {
     return Math.min(Math.floor(width), 12) / 12 * 100;
 };
 
-// Iterate through the sizes and create a media template
-const media = Object.keys(sizes).reduce((acc, label) => {
-    acc[label] = (...args) => css`
-        @media (min-width: ${sizes[label] / 12}em) {
-            ${css(...args)};
-        }
-    `;
+// Iterate through the breakpoints and create a media template
+// If width prop is defied, then use pseudo js breakpoint instead
+const media = Object.keys(breakpoints).reduce((acc, label) => {
+    acc[label] = (...args) => props =>
+        props.parentWidth
+            ? parseInt(props.parentWidth) > breakpoints[label] &&
+              css`
+                  ${css(...args)};
+              `
+            : css`
+                  @media (min-width: ${breakpoints[label]}px) {
+                      ${css(...args)};
+                  }
+              `;
 
     return acc;
 }, {});
@@ -32,7 +33,7 @@ const Column = styled.div`
 
     /*responsive*/
     ${props =>
-        Object.keys(sizes).map(function(key) {
+        Object.keys(breakpoints).map(function(key) {
             return (
                 props[key] &&
                 media[key]`width: ${widthPercentage(props[key])}%;`
@@ -40,7 +41,14 @@ const Column = styled.div`
         })};
 
     /* Centered */
-    ${props => (props.centered ? css`margin: auto;` : css`float: left;`)};
+    ${props =>
+        props.centered
+            ? css`
+                  margin: auto;
+              `
+            : css`
+                  float: left;
+              `};
 `;
 
 Column.displayName = "Column";

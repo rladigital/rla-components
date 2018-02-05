@@ -7,7 +7,7 @@ const Circle = styled.div`
         width: ${props.theme.steps.circleDiameter}px;
         height: ${props.theme.steps.circleDiameter}px;
         background: ${props.theme.steps.backgroundColor};
-        border-radius: 50px;
+        border-radius: ${props.theme.steps.borderRadius}px;
         float: left;
         box-shadow: 0px 0px 0 ${props.theme.steps.border}px
             ${props.theme.steps.borderColor};
@@ -21,6 +21,7 @@ const Circle = styled.div`
 const Bar = styled.div`
     ${props => css`
         width: ${props.barWidth}vw;
+        min-width: ${props.minBarWidth}px;
         height: ${props.theme.steps.barHeight}px;
         background: ${props.theme.steps.backgroundColor};
         margin: ${(props.theme.steps.circleDiameter -
@@ -44,13 +45,12 @@ const CircleInner = styled.div`
     ${props => css`
         width: 100%;
         height: 100%;
-        border-radius: 100%;
+        border-radius: ${props.theme.steps.borderRadius}%;
         transition: 50ms linear;
         transition-delay: 50ms;
         color: ${props.theme.steps.progressColor};
-        line-height: ${props.theme.steps.circleDiameter -
-            props.theme.steps.padding * 2 -
-            2}px;
+        position: relative;
+        z-index: 2;
         ${props =>
             props.active &&
             css`
@@ -78,6 +78,13 @@ const BarInner = styled.div`
         `};
 `;
 
+const Icon = styled.div`
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+`;
+
 const Label = styled.div`
     ${props => css`
         left: 50%;
@@ -92,17 +99,29 @@ const Label = styled.div`
 
 class Steps extends React.Component {
     render() {
-        const { i, onClick, current, hasBar, barWidth, label } = this.props;
+        const {
+            i,
+            onClick,
+            current,
+            hasBar,
+            barWidth,
+            minBarWidth,
+            label
+        } = this.props;
 
         return [
-            <Circle onClick={onClick}>
+            <Circle onClick={onClick} key={"step_cicle_" + i}>
                 <CircleInner active={i <= current}>
-                    {this.props.children}
+                    <Icon>{this.props.children}</Icon>
                 </CircleInner>
                 {label && <Label>{label}</Label>}
             </Circle>,
             hasBar && (
-                <Bar barWidth={barWidth}>
+                <Bar
+                    barWidth={barWidth}
+                    minBarWidth={minBarWidth}
+                    key={"step_bar_" + i}
+                >
                     <BarInner active={i < current} />
                 </Bar>
             )
@@ -118,11 +137,14 @@ Steps.propTypes = {
     /** Array of stages - shows the label and callback in an object. */
     stages: PropTypes.array,
     /** The width of the lines between the dots */
-    barWidth: PropTypes.number
+    barWidth: PropTypes.number,
+    /** Min width of the lines between the dots */
+    minBarWidth: PropTypes.number
 };
 
 Steps.defaultProps = {
-    barWidth: 10
+    barWidth: 10,
+    minBarWidth: 60
 };
 
 Steps.displayName = "Steps";

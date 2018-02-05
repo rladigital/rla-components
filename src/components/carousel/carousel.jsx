@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { withTheme } from "styled-components";
 import { Icon } from "../../index";
+import { Scrollbars } from "react-custom-scrollbars";
 
 const Container = styled.div`
     width: 100%;
@@ -19,6 +20,7 @@ const ArrowButton = styled.a`
     transform: translateY(-50%);
     color: ${props => props.theme.carousel.arrows.color};
     cursor: pointer;
+    z-index: 1;
 `;
 
 const ArrowButtonLeft = ArrowButton.extend`
@@ -49,6 +51,10 @@ const Dot = styled.a`
     cursor: pointer;
 `;
 
+const StyledScrollbars = styled(Scrollbars)`
+    overflow-x: hidden;
+`;
+
 class Carousel extends React.Component {
     constructor(props) {
         super(props);
@@ -59,19 +65,19 @@ class Carousel extends React.Component {
         };
     }
 
-    prevItem() {
+    prevItem(children) {
         var x;
         if (this.state.current) {
             x = this.state.current - 1;
         } else {
-            x = this.props.children.length - 1;
+            x = children.length - 1;
         }
         this.setState({ current: x, direction: "left" });
     }
 
-    nextItem() {
+    nextItem(children) {
         var x;
-        if (this.state.current != this.props.children.length - 1) {
+        if (this.state.current != children.length - 1) {
             x = this.state.current + 1;
         } else {
             x = 0;
@@ -88,39 +94,46 @@ class Carousel extends React.Component {
     }
 
     render() {
-        let childrenWithProps = React.Children.map(
-            this.props.children,
-            (child, i) =>
-                React.cloneElement(child, {
-                    i: i,
-                    current: this.state.current,
-                    direction: this.state.direction,
-                    first: Boolean(i == 0),
-                    last: Boolean(
-                        i == React.Children.count(this.props.children) - 1
-                    )
-                })
+        let children = this.props.children.filter(function(x) {
+            console.log(x);
+            return x != (undefined || null || false || "");
+        });
+
+        let childrenWithProps = React.Children.map(children, (child, i) =>
+            React.cloneElement(child, {
+                i: i,
+                current: this.state.current,
+                direction: this.state.direction,
+                first: Boolean(i == 0),
+                last: Boolean(i == React.Children.count(children) - 1)
+            })
         );
 
         return (
             <Container height={this.props.height}>
-                {childrenWithProps}
-                <ArrowButtonLeft onClick={() => this.prevItem()}>
-                    <Icon name={this.props.theme.carousel.arrows.leftIcon} />
-                </ArrowButtonLeft>
-                <ArrowButtonRight onClick={() => this.nextItem()}>
-                    <Icon name={this.props.theme.carousel.arrows.rightIcon} />
-                </ArrowButtonRight>
-                <Dots>
-                    {React.Children.map(this.props.children, (child, i) => {
-                        return (
-                            <Dot
-                                onClick={() => this.setCurrentItem(i)}
-                                active={this.state.current == i}
-                            />
-                        );
-                    })}
-                </Dots>
+                <Scrollbars autoHide>{childrenWithProps}</Scrollbars>
+                {!this.props.hideControls && [
+                    <ArrowButtonLeft onClick={() => this.prevItem(children)}>
+                        <Icon
+                            name={this.props.theme.carousel.arrows.leftIcon}
+                        />
+                    </ArrowButtonLeft>,
+                    <ArrowButtonRight onClick={() => this.nextItem(children)}>
+                        <Icon
+                            name={this.props.theme.carousel.arrows.rightIcon}
+                        />
+                    </ArrowButtonRight>,
+                    <Dots>
+                        {React.Children.map(children, (child, i) => {
+                            return (
+                                <Dot
+                                    onClick={() => this.setCurrentItem(i)}
+                                    active={this.state.current == i}
+                                />
+                            );
+                        })}
+                    </Dots>
+                ]}
             </Container>
         );
     }
@@ -131,10 +144,12 @@ Carousel = withTheme(Carousel);
 Carousel.displayName = "Carousel";
 
 Carousel.propTypes = {
+    hideControls: PropTypes.bool,
     height: PropTypes.string
 };
 
 Carousel.defaultProps = {
+    hideControls: false,
     height: "100%"
 };
 

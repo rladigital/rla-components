@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import InputRange from "react-input-range";
 import moment from "moment";
 import styled, { css } from "styled-components";
-import { shade } from "../_functions";
+import { shade } from "../../functions";
 import FormLabel from "./label";
 import { rangePropType, valuePropType } from "./rangePropTypes";
 import "react-input-range/lib/css/index.css";
@@ -56,7 +56,8 @@ class Range extends Component {
                     value={this.state.value}
                     onChange={this.handleChange.bind(this)}
                     {...rest}
-                /><br />
+                />
+                <br />
 
                 <InputError error={error} />
             </div>
@@ -84,7 +85,7 @@ Range.propTypes = {
 };
 
 Range.defaultProps = {
-    error: ''
+    error: ""
 };
 
 export default Range;

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import RCTimePicker from "rc-time-picker";
 import moment from "moment";
 import styled, { css } from "styled-components";
-import { shade } from "../_functions";
+import { shade } from "../../functions";
 import FormLabel from "./label";
 import InputError from "./inputError";
 
@@ -79,7 +79,7 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
     showSecond: false,
-    error: ''
+    error: ""
 };
 
 export default TimePicker;

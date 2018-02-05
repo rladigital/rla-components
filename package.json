@@ -1,6 +1,6 @@
 {
     "name": "rla-components",
-    "version": "0.3.92",
+    "version": "0.3.109",
     "description": "",
     "main": "dist/rla-components.js",
     "scripts": {
@@ -21,6 +21,7 @@
         "animate-css-styled-components": "^0.0.20",
         "rc-time-picker": "^3.2.1",
         "react-collapse": "^4.0.3",
+        "react-custom-scrollbars": "^4.2.1",
         "react-datepicker": "^1.0.4",
         "react-dropzone": "^4.2.1",
         "react-grid-layout": "^0.16.0",
