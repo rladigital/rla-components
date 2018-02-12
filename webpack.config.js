@@ -21,7 +21,7 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         filename: outputFile,
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "dist-webpack"),
         library: libraryName,
         libraryTarget: "umd",
         umdNamedDefine: true

@@ -1,3 +1,7 @@
 /node_modules
 npm-debug.log
 webpack-stats.json
+
+dist
+dist-webpack
+.vscode
