@@ -6,7 +6,11 @@ import FormLabel from "./label";
 import InputError from "./inputError";
 
 const StyledInput = styled.input`
-    margin-bottom: ${props => props.theme.margin}em;
+    margin-bottom: ${props => props.theme.input.margin}rem;
+`;
+const ButtonWapper = styled.div`
+    display: ${props => (props.inlineRadioButtons ? "inline-block" : "block")};
+    padding-right: ${props => props.theme.input.margin}rem;
 `;
 
 const RadioField = ({
@@ -18,6 +22,7 @@ const RadioField = ({
     label,
     readOnly,
     error,
+    inlineRadioButtons,
     ...rest
 }) => {
     const handleChange = event => {
@@ -35,7 +40,10 @@ const RadioField = ({
             )}
             {options &&
                 options.map((radio, index) => (
-                    <div key={index}>
+                    <ButtonWapper
+                        key={index}
+                        inlineRadioButtons={inlineRadioButtons}
+                    >
                         <StyledInput
                             type="radio"
                             name={name}
@@ -44,7 +52,7 @@ const RadioField = ({
                             onChange={handleChange}
                         />
                         {" " + radio.text}
-                    </div>
+                    </ButtonWapper>
                 ))}
 
             <InputError error={error} />
@@ -66,6 +74,7 @@ RadioField.propTypes = {
     size: PropTypes.string,
     expanded: PropTypes.bool,
     inlineLabel: PropTypes.bool,
+    inlineRadioButtons: PropTypes.bool,
     input: PropTypes.object,
     type: PropTypes.string,
     label: PropTypes.string,
@@ -76,6 +85,7 @@ RadioField.defaultProps = {
     size: "default",
     expanded: false,
     inlineLabel: true,
+    inlineRadioButtons: false,
     type: "text",
     readOnly: false,
     error: ""
