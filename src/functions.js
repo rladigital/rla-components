@@ -96,3 +96,7 @@ export function HSLToHex(hsl) {
 export function foregroundColor(hex, lightness, lightColor, darkColor) {
     return hexToHSL(hex).l < lightness ? lightColor : darkColor;
 }
+
+export const isBrowser = new Function(
+    "try {return this===window;}catch(e){ return false;}"
+);

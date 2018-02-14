@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { ZoomIn, ZoomOut } from "animate-css-styled-components";
 
+import { isBrowser } from "../functions";
+
 const DropdownWrapper = styled.div`
     width: ${props => props.width}px;
     position: absolute;
@@ -21,10 +23,14 @@ class Dropdown extends React.Component {
         };
     }
     componentDidMount() {
-        document.addEventListener("click", this.handleClick);
+        if (isBrowser()) {
+            document.addEventListener("click", this.handleClick);
+        }
     }
     componentWillUnmount() {
-        document.removeEventListener("click", this.handleClick, false);
+        if (isBrowser()) {
+            document.removeEventListener("click", this.handleClick, false);
+        }
     }
     componentDidUpdate() {
         if (this.props.visible != this.state.visible) {
@@ -34,9 +40,11 @@ class Dropdown extends React.Component {
         }
     }
     handleClick(e) {
-        console.log("test");
+        //console.log("test");
         if (this.dropdownWrapper == null) {
-            document.removeEventListener("click", this.handleClick, false);
+            if (isBrowser()) {
+                document.removeEventListener("click", this.handleClick, false);
+            }
             return;
         }
         if (

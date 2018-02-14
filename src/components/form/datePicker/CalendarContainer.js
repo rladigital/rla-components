@@ -1,27 +1,35 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
+import { isBrowser } from "../../../functions";
+
 class CalendarContainer extends Component {
     constructor(props) {
         super(props);
-        this.el = document.createElement("div");
+        if (isBrowser()) {
+            this.el = document.createElement("div");
+        }
     }
 
     componentWillMount() {
         // Lock body scroll if is visible
-        try {
-            const bodyElement = document.getElementsByTagName("BODY")[0];
-            bodyElement.appendChild(this.el);
-        } catch (err) {}
+        if (isBrowser()) {
+            try {
+                const bodyElement = document.getElementsByTagName("BODY")[0];
+                bodyElement.appendChild(this.el);
+            } catch (err) {}
+        }
     }
 
     componentWillUnmount() {
         // Lock body scroll if is visible
-        try {
-            const bodyElement = document.getElementsByTagName("BODY")[0];
+        if (isBrowser()) {
+            try {
+                const bodyElement = document.getElementsByTagName("BODY")[0];
 
-            bodyElement.removeChild(this.el);
-        } catch (err) {}
+                bodyElement.removeChild(this.el);
+            } catch (err) {}
+        }
     }
 
     renderCalendar = () => {
@@ -34,7 +42,11 @@ class CalendarContainer extends Component {
     };
 
     render = () => {
-        return ReactDOM.createPortal(this.renderCalendar(), this.el);
+        if (isBrowser()) {
+            return ReactDOM.createPortal(this.renderCalendar(), this.el);
+        } else {
+            return null;
+        }
     };
 }
 

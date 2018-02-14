@@ -10,6 +10,8 @@ import {
     FadeOut
 } from "animate-css-styled-components";
 
+import { isBrowser } from "../functions";
+
 // Set to animate in / out based on visibility
 let animation = {
     fade: FadeIn,
@@ -52,23 +54,31 @@ const ModalCloseButton = styled.div.attrs({
     color: ${props => props.theme.modal.closeButtonColor};
 `;
 
-const bodyElement = document.getElementsByTagName("BODY")[0];
-
 /** Modal  */
 class Modal extends React.Component {
     constructor(props) {
         super(props);
-        this.el = document.createElement("div");
+        if (isBrowser()) {
+            this.el = document.createElement("div");
+        }
     }
 
     componentWillMount() {
         // init portal element
-        bodyElement.appendChild(this.el);
+        if (isBrowser()) {
+            try {
+                document.getElementsByTagName("BODY")[0].appendChild(this.el);
+            } catch (err) {}
+        }
     }
 
     componentWillUnmount() {
         // destroy portal element
-        bodyElement.removeChild(this.el);
+        if (isBrowser()) {
+            try {
+                document.getElementsByTagName("BODY")[0].removeChild(this.el);
+            } catch (err) {}
+        }
     }
 
     componentDidUpdate() {
@@ -101,7 +111,7 @@ class Modal extends React.Component {
     render() {
         var { theme, visible } = this.props;
 
-        if (visible) {
+        if (visible && isBrowser()) {
             return ReactDOM.createPortal(this.renderModal(), this.el);
         } else {
             return null;

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
 
+import { isBrowser } from "../functions";
+
 const StickyFooter = styled.div`
     width: 100%;
     background-color: ${props => props.theme.footer.background};
@@ -36,11 +38,13 @@ class Footer extends Component {
         })();
     }
     componentDidMount() {
-        this.isFixed();
-        // detect window change
-        this.onElementHeightChange(document.body, () => {
+        if (isBrowser()) {
             this.isFixed();
-        });
+            // detect window change
+            this.onElementHeightChange(document.body, () => {
+                this.isFixed();
+            });
+        }
     }
     isFixed() {
         this.setState({
