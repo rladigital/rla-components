@@ -25,7 +25,8 @@ class Row extends React.Component {
             equaliseByRow,
             ...rest
         } = this.props;
-
+        //NOTE - The ternary operator is being used below as the 'enabled' prop on the Equalizer didn't seem
+        //to revert after being set back to false from true...
         return (
             <StyledRow {...rest}>
                 {this.props.equaliseChildHeight ? (
