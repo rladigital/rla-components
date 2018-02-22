@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Panel, Row, Column } from "../../src/index";
-import { withKnobs, number } from "@storybook/addon-knobs";
+import { withKnobs, number, boolean } from "@storybook/addon-knobs";
 import { withInfo } from "@storybook/addon-info";
 
 const stories = storiesOf("Grid", module);
@@ -20,21 +20,42 @@ stories
                 max: 1400,
                 step: 1
             });
+            let width = number("width", 1400, {
+                range: true,
+                min: 0,
+                max: 1400,
+                step: 1
+            });
+            let expanded = boolean("expanded", false);
+            let collapse = boolean("collapse", false);
+            let equaliseChildHeight = boolean("equaliseChildHeight", false);
             return (
                 <div>
-                    <Row>
-                        <Column medium="6" parentWidth={parentWidth}>
-                            <Panel>
+                    <Row
+                        width={width}
+                        expanded={expanded}
+                        collapse={collapse}
+                        equaliseChildHeight={equaliseChildHeight}
+                    >
+                        <Column medium={6} parentWidth={parentWidth}>
+                            <Panel style={{ height: "100%" }}>
                                 <p>medium="6"</p>
+                                <p>With lots of content</p>
+                                <p>With lots of content</p>
+                                <p>With lots of content</p>
+                                <p>With lots of content</p>
+                                <p>With lots of content</p>
+                                <p>With lots of content</p>
+                                <p>With lots of content</p>
                             </Panel>
                         </Column>
-                        <Column large="3" medium="6" parentWidth={parentWidth}>
-                            <Panel>
+                        <Column large={3} medium={6} parentWidth={parentWidth}>
+                            <Panel style={{ height: "100%" }}>
                                 <p>large="3" medium="6"</p>
                             </Panel>
                         </Column>
-                        <Column large="3" parentWidth={parentWidth}>
-                            <Panel>
+                        <Column large={3} parentWidth={parentWidth}>
+                            <Panel style={{ height: "100%" }}>
                                 <p>large="3"</p>
                             </Panel>
                         </Column>

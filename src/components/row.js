@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import Equalizer from "react-equalizer";
 
 const StyledRow = styled.div`
     margin: auto;
@@ -18,11 +19,26 @@ const Clear = styled.div`
 
 class Row extends React.Component {
     render() {
-        const { children, ...rest } = this.props;
+        const {
+            children,
+            equaliseChildHeight,
+            equaliseByRow,
+            ...rest
+        } = this.props;
+
         return (
             <StyledRow {...rest}>
-                {children}
-                <Clear />
+                {this.props.equaliseChildHeight ? (
+                    <Equalizer byRow={equaliseByRow}>
+                        {children}
+                        <Clear />
+                    </Equalizer>
+                ) : (
+                    <div>
+                        {children}
+                        <Clear />
+                    </div>
+                )}
             </StyledRow>
         );
     }
@@ -31,17 +47,24 @@ class Row extends React.Component {
 Row.displayName = "Row";
 
 Row.propTypes = {
-    /** Boolean indicating whether the row should be 100% width */
-    expanded: PropTypes.bool,
     /** The width of the row */
     width: PropTypes.number,
+    /** Boolean indicating whether the row should be 100% width */
+    expanded: PropTypes.bool,
     /** Boolean indicating whether the row should have padding */
-    collapse: PropTypes.bool
+    collapse: PropTypes.bool,
+    /** Boolean indicating whether the row should equalise the heights of child elements */
+    equaliseChildHeight: PropTypes.bool,
+    /** Boolean indicating whether child elements stacking should be considered when equalising (https://github.com/patrickgalbraith/react-equalizer#options) */
+    equaliseByRow: PropTypes.bool
 };
 
 Row.defaultProps = {
     width: 1400,
-    collapse: false
+    expanded: false,
+    collapse: false,
+    equaliseChildHeight: false,
+    equaliseByRow: true
 };
 
 export default Row;

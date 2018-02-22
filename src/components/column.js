@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { breakpoints } from "../theme";
@@ -26,7 +27,7 @@ const media = Object.keys(breakpoints).reduce((acc, label) => {
 }, {});
 
 // The Column - loop through all breakpoints and insert into media query
-const Column = styled.div`
+const StyledColumn = styled.div`
     width: 100%;
     padding: 0
         ${props => (props.collapse ? 0 : props.theme.column.padding / 2)}em;
@@ -50,6 +51,13 @@ const Column = styled.div`
                   float: left;
               `};
 `;
+class Column extends React.Component {
+    render() {
+        const { children, ...rest } = this.props;
+        //console.log(rest);
+        return <StyledColumn {...rest}>{children}</StyledColumn>;
+    }
+}
 
 Column.displayName = "Column";
 
