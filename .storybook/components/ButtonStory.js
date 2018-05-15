@@ -29,6 +29,7 @@ stories
             let margin = number("margin", undefined);
             let padding = number("padding", undefined);
             let borderRadius = text("borderRadius", undefined);
+            let borderWidth = number("borderWidth", undefined);
             return (
                 <Button
                     expanded={expanded}
@@ -39,6 +40,7 @@ stories
                     margin={margin}
                     padding={padding}
                     borderRadius={borderRadius}
+                    borderWidth={borderWidth}
                 >
                     Button text
                 </Button>

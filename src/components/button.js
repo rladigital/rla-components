@@ -41,7 +41,8 @@ const Button = styled.button`
               `
             : css`
                   color: ${props => colors[props.color]};
-                  box-shadow: inset 0 0 0 1px ${props => colors[props.color]};
+                  box-shadow: inset 0 0 0 ${props => props.borderWidth}px
+                      ${props => colors[props.color]};
                   background-color: transparent;
               `};
 
@@ -94,7 +95,8 @@ Button.propTypes = {
     margin: PropTypes.number,
     padding: PropTypes.number,
     size: PropTypes.string,
-    borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    borderWidth: PropTypes.number
 };
 
 Button.defaultProps = {
@@ -102,7 +104,8 @@ Button.defaultProps = {
     disabled: false,
     hollow: false,
     color: Object.keys(colors)[0],
-    size: Object.keys(sizes)[0]
+    size: Object.keys(sizes)[0],
+    borderWidth: 1
 };
 
 export default Button;
