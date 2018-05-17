@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "../functions";
-import { colors, spacing, sizes } from "../theme";
+import { colors } from "../theme";
 import { darken, luminanace } from "../functions";
 
 const Button = styled("button").attrs({
@@ -15,7 +15,9 @@ const Button = styled("button").attrs({
     text-transform: ${props => props.theme.button.textTransform};
     border-radius: ${props => props.theme.button.borderRadius}px;
     margin-bottom: ${props =>
-        props.margin != undefined ? props.margin : spacing.margin}em;
+        props.margin != undefined
+            ? props.margin
+            : props.theme.spacing.margin}em;
     transition: background-color 0.25s ease;
     box-shadow: inset 0 0 0 ${props => props.theme.button.borderWidth}px
         ${props => props.theme.colors[props.color]};
@@ -28,18 +30,18 @@ const Button = styled("button").attrs({
                   // textColor or automatic color
                   color: ${props =>
                       props.textColor
-                          ? colors[props.textColor]
-                          : luminanace(colors[props.color]) < 0.5
+                          ? props.theme.colors[props.textColor]
+                          : luminanace(props.theme.colors[props.color]) < 0.5
                               ? props.theme.button.textColor
                               : props.theme.button.textColorAlt};
 
-                  background-color: ${props => colors[props.color]};
+                  background-color: ${props => props.theme.colors[props.color]};
               `
             : css`
                   color: ${props =>
                       props.textColor
-                          ? colors[props.textColor]
-                          : colors[props.color]};
+                          ? props.theme.colors[props.textColor]
+                          : props.theme.colors[props.color]};
                   background-color: transparent;
               `};
 
@@ -60,7 +62,8 @@ const Button = styled("button").attrs({
         !props.disabled &&
         css`
             &:hover {
-                background-color: ${props => darken(colors[props.color], 0.8)};
+                background-color: ${props =>
+                    darken(props.theme.colors[props.color], 0.8)};
                 box-shadow: none;
             }
         `};
