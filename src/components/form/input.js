@@ -40,6 +40,12 @@ export const StyledInput = styled.input`
                     props.expanded || props.align == "right" ? 0 : "0.4em"}
                 auto ${props => (props.align == "right" ? "0.4em" : 0)}em;
             font-size: 1em;
+            background: ${props => props.theme.input.background};
+            color: ${props => props.theme.input.color};
+            ::placeholder {
+                color: ${props => props.theme.input.color};
+                opacity: 0.5;
+            }
         `};
     margin-bottom: ${props => props.theme.spacing.margin}em;
 `;

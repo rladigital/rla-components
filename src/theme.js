@@ -66,6 +66,8 @@ const theme = {
         sizes: sizes,
         borderColor: colors.lightGray,
         radius: spacing.radius,
+        background: colors.white,
+        color: colors.black,
         error: {
             color: colors.alert,
             borderColor: colors.alert
