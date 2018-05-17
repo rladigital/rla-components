@@ -33,6 +33,8 @@ export const breakpoints = {
 };
 
 const theme = {
+    colors: colors,
+    spacing: spacing,
     darkColor: colors.background,
     lightColor: colors.white,
     navigation: {
@@ -45,9 +47,14 @@ const theme = {
         }
     },
     button: {
+        height: 30,
+        fontSize: 12,
+        borderWidth: 1,
+        borderRadius: 50,
         fontWeight: "bold",
         textTransform: "uppercase",
-        borderRadius: spacing.radius
+        textColor: colors.white,
+        textColorAlt: colors.black
     },
     row: {
         padding: spacing.padding

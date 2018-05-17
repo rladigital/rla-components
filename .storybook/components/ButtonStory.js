@@ -25,23 +25,17 @@ stories
             let disabled = boolean("disabled", false);
             let hollow = boolean("hollow", false);
             let color = select("color", Object.keys(colors));
-            let size = select("size", Object.keys(sizes));
+            let textColor = select("textColor", Object.keys(colors));
             let margin = number("margin", undefined);
-            let padding = number("padding", undefined);
-            let borderRadius = text("borderRadius", undefined);
-            let borderWidth = number("borderWidth", undefined);
+
             return (
                 <Button
                     expanded={expanded}
                     disabled={disabled}
                     hollow={hollow}
                     color={color}
-                    size={size}
-                    margin={margin}
-                    padding={padding}
-                    borderRadius={borderRadius}
-                    borderWidth={borderWidth}
-                >
+                    textColor={textColor}
+                    margin={margin}>
                     Button text
                 </Button>
             );
