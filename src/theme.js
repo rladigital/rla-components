@@ -106,7 +106,8 @@ const theme = {
                 background: colors.lightGray
             },
             wrapper: {
-                radius: spacing.radius
+                radius: 5,
+                boxShadow: "rgb(0, 18, 27) 0px 2px 6px"
             },
             resize: {}
         }
