@@ -56,14 +56,6 @@ const theme = {
         textColor: colors.white,
         textColorAlt: colors.black
     },
-    row: {
-        padding: spacing.padding
-    },
-    column: {
-        columns: 12,
-        padding: spacing.padding,
-        breakpoints: breakpoints
-    },
     panel: {
         default: "secondary"
     },
@@ -73,8 +65,6 @@ const theme = {
     input: {
         sizes: sizes,
         borderColor: colors.lightGray,
-        padding: spacing.padding,
-        margin: spacing.margin,
         radius: spacing.radius,
         error: {
             color: colors.alert,

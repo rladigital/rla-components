@@ -30,7 +30,7 @@ const media = Object.keys(breakpoints).reduce((acc, label) => {
 const StyledColumn = styled.div`
     width: 100%;
     padding: 0
-        ${props => (props.collapse ? 0 : props.theme.column.padding / 2)}em;
+        ${props => (props.collapse ? 0 : props.theme.spacing.padding / 2)}em;
 
     /*responsive*/
     ${props =>

@@ -9,7 +9,7 @@ const StyledRow = styled.div`
     ${props =>
         !props.collapse &&
         css`
-            padding: 0 ${props => props.theme.row.padding / 2}em;
+            padding: 0 ${props => props.theme.spacing.padding / 2}em;
         `};
 `;
 

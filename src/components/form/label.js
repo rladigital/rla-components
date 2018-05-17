@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 
 const StyledLabel = styled.label`
     display: ${props => (props.inlineLabel ? "inline-block" : "block")};
-    margin-bottom: ${props => props.theme.input.margin / 2}em;
+    margin-bottom: ${props => props.theme.spacing.margin / 2}em;
     font-weight: bold;
 `;
 

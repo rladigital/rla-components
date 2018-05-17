@@ -20,7 +20,7 @@ const Select = styled.select`
     margin: 0
         ${props => (props.expanded || props.align == "right" ? 0 : "0.4em")}
         auto ${props => (props.align == "right" ? "0.4em" : 0)}em;
-    margin-bottom: ${props => props.theme.input.margin}em;
+    margin-bottom: ${props => props.theme.spacing.margin}em;
     font-size: 1em;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>");
     background-origin: content-box;
