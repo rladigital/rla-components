@@ -95,12 +95,9 @@ const theme = {
     dashboard: {
         panel: {
             bar: {
-                iconSize: "1.2",
                 iconColor: colors.black,
-                padding: "0.5",
                 background: colors.lightGray,
                 fontWeight: "bold",
-                fontSize: "0.9",
                 titleColor: colors.black
             },
             content: {
