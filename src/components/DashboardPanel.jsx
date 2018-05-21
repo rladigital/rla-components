@@ -10,7 +10,7 @@ const Panel = styled.div`
     height: 100%;
     border-radius: ${props => props.theme.dashboard.panel.wrapper.radius}px;
     background: ${props => props.theme.dashboard.panel.content.background};
-    padding-top: 40px;
+    padding-top: 46px;
     box-shadow: ${props => props.theme.dashboard.panel.wrapper.boxShadow};
 `;
 
@@ -26,7 +26,7 @@ const Header = styled.div`
     table-layout: fixed;
     background: ${props => props.theme.dashboard.panel.bar.background};
     cursor: move;
-    padding: 0 0.8em 0 ${props => props.theme.spacing.padding}em;
+    padding: 1em ${props => props.theme.spacing.padding}em;
     border-radius: ${props => props.theme.dashboard.panel.wrapper.radius}px;
 `;
 
@@ -57,10 +57,11 @@ const HeaderIcon = styled.a`
 const Title = styled.div`
     color: ${props => props.theme.dashboard.panel.bar.titleColor};
     font-weight: ${props => props.theme.dashboard.panel.bar.fontWeight};
-    font-size: 0.8em;
+    font-size: 15px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    text-transform: uppercase;
 `;
 
 class DashboardPanel extends Component {
