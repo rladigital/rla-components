@@ -95,7 +95,7 @@ class Carousel extends React.Component {
 
     render() {
         let children = this.props.children.filter(function(x) {
-            console.log(x);
+            // console.log(x);
             return x != (undefined || null || false || "");
         });
 
@@ -113,22 +113,29 @@ class Carousel extends React.Component {
             <Container height={this.props.height}>
                 <Scrollbars autoHide>{childrenWithProps}</Scrollbars>
                 {!this.props.hideControls && [
-                    <ArrowButtonLeft onClick={() => this.prevItem(children)}>
+                    <ArrowButtonLeft
+                        key={1}
+                        onClick={() => this.prevItem(children)}
+                    >
                         <Icon
                             name={this.props.theme.carousel.arrows.leftIcon}
                         />
                     </ArrowButtonLeft>,
-                    <ArrowButtonRight onClick={() => this.nextItem(children)}>
+                    <ArrowButtonRight
+                        key={2}
+                        onClick={() => this.nextItem(children)}
+                    >
                         <Icon
                             name={this.props.theme.carousel.arrows.rightIcon}
                         />
                     </ArrowButtonRight>,
-                    <Dots>
+                    <Dots key={3}>
                         {React.Children.map(children, (child, i) => {
                             return (
                                 <Dot
                                     onClick={() => this.setCurrentItem(i)}
                                     active={this.state.current == i}
+                                    key={i}
                                 />
                             );
                         })}
