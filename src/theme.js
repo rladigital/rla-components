@@ -33,6 +33,8 @@ export const breakpoints = {
 };
 
 const theme = {
+    colors: colors,
+    spacing: spacing,
     darkColor: colors.background,
     lightColor: colors.white,
     navigation: {
@@ -45,17 +47,14 @@ const theme = {
         }
     },
     button: {
+        height: 30,
+        fontSize: 12,
+        borderWidth: 1,
+        borderRadius: 50,
         fontWeight: "bold",
         textTransform: "uppercase",
-        borderRadius: spacing.radius
-    },
-    row: {
-        padding: spacing.padding
-    },
-    column: {
-        columns: 12,
-        padding: spacing.padding,
-        breakpoints: breakpoints
+        textColor: colors.white,
+        textColorAlt: colors.black
     },
     panel: {
         default: "secondary"
@@ -66,9 +65,9 @@ const theme = {
     input: {
         sizes: sizes,
         borderColor: colors.lightGray,
-        padding: spacing.padding,
-        margin: spacing.margin,
         radius: spacing.radius,
+        background: colors.white,
+        color: colors.black,
         error: {
             color: colors.alert,
             borderColor: colors.alert
@@ -98,12 +97,9 @@ const theme = {
     dashboard: {
         panel: {
             bar: {
-                iconSize: "1.2",
                 iconColor: colors.black,
-                padding: "0.5",
                 background: colors.lightGray,
                 fontWeight: "bold",
-                fontSize: "0.9",
                 titleColor: colors.black
             },
             content: {

@@ -25,6 +25,7 @@ const Header = styled.div`
     table-layout: fixed;
     background: ${props => props.theme.dashboard.panel.bar.background};
     cursor: move;
+    padding: 0 0.8em 0 ${props => props.theme.spacing.padding}em;
 `;
 
 const Content = styled(Scrollbars)`
@@ -33,7 +34,6 @@ const Content = styled(Scrollbars)`
 `;
 
 const Left = styled.div`
-    padding: 0 ${props => props.theme.dashboard.panel.bar.padding}em;
     display: table-cell;
     vertical-align: middle;
 `;
@@ -42,18 +42,20 @@ const Right = Left.extend`
     text-align: right;
     white-space: nowrap;
     width: 60px;
+    line-height: 0;
 `;
 
 const HeaderIcon = styled.a`
-    font-size: ${props => props.theme.dashboard.panel.bar.iconSize}em;
+    font-size: 1em;
     color: ${props => props.theme.dashboard.panel.bar.iconColor};
     cursor: pointer;
+    margin-left: 0.5em;
 `;
 
 const Title = styled.div`
     color: ${props => props.theme.dashboard.panel.bar.titleColor};
     font-weight: ${props => props.theme.dashboard.panel.bar.fontWeight};
-    font-size: ${props => props.theme.dashboard.panel.bar.fontSize}em;
+    font-size: 0.8em;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -68,6 +70,7 @@ class DashboardPanel extends Component {
             panelTitle,
             component,
             configurable,
+            closeable,
             panels,
             configurePanel,
             deletePanelConfirmation,
@@ -83,7 +86,8 @@ class DashboardPanel extends Component {
             props: panelProps,
             title: panelTitle,
             component,
-            configurable
+            configurable,
+            closeable
         };
 
         const NewPanelProps = Object.assign(style, panelProps);
@@ -100,20 +104,20 @@ class DashboardPanel extends Component {
                         <Right>
                             {configurable && [
                                 <HeaderIcon
-                                    onClick={configurePanel.bind(this, panel)}
-                                >
+                                    onClick={configurePanel.bind(this, panel)}>
                                     {configureIcon}
                                 </HeaderIcon>,
                                 " "
                             ]}
-                            <HeaderIcon
-                                onClick={deletePanelConfirmation.bind(
-                                    this,
-                                    panel
-                                )}
-                            >
-                                {deleteIcon}
-                            </HeaderIcon>
+                            {closeable && (
+                                <HeaderIcon
+                                    onClick={deletePanelConfirmation.bind(
+                                        this,
+                                        panel
+                                    )}>
+                                    {deleteIcon}
+                                </HeaderIcon>
+                            )}
                         </Right>
                     </Header>
                 )}
@@ -149,6 +153,8 @@ DashboardPanel.propTypes = {
 
     /** Used to know if the panel has configuration options or not */
     configurable: PropTypes.bool,
+    /** Used to know if the panel can be closed */
+    configurable: PropTypes.bool,
     /** An object containing a linking between component names, and the components */
     panels: PropTypes.object.isRequired,
     /** A callback that's called when the delete panel button is pressed */
@@ -165,7 +171,8 @@ DashboardPanel.defaultProps = {
     panelProps: {},
     showHeader: true,
     configureIcon: <Icon name="gear" />,
-    deleteIcon: <Icon name="close" />
+    deleteIcon: <Icon name="close" />,
+    closeable: true
 };
 
 export default withTheme(DashboardPanel);

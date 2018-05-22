@@ -22,7 +22,13 @@ export const StyledInput = styled.input`
                 auto ${props => (props.align == "right" ? "0.4em" : 0)}em;
             font-size: 1em;
         `};
-    margin-bottom: ${props => props.theme.input.margin}em;
+    background: ${props => props.theme.input.background};
+    color: ${props => props.theme.input.color};
+    ::placeholder {
+        color: ${props => props.theme.input.color};
+        opacity: 0.5;
+    }
+    margin-bottom: ${props => props.theme.spacing.margin}em;
 `;
 class DatePickerInputField extends Component {
     render() {

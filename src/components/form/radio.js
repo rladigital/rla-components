@@ -6,11 +6,11 @@ import FormLabel from "./label";
 import InputError from "./inputError";
 
 const StyledInput = styled.input`
-    margin-bottom: ${props => props.theme.input.margin}rem;
+    margin-bottom: ${props => props.theme.spacing.margin}rem;
 `;
 const ButtonWapper = styled.div`
     display: ${props => (props.inlineRadioButtons ? "inline-block" : "block")};
-    padding-right: ${props => props.theme.input.margin}rem;
+    padding-right: ${props => props.theme.spacing.margin}rem;
 `;
 
 const RadioField = ({

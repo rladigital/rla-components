@@ -64,6 +64,17 @@ export function hexToHSL(hex) {
     return HSL;
 }
 
+export function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+        ? {
+              r: parseInt(result[1], 16),
+              g: parseInt(result[2], 16),
+              b: parseInt(result[3], 16)
+          }
+        : null;
+}
+
 export function HSLToHex(hsl) {
     var h = hsl.h,
         s = hsl.s,
@@ -95,6 +106,25 @@ export function HSLToHex(hsl) {
 
 export function foregroundColor(hex, lightness, lightColor, darkColor) {
     return hexToHSL(hex).l < lightness ? lightColor : darkColor;
+}
+
+export function luminanace(hex) {
+    var rgb = hexToRgb(hex);
+
+    var a = [rgb.r, rgb.g, rgb.b].map(function(v) {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+
+    console.log(rgb, [0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722);
+    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+
+export function darken(hex, amount) {
+    var hsl = hexToHSL(hex);
+    hsl.l = hsl.l * amount;
+    var hex = HSLToHex(hsl);
+    return hex;
 }
 
 export const isBrowser = new Function(
