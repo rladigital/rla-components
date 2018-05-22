@@ -38,12 +38,12 @@ class GreedyCarousel extends React.Component {
                 {chunks.map((chunk, i) => {
                     return (
                         <CarouselItem key={i}>
-                            {chunk.map((child, i) => {
+                            {chunk.map((child, j) => {
                                 var size = 100 / chunk.length + "%";
                                 return (
                                     <Scrollbars
                                         autoHide
-                                        key={i}
+                                        key={j}
                                         style={
                                             (squareStackVertical && w > h) ||
                                             (!squareStackVertical && w >= h)
