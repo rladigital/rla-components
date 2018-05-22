@@ -9,6 +9,7 @@ const Button = styled("button").attrs({
 })`
     border: none;
     text-align: center;
+    font-family: inherit;
     height: ${props => props.theme.button.height}px;
     font-size: ${props => props.theme.button.fontSize}px;
     font-weight: ${props => props.theme.button.fontWeight};

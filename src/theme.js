@@ -39,10 +39,8 @@ const theme = {
     lightColor: colors.white,
     navigation: {
         navLink: {
-            margin: 0,
             color: colors.black,
             activeColor: colors.primary,
-            padding: spacing.padding,
             textTransform: "uppercase"
         }
     },
@@ -106,7 +104,8 @@ const theme = {
                 background: colors.lightGray
             },
             wrapper: {
-                radius: spacing.radius
+                radius: 5,
+                boxShadow: "rgb(0, 18, 27) 0px 2px 6px"
             },
             resize: {}
         }
