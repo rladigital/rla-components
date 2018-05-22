@@ -39,10 +39,8 @@ const theme = {
     lightColor: colors.white,
     navigation: {
         navLink: {
-            margin: 0,
             color: colors.black,
             activeColor: colors.primary,
-            padding: spacing.padding,
             textTransform: "uppercase"
         }
     },
