@@ -58,7 +58,11 @@ const theme = {
         textColorAlt: colors.black
     },
     panel: {
-        default: "secondary"
+        default: "secondary",
+        boxShadow: "rgb(0, 18, 27) 0px 2px 6px",
+        radius: 5,
+        headingBackground: colors.secondary,
+        headingColor: colors.white
     },
     icon: {
         colors: colors

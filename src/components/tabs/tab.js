@@ -3,8 +3,7 @@ import styled, { css } from "styled-components";
 
 const Tab = styled.div`
     display: table-cell;
-    padding: ${props => props.theme.tabordion.padding / 2}em
-        ${props => props.theme.tabordion.padding}em;
+    padding: ${props => props.theme.tabordion.padding / 2}em 0;
     text-align: ${props => props.theme.tabordion.tabs.textAlign};
     font-weight: ${props => props.theme.tabordion.fontWeight};
     border-right: ${props => props.theme.tabordion.borderThickness}
