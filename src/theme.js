@@ -44,6 +44,9 @@ const theme = {
             textTransform: "uppercase"
         }
     },
+    badge: {
+        radius: 2
+    },
     button: {
         height: 30,
         fontSize: 12,
