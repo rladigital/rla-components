@@ -97,10 +97,9 @@ class Modal extends React.Component {
                 <ModalInner
                     duration="0.25s"
                     onClick={e => e.stopPropagation()}
-                    maxWidth={maxWidth}
-                >
+                    maxWidth={maxWidth}>
                     <ModalCloseButton onClick={this.onClose}>
-                        <Icon name="close" size="1.8" />
+                        <Icon name="close" size="1" />
                     </ModalCloseButton>
                     {this.props.children}
                 </ModalInner>

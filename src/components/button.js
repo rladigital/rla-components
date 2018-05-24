@@ -8,7 +8,7 @@ import { RubberBand } from "animate-css-styled-components";
 const outline = props => `inset 0 0 0 ${props.theme.button.borderWidth}px
 ${props.theme.colors[props.color]}`;
 
-const Button = styled("button").attrs({
+const Button = styled.button.attrs({
     role: "button"
 })`
     border: none;
