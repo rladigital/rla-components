@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Panel from "./panel";
+import { StyledPanel } from "./panel";
 import { colors, spacing, sizes } from "../theme";
 
 const panel = props => props.theme.panel.types[props.type];
 
-const Hero = Panel.extend`
+const Hero = StyledPanel.extend`
     height: ${props => props.height}px;
     background-image: url('${props => props.backgroundImage}');
     background-size: cover;

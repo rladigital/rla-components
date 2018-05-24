@@ -51,13 +51,10 @@ const StyledColumn = styled.div`
                   float: left;
               `};
 `;
-class Column extends React.Component {
-    render() {
-        const { children, ...rest } = this.props;
-        //console.log(rest);
-        return <StyledColumn {...rest}>{children}</StyledColumn>;
-    }
-}
+
+const Column = ({ children, ...rest }) => (
+    <StyledColumn {...rest}>{children}</StyledColumn>
+);
 
 Column.displayName = "Column";
 
