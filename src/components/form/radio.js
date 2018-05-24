@@ -5,12 +5,51 @@ import { shade } from "../../functions";
 import FormLabel from "./label";
 import InputError from "./inputError";
 
-const StyledInput = styled.input`
-    margin-bottom: ${props => props.theme.spacing.margin}rem;
+const RadioDot = styled.circle.attrs({
+    cx: 10,
+    cy: 10
+})`
+    r: 0;
+    fill: ${props => props.theme.colors.primary};
+    transition: r 0.25s ease;
 `;
-const ButtonWapper = styled.div`
+
+const RadioCircle = styled.circle.attrs({
+    r: 9,
+    cx: 10,
+    cy: 10
+})`
+    stroke-width: 1px;
+    fill: ${props => props.theme.colors.black};
+    stroke: ${props => props.theme.colors.mediumGray};
+`;
+
+const Radio = styled.svg.attrs({
+    width: 20,
+    height: 20,
+    viewBox: "0 0 20 20"
+})`
+    display: inline-block;
+    vertical-align: middle;
+`;
+
+const Input = styled.input`
+    margin-bottom: ${props => props.theme.spacing.margin}rem;
+    display: none;
+    &:checked + ${Radio} ${RadioDot} {
+        r: 6px;
+    }
+`;
+
+const Wrapper = styled.label`
+    margin-bottom: ${props => props.theme.spacing.margin}rem;
     display: ${props => (props.inlineRadioButtons ? "inline-block" : "block")};
     padding-right: ${props => props.theme.spacing.margin}rem;
+    cursor: pointer;
+`;
+
+const Text = styled.span`
+    vertical-align: middle;
 `;
 
 const RadioField = ({
@@ -40,19 +79,22 @@ const RadioField = ({
             )}
             {options &&
                 options.map((radio, index) => (
-                    <ButtonWapper
+                    <Wrapper
                         key={index}
-                        inlineRadioButtons={inlineRadioButtons}
-                    >
-                        <StyledInput
+                        inlineRadioButtons={inlineRadioButtons}>
+                        <Input
                             type="radio"
                             name={name}
                             {...rest}
                             value={radio.value}
                             onChange={handleChange}
                         />
-                        {" " + radio.text}
-                    </ButtonWapper>
+                        <Radio>
+                            <RadioCircle />
+                            <RadioDot />
+                        </Radio>
+                        <Text>{" " + radio.text}</Text>
+                    </Wrapper>
                 ))}
 
             <InputError error={error} />
