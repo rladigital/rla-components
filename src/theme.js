@@ -48,7 +48,6 @@ const theme = {
         radius: 2
     },
     button: {
-        height: 30,
         fontSize: 12,
         borderWidth: 1,
         borderRadius: 50,
