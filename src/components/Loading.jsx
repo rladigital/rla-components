@@ -12,9 +12,9 @@ const Loading = props => {
             css`
                 margin: auto;
             `} ${props.align == "right" &&
-                css`
-                    float: right;
-                `};
+            css`
+                float: right;
+            `};
     `;
 
     const LoadingInner = styled.div`
