@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { shade } from "../functions";
@@ -8,13 +9,16 @@ import { RubberBand } from "animate-css-styled-components";
 const outline = props => `inset 0 0 0 ${props.theme.button.borderWidth}px
 ${props.theme.colors[props.color]}`;
 
-const Button = styled.button.attrs({
-    role: "button"
-})`
+const e = React.createElement;
+
+const Button = styled(({ element, children, ...props }) =>
+    e(element, props, children)
+).attrs({ role: "button" })`
     border: none;
     text-align: center;
     font-family: inherit;
     height: ${props => props.height}px;
+    line-height: ${props => props.height}px;
     font-size: ${props => props.theme.button.fontSize}px;
     font-weight: ${props => props.theme.button.fontWeight};
     text-transform: ${props => props.theme.button.textTransform};
@@ -26,6 +30,8 @@ const Button = styled.button.attrs({
     transition: background-color 0.25s ease;
     box-shadow: ${props => outline(props)};
     padding: 0 ${props => props.theme.spacing.padding}em;
+    display: inline-block;
+    text-decoration: none;
 
     // hollow button styles
     ${props =>
@@ -96,6 +102,7 @@ const Button = styled.button.attrs({
 Button.displayName = "Button";
 
 Button.propTypes = {
+    /** Optional: you can choose an element for the button. Defaults to button.*/
     element: PropTypes.string,
     expanded: PropTypes.bool,
     disabled: PropTypes.bool,

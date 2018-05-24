@@ -28,6 +28,7 @@ stories
             let textColor = select("textColor", Object.keys(colors));
             let margin = number("margin", undefined);
             let height = number("height", 30);
+            let element = text("element", "button");
 
             return (
                 <Button
@@ -37,7 +38,8 @@ stories
                     color={color}
                     textColor={textColor}
                     margin={margin}
-                    height={height}>
+                    height={height}
+                    element={element}>
                     Button text
                 </Button>
             );
