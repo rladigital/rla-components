@@ -88,6 +88,7 @@ const RadioField = ({
                             {...rest}
                             value={radio.value}
                             onChange={handleChange}
+                            checked={radio.checked}
                         />
                         <Radio>
                             <RadioCircle />
