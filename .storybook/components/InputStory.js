@@ -131,7 +131,7 @@ stories
                 { value: "1", text: "first" },
                 { value: "2", text: "second" },
                 { value: "3", text: "third" },
-                { value: "4", text: "forth" }
+                { value: "4", text: "forth", checked: true }
             ];
             return (
                 <div>
