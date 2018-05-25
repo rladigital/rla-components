@@ -5,6 +5,8 @@ import { shade } from "../../functions";
 import InputError from "./inputError";
 import FormLabel from "./label";
 
+import { hexToRgb } from "../../functions";
+
 const types = [
     "date",
     "datetime-local",
@@ -20,34 +22,53 @@ const types = [
     "week"
 ];
 
-export const StyledInput = styled.input`
+export const BaseInput = styled.input`
+    padding: 0 5px;
+    height: ${props => props.height}px;
+    width: ${props =>
+        props.labelWidth ? `calc(100% - ${props.labelWidth}px)` : "100%"};
+    border: 1px solid ${props => props.theme.input.borderColor};
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    margin-bottom: ${props => props.theme.spacing.margin}em;
+    font-size: 1em;
+    background: ${props => props.theme.input.background};
+    color: ${props => props.theme.input.color};
+    margin-bottom: ${props => props.theme.spacing.margin}em;
+
+    // Input group styles
+    ${props =>
+        props.inputGroup
+            ? css`
+                  border-radius: 0 ${props => props.theme.input.radius}px
+                      ${props => props.theme.input.radius}px 0;
+                  border-left: none;
+              `
+            : css`
+                  border-radius: ${props => props.theme.input.radius}px;
+              `};
+
+    // focus
+    &:focus {
+        outline: none;
+        box-shadow: 0px 0px 0px 3px
+            rgba(
+                ${props => {
+                    const rgb = hexToRgb(props.theme.input.focusColor);
+                    return `${rgb.r}, ${rgb.g}, ${rgb.b}, 0.2`;
+                }}
+            );
+    }
+`;
+
+export const StyledInput = BaseInput.extend`
     ${props =>
         types.indexOf(props.type) !== -1 &&
         css`
-            width: 100%;
-            max-width: ${props => (props.expanded ? "100%" : "10em")};
-            height: ${props => props.theme.input.sizes[props.size]}em;
-            border-radius: ${props => props.theme.input.radius}em;
-            border: 1px solid
-                ${props =>
-                    props.error
-                        ? props.theme.input.error.borderColor
-                        : props.theme.input.borderColor};
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-            padding: 0 ${props => props.theme.input.sizes[props.size] / 4}em;
-            margin: 0
-                ${props =>
-                    props.expanded || props.align == "right" ? 0 : "0.4em"}
-                auto ${props => (props.align == "right" ? "0.4em" : 0)}em;
-            font-size: 1em;
-            background: ${props => props.theme.input.background};
-            color: ${props => props.theme.input.color};
             ::placeholder {
                 color: ${props => props.theme.input.color};
                 opacity: 0.5;
             }
         `};
-    margin-bottom: ${props => props.theme.spacing.margin}em;
 `;
 const InputField = ({
     type,
@@ -57,6 +78,8 @@ const InputField = ({
     meta,
     onChange,
     error,
+    labelWidth,
+    labelAlign,
     ...rest
 }) => {
     let fieldOptions = {};
@@ -79,15 +102,21 @@ const InputField = ({
     return (
         <div>
             {label && (
-                <FormLabel name={name} label={label} {...rest}>
+                <FormLabel
+                    align={labelAlign}
+                    width={labelWidth}
+                    name={name}
+                    {...rest}>
                     {label}
                 </FormLabel>
-            )}{" "}
+            )}
             <StyledInput
                 type={type}
                 name={name}
-                {...fieldOptions}
+                id={name}
+                labelWidth={labelWidth}
                 onChange={handleChange}
+                {...fieldOptions}
                 {...rest}
             />
             <InputError error={error} />
@@ -100,23 +129,22 @@ InputField.displayName = "InputField";
 InputField.propTypes = {
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    size: PropTypes.string,
-    expanded: PropTypes.bool,
-    block: PropTypes.bool,
     input: PropTypes.object,
     type: PropTypes.string,
     label: PropTypes.string,
     readOnly: PropTypes.bool,
-    error: PropTypes.string
+    error: PropTypes.string,
+    height: PropTypes.number,
+    labelWidth: PropTypes.number,
+    labelAlign: PropTypes.text
 };
 
 InputField.defaultProps = {
     size: "default",
-    expanded: true,
-    block: true,
     type: "text",
     readOnly: false,
-    error: ""
+    error: "",
+    height: 30
 };
 
 export default InputField;

@@ -1,33 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled, { withComponent } from "styled-components";
 import { shade } from "../../functions";
 import FormLabel from "./label";
 import InputError from "./inputError";
+import { BaseInput } from "./input";
 
-const Select = styled.select`
-    width: 100%;
-    max-width: ${props => (props.expanded ? "100%" : "10em")};
-    height: ${props => props.theme.input.sizes[props.size]}em;
-    border-radius: ${props => props.theme.input.radius}em;
-    border: 1px solid
-        ${props =>
-            props.error
-                ? props.theme.input.error.borderColor
-                : props.theme.input.borderColor};
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    padding: 0 ${props => props.theme.input.sizes[props.size] / 4}em;
-    margin: 0
-        ${props => (props.expanded || props.align == "right" ? 0 : "0.4em")}
-        auto ${props => (props.align == "right" ? "0.4em" : 0)}em;
-    margin-bottom: ${props => props.theme.spacing.margin}em;
-    font-size: 1em;
+const Select = BaseInput.withComponent("select").extend`
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>");
     background-origin: content-box;
-    background-position: right -1rem center;
+    background-position: right center;
     background-repeat: no-repeat;
     background-size: 9px 6px;
-    padding-right: 1.5rem;
     appearance: none;
 `;
 
@@ -41,6 +25,8 @@ const SelectField = ({
     emptyOption,
     readOnly,
     error,
+    labelWidth,
+    labelAlign,
     ...rest
 }) => {
     const handleChange = event => {
@@ -52,11 +38,20 @@ const SelectField = ({
     return (
         <span>
             {label && (
-                <FormLabel name={name} label={label} {...rest}>
+                <FormLabel
+                    name={name}
+                    width={labelWidth}
+                    align={labelAlign}
+                    {...rest}>
                     {label}
                 </FormLabel>
-            )}{" "}
-            <Select onChange={handleChange} {...rest}>
+            )}
+            <Select
+                id={name}
+                onChange={handleChange}
+                labelWidth={labelWidth}
+                labelAlign={labelAlign}
+                {...rest}>
                 <option value="">{emptyOption}</option>
                 {options &&
                     options.map((opt, index) => (
@@ -81,19 +76,18 @@ SelectField.propTypes = {
             text: PropTypes.string.isRequired
         })
     ),
-    size: PropTypes.string,
-    expanded: PropTypes.bool,
-    inlineLabel: PropTypes.bool,
     input: PropTypes.object,
     label: PropTypes.string,
     emptyOption: PropTypes.string,
-    error: PropTypes.string
+    error: PropTypes.string,
+    height: PropTypes.number,
+    labelWidth: PropTypes.number,
+    labelAlign: PropTypes.text
 };
 SelectField.defaultProps = {
     size: "default",
-    expanded: false,
-    inlineLabel: true,
-    emptyOption: "--Select One--",
-    error: ""
+    emptyOption: "— Select One —",
+    error: "",
+    height: 30
 };
 export default SelectField;

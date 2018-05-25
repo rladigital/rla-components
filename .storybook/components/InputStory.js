@@ -8,7 +8,8 @@ import {
     text,
     number,
     array,
-    boolean
+    boolean,
+    select
 } from "@storybook/addon-knobs";
 
 import {
@@ -34,66 +35,28 @@ stories
         withInfo(
             "This is the default input. It is automatically set to type='text'. The inputField accepts all of the standard HTML5 attributes such as placeholder, value etc. Styles are applied based on type."
         )(() => {
-            let error = text("error", "");
+            const error = text("error", "");
+            const value = text("value");
+            const label = text("label", "Label");
+            const height = number("height");
+            const labelWidth = number("labelWidth");
+            const labelAlign = select("labelAlign", ["left", "right"], "left");
+            const inputGroup = boolean("inputGroup", false);
 
             return (
                 <div>
                     <InputField
                         name="test"
-                        label="With Label"
-                        value={text("With Label Text")}
+                        label={label}
+                        value={value}
+                        height={height}
+                        labelWidth={labelWidth}
+                        labelAlign={labelAlign}
+                        inputGroup={inputGroup}
                         onChange={value => {
                             console.log(value);
                         }}
                         error={error}
-                    />
-                    <InputField
-                        name="test"
-                        label="With Label Block"
-                        value={text("With Label Block Text")}
-                        inlineLabel={false}
-                        onChange={value => {
-                            console.log(value);
-                        }}
-                    />
-                    <InputField
-                        name="test"
-                        placeholder="with placeholder"
-                        value={text("With Placeholder Text")}
-                        onChange={value => {
-                            console.log(value);
-                        }}
-                    />
-                    <InputField
-                        name="test"
-                        type="password"
-                        value={text("Password")}
-                        onChange={value => {
-                            console.log(value);
-                        }}
-                    />
-                    <InputField
-                        name="test"
-                        size="small"
-                        value={text("Small Text")}
-                        onChange={value => {
-                            console.log(value);
-                        }}
-                    />
-                    <InputField
-                        name="test"
-                        value={text("Default Size Text")}
-                        onChange={value => {
-                            console.log(value);
-                        }}
-                    />
-                    <InputField
-                        name="test"
-                        value={text("Large Text")}
-                        size="large"
-                        onChange={value => {
-                            console.log(value);
-                        }}
                     />
                 </div>
             );
@@ -102,14 +65,15 @@ stories
     .add(
         "Textarea",
         withInfo("This is an example textarea.")(() => {
-            let error = text("error", "");
+            const error = text("error", "");
+            const value = text("Text for the textarea");
 
             return (
                 <div>
                     <TextareaField
                         name="test"
                         placeholder="placeholder text"
-                        value={text("Text for the textarea")}
+                        value={value}
                         label="With Label"
                         onChange={value => {
                             console.log(value);
@@ -188,7 +152,12 @@ stories
     .add(
         "SelectField",
         withInfo("This is for SelectField menus.")(() => {
-            let error = text("error", "");
+            const error = text("error", "");
+            const height = number("height");
+            const labelWidth = number("labelWidth");
+            const labelAlign = select("labelAlign", ["left", "right"], "left");
+            const label = text("label", "Label");
+            const inputGroup = boolean("inputGroup", false);
 
             const options = [
                 { value: "1", text: "first" },
@@ -201,9 +170,12 @@ stories
                     <SelectField
                         name="test-select"
                         defaultValue="default"
-                        label="With Label"
-                        emptyOption="--Pick an Option--"
+                        label={label}
                         options={options}
+                        height={height}
+                        labelWidth={labelWidth}
+                        labelAlign={labelAlign}
+                        inputGroup={inputGroup}
                         onChange={selection => {
                             console.log(selection);
                         }}
