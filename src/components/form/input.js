@@ -23,7 +23,8 @@ const types = [
 export const BaseInput = styled.input`
     padding: 0 5px;
     height: ${props => props.height}px;
-    width: ${props => (props.labelWidth ? 100 - props.labelWidth : 100)}%;
+    width: ${props =>
+        props.labelWidth ? `calc(100% - ${props.labelWidth}px)` : "100%"};
     border-radius: ${props => props.theme.input.radius}em;
     border: 1px solid ${props => props.theme.input.borderColor};
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);

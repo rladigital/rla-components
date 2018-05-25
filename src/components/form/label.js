@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 const StyledLabel = styled.label`
-    width: ${props => props.width}%;
+    width: ${props => props.width}px;
     display: ${props => (props.inlineLabel ? "inline-block" : "block")};
     text-align: ${props => props.align};
     vertical-align: middle;
