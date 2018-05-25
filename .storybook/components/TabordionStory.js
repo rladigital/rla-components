@@ -37,8 +37,9 @@ stories.addWithInfo(
                             type={type}
                             unmounts={unmounts}
                             responsive={responsive}
-                            onTabClick={() => alert("you clicked an item")}
-                        >
+                            onTabClick={() =>
+                                console.log("you clicked an item")
+                            }>
                             <Row heading="Tab 1" icon={<Icon name="gear" />}>
                                 <Column>
                                     <h1>Tab 1</h1>
