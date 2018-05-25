@@ -4,24 +4,10 @@ import styled, { css } from "styled-components";
 import { shade } from "../../functions";
 import FormLabel from "./label";
 import InputError from "./inputError";
+import { BaseInput } from "./input";
 
-const StyledTextarea = styled.textarea`
-    width: 100%;
-    border-radius: ${props => props.theme.input.radius}em;
-    border: 1px solid ${props => props.theme.input.borderColor};
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    padding: 0 ${props => props.theme.input.sizes[props.size] / 4}em;
-    margin: 0
-        ${props => (props.expanded || props.align == "right" ? 0 : "0.4em")}
-        auto ${props => (props.align == "right" ? "0.4em" : 0)}em;
-    font-size: 1em;
-    margin-bottom: ${props => props.theme.spacing.margin}em;
-    background: ${props => props.theme.input.background};
-    color: ${props => props.theme.input.color};
-    ::placeholder {
-        color: ${props => props.theme.input.color};
-        opacity: 0.5;
-    }
+const StyledTextarea = BaseInput.withComponent("textarea").extend`
+
 `;
 
 const TextareaField = ({
