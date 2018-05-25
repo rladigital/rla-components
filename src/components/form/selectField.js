@@ -6,13 +6,27 @@ import FormLabel from "./label";
 import InputError from "./inputError";
 import { BaseInput } from "./input";
 
+const backgroundImage = (size, arrowScale, arrowColor, backgroundColor) => {
+    return encodeURI(`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+        <rect width="${size}" height="${size}" style="fill: ${backgroundColor}"/>
+        <path d="M0,6.41l-10-10,2.83-2.83L0,.76,7.17-6.41,10-3.59Z" style="transform: translate(50%, 50%) scale(${arrowScale}); fill: ${arrowColor};"/>
+    </svg>`);
+};
+
 const Select = BaseInput.withComponent("select").extend`
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>");
+    background-image: url("data:image/svg+xml;utf8,${props =>
+        backgroundImage(
+            props.height,
+            props.theme.input.selectArrowScale,
+            props.theme.input.selectArrowColor,
+            props.theme.input.selectArrowBackground
+        )}");
     background-origin: content-box;
-    background-position: right center;
+    background-position: right  center;
     background-repeat: no-repeat;
-    background-size: 9px 6px;
+    background-size: ${props => props.height}px ${props => props.height}px;
     appearance: none;
+    padding-right: 0;
 `;
 
 const SelectField = ({
