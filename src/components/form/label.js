@@ -3,9 +3,13 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 const StyledLabel = styled.label`
+    width: ${props => props.width}%;
     display: ${props => (props.inlineLabel ? "inline-block" : "block")};
-    margin-bottom: ${props => props.theme.spacing.margin / 2}em;
+    text-align: ${props => props.align};
+    vertical-align: middle;
     font-weight: bold;
+
+    ${props => props.width < 100 && `padding-right: 4px`};
 `;
 
 const FormLabel = props => {
@@ -19,13 +23,14 @@ const FormLabel = props => {
 FormLabel.displayName = "FormLabel";
 
 FormLabel.propTypes = {
+    width: PropTypes.number,
     name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    inlineLabel: PropTypes.bool
+    inlineLabel: PropTypes.bool,
+    align: PropTypes.align
 };
 FormLabel.defaultProps = {
-    size: "default",
-    expanded: false,
-    inlineLabel: true
+    width: 100,
+    inlineLabel: true,
+    align: "left"
 };
 export default FormLabel;
