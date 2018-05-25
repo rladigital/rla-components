@@ -41,6 +41,7 @@ stories
             const height = number("height");
             const labelWidth = number("labelWidth");
             const labelAlign = select("labelAlign", ["left", "right"], "left");
+            const inputGroup = boolean("inputGroup", false);
 
             return (
                 <div>
@@ -51,6 +52,7 @@ stories
                         height={height}
                         labelWidth={labelWidth}
                         labelAlign={labelAlign}
+                        inputGroup={inputGroup}
                         onChange={value => {
                             console.log(value);
                         }}
@@ -155,6 +157,7 @@ stories
             const labelWidth = number("labelWidth");
             const labelAlign = select("labelAlign", ["left", "right"], "left");
             const label = text("label", "Label");
+            const inputGroup = boolean("inputGroup", false);
 
             const options = [
                 { value: "1", text: "first" },
@@ -172,6 +175,7 @@ stories
                         height={height}
                         labelWidth={labelWidth}
                         labelAlign={labelAlign}
+                        inputGroup={inputGroup}
                         onChange={selection => {
                             console.log(selection);
                         }}

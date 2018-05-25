@@ -10,6 +10,22 @@ const StyledLabel = styled.label`
     font-weight: bold;
 
     ${props => props.width < 100 && `padding-right: 4px`};
+
+    // Input group styles
+    ${props =>
+        props.inputGroup &&
+        css`
+            vertical-align: top;
+            height: ${props => props.height}px;
+            line-height: ${props => props.height}px;
+            border-radius: ${props => props.theme.input.radius}px 0 0
+                ${props => props.theme.input.radius}px;
+            border: 1px solid ${props => props.theme.input.borderColor};
+            background: ${props => props.theme.input.background};
+            border-right: none;
+            text-align: center;
+            padding-right: 0;
+        `};
 `;
 
 const FormLabel = props => {
@@ -24,13 +40,16 @@ FormLabel.displayName = "FormLabel";
 
 FormLabel.propTypes = {
     width: PropTypes.number,
+    height: PropTypes.number,
     name: PropTypes.string.isRequired,
     inlineLabel: PropTypes.bool,
+    inputGroup: PropTypes.bool,
     align: PropTypes.align
 };
 FormLabel.defaultProps = {
-    width: 100,
+    height: 30,
     inlineLabel: true,
+    inputGroup: false,
     align: "left"
 };
 export default FormLabel;

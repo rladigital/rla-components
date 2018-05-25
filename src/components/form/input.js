@@ -5,6 +5,8 @@ import { shade } from "../../functions";
 import InputError from "./inputError";
 import FormLabel from "./label";
 
+import { hexToRgb } from "../../functions";
+
 const types = [
     "date",
     "datetime-local",
@@ -25,7 +27,6 @@ export const BaseInput = styled.input`
     height: ${props => props.height}px;
     width: ${props =>
         props.labelWidth ? `calc(100% - ${props.labelWidth}px)` : "100%"};
-    border-radius: ${props => props.theme.input.radius}em;
     border: 1px solid ${props => props.theme.input.borderColor};
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     margin-bottom: ${props => props.theme.spacing.margin}em;
@@ -33,6 +34,30 @@ export const BaseInput = styled.input`
     background: ${props => props.theme.input.background};
     color: ${props => props.theme.input.color};
     margin-bottom: ${props => props.theme.spacing.margin}em;
+
+    // Input group styles
+    ${props =>
+        props.inputGroup
+            ? css`
+                  border-radius: 0 ${props => props.theme.input.radius}px
+                      ${props => props.theme.input.radius}px 0;
+                  border-left: none;
+              `
+            : css`
+                  border-radius: ${props => props.theme.input.radius}px;
+              `};
+
+    // focus
+    &:focus {
+        outline: none;
+        box-shadow: 0px 0px 0px 3px
+            rgba(
+                ${props => {
+                    const rgb = hexToRgb(props.theme.input.focusColor);
+                    return `${rgb.r}, ${rgb.g}, ${rgb.b}, 0.2`;
+                }}
+            );
+    }
 `;
 
 export const StyledInput = BaseInput.extend`

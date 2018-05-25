@@ -72,6 +72,7 @@ const theme = {
         radius: spacing.radius,
         background: colors.white,
         color: colors.black,
+        focusColor: colors.primary,
         error: {
             color: colors.alert,
             borderColor: colors.alert

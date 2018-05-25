@@ -47,6 +47,7 @@ const SelectField = ({
                 </FormLabel>
             )}
             <Select
+                id={name}
                 onChange={handleChange}
                 labelWidth={labelWidth}
                 labelAlign={labelAlign}
