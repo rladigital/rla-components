@@ -51,15 +51,18 @@ const theme = {
         fontSize: 12,
         borderWidth: 1,
         borderRadius: 50,
-        fontWeight: "bold",
+        fontWeight: "normal",
         textTransform: "uppercase",
-        textColor: colors.white,
-        textColorAlt: colors.black,
         types: {
             default: {
                 hollow: true,
-                color: colors.success,
-                textColor: colors.alert
+                foregroundColor: colors.black,
+                backgroundColor: colors.primary
+            },
+            alert: {
+                hollow: false,
+                foregroundColor: colors.white,
+                backgroundColor: colors.alert
             }
         }
     },

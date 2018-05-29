@@ -6,8 +6,16 @@ import { colors } from "../theme";
 import { darken, luminanace, hexToRgb } from "../functions";
 import { RubberBand } from "animate-css-styled-components";
 
+const foregroundColor = props =>
+    props.theme.button.types[props.type].foregroundColor;
+
+const backgroundColor = props =>
+    props.theme.button.types[props.type].backgroundColor;
+
+const isHollow = props => Boolean(props.theme.button.types[props.type].hollow);
+
 const outline = props => `inset 0 0 0 ${props.theme.button.borderWidth}px
-${props.theme.colors[props.color]}`;
+${backgroundColor(props)}`;
 
 const e = React.createElement;
 
@@ -32,28 +40,9 @@ const Button = styled(({ element, children, ...props }) =>
     padding: 0 ${props => props.theme.spacing.padding}em;
     display: inline-block;
     text-decoration: none;
-
-    // hollow button styles
-    ${props =>
-        !props.hollow
-            ? css`
-                  // textColor or automatic color
-                  color: ${props =>
-                      props.textColor
-                          ? props.theme.colors[props.textColor]
-                          : luminanace(props.theme.colors[props.color]) < 0.5
-                              ? props.theme.button.textColor
-                              : props.theme.button.textColorAlt};
-
-                  background-color: ${props => props.theme.colors[props.color]};
-              `
-            : css`
-                  color: ${props =>
-                      props.textColor
-                          ? props.theme.colors[props.textColor]
-                          : props.theme.colors[props.color]};
-                  background-color: transparent;
-              `};
+    background-color: ${props =>
+        !isHollow(props) ? backgroundColor(props) : "transparent"};
+    color: ${props => foregroundColor(props)};
 
     //  disabled button styles
     ${props =>
@@ -68,12 +57,12 @@ const Button = styled(({ element, children, ...props }) =>
 
     // active style
     ${props =>
-        !props.hollow &&
+        !isHollow(props) &&
         !props.disabled &&
         css`
             &:hover {
                 background-color: ${props =>
-                    darken(props.theme.colors[props.color], 0.8)};
+                    darken(backgroundColor(props), 0.8)};
                 box-shadow: none;
             }
         `};
@@ -92,7 +81,7 @@ const Button = styled(({ element, children, ...props }) =>
             0px 0px 0px 3px
                 rgba(
                     ${props => {
-                        const rgb = hexToRgb(props.theme.colors[props.color]);
+                        const rgb = hexToRgb(backgroundColor(props));
                         return `${rgb.r}, ${rgb.g}, ${rgb.b}, 0.2`;
                     }}
                 );
@@ -106,9 +95,6 @@ Button.propTypes = {
     element: PropTypes.string,
     expanded: PropTypes.bool,
     disabled: PropTypes.bool,
-    hollow: PropTypes.bool,
-    color: PropTypes.string,
-    textColor: PropTypes.string,
     margin: PropTypes.number,
     height: PropTypes.number
 };
@@ -117,9 +103,8 @@ Button.defaultProps = {
     element: "button",
     expanded: false,
     disabled: false,
-    hollow: false,
-    color: Object.keys(colors)[0],
-    height: 30
+    height: 30,
+    type: "default"
 };
 
 export default Button;

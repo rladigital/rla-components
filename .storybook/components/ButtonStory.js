@@ -11,7 +11,7 @@ import {
 } from "@storybook/addon-knobs";
 
 import { Button, SaveButton, SubmitButton } from "../../src/index";
-import { colors, sizes } from "../../src/theme";
+import theme from "../../src/theme";
 
 const stories = storiesOf("Button", module);
 
@@ -23,9 +23,7 @@ stories
         withInfo("Button usage")(() => {
             let expanded = boolean("expanded", false);
             let disabled = boolean("disabled", false);
-            let hollow = boolean("hollow", false);
-            let color = select("color", Object.keys(colors));
-            let textColor = select("textColor", Object.keys(colors));
+            let type = select("type", Object.keys(theme.button.types));
             let margin = number("margin", undefined);
             let height = number("height", 30);
             let element = text("element", "button");
@@ -34,9 +32,7 @@ stories
                 <Button
                     expanded={expanded}
                     disabled={disabled}
-                    hollow={hollow}
-                    color={color}
-                    textColor={textColor}
+                    type={type}
                     margin={margin}
                     height={height}
                     element={element}>
