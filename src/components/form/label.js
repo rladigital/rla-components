@@ -3,14 +3,24 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 const StyledLabel = styled.label`
-    width: ${props => props.width}px;
-    margin-bottom: ${props => props.theme.spacing.margin}rem;
+  
     display: ${props => (props.inlineLabel ? "inline-block" : "block")};
     text-align: ${props => props.align};
     vertical-align: middle;
     font-weight: bold;
 
     ${props => props.width < 100 && `padding-right: 4px`};
+
+    // Width & Margin
+    ${props =>
+        props.width
+            ? css`
+                  width: ${props => props.width}px;
+              `
+            : css`
+                  margin-bottom: ${props => props.theme.spacing.margin}rem;
+              `}
+
 
     // Input group styles
     ${props =>
