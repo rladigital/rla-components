@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { ZoomIn, ZoomOut } from "animate-css-styled-components";
+import Collapse from "react-collapse";
+// import { ZoomIn, ZoomOut } from "animate-css-styled-components";
 
 import { isBrowser } from "../functions";
 
-const DropdownWrapper = styled.div`
+const DropdownWrapper = styled(Collapse)`
+    z-index: ${props => props.depth};
     width: ${props => props.width}px;
     position: absolute;
     top: ${props => props.rect.height + props.rect.top}px;
@@ -41,14 +43,14 @@ class Dropdown extends React.Component {
     }
     handleClick(e) {
         //console.log("test");
-        if (this.dropdownWrapper == null) {
+        if (this.dropdownContent == null) {
             if (isBrowser()) {
                 document.removeEventListener("click", this.handleClick, false);
             }
             return;
         }
         if (
-            !this.dropdownWrapper.contains(e.target) &&
+            !this.dropdownContent.contains(e.target) &&
             this.props.hideDropdown
         ) {
             this.props.hideDropdown();
@@ -60,19 +62,23 @@ class Dropdown extends React.Component {
             rect = this.props.toggleRef.getBoundingClientRect();
         }
         return (
-            this.state.visible && (
-                <DropdownWrapper
-                    innerRef={dropdownWrapper =>
-                        (this.dropdownWrapper = dropdownWrapper)
+            <DropdownWrapper
+                position={this.props.position}
+                width={this.props.width}
+                depth={this.props.depth}
+                delay={this.props.delay}
+                rect={rect}
+                isOpened={this.state.visible}
+                forceInitialAnimation
+            >
+                <div
+                    ref={dropdownContent =>
+                        (this.dropdownContent = dropdownContent)
                     }
-                    position={this.props.position}
-                    width={this.props.width}
-                    delay={this.props.delay}
-                    rect={rect}
                 >
                     {this.props.children}
-                </DropdownWrapper>
-            )
+                </div>
+            </DropdownWrapper>
         );
     }
 }
@@ -80,6 +86,7 @@ class Dropdown extends React.Component {
 Dropdown.propTypes = {
     position: PropTypes.oneOf(["left", "right"]),
     width: PropTypes.number,
+    depth: PropTypes.number,
     delay: PropTypes.number,
     visible: PropTypes.bool,
     toggleRef: PropTypes.object,
@@ -90,6 +97,7 @@ Dropdown.defaultProps = {
     position: "right",
     width: 100,
     delay: 0,
+    depth: 0,
     visible: false
 };
 

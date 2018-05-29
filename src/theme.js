@@ -54,7 +54,14 @@ const theme = {
         fontWeight: "bold",
         textTransform: "uppercase",
         textColor: colors.white,
-        textColorAlt: colors.black
+        textColorAlt: colors.black,
+        types: {
+            default: {
+                hollow: true,
+                color: colors.success,
+                textColor: colors.alert
+            }
+        }
     },
     panel: {
         default: "secondary",
