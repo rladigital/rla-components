@@ -9,6 +9,13 @@ class UserInfo extends Component {
             position: relative;
             height: ${props => props.theme.userInfo.height}em;
             background: ${props => props.theme.userInfo.backgroundColor};
+            background: linear-gradient(
+                to bottom,
+                ${props => props.theme.userInfo.backgroundColorTwo},
+                ${props => props.theme.userInfo.backgroundColor} 20%,
+                ${props => props.theme.userInfo.backgroundColor} 80%,
+                ${props => props.theme.userInfo.backgroundColorTwo}
+            );
         `;
         const UserInfo = styled.div`
             top: 50%;

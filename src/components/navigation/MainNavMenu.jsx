@@ -36,7 +36,7 @@ MainNavMenu.propTypes = {
 
 MainNavMenu.defaultProps = {
     color: colors.black,
-    size: "14px",
+    size: "1em",
     weight: "bold",
     background: colors.white,
     margin: `0 0 ${spacing.margin}em 0`

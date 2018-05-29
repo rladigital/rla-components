@@ -267,7 +267,8 @@ const theme = {
             size: 0.8,
             color: colors.primary
         },
-        backgroundColor: colors.lightGray
+        backgroundColor: colors.lightGray,
+        backgroundColorTwo: colors.white
     },
     footer: {
         background: colors.secondary,

@@ -57,7 +57,7 @@ const HeaderIcon = styled.a`
 const Title = styled.div`
     color: ${props => props.theme.dashboard.panel.bar.titleColor};
     font-weight: ${props => props.theme.dashboard.panel.bar.fontWeight};
-    font-size: 15px;
+    font-size: 1em;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
