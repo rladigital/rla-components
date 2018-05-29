@@ -5,6 +5,10 @@ import { shade } from "../../functions";
 import FormLabel from "./label";
 import InputError from "./inputError";
 
+const Container = styled.div`
+    margin-bottom: ${props => props.theme.spacing.margin - 0.2}em;
+`;
+
 const RadioDot = styled.circle.attrs({
     cx: 10,
     cy: 10
@@ -21,7 +25,7 @@ const RadioCircle = styled.circle.attrs({
 })`
     stroke-width: 1px;
     fill: ${props => props.theme.colors.black};
-    stroke: ${props => props.theme.colors.mediumGray};
+    stroke: ${props => props.theme.colors.darkGray};
 `;
 
 const Radio = styled.svg.attrs({
@@ -34,7 +38,6 @@ const Radio = styled.svg.attrs({
 `;
 
 const Input = styled.input`
-    margin-bottom: ${props => props.theme.spacing.margin}rem;
     display: none;
     &:checked + ${Radio} ${RadioDot} {
         r: 6px;
@@ -42,7 +45,7 @@ const Input = styled.input`
 `;
 
 const Wrapper = styled.label`
-    margin-bottom: ${props => props.theme.spacing.margin}rem;
+    margin-bottom: 0.2rem;
     display: ${props => (props.inlineRadioButtons ? "inline-block" : "block")};
     padding-right: ${props => props.theme.spacing.margin}rem;
     cursor: pointer;
@@ -77,27 +80,28 @@ const RadioField = ({
                     {label}
                 </FormLabel>
             )}
-            {options &&
-                options.map((radio, index) => (
-                    <Wrapper
-                        key={index}
-                        inlineRadioButtons={inlineRadioButtons}>
-                        <Input
-                            type="radio"
-                            name={name}
-                            {...rest}
-                            value={radio.value}
-                            onChange={handleChange}
-                            checked={radio.checked}
-                        />
-                        <Radio>
-                            <RadioCircle />
-                            <RadioDot />
-                        </Radio>
-                        <Text>{" " + radio.text}</Text>
-                    </Wrapper>
-                ))}
-
+            <Container>
+                {options &&
+                    options.map((radio, index) => (
+                        <Wrapper
+                            key={index}
+                            inlineRadioButtons={inlineRadioButtons}>
+                            <Input
+                                type="radio"
+                                name={name}
+                                {...rest}
+                                value={radio.value}
+                                onChange={handleChange}
+                                checked={radio.checked}
+                            />
+                            <Radio>
+                                <RadioCircle />
+                                <RadioDot />
+                            </Radio>
+                            <Text>{" " + radio.text}</Text>
+                        </Wrapper>
+                    ))}
+            </Container>
             <InputError error={error} />
         </div>
     );

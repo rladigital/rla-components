@@ -49,14 +49,18 @@ class TableList extends React.Component {
         return <DefinitionList headers={headers} items={items} />;
     }
     render() {
-        var { type, respondsAt } = this.props;
+        var { type, respondsAt, ...rest } = this.props;
         if (
             type === "list" ||
             (type === "responsive" && this.state.width < respondsAt)
         ) {
             return this.renderAsList();
         }
-        return <table style={{ width: "100%" }}>{this.props.children}</table>;
+        return (
+            <table style={{ width: "100%" }} {...rest}>
+                {this.props.children}
+            </table>
+        );
     }
 }
 

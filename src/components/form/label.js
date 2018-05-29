@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 
 const StyledLabel = styled.label`
     width: ${props => props.width}px;
+    margin-bottom: ${props => props.theme.spacing.margin}rem;
     display: ${props => (props.inlineLabel ? "inline-block" : "block")};
     text-align: ${props => props.align};
     vertical-align: middle;

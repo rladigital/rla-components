@@ -8,6 +8,10 @@ import { shade } from "../../functions";
 import FormLabel from "./label";
 import InputError from "./inputError";
 
+const Container = styled.div`
+    margin-bottom: ${props => props.theme.spacing.margin - 0.2}em;
+`;
+
 const G = styled.g`
     transform: translate(50%, 50%);
 `;
@@ -49,7 +53,7 @@ const Input = styled.input`
 `;
 
 const Wrapper = styled.label`
-    margin-bottom: ${props => props.theme.spacing.margin}rem;
+    margin-bottom: 0.2rem;
     display: ${props => (props.inlineRadioButtons ? "inline-block" : "block")};
     padding-right: ${props => props.theme.spacing.margin}rem;
     cursor: pointer;
@@ -124,14 +128,14 @@ class MultiCheckbox extends Component {
         });
 
         return (
-            <div>
+            <Container>
                 {this.props.label && (
                     <FormLabel {...rest}>{this.props.label}</FormLabel>
                 )}
                 {checkboxes}
 
                 <InputError error={error} />
-            </div>
+            </Container>
         );
     }
 }
