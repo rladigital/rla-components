@@ -37,6 +37,7 @@ const Heading = styled.div`
         props.padding != undefined ? props.padding : spacing.padding}em;
     font-weight: bold;
     text-transform: uppercase;
+    position: relative;
 `;
 
 const Panel = ({ children, heading, padding, ...rest }) => (
