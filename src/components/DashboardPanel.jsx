@@ -5,12 +5,14 @@ import styled, { withTheme, css } from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
 import Row from "./row";
 
+const headerHeight = 36;
+
 const Panel = styled.div`
     width: 100%;
     height: 100%;
     border-radius: ${props => props.theme.dashboard.panel.wrapper.radius}px;
     background: ${props => props.theme.dashboard.panel.content.background};
-    padding-top: 46px;
+    padding-top: ${headerHeight}px;
     box-shadow: ${props => props.theme.dashboard.panel.wrapper.boxShadow};
 `;
 
@@ -19,14 +21,14 @@ const Header = styled.div`
     left: 0;
     right: 0;
     width: 100%;
-    height: 40px;
+    height: ${headerHeight}px;
     position: absolute;
     background: #f5f5f5b0;
     display: table;
     table-layout: fixed;
     background: ${props => props.theme.dashboard.panel.bar.background};
     cursor: move;
-    padding: 1em ${props => props.theme.spacing.padding}em;
+    padding: 0 ${props => props.theme.spacing.padding}em;
     border-radius: ${props => props.theme.dashboard.panel.wrapper.radius}px;
 `;
 
