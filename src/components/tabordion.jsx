@@ -68,7 +68,10 @@ class Tabordion extends React.Component {
         this.setCurrentItem(this.state.current + 1);
     }
     handleTabClick(x) {
-        this.props.onTabClick();
+        if (this.props.onTabClick) {
+            this.props.onTabClick();
+        }
+
         if (x) {
             x();
         }
@@ -82,8 +85,7 @@ class Tabordion extends React.Component {
                           key={i}
                           style={{
                               display: current == i ? "block" : "none"
-                          }}
-                      >
+                          }}>
                           {child}
                       </div>
                   );
@@ -124,8 +126,7 @@ class Tabordion extends React.Component {
                                         divider={this.props.divider}
                                         current={this.state.current}
                                         key={i}
-                                        i={i}
-                                    >
+                                        i={i}>
                                         {child.props.heading}
                                     </Tab>
                                 );
@@ -147,8 +148,7 @@ class Tabordion extends React.Component {
                                             }
                                             divider={this.props.divider}
                                             key={"step_" + i}
-                                            i={i}
-                                        >
+                                            i={i}>
                                             {child.props.icon}
                                         </Step>
                                     );
@@ -192,8 +192,7 @@ class AccordionGroup extends React.Component {
                     onClick={() => handleTabClick(cb(i))}
                     key={"header" + i}
                     i={i}
-                    {...rest}
-                >
+                    {...rest}>
                     {child.props.heading}
                 </AccordionHeader>
             );
