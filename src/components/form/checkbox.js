@@ -130,7 +130,9 @@ class MultiCheckbox extends Component {
         return (
             <Container>
                 {this.props.label && (
-                    <FormLabel {...rest}>{this.props.label}</FormLabel>
+                    <FormLabel {...rest} marginBottom={1.2}>
+                        {this.props.label}
+                    </FormLabel>
                 )}
                 {checkboxes}
 

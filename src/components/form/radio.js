@@ -76,7 +76,11 @@ const RadioField = ({
     return (
         <div>
             {label && (
-                <FormLabel name={name} label={label} {...rest}>
+                <FormLabel
+                    name={name}
+                    label={label}
+                    {...rest}
+                    marginBottom={1.2}>
                     {label}
                 </FormLabel>
             )}

@@ -42,11 +42,10 @@ class Range extends Component {
             <div>
                 {label && (
                     <FormLabel
-                        style={{ marginBottom: "15px" }}
                         name={name}
                         label={label}
                         {...this.props}
-                    >
+                        marginBottom={1.2}>
                         {label}
                     </FormLabel>
                 )}

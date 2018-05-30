@@ -3,24 +3,13 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 const StyledLabel = styled.label`
-  
+    width: ${props => props.width}px;
     display: ${props => (props.inlineLabel ? "inline-block" : "block")};
     text-align: ${props => props.align};
     vertical-align: middle;
     font-weight: bold;
-
+    margin-bottom: ${props => props.marginBottom}rem;
     ${props => props.width < 100 && `padding-right: 4px`};
-
-    // Width & Margin
-    ${props =>
-        props.width
-            ? css`
-                  width: ${props => props.width}px;
-              `
-            : css`
-                  margin-bottom: ${props => props.theme.spacing.margin}rem;
-              `}
-
 
     // Input group styles
     ${props =>
@@ -55,12 +44,14 @@ FormLabel.propTypes = {
     name: PropTypes.string.isRequired,
     inlineLabel: PropTypes.bool,
     inputGroup: PropTypes.bool,
-    align: PropTypes.align
+    align: PropTypes.align,
+    marginBottom: PropTypes.number
 };
 FormLabel.defaultProps = {
     height: 30,
     inlineLabel: true,
     inputGroup: false,
-    align: "left"
+    align: "left",
+    marginBottom: 0
 };
 export default FormLabel;
