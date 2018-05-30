@@ -31,7 +31,7 @@ const CarouselItem = styled.div`
     height: 100%;
     color: ${props => props.theme.carousel.item.color};
     background: ${props => props.theme.carousel.item.background};
-    padding-top: ${props => props.theme.carousel.item.padding}em;
+    padding-top: ${props => props.paddingTop}em;
     transition: ${props =>
         doesAnimate(props) ? "right 500ms linear" : "none"};
     position: absolute;
@@ -48,9 +48,12 @@ const CarouselItem = styled.div`
 CarouselItem.displayName = "CarouselItem";
 
 CarouselItem.propTypes = {
-    i: PropTypes.number
+    i: PropTypes.number,
+    paddingTop: PropTypes.number
 };
 
-CarouselItem.defaultProps = {};
+CarouselItem.defaultProps = {
+    paddingTop: 0
+};
 
 export default CarouselItem;

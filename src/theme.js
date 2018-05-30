@@ -228,8 +228,7 @@ const theme = {
     carousel: {
         item: {
             color: colors.white,
-            background: colors.secondary,
-            padding: spacing.padding
+            background: colors.secondary
         },
         arrows: {
             size: 1.5,
