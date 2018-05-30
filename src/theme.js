@@ -83,9 +83,9 @@ const theme = {
         background: colors.white,
         color: colors.black,
         focusColor: colors.primary,
-        selectArrowColor: colors.primary,
-        selectArrowBackground: colors.lightGray,
-        selectArrowScale: 0.5,
+        iconColor: colors.primary,
+        iconBackground: colors.lightGray,
+        iconScale: 0.5,
         error: {
             color: colors.alert,
             borderColor: colors.alert

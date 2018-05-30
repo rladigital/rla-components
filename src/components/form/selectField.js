@@ -17,9 +17,9 @@ const Select = BaseInput.withComponent("select").extend`
     background-image: url("data:image/svg+xml;utf8,${props =>
         backgroundImage(
             props.height,
-            props.theme.input.selectArrowScale,
-            props.theme.input.selectArrowColor,
-            props.theme.input.selectArrowBackground
+            props.theme.input.iconScale,
+            props.theme.input.iconColor,
+            props.theme.input.iconBackground
         )}");
     background-origin: content-box;
     background-position: right  center;
