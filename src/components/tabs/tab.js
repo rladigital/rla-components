@@ -10,19 +10,14 @@ const Tab = styled.div`
     ${props.theme.spacing.padding}em`};
     text-align: ${props => props.theme.tabordion.tabs.textAlign};
     font-weight: normal;
-    border-right: ${props => props.theme.tabordion.borderThickness}
-        ${props => props.theme.tabordion.borderColor} solid;
     cursor: pointer;
     position: relative;
-    &:last-child {
-        border-right: none;
-    }
+
     ${props =>
         props.current == props.i
             ? css`
                   color: ${props => props.theme.tabordion.active.color};
-                  background: ${props =>
-                      props.theme.tabordion.active.background};
+
                   border-bottom-color: ${props =>
                       props.theme.tabordion.active.background};
                   text-decoration: underline;
@@ -30,8 +25,6 @@ const Tab = styled.div`
               `
             : css`
                   color: ${props => props.theme.tabordion.default.color};
-                  background: ${props =>
-                      props.theme.tabordion.default.background};
               `};
     ${props =>
         props.divider

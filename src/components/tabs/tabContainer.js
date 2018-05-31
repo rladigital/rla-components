@@ -9,7 +9,6 @@ const TabContainer = styled.div`
         table-layout: fixed;
         border-collapse: collapse;
     `};
-    background: ${props => props.theme.tabordion.default.background};
 `;
 
 TabContainer.displayName = "TabContainer";
