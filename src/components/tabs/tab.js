@@ -2,10 +2,14 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 const Tab = styled.div`
-    display: table-cell;
-    padding: ${props => props.theme.tabordion.padding / 2}em 0;
+    display: ${props => (props.fullWidth ? "inline-block" : "table-cell")};
+    padding: ${props =>
+        props.fullWidth
+            ? `0 ${props.theme.spacing.padding}em`
+            : `${props.theme.tabordion.padding}em
+    ${props.theme.spacing.padding}em`};
     text-align: ${props => props.theme.tabordion.tabs.textAlign};
-    font-weight: ${props => props.theme.tabordion.fontWeight};
+    font-weight: normal;
     border-right: ${props => props.theme.tabordion.borderThickness}
         ${props => props.theme.tabordion.borderColor} solid;
     cursor: pointer;
@@ -21,6 +25,8 @@ const Tab = styled.div`
                       props.theme.tabordion.active.background};
                   border-bottom-color: ${props =>
                       props.theme.tabordion.active.background};
+                  text-decoration: underline;
+                  font-weight: bold;
               `
             : css`
                   color: ${props => props.theme.tabordion.default.color};
@@ -28,8 +34,8 @@ const Tab = styled.div`
                       props.theme.tabordion.default.background};
               `};
     ${props =>
-        props.divider &&
-        css`
+        props.divider
+            ? css`
             &:not(:last-child):after{
                 content '${props => props.divider}';
                 height: ${props => props.theme.tabordion.dividers.height}em;
@@ -50,7 +56,20 @@ const Tab = styled.div`
                 z-index: 2;
                 transform: translate(50%, -50%);
             }
-    `};
+    `
+            : css`
+                  &:not(:last-child):after {
+                      content: " ";
+                      right: -1px;
+                      top: 50%;
+                      height: 25%;
+                      position: absolute;
+                      border-right: 1px solid;
+                      transform: translateY(-50%);
+                      opacity: 0.2;
+                      z-index: 1;
+                  }
+              `};
 `;
 
 Tab.displayName = "Tab";
