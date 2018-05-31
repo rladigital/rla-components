@@ -48,7 +48,7 @@ class Footer extends Component {
     }
     isFixed() {
         this.setState({
-            fixed: Boolean(document.body.offsetHeight <= window.innerHeight)
+            fixed: Boolean(document.body.offsetHeight < window.innerHeight)
         });
     }
     render() {
