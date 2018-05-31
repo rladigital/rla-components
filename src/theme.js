@@ -279,6 +279,14 @@ const theme = {
     checkboxButton: {
         activeColor: "primary",
         defaultColor: "secondary"
+    },
+    progress: {
+        borderColor: colors.lightGray,
+        radius: spacing.radius,
+        background: colors.white,
+        barColor: colors.primary,
+        textColor: colors.primary,
+        textColorAlt: colors.white
     }
 };
 

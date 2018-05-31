@@ -33,7 +33,6 @@ export const BaseInput = styled.input`
     font-size: 1em;
     background: ${props => props.theme.input.background};
     color: ${props => props.theme.input.color};
-    margin-bottom: ${props => props.theme.spacing.margin}em;
 
     // Input group styles
     ${props =>
