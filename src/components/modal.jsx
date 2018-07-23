@@ -11,6 +11,7 @@ import {
 } from "animate-css-styled-components";
 
 import { isBrowser } from "../functions";
+import CloseButton from "./closeButton";
 
 // Set to animate in / out based on visibility
 let animation = {
@@ -98,9 +99,7 @@ class Modal extends React.Component {
                     duration="0.25s"
                     onClick={e => e.stopPropagation()}
                     maxWidth={maxWidth}>
-                    <ModalCloseButton onClick={this.onClose}>
-                        <Icon name="close" size="1" />
-                    </ModalCloseButton>
+                    <CloseButton onClick={this.onClose} />
                     {this.props.children}
                 </ModalInner>
             </ModalWrapper>

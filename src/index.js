@@ -56,3 +56,4 @@ export { default as Hero } from "./components/hero";
 export { default as Centred } from "./components/centred";
 export { default as Badge } from "./components/badge";
 export { default as Progress } from "./components/progress";
+export { default as CloseButton } from "./components/closeButton";
