@@ -6,13 +6,16 @@ import { colors } from "../theme";
 import { darken, luminanace, hexToRgb } from "../functions";
 import { RubberBand } from "animate-css-styled-components";
 
-const foregroundColor = props =>
-    props.theme.button.types[props.type].foregroundColor;
+const buttonType = props =>
+    props.theme.button.types[props.type]
+        ? props.theme.button.types[props.type]
+        : props.theme.button.types.default;
 
-const backgroundColor = props =>
-    props.theme.button.types[props.type].backgroundColor;
+const foregroundColor = props => buttonType(props).foregroundColor;
 
-const isHollow = props => Boolean(props.theme.button.types[props.type].hollow);
+const backgroundColor = props => buttonType(props).backgroundColor;
+
+const isHollow = props => Boolean(buttonType(props).hollow);
 
 const outline = props => `inset 0 0 0 ${props.theme.button.borderWidth}px
 ${backgroundColor(props)}`;
