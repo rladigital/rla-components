@@ -158,6 +158,7 @@ stories
             const labelAlign = select("labelAlign", ["left", "right"], "left");
             const label = text("label", "Label");
             const inputGroup = boolean("inputGroup", false);
+            const emptyOption = text("emptyOption", "— Select One —");
 
             const options = [
                 { value: "1", text: "first" },
@@ -180,6 +181,7 @@ stories
                             console.log(selection);
                         }}
                         error={error}
+                        emptyOption={emptyOption}
                     />
                 </div>
             );

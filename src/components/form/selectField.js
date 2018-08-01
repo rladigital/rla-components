@@ -22,11 +22,11 @@ const Select = BaseInput.withComponent("select").extend`
             props.theme.input.iconBackground
         )}");
     background-origin: content-box;
-    background-position: right  center;
+    background-position: right -${props => props.height + 5}px  center;
     background-repeat: no-repeat;
     background-size: ${props => props.height}px ${props => props.height}px;
     appearance: none;
-    padding-right: 0;
+    padding-right: ${props => props.height + 5}px;
 `;
 
 const SelectField = ({
@@ -41,6 +41,7 @@ const SelectField = ({
     error,
     labelWidth,
     labelAlign,
+    wrapperProps,
     ...rest
 }) => {
     const handleChange = event => {
@@ -50,7 +51,7 @@ const SelectField = ({
         });
     };
     return (
-        <span>
+        <span {...wrapperProps}>
             {label && (
                 <FormLabel
                     name={name}
