@@ -287,6 +287,11 @@ const theme = {
         barColor: colors.primary,
         textColor: colors.primary,
         textColorAlt: colors.white
+    },
+    checkbox: {
+        color: colors.primary,
+        background: colors.darkGray,
+        stroke: colors.black
     }
 };
 

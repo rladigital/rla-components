@@ -14,7 +14,7 @@ const RadioDot = styled.circle.attrs({
     cy: 10
 })`
     r: 0;
-    fill: ${props => props.theme.colors.primary};
+    fill: ${props => props.theme.checkbox.color};
     transition: r 0.25s ease;
 `;
 
@@ -24,8 +24,8 @@ const RadioCircle = styled.circle.attrs({
     cy: 10
 })`
     stroke-width: 1px;
-    fill: ${props => props.theme.colors.black};
-    stroke: ${props => props.theme.colors.darkGray};
+    fill: ${props => props.theme.checkbox.background};
+    stroke: ${props => props.theme.checkbox.stroke};
 `;
 
 const Radio = styled.svg.attrs({

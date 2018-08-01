@@ -21,7 +21,7 @@ const CheckboxCheck = styled.path.attrs({
         "M-2.73,6.11-8.29.56a.86.86,0,0,1,0-1.21l1.21-1.21a.86.86,0,0,1,1.21,0l3.75,3.75,8-8a.86.86,0,0,1,1.21,0L8.29-4.9a.86.86,0,0,1,0,1.21L-1.52,6.11A.86.86,0,0,1-2.73,6.11Z"
 })`
     transform: scale(0);
-    fill: ${props => props.theme.colors.primary};
+    fill: ${props => props.theme.checkbox.color};
     transition: transform 0.25s ease;
 `;
 
@@ -32,8 +32,8 @@ const CheckboxSquare = styled.rect.attrs({
     ry: 3
 })`
     stroke-width: 1px;
-    fill: ${props => props.theme.colors.black};
-    stroke: ${props => props.theme.colors.mediumGray};
+    fill: ${props => props.theme.checkbox.background};
+    stroke: ${props => props.theme.checkbox.stroke};
 `;
 
 const Checkbox = styled.svg.attrs({
