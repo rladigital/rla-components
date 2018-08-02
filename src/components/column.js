@@ -1,30 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { breakpoints } from "../theme";
+import styled, { css, withTheme } from "styled-components";
+
+const breakpoints = {};
 
 // Width to percentage
 const widthPercentage = function(width) {
-    return Math.min(Math.floor(width), 12) / 12 * 100;
+    return (Math.min(Math.floor(width), 12) / 12) * 100;
 };
 
 // Iterate through the breakpoints and create a media template
 // If width prop is defied, then use pseudo js breakpoint instead
-const media = Object.keys(breakpoints).reduce((acc, label) => {
-    acc[label] = (...args) => props =>
-        props.parentWidth
-            ? parseInt(props.parentWidth) > breakpoints[label] &&
-              css`
-                  ${css(...args)};
-              `
-            : css`
-                  @media (min-width: ${breakpoints[label]}px) {
-                      ${css(...args)};
-                  }
-              `;
 
-    return acc;
-}, {});
+const media = breakpoints => {
+    return Object.keys(breakpoints).reduce((acc, label) => {
+        acc[label] = (...args) => props =>
+            props.parentWidth
+                ? parseInt(props.parentWidth) > breakpoints[label] &&
+                  css`
+                      ${css(...args)};
+                  `
+                : css`
+                      @media (min-width: ${breakpoints[label]}px) {
+                          ${css(...args)};
+                      }
+                  `;
+
+        return acc;
+    }, {});
+};
 
 // The Column - loop through all breakpoints and insert into media query
 const StyledColumn = styled.div`
@@ -34,10 +38,12 @@ const StyledColumn = styled.div`
 
     /*responsive*/
     ${props =>
-        Object.keys(breakpoints).map(function(key) {
+        Object.keys(props.theme.breakpoints).map(function(key) {
             return (
                 props[key] &&
-                media[key]`width: ${widthPercentage(props[key])}%;`
+                media(props.theme.breakpoints)[key]`width: ${widthPercentage(
+                    props[key]
+                )}%;`
             );
         })};
 
@@ -52,9 +58,9 @@ const StyledColumn = styled.div`
               `};
 `;
 
-const Column = ({ children, ...rest }) => (
-    <StyledColumn {...rest}>{children}</StyledColumn>
-);
+const Column = ({ children, ...rest }) => {
+    return <StyledColumn {...rest}>{children}</StyledColumn>;
+};
 
 Column.displayName = "Column";
 
@@ -70,4 +76,4 @@ Column.defaultProps = {
     centered: false
 };
 
-export default Column;
+export default withTheme(Column);

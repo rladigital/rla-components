@@ -35,6 +35,7 @@ export const breakpoints = {
 const theme = {
     colors: colors,
     spacing: spacing,
+    breakpoints: breakpoints,
     darkColor: colors.background,
     lightColor: colors.white,
     navigation: {
