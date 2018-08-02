@@ -27,13 +27,13 @@ const CheckboxCheck = styled.path.attrs({
 
 const CheckboxSquare = styled.rect.attrs({
     width: 20,
-    height: 20,
-    rx: 3,
-    ry: 3
+    height: 20
 })`
     stroke-width: 1px;
     fill: ${props => props.theme.checkbox.background};
     stroke: ${props => props.theme.checkbox.stroke};
+    rx: ${props => props.theme.checkbox.radius}px;
+    ry: ${props => props.theme.checkbox.radius}px;
 `;
 
 const Checkbox = styled.svg.attrs({

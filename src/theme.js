@@ -291,7 +291,8 @@ const theme = {
     checkbox: {
         color: colors.primary,
         background: colors.darkGray,
-        stroke: colors.black
+        stroke: colors.black,
+        radius: 3
     }
 };
 
