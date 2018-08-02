@@ -12,7 +12,7 @@ export const StyledPanel = styled.div`
     color: ${props =>
         foregroundColor(
             background(props),
-            0.5,
+            0.6,
             props.theme.lightColor,
             props.theme.darkColor
         )};

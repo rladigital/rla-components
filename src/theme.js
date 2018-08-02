@@ -38,10 +38,14 @@ const theme = {
     darkColor: colors.background,
     lightColor: colors.white,
     navigation: {
+        background: colors.white,
+        boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.14)",
         navLink: {
             color: colors.black,
             activeColor: colors.primary,
-            textTransform: "uppercase"
+            textTransform: "uppercase",
+            fontWeight: "normal",
+            activeFontWeight: "bold"
         }
     },
     badge: {

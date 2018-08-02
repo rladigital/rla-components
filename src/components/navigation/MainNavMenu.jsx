@@ -4,12 +4,11 @@ import styled from "styled-components";
 import { colors, spacing } from "../../theme";
 
 const Container = styled.div`
-    color: ${props => props.color};
     font-size: ${props => props.size};
     font-weight: ${props => props.weight};
-    background: ${props => props.background};
+    background: ${props => props.theme.navigation.background};
     margin: ${props => props.margin};
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: ${props => props.theme.navigation.boxShadow};
     position: relative;
 `;
 
@@ -35,10 +34,8 @@ MainNavMenu.propTypes = {
 };
 
 MainNavMenu.defaultProps = {
-    color: colors.black,
     size: "1em",
     weight: "bold",
-    background: colors.white,
     margin: `0 0 ${spacing.margin}em 0`
 };
 
