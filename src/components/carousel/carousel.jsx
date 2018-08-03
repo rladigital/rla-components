@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { withTheme } from "styled-components";
 import { Icon } from "../../index";
-import { Scrollbars } from "react-custom-scrollbars";
 
 const Container = styled.div`
     width: 100%;
@@ -49,10 +48,6 @@ const Dot = styled.a`
     margin: ${props => props.theme.carousel.dots.margin}em;
     display: inline-block;
     cursor: pointer;
-`;
-
-const StyledScrollbars = styled(Scrollbars)`
-    overflow-x: hidden;
 `;
 
 class Carousel extends React.Component {
@@ -111,20 +106,18 @@ class Carousel extends React.Component {
 
         return (
             <Container height={this.props.height}>
-                <Scrollbars autoHide>{childrenWithProps}</Scrollbars>
+                {childrenWithProps}
                 {!this.props.hideControls && [
                     <ArrowButtonLeft
                         key={1}
-                        onClick={() => this.prevItem(children)}
-                    >
+                        onClick={() => this.prevItem(children)}>
                         <Icon
                             name={this.props.theme.carousel.arrows.leftIcon}
                         />
                     </ArrowButtonLeft>,
                     <ArrowButtonRight
                         key={2}
-                        onClick={() => this.nextItem(children)}
-                    >
+                        onClick={() => this.nextItem(children)}>
                         <Icon
                             name={this.props.theme.carousel.arrows.rightIcon}
                         />
