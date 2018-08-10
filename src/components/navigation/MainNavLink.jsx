@@ -8,8 +8,8 @@ const MainNavLink = styled(NavLink).attrs({
     activeClassName: "active"
 })`
     display: inline-block;
-    margin: 0 ${props => props.theme.spacing.margin}em;
-    padding ${props => props.theme.spacing.padding}em 0;
+    margin: 0 ${props => props.theme.navigation.navLink.margin}em;
+    padding ${props => props.theme.navigation.navLink.padding}em 0;
     text-decoration: none;
     color: ${props => props.theme.navigation.navLink.color};
     text-transform: ${props => props.theme.navigation.navLink.textTransform};
@@ -26,7 +26,7 @@ const MainNavLink = styled(NavLink).attrs({
     }
     &:not(:last-child):after{
         content: ' ';
-        right: -${props => props.theme.spacing.margin}em;
+        right: -${props => props.theme.navigation.navLink.margin}em;
         top: 50%;
         height: 25%;
         position: absolute;

@@ -5,6 +5,7 @@ import { isBrowser } from "../functions";
 
 const StickyFooter = styled.div`
     width: 100%;
+    color: ${props => props.theme.footer.color};
     background-color: ${props => props.theme.footer.background};
     padding: ${props => props.theme.footer.padding}em 0 0;
 

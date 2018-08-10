@@ -278,6 +278,7 @@ const theme = {
         backgroundColorTwo: colors.white
     },
     footer: {
+        color: colors.black,
         background: colors.secondary,
         padding: spacing.padding
     },
